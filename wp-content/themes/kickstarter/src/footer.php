@@ -1,6 +1,9 @@
-<?php
-echo '</div><footer>';
-do_action('footer');
-echo '</footer>';
-wp_footer();
-echo '</body></html>';
+ </div>
+ <footer>
+  <div class="container first-last">
+    <?php get_template_part('modules/footer', 'twitter');?>
+    <?php get_template_part('modules/footer', 'about');?>
+  </footer>
+  <?php get_template_part('modules/footer', 'copyright');?>
+  <?php wp_footer();?>
+</body></html>
