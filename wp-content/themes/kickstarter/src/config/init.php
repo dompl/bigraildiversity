@@ -8,6 +8,7 @@ use config\setup\defaults;
 use config\setup\cpt;
 use config\theme\navigation;
 use config\plugins\Disable_Plugins_When_Local_Dev;
+use config\plugins\Visual_Composer_General_Settings;
 
 class init {
 
@@ -54,6 +55,9 @@ class init {
          * Theme setup - Mostly removes junk from header
          */
         new defaults();
+
+        /* Visual Composer */
+        new Visual_Composer_General_Settings();
 
         /**
          * Theme setup - Custom post types
