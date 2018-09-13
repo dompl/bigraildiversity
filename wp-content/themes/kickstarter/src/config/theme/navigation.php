@@ -9,7 +9,7 @@ class navigation {
         'breakpoint'     => '768',
         'theme_location' => 'header',
         'menu_id'        => 'menu-header',
-        'menu_class'     => 'align-to-left nav-menu clx',
+        'menu_class'     => 'align-to-center nav-menu clx',
         'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
         'echo'           => 0,
         'nav_id'         => 'navigation',
