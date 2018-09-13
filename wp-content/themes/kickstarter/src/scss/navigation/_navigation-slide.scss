@@ -1,0 +1,163 @@
+/*  ********************************************************
+ *   Slide Navigation
+ *  ********************************************************
+ */
+
+.navigation-portrait {
+  /* Toggle navigation items settings */
+  ul {
+    @include scut-list-unstyled();
+    ul {
+      li {
+        a {
+          padding-left: $toggle-item-padding-lev-2-increment + $toggle-item-padding-lev-1-left;
+          padding-right: $toggle-item-padding-lev-2-increment + $toggle-item-padding-lev-1-right;
+          background-color: nav_color(togle-item-background-color-lev-2);
+          @include hover() {
+            background-color: nav_color(togle-item-background-color-hover-color-lev-2)!important;
+          }
+        }
+      }
+    }
+    li {
+      display: block;
+      width: 100%;
+      @extend %clx;
+      a {
+        font-size: $toggle-item-font-size;
+        display: block;
+        float: left;
+        width: 100%;
+        position: relative;
+        @include hover() {
+          .submenu-indicator {
+            &:before {
+              color: nav_color(togle-item-indicator-color-hover);
+            }
+          }
+        }
+        .submenu-indicator {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: $toggle-navigation-dropdown-width;
+          height: 100%;
+          right: 0;
+          background-color: nav_color(togle-item-indicator-background-color);
+          &:before {
+            @include scut-center-transform();
+            color: nav_color(togle-item-indicator-color);
+            line-height: $toggle-navigation-dropdown-indicator-font-size;
+            height: $toggle-navigation-dropdown-indicator-font-size;
+            font-size: $toggle-navigation-dropdown-indicator-font-size;
+          }
+          @include icon(menu-indicator-down);
+          &.submenu-indicator-up {
+            @include icon(menu-indicator-up);
+          }
+        }
+      }
+    }
+    >li {
+      >a {
+        padding: $toggle-item-padding-lev-1-top $toggle-item-padding-lev-1-right $toggle-item-padding-lev-1-bottom $toggle-item-padding-lev-1-left;
+        @if color_nav( togle-item-indicator-background-color) !=transparent {
+          background-color: nav_color(togle-item-background-color);
+        }
+        color: nav_color(togle-item-color);
+        @include hover() {
+          color: nav_color(togle-item-color-hover);
+          background-color: nav_color(togle-item-background-color-hover);
+        }
+      }
+    }
+  }
+  /* Close button */
+  .nav-menus-wrapper-close-button {
+    cursor: pointer;
+    display: block;
+    @if $toggle-close-margin !=0 and $toggle-close-padding !=0 {
+      width: calc(100% - #{$toggle-close-margin + $toggle-close-padding});
+    }
+    @else {
+      width: 100%;
+    }
+    @if $toggle-close-padding !=0 {
+      padding: $toggle-close-padding;
+    }
+    @if $toggle-close-margin !=0 {
+      margin: $toggle-close-margin;
+    }
+    i {
+      float: $toggle-close-button-position;
+      height: $toggle-close-button-size;
+      line-height: $toggle-close-button-size;
+    }
+    @include toggle-navigation-close-button();
+  }
+  .nav-menus-wrapper {
+    width: $toggle-navigation-container-width;
+    height: 100%;
+    top: 0;
+    left: 0;
+    left: -100%;
+    position: fixed;
+    z-index: 11;
+    overflow-y: auto;
+    background: nav_color(port-background);
+    -webkit-overflow-scrolling: touch;
+    transition-duration: $toggle-animation-duration-hide;
+    transition-timing-function: ease;
+    &.nav-menus-wrapper-open {
+      left: 0;
+      transition-duration: $toggle-animation-duration-show;
+    }
+  }
+  .nav-toggle {
+    float: $togle-container-position;
+    position: relative;
+    cursor: pointer!important;
+    @if $toggle-button-margin !=0 {
+      margin: $toggle-button-margin;
+    }
+    @if $togle-container-background==true {
+      padding: $togle-background-padding;
+      background: nav_color(togle-background-color);
+      @if $togle-background-border-radius !=0 {
+        @include border-radius($togle-background-border-radius);
+      }
+    }
+    span, i {
+      @if $toggle-button-size>$toggle-font-size {
+        line-height: $toggle-button-size;
+        height: $toggle-button-size;
+      }
+      @else {
+        line-height: $toggle-font-size;
+        height: $toggle-font-size;
+      }
+      display: block;
+    }
+    i {
+      @if $toggle-text-position=='right' {
+        float: right;
+      }
+      @else {
+        float: left;
+      }
+      font-size: $toggle-button-size;
+      color: nav_color(togle-button-button);
+    }
+    span {
+      float: #{$toggle-text-position};
+      font-size: $toggle-font-size;
+      @if $toggle-text-position==right {
+        margin-left: 10px;
+      }
+      @else {
+        margin-right: 10px;
+      }
+      color: nav_color(togle-button-text);
+    }
+  }
+}

@@ -1,0 +1,82 @@
+@font-face {
+  font-family: "bigraildiversity";
+  src: url('icons/bigraildiversity.eot');
+  src: url('icons/bigraildiversity.eot?#iefix') format('eot'),
+  url('icons/bigraildiversity.woff2') format('woff2'),
+  url('icons/bigraildiversity.woff') format('woff'),
+  url('icons/bigraildiversity.ttf') format('truetype'),
+  url('icons/bigraildiversity.svg#bigraildiversity') format('svg');
+}
+
+@mixin icon-styles {
+  font-family: "bigraildiversity";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+    // speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+    text-decoration: none;
+    text-transform: none;
+  }
+
+  %icon {
+    @include icon-styles;
+  }
+
+  @function icon-char($filename) {
+    $char: "";
+    
+      @if $filename == bars {
+        $char: "\E001";
+      }
+      @if $filename == menu-close {
+        $char: "\E002";
+      }
+      @if $filename == menu-indicator-down {
+        $char: "\E003";
+      }
+      @if $filename == menu-indicator-left {
+        $char: "\E004";
+      }
+      @if $filename == menu-indicator-right {
+        $char: "\E005";
+      }
+      @if $filename == menu-indicator-up {
+        $char: "\E006";
+      }
+
+    @return $char;
+  }
+
+  @mixin icon($filename, $insert: before, $extend: true) {
+    &:#{$insert} {
+      @if $extend {
+        @extend %icon;
+      } @else {
+        @include icon-styles;
+      }
+      content: icon-char($filename);
+      @content;
+    }
+  }
+
+  .icon-bars {
+    @include icon(bars);
+  }
+  .icon-menu-close {
+    @include icon(menu-close);
+  }
+  .icon-menu-indicator-down {
+    @include icon(menu-indicator-down);
+  }
+  .icon-menu-indicator-left {
+    @include icon(menu-indicator-left);
+  }
+  .icon-menu-indicator-right {
+    @include icon(menu-indicator-right);
+  }
+  .icon-menu-indicator-up {
+    @include icon(menu-indicator-up);
+  }
+  

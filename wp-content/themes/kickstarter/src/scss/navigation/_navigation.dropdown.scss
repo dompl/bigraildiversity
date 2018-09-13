@@ -1,0 +1,92 @@
+/****************************************
+*****************************************
+DROPDOWN EXTENSION
+This extension provides the use of
+dropdowns in navigation.
+*****************************************
+****************************************/
+
+.navigation-landscape {
+  .align-to-right {
+    .nav-dropdown {
+      right: $nav-dd-min-width;
+      li {
+        .menu-item-has-children {
+          @include icon($nav-dd-indicator-icon-left);
+          >a {
+            padding-left: $nav-dd-indicator-margin;
+          }
+          &:before {
+            left: 10px;
+          }
+        }
+      }
+    }
+  }
+  .align-to-left, .align-to-center {
+    .nav-dropdown {
+      left: 0;
+      ul {
+        left: $nav-dd-min-width;
+      }
+      li {
+        &.menu-item-has-children {
+          @include icon($nav-dd-indicator-icon-right);
+          >a {
+            padding-right: $nav-dd-indicator-margin;
+          }
+          &:before {
+            right: $nav-dd-a-padding-right;
+          }
+        }
+      }
+    }
+  }
+  .nav-dropdown {
+    min-width: $nav-dd-min-width;
+    margin: 0;
+    padding: 0;
+    display: none;
+    position: absolute;
+    list-style: none;
+    z-index: 98;
+    white-space: nowrap;
+    background-color: nav_color(link-dd-background-color);
+    ul {
+      top: 0;
+    }
+    li {
+      &.menu-item-has-children {
+        position: relative;
+        &:before {
+          @include scut-center-transform(y);
+          color: nav_color(link-top-color);
+          font-size: $nav-dd-indicator-size;
+        }
+      }
+      a {
+        font-size: $nav-dd-font-size;
+        display: block;
+        text-decoration: none;
+        color: nav_color(link-top-color);
+        transition: color $nav-dd-transition-speed, background $nav-dd-transition-speed;
+        font-size: $nav-dd-font-size;
+        padding: $nav-dd-a-padding-top $nav-dd-a-padding-left $nav-dd-a-padding-bottom $nav-dd-a-padding-right;
+        margin: $nav-dd-a-margin-top $nav-dd-a-margin-left $nav-dd-a-margin-bottom $nav-dd-a-margin-right;
+        @include hover() {
+          color: nav_color(link-dd-color-hover);
+          background: nav_color(link-dd-background-color-hover);
+        }
+      }
+      &:hover {
+        &:before {
+          color: nav_color(link-dd-color-hover);
+        }
+      }
+      &.current-menu-item a {
+        color: nav_color(link-dd-color-active);
+        background: nav_color(link-dd-background-color-active)
+      }
+    }
+  }
+}

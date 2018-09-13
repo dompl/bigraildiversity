@@ -1,0 +1,9 @@
+## Development
+.sass-cache/
+bower_components/
+node_modules/
+vendor
+src/vendor
+build/
+dist/
+assets/icons

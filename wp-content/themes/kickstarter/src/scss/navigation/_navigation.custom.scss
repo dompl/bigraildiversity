@@ -1,0 +1,16 @@
+/*  ********************************************************
+ *   Custom nav styles
+ *   Mixins here are included in the navigation classes so there is no need to create classes. Ask if description is not clear
+ *   Use custom classes only as a last thing, if you really can't find appropriate mixin.
+ *  ********************************************************
+ */
+
+/**
+ * Additiona classes for toggle navigation
+ * ---
+ */
+/* Toggle close button */
+@mixin toggle-navigation-close-button() {
+  span {}
+  i {}
+}

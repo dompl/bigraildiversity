@@ -1,0 +1,36 @@
+{
+    "name": "redfrog/theme",
+    "description": "Kickstarter composer",
+    "type": "wordpress-theme",
+    "license": "GPL2",
+    "authors": [
+        {
+            "name": "Dom Kapelewski",
+            "email": "info@redfrogstudio.co.uk",
+            "role": "Developer",
+            "homepage": "https://www.redfrogstudio.co.uk"
+        }
+    ],
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "autoload": {
+        "psr-4": {
+            "config\\": "config",
+            "theme\\": "theme"
+        },
+        "files": [
+            "config/plugins/aq_resizer.php",
+            "helpers/images/imagedata.php",
+            "helpers/images/wpimage.php",
+            "helpers/links/kslink.php",
+            "helpers/pjax/pjax.php",
+            "helpers/transients/wp-cache-remember.php",
+            "helpers/navigation/navigation.php"
+        ]
+    },
+    "require": {
+        "jjgrainger/posttypes": "^2.0",
+        "mobiledetect/mobiledetectlib": "^2.8"
+    }
+}

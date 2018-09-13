@@ -1,0 +1,101 @@
+// ==== HELPERS ==== //
+%center {
+  @include scut-center-block;
+}
+
+%transition {
+  @include transition(all, 300ms);
+}
+
+%clx {
+  @include scut-clearfix;
+}
+
+.clx {
+  @extend %clx;
+}
+
+%hide {
+  @include scut-hide-visually;
+}
+
+%container {
+  $gutter: gutter();
+  @extend %clx;
+  width:calc(#{$xxl} + #{$gutter});
+  max-width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+%su-flex-container {
+  @include su-flex-container();
+}
+
+.su-flex-container, .su-container {
+  @extend %su-flex-container;
+}
+
+.su-span {
+  @include su-margin();
+}
+
+%list-unstyled {
+  @include scut-list-unstyled;
+}
+
+.list-unstyled {
+  @extend %list-unstyled;
+}
+
+%list-inline {
+  @include scut-list-inline;
+}
+
+.list-inline {
+  @extend %list-inline;
+}
+
+.center-x {
+  @include scut-center-transform(x);
+}
+
+.center-y {
+  @include scut-center-transform(y);
+}
+
+.center-xy {
+  @include scut-center-transform();
+}
+
+.container {
+  @extend %container;
+}
+
+%init-slick {
+  visibility: hidden;
+  &.slick-initialized {
+    visibility: visible;
+  }
+}
+
+%last-element {
+  p, li, ul, table, tr, td {
+    @include _last_child() {
+      margin-bottom: 0;
+    }
+  }
+}
+
+%first-element {
+  p, li, ul, table, tr, td {
+    @include _first_child() {
+      margin-top: 0;
+    }
+  }
+}
+
+.first-last {
+  @extend %first-element;
+  @extend %last-element;
+}

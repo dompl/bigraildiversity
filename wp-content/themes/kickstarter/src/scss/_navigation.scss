@@ -1,0 +1,154 @@
+/*  ********************************************************
+ *   Main Navigation settings
+ *  ********************************************************
+ */
+
+/* Global colour settings - START YOUR CHANGES HERE */
+
+// $navigation_link_colour: color('gray-light');
+$navigation_link_colour: color('gray');
+$navigation_background:lighten($navigation_link_colour, 23%);
+$navigation_link_colour_hover: darken($navigation_link_colour, 10%);
+$navigation_link_background_colour_hover: lighten($navigation_link_colour, 15%);
+
+$_nav_color: (
+  background :$navigation_background,
+  // Main nav background colour
+
+  toggle-button: $navigation_link_colour,
+  brand-text: $navigation_link_colour,
+  brand-text-hover: darken($navigation_link_colour, 10%),
+  link-top-color: $navigation_link_colour,
+  link-top-color-hover: $navigation_link_colour_hover,
+  link-top-color-active: $navigation_link_colour_hover,
+  link-top-background-color-hover: $navigation_link_background_colour_hover,
+  link-top-background-color-active: $navigation_link_background_colour_hover,
+
+  // Dropbdown navigation
+  link-dd-color: $navigation_link_colour,
+  link-dd-background-color: $navigation_background,
+  link-dd-color-hover: $navigation_link_colour_hover,
+  link-dd-background-color-hover: $navigation_link_background_colour_hover,
+  link-dd-color-active: $navigation_link_colour_hover,
+  link-dd-background-color-active: $navigation_link_background_colour_hover,
+
+  // Portrait Navigation
+  togle-background-color : darken($navigation_link_colour, 10%),
+  togle-item-color : $navigation_link_colour,
+  togle-item-color-hover : lighten($navigation_link_colour, 40%),
+  togle-item-background-color : transparent,
+  togle-item-background-color-hover : darken($navigation_link_colour, 15%),
+  togle-item-background-color-lev-2 : rgba(black, .1),
+  togle-item-background-color-hover-color-lev-2 : darken($navigation_link_colour, 5%),
+
+  togle-item-indicator-color : darken($navigation_link_colour, 15%),
+  togle-item-indicator-color-hover : lighten($navigation_link_colour, 40%),
+  togle-item-indicator-background-color : transparent,
+
+  // Toggle button
+  togle-button-button : $navigation_link_colour,
+  togle-button-text : $navigation_link_colour,
+  port-background : $navigation_background,
+  close-button-color:darken(rgb(188, 188, 188), 15%),
+  portrait-navigation-bacground-color:white,
+  ) !default;
+
+/* Top Level Navigation Settings */
+$nav-top-width: 100%;
+$nav-top-font-size: 14px;
+$nav-top-font-family: inherit;
+$nav-top-transition-speed: 200ms;
+$nav-top-border-radious: 0;
+// Paddings
+$nav-top-a-padding-top: 8px;
+$nav-top-a-padding-bottom: 8px;
+$nav-top-a-padding-right: 10px;
+$nav-top-a-padding-left: 10px;
+// Margins
+$nav-top-a-margin-top: 0;
+$nav-top-a-margin-bottom: 0;
+$nav-top-a-margin-right: 0;
+$nav-top-a-margin-left: 0;
+$nav-top-a-remove-padding-from-first-child: false;
+$nav-top-a-remove-padding-from-last-child: false;
+// Indicator
+$nav-top-indicator-icon: 'menu-indicator-down';
+$nav-top-indicator-size: 12px;
+$nav-top-indicator-margin-right: 7px; // space from teh right nav menu item (dropdown indicator)
+$nav-top-a-has-indicator-padding-left: 15px+$nav-top-indicator-margin-right; // Space for item which have (dropdown indicator)
+
+/* Dropbdown Nav Settings */
+$nav-dd-font-size: $nav-top-font-size;
+$nav-dd-font-family: $nav-top-font-family;
+$nav-dd-transition-speed: $nav-top-transition-speed;
+$nav-dd-border-radious: $nav-top-border-radious;
+// Paddings
+$nav-dd-a-padding-top: $nav-top-a-padding-top;
+$nav-dd-a-padding-bottom: $nav-top-a-padding-bottom;
+$nav-dd-a-padding-right: $nav-top-a-padding-right;
+$nav-dd-a-padding-left: $nav-top-a-padding-left;
+// Margins
+$nav-dd-a-margin-top: $nav-top-a-margin-top;
+$nav-dd-a-margin-bottom: $nav-top-a-margin-bottom;
+$nav-dd-a-margin-right: $nav-top-a-margin-right;
+$nav-dd-a-margin-left: $nav-top-a-margin-left;
+// Indicator
+$nav-dd-indicator-icon-left: 'menu-indicator-left';
+$nav-dd-indicator-icon-right: 'menu-indicator-right';
+$nav-dd-indicator-size: 12px; // Dropdown indicator font size
+$nav-dd-indicator-margin: 24px; // space from teh right nav menu item (dropdown indicator)
+
+/* Portrait navigation */
+
+// Toggle button
+$togle-container-position : right; // Float entire toggle container. This will allow set the navigation toggle to right or left hand side of the device
+$togle-container-background : false; // Enable background colour for togle button
+$togle-background-border-radius:5px; // add border radius to toggle button colour
+$togle-background-padding:0; // add padding to toggle. requre $togle-container-background to be set to true
+$toggle-button-margin:0; // Set margin for the entire toggle button
+
+$toggle-button-size: 16px; // Togle burger font size
+$toggle-font-size: 12px; // togle text font size
+$toggle-text-position: left; // Set text position to right or left
+$toggle-navigation-container-width:100%; // Set width for the slide container
+$toggle-animation-duration-show: .5s; // Set time for the slide animation ( on show )
+$toggle-animation-duration-hide: .5s; // Set time for the slide animation ( on hide )
+
+$toggle-navigation-dropdown-indicator-font-size:16px;
+$toggle-navigation-dropdown-width:36px;
+
+$toggle-close-padding : 10px; //Close container padding
+$toggle-close-margin : 0; // Close container margin
+$toggle-close-button-size : 16px; // Close button font size
+$toggle-close-button-position : right; // Close button position right or left
+$toggle-item-font-size:$nav-top-font-size;
+$toggle-item-padding-lev-1-top:$nav-top-a-padding-top;// Padding for toggle navigation item
+$toggle-item-padding-lev-1-right:$nav-top-a-padding-right;// Padding for toggle navigation item
+$toggle-item-padding-lev-1-bottom:$nav-top-a-padding-bottom;// Padding for toggle navigation item
+$toggle-item-padding-lev-1-left:$nav-top-a-padding-left;// Padding for toggle navigation item
+$toggle-item-padding-lev-2-increment:5px;
+
+
+// Below settings will take effect only it the above is set to false
+$toggle-button-top-space: 0;
+// Nav Brand
+$nav-brand-line-height: $nav-top-a-padding-top+$nav-top-a-padding-bottom;
+$nav-brand-font-size: 20px;
+// DROPDOWN
+$nav-dd-font-size: $nav-top-font-size;
+$nat-dd-transition-speed: 100ms;
+// drop down nav indicator ( chevron )
+$nav-dd-chevron-margin-top: 4px;
+$nav-dd-chevron-margin-right: 20px;
+$nav-dd-min-width:180px;
+
+// SLIDE PORTRAIT
+$close-buton-size: 20px;
+$close-buton-margin: 10px;
+/* Portrait Navigation */
+
+$navigation-portrait-width :100%; // Set width for slide navigation container
+$navigation-portrait-height :100%; // Set width for slide navigation container
+$navigation-portrait-transition-duration :500ms; // Slide animation time
+$navigation-portrait-transition-timing-function :ease; // Slide animation
+$navigation-portrait-padding :5px;

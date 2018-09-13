@@ -1,0 +1,92 @@
+// ==== GENERAL ==== //
+* {
+  &:before, &:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+html {
+  font-size: $font-size-base;
+  box-sizing: border-box;
+}
+
+body {
+  @include font-feature-settings(kern);
+  background: color(body-background);
+  color: color(brand);
+  font-family: $font-family-sans-serif;
+  line-height: $line-height-base;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: $font-size-h1;
+}
+
+h2 {
+  font-size: $font-size-h2;
+}
+
+h3 {
+  font-size: $font-size-h3;
+}
+
+h4 {
+  font-size: $font-size-h4;
+}
+
+h5 {
+  font-size: $font-size-h5;
+}
+
+h5 {
+  font-size: $font-size-h5;
+}
+
+a {
+  border: 0;
+  color: color('link');
+  text-decoration: none;
+  @extend %transition;
+  &:hover, &:active, &:focus {
+    color: color(linkhover);
+  }
+}
+
+figure {
+  margin: 0;
+  display: inline-block;
+  vertical-align: bottom
+}
+
+img {
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: bottom;
+  &.lazy:not(.no) {
+    -webkit-transition: opacity 200ms ease-in-out;
+    -moz-transition: opacity 200ms ease-in-out;
+    -o-transition: opacity 200ms ease-in-out;
+    transition: opacity 200ms ease-in-out;
+    opacity: 0;
+  }
+  &.lazy.lazy-loaded {
+    opacity: 1;
+  }
+}
+
+.slicked {
+  visibility: hidden;
+  &.slick-initialized {
+    visibility: visible;
+  }
+}
