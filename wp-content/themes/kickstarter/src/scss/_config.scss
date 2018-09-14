@@ -1,6 +1,6 @@
 // ==== CONFIGURATION ==== //
-$theme-name:"THEME_NAME"; // Change this to what your theme name
-$theme-version:"THEME_VERSION"; // Theme version
+$theme-name:"bigraildiversity"; // Change this to what your theme name
+$theme-version:"1.0.1"; // Theme version
 
 /* Font Sizes */
 $font-family-sans-serif: "Poppins", sans-serif !default;
@@ -65,12 +65,12 @@ $spacer: 30px;
 $transition-time: 0.3s;
 
 $colors: (
-  'brand': #889696,
-  'gray': #cacaca,
-  'gray-light': #cacaca,
-  'text': 'gray',
-  'link': 'brand',
-  'link-hover': 'brand',
+  brand: #9DC330,
+  gray: #cacaca,
+  gray-light: #cacaca,
+  text: gray,
+  link: brand,
+  link-hover: brand,
 );
 
 // Available social colours

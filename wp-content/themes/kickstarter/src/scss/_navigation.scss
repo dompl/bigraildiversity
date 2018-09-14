@@ -6,8 +6,8 @@
 /* Global colour settings - START YOUR CHANGES HERE */
 
 // $navigation_link_colour: color('gray-light');
-$navigation_link_colour: color('gray');
-$navigation_background:lighten($navigation_link_colour, 23%);
+$navigation_link_colour: color(gray);
+$navigation_background:transparent;
 $navigation_link_colour_hover: darken($navigation_link_colour, 10%);
 $navigation_link_background_colour_hover: lighten($navigation_link_colour, 15%);
 

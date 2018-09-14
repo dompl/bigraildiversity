@@ -30,20 +30,38 @@
       @if $filename == bars {
         $char: "\E001";
       }
-      @if $filename == menu-close {
+      @if $filename == envelope-bold {
         $char: "\E002";
       }
-      @if $filename == menu-indicator-down {
+      @if $filename == envelope {
         $char: "\E003";
       }
-      @if $filename == menu-indicator-left {
+      @if $filename == facebook {
         $char: "\E004";
       }
-      @if $filename == menu-indicator-right {
+      @if $filename == menu-close {
         $char: "\E005";
       }
-      @if $filename == menu-indicator-up {
+      @if $filename == menu-indicator-down {
         $char: "\E006";
+      }
+      @if $filename == menu-indicator-left {
+        $char: "\E007";
+      }
+      @if $filename == menu-indicator-right {
+        $char: "\E008";
+      }
+      @if $filename == menu-indicator-up {
+        $char: "\E009";
+      }
+      @if $filename == phone-bold {
+        $char: "\E00A";
+      }
+      @if $filename == phone {
+        $char: "\E00B";
+      }
+      @if $filename == twitter {
+        $char: "\E00C";
       }
 
     @return $char;
@@ -64,6 +82,15 @@
   .icon-bars {
     @include icon(bars);
   }
+  .icon-envelope-bold {
+    @include icon(envelope-bold);
+  }
+  .icon-envelope {
+    @include icon(envelope);
+  }
+  .icon-facebook {
+    @include icon(facebook);
+  }
   .icon-menu-close {
     @include icon(menu-close);
   }
@@ -78,5 +105,14 @@
   }
   .icon-menu-indicator-up {
     @include icon(menu-indicator-up);
+  }
+  .icon-phone-bold {
+    @include icon(phone-bold);
+  }
+  .icon-phone {
+    @include icon(phone);
+  }
+  .icon-twitter {
+    @include icon(twitter);
   }
   
