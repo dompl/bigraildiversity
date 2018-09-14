@@ -23,6 +23,7 @@ Domain Path: #{metadata(theme-text-domain-path)}
 // Configuration variables and settings
 @import "color";
 @import "config";
+@import "theme_settings";
 
 // Import breakpoint
 // http://breakpoint-sass.com/

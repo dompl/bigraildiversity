@@ -18,6 +18,7 @@ class header {
     <link href="//www.google-analytics.com" rel="dns-prefetch">
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="<?php bloginfo('pingback_url');?>" />
+    <link href="<?php echo get_template_directory_uri(); ?>/img/theme/favicon.ico" rel="shortcut icon">
     <?php wp_head();?>
     <?php self::ga($ga) ?>
   </head>

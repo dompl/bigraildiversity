@@ -76,6 +76,7 @@
   .nav-menus-wrapper-close-button {
     cursor: pointer;
     display: block;
+    color:white;
     @if $toggle-close-margin !=0 and $toggle-close-padding !=0 {
       width: calc(100% - #{$toggle-close-margin + $toggle-close-padding});
     }

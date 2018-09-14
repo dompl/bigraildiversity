@@ -1,4 +1,4 @@
-<?php echo config\theme\header::header('UA-71890077-1'); // Pass GA code      ?>
+<?php echo config\theme\header::header('UA-71890077-1'); // Pass GA code        ?>
 <header id="header" class="top-header">
   <div id="top">
     <div class="container flex-center">
@@ -22,13 +22,16 @@
       </div>
       <div class="social">
         <ul class="list-unstyled">
-          <li><a href="https://www.facebook.com/bigraildiversity/" title="<?php _e('Join us on Facebook', 'TEXT_DOMAIN'); ?>" target="_blank"><i class="icon-facebook"></i></a></li>
-          <li><a href="https://twitter.com/braildiversityc?lang=en" title="<?php _e('Follow us on Twitter', 'TEXT_DOMAIN'); ?>" target="_blank"><i class="icon-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/bigraildiversity/" title="<?php _e('Join us on Facebook', 'TEXT_DOMAIN');?>" target="_blank"><i class="icon-facebook"></i></a></li>
+          <li><a href="https://twitter.com/braildiversityc?lang=en" title="<?php _e('Follow us on Twitter', 'TEXT_DOMAIN');?>" target="_blank"><i class="icon-twitter"></i></a></li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="container-full" id="top-nav">
-    <div class="main-nav clx su-span"><?php echo ks_nav('breakpoint=768&text=Menu') ?></div>
+ <?php get_template_part('modules/header' , 'logos');?>
+  <div id="top-nav">
+    <div class="container">
+    <div class="main-nav clx"><?php echo ks_nav('breakpoint=1024&text=') ?></div>
+  </div>
   </div>
 </header>

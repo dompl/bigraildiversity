@@ -71,7 +71,19 @@ $colors: (
   text: gray,
   link: brand,
   link-hover: brand,
+  purple-medium: #A37CB6,
+  red: #9E1254,
+  purple-light: #E774AB,
+  green: #54B045,
+  orange: #F8AC23,
+  purple-dark: #83378C,
+  blue-light: #3EC0F0,
+  pink: #E72583,
+  blue-dark: #125DA4,
+  wir: #014C99,
 );
+/* Brand colours array */
+$brdc-colours : purple-medium, red, purple-light, green, orange, purple-dark, blue-light, pink, blue-dark, wir;
 
 // Available social colours
 $_social: ( facebook: #365397,

@@ -3,7 +3,7 @@
     @include scut-center-block;
 }
 %transition {
-    @include transition(all, 300ms);
+    @include transition(all, 100ms);
 }
 %clx {
     @include scut-clearfix;
@@ -34,13 +34,13 @@
             display: none;
         }
     }
-    &.flex-center {
-        display: flex;
-        justify-content: space-between;
-        align-items:center;
-        &:after {
-            display: none;
-        }
+}
+.flex-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:after {
+        display: none;
     }
 }
 %su-flex-container {
