@@ -1,0 +1,26 @@
+/*  ********************************************************
+ *   Footer css
+ *  ********************************************************
+ */
+
+#copyright {
+    background: color(wir);
+    color: white;
+    @include em('font-size', 14px);
+    padding: spacer(.5) 0;
+    p {
+        margin: 0px;
+    }
+    a {
+        color: white;
+    }
+}
+footer#footer {
+    background: color(brand);
+    color: white;
+    padding: spacer() 0;
+    justify-content: space-between;
+    .about {
+        width: 48%;
+    }
+}

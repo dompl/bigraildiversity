@@ -1,5 +1,5 @@
  </div>
- <footer>
+ <footer id="footer">
   <div class="container first-last">
     <?php get_template_part('modules/footer', 'twitter');?>
     <?php get_template_part('modules/footer', 'about');?>
