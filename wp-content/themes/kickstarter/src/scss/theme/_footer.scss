@@ -20,7 +20,17 @@ footer#footer {
     color: white;
     padding: spacer() 0;
     justify-content: space-between;
+    font-size:13px;
+    p {
+      margin-top: 10px;
+    }
     .about {
         width: 48%;
+    }
+    .logo {
+        margin-bottom: 20px;
+        img {
+          height: 50px;
+        }
     }
 }
