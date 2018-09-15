@@ -9,12 +9,16 @@
     &:hover {
         background: color($color);
         color: white;
+        @if $color == white {
+          color: color(brand);
+        }
     }
 }
 .button {
     padding: 5px 10px;
     text-transform: uppercase;
     border-radius: $border-radius-base;
+    display: inline-block;
     &.outlined {
         border: 2px solid color(brand);
         font-weight: bold;
@@ -23,6 +27,9 @@
         }
         &.wir {
             @include outlined-button(wir);
+        }
+         &.white {
+            @include outlined-button(white);
         }
     }
 }

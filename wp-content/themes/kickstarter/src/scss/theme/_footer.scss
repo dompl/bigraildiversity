@@ -6,7 +6,7 @@
 #copyright {
     background: color(wir);
     color: white;
-    @include em('font-size', 14px);
+    @include em('font-size', 12px);
     padding: spacer(.5) 0;
     p {
         margin: 0px;
@@ -14,23 +14,54 @@
     a {
         color: white;
     }
+    @include breakpoint(max-width 880px) {
+        padding: spacer(.3) 0;
+        .flex-between {
+            display: block;
+            text-align: center;
+            @include em('font-size', 14px);
+        }
+        .right {
+            margin-top: spacer(.3);
+        }
+    }
 }
 footer#footer {
     background: color(brand);
     color: white;
     padding: spacer() 0;
     justify-content: space-between;
-    font-size:13px;
-    p {
-      margin-top: 10px;
-    }
+    font-size: 13px;
     .about {
         width: 48%;
+    }
+    @include breakpoint(max-width $sm) {
+        .flex-between {
+            display: block;
+            text-align: center;
+        }
+        .about {
+            width: 100%!important;
+            &.about-nimble {
+                margin-bottom: spacer(1);
+                padding-bottom: spacer(1);
+                border-bottom: 1px solid rgba(white, .3);
+            }
+        }
+    }
+    p {
+        margin-top: 10px;
     }
     .logo {
         margin-bottom: 20px;
         img {
-          height: 50px;
+            height: 50px;
         }
+    }
+    .content {
+        clear: both;
+    }
+    a.button {
+        margin-top: 10px;
     }
 }
