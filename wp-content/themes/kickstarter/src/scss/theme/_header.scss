@@ -125,7 +125,7 @@ header#header {
         font-weight: bold;
     }
     @include breakpoint(max-width $md) {
-        margin-top: -53px;
+        margin-top: -57px;
     }
 }
 #menu-header {
@@ -175,6 +175,22 @@ header#header {
                 text-align: center;
                 white-space: nowrap;
                 flex: 1;
+                ul {
+                  margin-top: 5px;
+                }
+                li {
+                  text-align: left;
+                  &:before {
+                    height: 1px;
+                    background:rgba(white, .3);
+                    padding-bottom: 6px!important;
+                    a {
+                    }
+                  }
+                  &:after {
+                    display: none;
+                  }
+                }
             }
             a {
                 background: transparent!important;
