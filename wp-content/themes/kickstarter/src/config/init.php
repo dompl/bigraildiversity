@@ -8,7 +8,7 @@ use config\setup\defaults;
 use config\setup\cpt;
 use config\theme\navigation;
 use config\plugins\Disable_Plugins_When_Local_Dev;
-use config\plugins\Visual_Composer_General_Settings;
+use config\visual_composer\Visual_Composer_Initiator;
 
 class init {
 
@@ -57,7 +57,7 @@ class init {
         new defaults();
 
         /* Visual Composer */
-        new Visual_Composer_General_Settings();
+        new Visual_Composer_Initiator();
 
         /**
          * Theme setup - Custom post types

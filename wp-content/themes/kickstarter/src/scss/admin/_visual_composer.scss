@@ -1,0 +1,44 @@
+@import "scut";
+@import "susy";
+@import "config";
+@import "icons";
+.vc_content {
+    p, ul, ol, h1, h2, h3, h4 {
+        &:first-of-type {
+            margin-top: 5px;
+        }
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+    * {
+        font-size: 12px!important;
+    }
+}
+.vc_info {
+    color: color(red-dark);
+}
+.vc_label {
+    text-align: left!important;
+    &.inline {
+        display: inline-block;
+        margin-right: 5px;
+    }
+    p {
+        margin: 0;
+        font-size: 12px;
+        color: #888;
+        font-style: italic;
+    }
+    &.vc_label_text {
+        text-align: left;
+        color: black;
+    }
+}
+.vc-required {
+    font-weight: bold;
+    color: color(danger);
+}
+.vc_hidden {
+    @include scut-hide-visually;
+}

@@ -1,12 +1,21 @@
-<?php get_header(); ?>
-<main>
-  <article id="404">
-    <div class="image_404">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/logos/404.png" alt="<?php esc_html_e( 'Page not faund', 'TEXT_DOMAIN') ?>">
-    </div>
-    <p><?php esc_html_e( 'We\'re Sorry...', 'TEXT_DOMAIN') ?></p>
-    <p><?php esc_html_e( 'We can\'t seem to find the page you are looking for', 'TEXT_DOMAIN') ?></p>
-    <a href="<?php bloginfo('url'); ?>"><?php esc_html_e( 'Return to home page', 'TEXT_DOMAIN') ?></a>
+<?php get_header();?>
+<main class="container">
+  <article id="page_404">
+    <?php if (get_field('error_page_image', 'options')): $img = (int) get_field('error_page_image', 'options');?>
+        <div class="image_404 center">
+          <img src="<?php echo wpimage('img=' . $img . '&w=800&retina=false&crop=false&h=9999')?>" data-src="<?php echo wpimage('img=' . $img . '&w=800&retina=true&crop=false&h=9999')?>"alt="<?php esc_html(imagedata($img)['alt'])?>" class="lazy no">
+        </div>
+      <?php endif?>
+    <?php if (get_field('error_page_text', 'options')): ?>
+      <div class="first-last content">
+        <?php the_field('error_page_text', 'options')?>
+      </div>
+    <?php endif?>
+    <?php if (get_field('error_page_button', 'options')): $button = get_field('error_page_button', 'options');?>
+        <div class="center">
+        <a href="<?php echo $button['url'] ?>" target="<?php echo $button['target'] ?>" title="<?php echo $button['title'] ?>" class="button outlined green uc"><?php echo $button['title'] ?></a>
+        </div>
+      <?php endif?>
   </article>
 </main>
 <?php get_footer();
