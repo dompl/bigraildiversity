@@ -1,19 +1,19 @@
-.inner {
-  @include su-flex( 2 of 4);
-  @include to(3) {
-    @include su-flex( 1 of 2)
-  }
-}
+// .inner {
+//   @include su-flex( 2 of 4);
+//   @include to(3) {
+//     @include su-flex( 1 of 2)
+//   }
+// }
 
-.inner {
-  text-align: center;
-  color: white;
-  @include em('font-size', 15px);
-  background: desaturate(red, 80%);
-  height: 50px;
-  margin-bottom: 10px;
-  position: relative;
-  span {
-    @include scut-center-transform();
-  }
-}
+// .inner {
+//   text-align: center;
+//   color: white;
+//   @include em('font-size', 15px);
+//   background: desaturate(red, 80%);
+//   height: 50px;
+//   margin-bottom: 10px;
+//   position: relative;
+//   span {
+//     @include scut-center-transform();
+//   }
+// }

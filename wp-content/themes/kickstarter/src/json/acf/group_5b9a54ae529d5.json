@@ -3,6 +3,92 @@
     "title": "General Settings",
     "fields": [
         {
+            "key": "field_5b9df63c6b739",
+            "label": "Page Banners",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 1
+        },
+        {
+            "key": "field_5b9df6096b738",
+            "label": "Page banners galley",
+            "name": "page_banners",
+            "type": "gallery",
+            "instructions": "Default page banners",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "insert": "append",
+            "library": "uploadedTo",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5b9df750f3788",
+            "label": "Background pattern",
+            "name": "background_pattern",
+            "type": "image",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5b9e026d2fad1",
+            "label": "Background pattern size",
+            "name": "background_pattern_size",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 600,
+            "placeholder": "",
+            "prepend": "",
+            "append": "px",
+            "min": 10,
+            "max": 1000,
+            "step": 10
+        },
+        {
             "key": "field_5b9de0fe37e1d",
             "label": "404 Error Page",
             "name": "",
@@ -16,7 +102,7 @@
                 "id": ""
             },
             "placement": "left",
-            "endpoint": 0
+            "endpoint": 1
         },
         {
             "key": "field_5b9de10b37e1e",
@@ -196,5 +282,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1537074067
+    "modified": 1537082056
 }
