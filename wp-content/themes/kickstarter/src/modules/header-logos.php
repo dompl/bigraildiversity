@@ -28,7 +28,7 @@ $logo_size = 80;
   <div class="right flex-center">
     <?php if ($logo_3): ?>
       <div class="logo-3 logo">
-        <a href="http://www.nimblemedia.co.uk" title="<?php _e('Event organiser', 'TEXT_DOMAIN');?>">
+        <a href="http://www.nimblemedia.co.uk" title="<?php _e('Event organiser', 'TEXT_DOMAIN');?>" target="_blank">
           <img src="<?php echo wpimage('img=' . $logo_3 . '&w=139&crop=false') ?>" data-src="<?php echo wpimage('img=' . $logo_3 . '&w=139&retina=true&crop=false') ?>" class="lazy no" alt="<?php echo bloginfo('name') ?> <?php _e('logo', 'TEXT_DOMAIN');?>">
         </a>
       </div>
