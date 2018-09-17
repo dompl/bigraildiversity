@@ -1,10 +1,11 @@
 <?php
 
 namespace config\visual_composer;
+use config\visual_composer\Visual_Composer_Additional_Params;
 
 if ( ! class_exists('Visual_Composer_General_Settings')) {
 
-  class Visual_Composer_General_Settings {
+  class Visual_Composer_General_Settings extends Visual_Composer_Additional_Params {
 
     public function __construct() {
       add_action('vc_before_init', array($this, 'vc_remove_elements')); // remove unwanted visual composer elements
@@ -46,9 +47,8 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
 
       if ($category == null) {
         return __('Big Rail', 'TEXT_DOMAIN');
-      }
-      else  {
-       return __($category, 'TEXT_DOMAIN');
+      } else {
+        return __($category, 'TEXT_DOMAIN');
       }
     }
 
@@ -62,24 +62,22 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
     }
 
     /* Array of all website colour */
-    public function colours($first = 'Default') {
+    public function brdc_colours($replace = false) {
       $colours = array(
-        $first,
-        'Orange light',
-        'Orange dark',
-        'Red light',
-        'Red dark',
-        'Purple light',
+        'Default',
+        'White',
+        'Balck',
+        'Green',
+        'WIR',
+        'Purple Light',
+        'Purple medium',
         'Purple dark',
-        'Green light',
-        'Green dark',
+        'Red',
+        'Orange',
         'Blue light',
         'Blue dark',
-        'Yellow',
-        'White',
-        'Black',
+        'Pink',
       );
-
       return $colours;
     }
 
@@ -95,29 +93,37 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
 
     /* Font sizes */
     public function font_sizes($starting = '16px') {
-      return array($starting, '18px', '20px', '22px', '24px', '26px', '28px', '30px', '32px', '34px', '36px', '38px', '40px', '42px', '44px');
+      return array($starting, '18px', '20px', '22px', '24px', '26px', '28px', '30px', '32px', '34px', '36px', '38px', '40px', '42px', '44px', '46px', '48px', '50px');
     }
 
     /* Line heights */
     public function line_heights($starting = '18px') {
-      return array($starting, '20px', '22px', '24px', '26px', '28px', '30px', '32px', '34px', '36px', '38px', '40px', '42px', '44px', '44px', '46px', '48px', '50px');
+      return array($starting, '20px', '22px', '24px', '26px', '28px', '30px', '32px', '34px', '36px', '38px', '40px', '42px', '44px', '44px', '46px', '48px', '50px', '52px', '54px');
     }
+
+    // Remove pixels
+    public function pixels_class($string = false, $class = false) {
+      if ( ! $string || ! $class || $string == 'None' || $string == 'Default') {
+        return;
+      }
+      $string = str_replace(' ', '-', $string);
+      return strtolower($class) . '-' . str_replace('px', '', strtolower($string));
+    }
+
+    // set
 
     /* Verticals space */
 
-    public function vertical_space($replace = false) {
+    public function vertical_space() {
 
       $space = array(
-        'Default',
         'None',
-        'Small',
+        'Default',
+        'Extra large',
         'Large',
-        'Tiny',
+        'Small',
+        'Extra small',
       );
-
-      if ($replace === true) {
-        $space = strtolower($space);
-      }
 
       return $space;
     }

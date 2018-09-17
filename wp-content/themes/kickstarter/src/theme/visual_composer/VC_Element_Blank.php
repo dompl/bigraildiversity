@@ -56,7 +56,7 @@ if ( ! class_exists('VC_Element_Blank')) {
       );
     }
 
-    public function VC_Element_Blank_shortcode_callback($atts, $content = null ) {
+    public function VC_Element_Blank_shortcode_callback($atts, $content = null) {
 
       extract(shortcode_atts(array(
         'text' => '',
@@ -65,6 +65,14 @@ if ( ! class_exists('VC_Element_Blank')) {
       // $href = vc_build_link( $href ); // Build Link
       // $content = wpb_js_remove_wpautop($content, true); // Content
 
+       ob_start()?>
+       <!-- Content goes here -->
+       <?php
+
+       $item = ob_get_contents();
+      ob_end_clean();
+
+      return $item;
     }
   }
 

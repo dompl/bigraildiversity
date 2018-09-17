@@ -1,0 +1,75 @@
+/*  ********************************************************
+ *   General Classes for Visual composer
+ *  ********************************************************
+ */
+
+/* Spacers */
+
+$spaces: top, bottom;
+@each $space in $spaces {
+    .space- {
+        // Bottom space
+        &#{$space}- {
+            &extra-large {
+                margin-#{$space}: spacer(3);
+                @include breakpoint(max-width $lg) {
+                    margin-#{$space}: spacer(2);
+                }
+                @include breakpoint(max-width $md) {
+                    margin-#{$space}: spacer(1);
+                }
+            }
+            &large {
+                margin-#{$space}: spacer(2);
+                @include breakpoint(max-width $md) {
+                    margin-#{$space}: spacer(1);
+                }
+            }
+            &default {
+                margin-#{$space}: spacer();
+            }
+            &small {
+                margin-#{$space}: spacer(.5);
+            }
+            &extra-small {
+                margin-#{$space}: 10px;
+            }
+            &none {
+                margin-#{$space}: 0;
+            }
+        }
+    }
+}
+/* Colours */
+
+@each $color in $brdc-colours {
+    .color- {
+        &#{$color} {
+            color: color($color);
+        }
+    }
+    .background- {
+        &#{$color} {
+            background-color: color($color);
+        }
+    }
+    .border- {
+        &#{$color} {
+            border-color: color($color);
+        }
+    }
+}
+/* Font Sizes */
+
+@each $size in $brdc-font-sizes {
+    .font- {
+        &#{$size} {
+            font-size: #{$size}px
+        }
+    }
+    .line- {
+        &#{$size} {
+            line-height: #{$size}px
+        }
+    }
+}

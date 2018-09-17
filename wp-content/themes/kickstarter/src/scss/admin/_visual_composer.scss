@@ -24,6 +24,15 @@
         display: inline-block;
         margin-right: 5px;
     }
+    &.subtitle {
+        padding-left: 41px;
+        p {
+            font-size: 11px;
+        }
+    }
+    &.bold {
+        font-weight: bold;
+    }
     p {
         margin: 0;
         font-size: 12px;

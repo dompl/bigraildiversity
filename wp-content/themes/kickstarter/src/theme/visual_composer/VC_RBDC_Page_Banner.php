@@ -22,7 +22,7 @@ if ( ! class_exists('VC_RBDC_Page_Banner')) {
         array(
           'type'        => 'textfield',
           'holder'      => 'div',
-          'class'       => 'vc_label',
+          'class'       => 'vc_label bold',
           'heading'     => __('Banner title', 'TEXT_DOMAIN'),
           'param_name'  => 'title',
           'group'       => __('Content', 'TEXT_DOMAIN'),
@@ -124,6 +124,7 @@ if ( ! class_exists('VC_RBDC_Page_Banner')) {
      </div>
      <?php echo $pattern ? '</div>' : '' ?>
    </section>
+   <div class="bar"></div>
 
    <?php
 
