@@ -64,11 +64,16 @@ module.exports = {
         bundles: { // Bundles are defined by a name and an array of chunks (below) to concatenate; warning: this method offers no dependency management!
             jquery: ['jquery'],
             footer: ['footer'],
+            header: ['header'],
         },
         chunks: {
             jquery: [
                 modules + 'jquery/dist/jquery.js', // https://www.npmjs.com/package/jquery @1.12.4
                 modules + 'jquery-migrate/dist/jquery-migrate.js', // https://www.npmjs.com/package/jquery-migrate @1.4.1
+            ],
+            header: [
+                src + 'js/lib/fittextjs.js',
+                src + 'js/header.js',
             ],
             footer: [
                 modules + 'jquery-pjax/jquery.pjax.js',

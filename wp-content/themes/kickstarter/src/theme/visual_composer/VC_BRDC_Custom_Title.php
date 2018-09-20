@@ -111,6 +111,8 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
         $this->pixels_class($font_weight, 'weight'),
       );
 
+      $random = rand(10, 100000);
+
       foreach ($classes as $class_i) {
         $class .= ($i == 0 ? '' : ' ') . $class_i;
         $i++;
@@ -119,9 +121,17 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
       <?php echo $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : ''; ?>
       <div class="brdc-custom-heading">
        <div class="container">
-        <?php echo "<$tag class='$class $animation_classes'>$text</$tag>" ?>
+
+        <?php echo "<$tag class='custom-heading-$random $class $animation_classes'>$text</$tag>" ?>
       </div>
     </div>
+    <?php if ((int) str_replace('px', '', $font_size) > 20): ?>
+    <script>
+      jQuery(function() {
+      jQuery('.custom-heading-<?php echo $random ?>').fitText(1.5, { minFontSize: '<?php echo (int) round((str_replace('px', '', $font_size) / 1.5), 0) . 'px' ?>', maxFontSize: '<?php echo $font_size ?>' });;
+      });
+    </script>
+    <?php endif?>
     <?php echo $custom_class || $custom_id ? '</div>' : ''; ?>
     <?php
 

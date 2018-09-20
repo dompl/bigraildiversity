@@ -2,11 +2,9 @@
 (function ($) {
 	$(function () {
 		function initPlugins() {
-
 			//=require includes/navigation.js
 			//=require includes/cookie-bar.js
 			//=require includes/blazy.js
-
 		}
 
 		/* Initaite plugins */
