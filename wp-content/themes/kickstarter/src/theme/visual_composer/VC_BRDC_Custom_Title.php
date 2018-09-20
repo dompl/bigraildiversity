@@ -12,6 +12,14 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
       add_shortcode('VC_BRDC_Custom_Title_shortcode', array(&$this, 'VC_BRDC_Custom_Title_shortcode_callback'));
     }
 
+    public function prefix_sanitize_text_callback($value, $field_args, $field) {
+
+      $value = strip_tags($value, '<p><a><br><br/><span><div>');
+
+      return $value;
+
+    }
+
     /**
      * Params
      * ---
@@ -50,6 +58,8 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
         $this->param_animation_classes('animation'),
         $this->param_space('above'),
         $this->param_space('below'),
+        $this->prevent_space_on_mobile(),
+
       );
       return $params;
     }
@@ -85,15 +95,17 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
         'font_size'    => '16px',
         'line_height'  => '18px',
         'font_weight'  => 'Default',
-        'space_above'  => 'None',
-        'space_below'  => 'None',
+        'space_above'  => __('None', 'TEXT_DOMAIN'),
+        'space_below'  => __('None', 'TEXT_DOMAIN'),
         'align'        => 'Left',
         'color'        => 'Default',
         'animation'    => '',
         'custom_class' => '',
         'custom_id'    => '',
+        'prevent'      => false,
       ), $atts));
 
+      $text              = $this->replace_brackets_with_tags($text);
       $animation_classes = $this->getCSSAnimation($animation);
       $custom_class      = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
       $custom_id         = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
@@ -103,12 +115,16 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
 
       $classes = array(
         $this->pixels_class($font_size, 'font'),
-        $this->pixels_class($line_height, 'line'),
-        $this->pixels_class($space_above, 'space-top'),
-        $this->pixels_class($space_below, 'space-bottom'),
+        $this->pixels_class($line_height, 'line-height line'),
+
         $this->pixels_class($align, 'align'),
         $this->pixels_class($color, 'color'),
         $this->pixels_class($font_weight, 'weight'),
+      );
+
+      $spacer_classes = array(
+        $this->pixels_class($space_above, 'spacer-top'),
+        $this->pixels_class($space_below, 'spacer-bottom'),
       );
 
       $random = rand(10, 100000);
@@ -117,12 +133,16 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
         $class .= ($i == 0 ? '' : ' ') . $class_i;
         $i++;
       }
+
+      foreach ($spacer_classes as $spacer_classes_i) {
+        $cspacer_class .= ($i == 0 ? '' : ' ') . $spacer_classes_i;
+        $i++;
+      }
       ob_start()?>
       <?php echo $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : ''; ?>
-      <div class="brdc-custom-heading">
+      <div class="brdc-custom-heading<?php echo $cspacer_class ?><?php echo $prevent ? '' : ' no-prevent' ?>">
        <div class="container">
-
-        <?php echo "<$tag class='custom-heading-$random $class $animation_classes'>$text</$tag>" ?>
+        <?php echo "<$tag class='custom-heading-$random $class $animation_classes'>" . do_shortcode($text) . "</$tag>" ?>
       </div>
     </div>
     <?php if ((int) str_replace('px', '', $font_size) > 20): ?>

@@ -60,8 +60,11 @@
       @if $filename == phone {
         $char: "\E00B";
       }
-      @if $filename == twitter {
+      @if $filename == star {
         $char: "\E00C";
+      }
+      @if $filename == twitter {
+        $char: "\E00D";
       }
 
     @return $char;
@@ -111,6 +114,9 @@
   }
   .icon-phone {
     @include icon(phone);
+  }
+  .icon-star {
+    @include icon(star);
   }
   .icon-twitter {
     @include icon(twitter);

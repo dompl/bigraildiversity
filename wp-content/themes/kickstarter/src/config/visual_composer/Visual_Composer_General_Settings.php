@@ -12,6 +12,12 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       add_action('vc_before_init', array($this, 'vc_disable_front'));   // remove fron end editor
     }
 
+    public function replace_brackets_with_tags($field = '') {
+
+      $field = str_replace(array('{', '}'), array('<', '>'), $field);
+      return $field;
+    }
+
     /* Remove unwanted VC elemenrs */
     public function vc_remove_elements() {
       if ( ! defined('WPB_VC_VERSION')) {
@@ -103,7 +109,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
 
     // Remove pixels
     public function pixels_class($string = false, $class = false) {
-      if ( ! $string || ! $class || $string == 'None' || $string == 'Default') {
+      if ( ! $string || ! $class || $string == 'None') {
         return;
       }
       $string = str_replace(' ', '-', $string);
@@ -114,16 +120,18 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
 
     /* Verticals space */
 
-    public function vertical_space() {
+    public function vertical_space($use_none = true) {
 
       $space = array(
-        'None',
-        'Default',
-        'Extra large',
-        'Large',
-        'Small',
-        'Extra small',
+        __('Small', 'TEXT_DOMAIN'),
+        __('Default', 'TEXT_DOMAIN'),
+        __('Medium', 'TEXT_DOMAIN'),
+        __('Large', 'TEXT_DOMAIN'),
+        __('Extra Large', 'TEXT_DOMAIN'),
       );
+      if ($use_none === true) {
+        $space[] = __('None', 'TEXT_DOMAIN');
+      }
 
       return $space;
     }

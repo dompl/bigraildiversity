@@ -22,6 +22,7 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
         'description' => __('Style particular content element differently - add a class name and refer to it in custom CSS.', 'TEXT_DOMAIN'),
       );
     }
+
     public function param_additional_id($param_name = 'custom_id') {
 
       return array(
@@ -64,6 +65,7 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
         'std'         => 'Left',
       );
     }
+
     /* Font sizes */
     public function param_font_weight($param_name = 'font_weight') {
       return array(
@@ -78,6 +80,7 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
         'std'         => 'Default',
       );
     }
+
     /* Font sizes */
     public function param_font_sizes($param_name = 'font_size') {
       return array(
@@ -134,7 +137,22 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
         'group'       => __('Spaces', 'TEXT_DOMAIN'),
         'value'       => $this->vertical_space(),
         'description' => __("Set space $param_name", 'TEXT_DOMAIN'),
-        'std'         => 'None',
+        'std'         => __('None', 'TEXT_DOMAIN'),
+      );
+    }
+
+    public function prevent_space_on_mobile() {
+      return array(
+        'type'        => 'checkbox',
+        'holder'      => 'div',
+        'class'       => 'vc_hidden',
+        'admin_label' => false,
+        'heading'     => __('Prevent responsive', 'TEXT_DOMAIN'),
+        'param_name'  => 'prevent',
+        'group'       => __('Spaces', 'TEXT_DOMAIN'),
+        'value'       => array(__('Prevent', 'TEXT_DOMAIN') => true),
+        'description' => __('Prevent space from reducing it size on mobile/tablet devices', 'TEXT_DOMAIN'),
+        'std'         => false,
       );
     }
   }

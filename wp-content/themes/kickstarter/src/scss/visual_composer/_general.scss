@@ -5,37 +5,116 @@
 
 /* Spacers */
 
-$spaces: top, bottom;
-@each $space in $spaces {
-    .space- {
-        // Bottom space
-        &#{$space}- {
-            &extra-large {
-                margin-#{$space}: spacer(3);
-                @include breakpoint(max-width $lg) {
-                    margin-#{$space}: spacer(2);
-                }
-                @include breakpoint(max-width $md) {
-                    margin-#{$space}: spacer(1);
-                }
+@mixin margin-bottom($margin: 1) {
+    margin-bottom: spacer($margin);
+}
+@mixin margin-top($margin: 1) {
+    margin-top: spacer($margin);
+}
+.spacer-bottom- {
+    // Bottom space
+    &extra-large {
+        @include margin-bottom(4);
+    }
+    &large {
+        @include margin-bottom(3);
+    }
+    &medium {
+        @include margin-bottom(2);
+    }
+    &default {
+        @include margin-bottom(1);
+    }
+    &small {
+        @include margin-bottom(0.5);
+    }
+    @include breakpoint(max-width $xl) {
+        &extra-large {
+            &.no-prevent {
+                @include margin-bottom(3);
             }
-            &large {
-                margin-#{$space}: spacer(2);
-                @include breakpoint(max-width $md) {
-                    margin-#{$space}: spacer(1);
-                }
+        }
+        &large {
+            &.no-prevent {
+                @include margin-bottom(2);
             }
-            &default {
-                margin-#{$space}: spacer();
+        }
+        &medium {
+            &.no-prevent {
+                @include margin-bottom(1);
             }
-            &small {
-                margin-#{$space}: spacer(.5);
+        }
+    }
+    @include breakpoint(max-width $lg) {
+        &extra-large {
+            &.no-prevent {
+                @include margin-bottom(2);
             }
-            &extra-small {
-                margin-#{$space}: 10px;
+        }
+        &large {
+            &.no-prevent {
+                @include margin-bottom(1);
             }
-            &none {
-                margin-#{$space}: 0;
+        }
+    }
+    @include breakpoint(max-width $md) {
+        &extra-large {
+            &.no-prevent {
+                @include margin-bottom(1);
+            }
+        }
+    }
+}
+.spacer-top- {
+    // Bottom space
+    &extra-large {
+        @include margin-top(4);
+    }
+    &large {
+        @include margin-top(3);
+    }
+    &medium {
+        @include margin-top(2);
+    }
+    &default {
+        @include margin-top(1);
+    }
+    &small {
+        @include margin-top(0.5);
+    }
+    @include breakpoint(max-width $xl) {
+        &extra-large {
+            &.no-prevent {
+                @include margin-top(3);
+            }
+        }
+        &large {
+            &.no-prevent {
+                @include margin-top(2);
+            }
+        }
+        &medium {
+            &.no-prevent {
+                @include margin-top(1);
+            }
+        }
+    }
+    @include breakpoint(max-width $lg) {
+        &extra-large {
+            &.no-prevent {
+                @include margin-top(2);
+            }
+        }
+        &large {
+            &.no-prevent {
+                @include margin-top(1);
+            }
+        }
+    }
+    @include breakpoint(max-width $md) {
+        &extra-large {
+            &.no-prevent {
+                @include margin-top(1);
             }
         }
     }
@@ -60,7 +139,11 @@ $spaces: top, bottom;
     }
 }
 /* Font Sizes */
-
+.line-height {
+  @include breakpoint(max-width $md) {
+      line-height:1.2!important;
+  }
+}
 @each $size in $brdc-font-sizes {
     .font- {
         &#{$size} {
@@ -93,5 +176,10 @@ $spaces: top, bottom;
     }
     &extra-light {
         font-weight: $font-weight-extra-light;
+    }
+}
+.align- {
+    &center {
+        text-align: center;
     }
 }

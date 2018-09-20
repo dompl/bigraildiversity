@@ -26,28 +26,11 @@ if ( ! class_exists('VC_BRDC_Spacer')) {
           'heading'     => __('Section space', 'TEXT_DOMAIN'),
           'param_name'  => 'spacer',
           'group'       => __('Settings', 'TEXT_DOMAIN'),
-          'value'       => array(
-            __('Small', 'TEXT_DOMAIN'),
-            __('Default', 'TEXT_DOMAIN'),
-            __('Medium', 'TEXT_DOMAIN'),
-            __('Large', 'TEXT_DOMAIN'),
-            __('Extra Large', 'TEXT_DOMAIN'),
-          ),
+          'value'       => $this->vertical_space(true),
           'description' => __('Section title', 'TEXT_DOMAIN'),
           'std'         => __('Default', 'TEXT_DOMAIN'),
         ),
-        array(
-          'type'        => 'checkbox',
-          'holder'      => 'div',
-          'class'       => 'vc_hidden',
-          'admin_label' => false,
-          'heading'     => __('Prevent responsive', 'TEXT_DOMAIN'),
-          'param_name'  => 'prevent',
-          'group'       => __('Settings', 'TEXT_DOMAIN'),
-          'value'       => array(__('Prevent', 'TEXT_DOMAIN') => true),
-          'description' => __('Prevent space from reducing it size on mobile/tablet devices', 'TEXT_DOMAIN'),
-          'std'         => false,
-        ),
+        $this->prevent_space_on_mobile(),
       );
       return $params;
     }
