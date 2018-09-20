@@ -105,7 +105,8 @@ if ( ! class_exists('VC_RBDC_Page_Banner')) {
 
       if ($pattern) {
         $background_pattern = sprintf('  data-src="%s" class="lazy background-pattern"',
-          wpimage('img=' . (int) $pattern . '&h=' . get_field('background_pattern_size', 'options') . '&w=999999&crop=false&upscale=true&retina=true')
+          wpimage('img=' . (int) $pattern . '&h=' . get_field('background_pattern_size', 'options') . '&w=999999&crop=false&upscale=true&retina=false')
+
         );
       }
 

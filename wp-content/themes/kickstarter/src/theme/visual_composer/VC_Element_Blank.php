@@ -29,6 +29,8 @@ if ( ! class_exists('VC_Element_Blank')) {
           'value'       => __('Add title here', 'TEXT_DOMAIN'),
           'description' => __('Section title', 'TEXT_DOMAIN'),
         ),
+        $this->param_additional_id('custom_id'),
+        $this->param_additional_class('custom_class'),
       );
       return $params;
     }
@@ -59,17 +61,26 @@ if ( ! class_exists('VC_Element_Blank')) {
     public function VC_Element_Blank_shortcode_callback($atts, $content = null) {
 
       extract(shortcode_atts(array(
-        'text' => '',
+        'text'         => '',
+        'animation'    => '',
+        'custom_class' => '',
+        'custom_id'    => '',
       ), $atts));
 
       // $href = vc_build_link( $href ); // Build Link
       // $content = wpb_js_remove_wpautop($content, true); // Content
 
-       ob_start()?>
+      $animation_classes = $this->getCSSAnimation($animation);
+      $custom_class      = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
+      $custom_id         = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
+
+      ob_start()?>
+      <?php echo $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : ''; ?>
        <!-- Content goes here -->
+       <?php echo $custom_class || $custom_id ? '</div>' : ''; ?>
        <?php
 
-       $item = ob_get_contents();
+      $item = ob_get_contents();
       ob_end_clean();
 
       return $item;

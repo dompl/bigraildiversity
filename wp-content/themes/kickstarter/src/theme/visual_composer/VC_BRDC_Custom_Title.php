@@ -40,10 +40,14 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
           'description' => __('Set title tag', 'TEXT_DOMAIN'),
           'std'         => 'h2',
         ),
+        $this->param_additional_id('custom_id'),
+        $this->param_additional_class('custom_class'),
         $this->param_font_sizes('font_size'),
         $this->param_line_height('line_height'),
+        $this->param_font_weight('font_weight'),
         $this->param_colors('color'),
         $this->param_text_alignment('align'),
+        $this->param_animation_classes('animation'),
         $this->param_space('above'),
         $this->param_space('below'),
       );
@@ -76,15 +80,23 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
     public function VC_BRDC_Custom_Title_shortcode_callback($atts, $content = null) {
 
       extract(shortcode_atts(array(
-        'text'        => '',
-        'tag'         => 'h2',
-        'font_size'   => '16px',
-        'line_height' => '18px',
-        'space_above' => 'None',
-        'space_below' => 'None',
-        'align'       => 'Left',
-        'color'       => 'Default',
+        'text'         => '',
+        'tag'          => 'h2',
+        'font_size'    => '16px',
+        'line_height'  => '18px',
+        'font_weight'  => 'Default',
+        'space_above'  => 'None',
+        'space_below'  => 'None',
+        'align'        => 'Left',
+        'color'        => 'Default',
+        'animation'    => '',
+        'custom_class' => '',
+        'custom_id'    => '',
       ), $atts));
+
+      $animation_classes = $this->getCSSAnimation($animation);
+      $custom_class      = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
+      $custom_id         = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
 
       $class = '';
       $i     = 0;
@@ -96,6 +108,7 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
         $this->pixels_class($space_below, 'space-bottom'),
         $this->pixels_class($align, 'align'),
         $this->pixels_class($color, 'color'),
+        $this->pixels_class($font_weight, 'weight'),
       );
 
       foreach ($classes as $class_i) {
@@ -103,18 +116,20 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
         $i++;
       }
       ob_start()?>
-      <div class="section-title">
+      <?php echo $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : ''; ?>
+      <div class="brdc-custom-heading">
        <div class="container">
-        <?php echo "<$tag class='$class'>$text</$tag>" ?>
+        <?php echo "<$tag class='$class $animation_classes'>$text</$tag>" ?>
       </div>
     </div>
+    <?php echo $custom_class || $custom_id ? '</div>' : ''; ?>
     <?php
 
-    $item = ob_get_contents();
-    ob_end_clean();
+      $item = ob_get_contents();
+      ob_end_clean();
 
-    return $item;
+      return $item;
+    }
   }
-}
 
 }

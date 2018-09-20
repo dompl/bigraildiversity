@@ -1,12 +1,53 @@
 <?php
 
 namespace config\visual_composer;
-
+use WPBakeryShortCode;
 if ( ! class_exists('Visual_Composer_Additional_Params')) {
 
-  class Visual_Composer_Additional_Params {
+  class Visual_Composer_Additional_Params extends WPBakeryShortCode {
 
     public function __construct() {}
+
+    public function param_additional_class($param_name = 'custom_class') {
+
+      return array(
+        'type'        => 'textfield',
+        'holder'      => 'div',
+        'class'       => 'vc_hidden',
+        'vc_label'    => false,
+        'heading'     => __('Extra class name', 'TEXT_DOMAIN'),
+        'param_name'  => $param_name,
+        'group'       => __('Content', 'TEXT_DOMAIN'),
+        'value'       => '',
+        'description' => __('Style particular content element differently - add a class name and refer to it in custom CSS.', 'TEXT_DOMAIN'),
+      );
+    }
+    public function param_additional_id($param_name = 'custom_id') {
+
+      return array(
+        'type'        => 'textfield',
+        'holder'      => 'div',
+        'class'       => 'vc_hidden',
+        'vc_label'    => false,
+        'heading'     => __('Element ID', 'TEXT_DOMAIN'),
+        'param_name'  => $param_name,
+        'group'       => __('Content', 'TEXT_DOMAIN'),
+        'value'       => '',
+        'description' => __('Enter element ID (Note: make sure it is unique and valid according to <a href="https://www.w3schools.com/tags/att_global_id.asp" target="_blank">w3c specification</a>).', 'TEXT_DOMAIN'),
+      );
+    }
+
+    public function param_animation_classes($param_name = 'animation') {
+      return array(
+        'type'        => 'animation_style',
+        'heading'     => __('Animation Style', 'TEXT_DOMAIN'),
+        'param_name'  => $param_name,
+        'description' => __('Select type of animation for element to be animated when it "enters" the browsers viewport (Note: works only in modern browsers).', 'TEXT_DOMAIN'),
+        'admin_label' => false,
+        'weight'      => 0,
+        'group'       => 'Settings',
+      );
+    }
 
     /* Text Alignment */
     public function param_text_alignment($param_name = 'align') {
@@ -23,10 +64,23 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
         'std'         => 'Left',
       );
     }
-
+    /* Font sizes */
+    public function param_font_weight($param_name = 'font_weight') {
+      return array(
+        'type'        => 'dropdown',
+        'holder'      => 'div',
+        'class'       => 'vc_hidden',
+        'heading'     => __('Font weight', 'TEXT_DOMAIN'),
+        'param_name'  => $param_name,
+        'group'       => __('Settings', 'TEXT_DOMAIN'),
+        'value'       => array('Default', 'Extra Bold', 'Bolder', 'Bold', 'Light', 'Lighter', 'Extra Light'),
+        'description' => __('Set font weight', 'TEXT_DOMAIN'),
+        'std'         => 'Default',
+      );
+    }
     /* Font sizes */
     public function param_font_sizes($param_name = 'font_size') {
-      array(
+      return array(
         'type'        => 'dropdown',
         'holder'      => 'div',
         'class'       => 'vc_hidden',
@@ -41,7 +95,7 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
 
     /* Colours */
     public function param_colors($param_name = 'color') {
-      array(
+      return array(
         'type'        => 'dropdown',
         'holder'      => 'div',
         'class'       => 'vc_hidden',
@@ -56,7 +110,7 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
 
     /* Line heights */
     public function param_line_height($param_name = 'line_height') {
-      array(
+      return array(
         'type'        => 'dropdown',
         'holder'      => 'div',
         'class'       => 'vc_hidden',
@@ -83,6 +137,5 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
         'std'         => 'None',
       );
     }
-
   }
 }

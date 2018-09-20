@@ -4,7 +4,6 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php'))
 {
   require_once dirname(__FILE__) . '/vendor/autoload.php';
 }
-
 //use mobiledetect\mobiledetectlib;
 //$detect = new Mobile_Detect;
 // Initiate theme config

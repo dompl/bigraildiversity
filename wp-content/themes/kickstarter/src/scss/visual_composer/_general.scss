@@ -73,3 +73,25 @@ $spaces: top, bottom;
         }
     }
 }
+/* Font weights */
+
+.weight- {
+    &extra-bold {
+        font-weight: $font-weight-bold;
+    }
+    &bolder {
+        font-weight: $font-weight-semi-bold;
+    }
+    &bold {
+        font-weight: $font-weight-bolder;
+    }
+    &light {
+        font-weight: $font-weight-light;
+    }
+    &lighter {
+        font-weight: $font-weight-lighter;
+    }
+    &extra-light {
+        font-weight: $font-weight-extra-light;
+    }
+}

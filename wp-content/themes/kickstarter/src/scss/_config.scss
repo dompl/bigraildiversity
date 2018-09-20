@@ -1,13 +1,12 @@
 // ==== CONFIGURATION ==== //
 $theme-name:"bigraildiversity"; // Change this to what your theme name
 $theme-version:"1.0.1"; // Theme version
-
 /* Font Sizes */
+
 $font-family-sans-serif: "Poppins", sans-serif !default;
 $font-family-monospace: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base: $font-family-sans-serif !default;
 /* Use Visual Composer */
-
 
 $font-size-base: 16px !default; // Assumes the browser default, typically `16px`
 $font-size-lg: 1.25rem !default;
@@ -16,8 +15,6 @@ $font-size-xs: .75rem !default;
 /* font sizes */
 
 $f-16: $font-size-base;
-
-
 $line-height-base: 1.444 !default;
 $border-radius-base: 3px !default;
 $font-size-h1: 2rem !default;
@@ -26,33 +23,31 @@ $font-size-h3: 1.5rem !default;
 $font-size-h4: 1.25rem !default;
 $font-size-h5: 1rem !default;
 $font-size-h6: 1rem !default;
-
 /* Font weights */
+
+$font-weight-extra-light: 100 !default;
+$font-weight-lighter: 200 !default;
 $font-weight-light: 300 !default;
 $font-weight-normal: 400 !default;
+$font-weight-bolder: 500 !default;
 $font-weight-semi-bold: 600 !default;
 $font-weight-bold: 700 !default;
-
 /* Susy settings */
-$susy: (
-  'columns': susy-repeat(12),
-  'gutters': .25,
-  'spread': 'narrow',
-  'container-spread': 'wide'
-);
-// susy gutter
-$gutter : gutter();
 
+$susy: ( 'columns': susy-repeat(12), 'gutters': .25, 'spread': 'narrow', 'container-spread': 'wide');
+// susy gutter
+$gutter: gutter();
 /* Breakpoints */
-$full-screen : 1200px;
+
+$full-screen: 1200px;
 $xs: 0;
 $sm: 576px;
 $md: 768px;
 $lg: 992px;
 $xl: 1024px;
 $xxl: $full-screen;
-
 /* Breakpoint slicers */
+
 $slicer-breakpoints: $xs $sm $md $lg $xl $xxl;
 // Breakpoint Slicer offers four handy mixins that let you set breakpoint ranges easily: at, from, to and between:
 // Styles under at(3) are applied when browser window width is inside the 3rd slice.
@@ -63,51 +58,10 @@ $slicer-breakpoints: $xs $sm $md $lg $xl $xxl;
 $spacer: 30px;
 // Transition
 $transition-time: 0.3s;
-
-$colors: (
-  brand: #9DC330,
-  gray: #585858,
-  gray-light: #cacaca,
-  text: gray,
-  link: brand,
-  link-hover: brand,
-  white: #FFFFFD,
-  balck: #000001,
-  purple-medium: #A37CB6,
-  red: #9E1254,
-  purple-light: #E774AB,
-  green: #54B045,
-  orange: #F8AC23,
-  purple-dark: #83378C,
-  blue-light: #3EC0F0,
-  pink: #E72583,
-  blue-dark: #125DA4,
-  wir: #014C99,
-);
+$colors: ( brand: #9DC330, gray: #585858, gray-light: #cacaca, text: gray, link: brand, link-hover: brand, white: #FFFFFD, balck: #000001, purple-medium: #A37CB6, red: #9E1254, purple-light: #E774AB, green: #54B045, orange: #F8AC23, purple-dark: #83378C, blue-light: #3EC0F0, pink: #E72583, blue-dark: #125DA4, wir: #014C99, );
 /* Brand colours array */
-$brdc-colours : purple-medium, red, purple-light, green, orange, purple-dark, blue-light, pink, blue-dark, wir, white, black;
-$brdc-font-sizes : 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 60;
 
+$brdc-colours: purple-medium, red, purple-light, green, orange, purple-dark, blue-light, pink, blue-dark, wir, white, black;
+$brdc-font-sizes: 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 60;
 // Available social colours
-$_social: ( facebook: #365397,
-twitter: #00a9f1,
-linkedin: #006db3,
-apple: #737373,
-google: #4285f4,
-google-plus: #e0452c,
-youtube: #ff3333,
-vimeo: #48b6ed,
-pinterest: #ce1a19,
-yelp: #c30f00,
-dribbble: #ed4584,
-amazon: #ff9700,
-ebay: #083790,
-skype: #00acf4,
-instagram: #396d9a,
-dropbox: #0d84de,
-flickr: #ea0066,
-github: #2f2f2f,
-basecamp: #6bbd6d,
-tumblr: #304c68,
-foursquare: #207dc5,
-box: #1277bc)!default;
+$_social: ( facebook: #365397, twitter: #00a9f1, linkedin: #006db3, apple: #737373, google: #4285f4, google-plus: #e0452c, youtube: #ff3333, vimeo: #48b6ed, pinterest: #ce1a19, yelp: #c30f00, dribbble: #ed4584, amazon: #ff9700, ebay: #083790, skype: #00acf4, instagram: #396d9a, dropbox: #0d84de, flickr: #ea0066, github: #2f2f2f, basecamp: #6bbd6d, tumblr: #304c68, foursquare: #207dc5, box: #1277bc)!default;
