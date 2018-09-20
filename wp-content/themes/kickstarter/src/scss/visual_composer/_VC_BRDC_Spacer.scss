@@ -1,0 +1,65 @@
+/*  ********************************************************
+ *   Custom spacer settings
+ *  ********************************************************
+ */
+
+@mixin spacer($space: 1) {
+    height: spacer($space);
+    line-height: spacer($space);
+}
+.spacer- {
+    &extra-large {
+        @include spacer(4);
+    }
+    &large {
+        @include spacer(3);
+    }
+    &medium {
+        @include spacer(2);
+    }
+    &default {
+        @include spacer(1);
+    }
+    &small {
+        @include spacer(0.5);
+    }
+    @include breakpoint(max-width $xl) {
+        &extra-large {
+            &.no-prevent {
+                @include spacer(3);
+            }
+        }
+        &large {
+            &.no-prevent {
+                @include spacer(2);
+            }
+        }
+        &medium {
+            &.no-prevent {
+                @include spacer(1);
+            }
+        }
+    }
+    @include breakpoint(max-width $lg) {
+        &extra-large {
+            &.no-prevent {
+                @include spacer(2);
+            }
+        }
+        &large {
+            &.no-prevent {
+                @include spacer(1);
+            }
+        }
+    }
+    @include breakpoint(max-width $md) {
+        &extra-large {
+            &.no-prevent {
+                @include spacer(1);
+            }
+        }
+    }
+}
+.spacer.clear {
+    clear: both;
+}
