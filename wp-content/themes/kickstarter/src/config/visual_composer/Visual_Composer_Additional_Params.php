@@ -51,15 +51,15 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
     }
 
     /* Text Alignment */
-    public function param_text_alignment($param_name = 'align') {
+    public function param_text_alignment($param_name = 'align', $group = 'Settings', $title = 'Text alignment') {
 
       return array(
         'type'        => 'dropdown',
         'holder'      => 'div',
         'class'       => 'vc_hidden',
-        'heading'     => __('Text alignment', 'TEXT_DOMAIN'),
+        'heading'     => __($title, 'TEXT_DOMAIN'),
         'param_name'  => $param_name,
-        'group'       => __('Settings', 'TEXT_DOMAIN'),
+        'group'       => __($group, 'TEXT_DOMAIN'),
         'value'       => array('Left', 'Center', 'Right'),
         'description' => __('Set alignment', 'TEXT_DOMAIN'),
         'std'         => 'Left',

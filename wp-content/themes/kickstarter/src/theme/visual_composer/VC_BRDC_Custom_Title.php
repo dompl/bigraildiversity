@@ -133,7 +133,7 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
         $class .= ($i == 0 ? '' : ' ') . $class_i;
         $i++;
       }
-
+      $cspacer_class = '';
       foreach ($spacer_classes as $spacer_classes_i) {
         $cspacer_class .= ($i == 0 ? '' : ' ') . $spacer_classes_i;
         $i++;

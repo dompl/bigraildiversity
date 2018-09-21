@@ -65,11 +65,16 @@ module.exports = {
             jquery: ['jquery'],
             footer: ['footer'],
             header: ['header'],
+            lightgallery: ['lightgallery'],
         },
         chunks: {
             jquery: [
                 modules + 'jquery/dist/jquery.js', // https://www.npmjs.com/package/jquery @1.12.4
                 modules + 'jquery-migrate/dist/jquery-migrate.js', // https://www.npmjs.com/package/jquery-migrate @1.4.1
+            ],
+            lightgallery: [
+                src + 'js/lib/lightgallery.js', // https://github.com/sachinchoolur/lightGallery
+                src + 'js/lightgallery.js',
             ],
             header: [
                 src + 'js/lib/fittextjs.js',

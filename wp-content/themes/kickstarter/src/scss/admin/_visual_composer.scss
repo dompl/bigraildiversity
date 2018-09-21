@@ -51,3 +51,34 @@
 .vc_hidden {
     @include scut-hide-visually;
 }
+
+/* Custom Param - image sizer */
+
+.wpb_el_type_image_sizer_height, .wpb_el_type_image_sizer_width {
+  float: left!important;
+  width: 50%!important;
+  .vc_image_sizer {
+    input {
+      float: left;
+      width:calc(100% - 28px);
+    }
+    span {
+      display:block;
+      height:28px;
+      width: 28px;
+      line-height: 28px;
+      background: lighten(#ccc , 10%);
+      float: right;
+      text-align: center;
+      font-size:12px;
+      font-weight: bold;
+    }
+  }
+  .vc_description {
+    font-size:12px;
+    line-height: 1.2;
+    padding-top:5px;
+    display:block;
+    clear: both;
+  }
+}

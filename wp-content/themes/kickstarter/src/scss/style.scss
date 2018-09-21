@@ -44,6 +44,9 @@ Domain Path: #{metadata(theme-text-domain-path)}
 // Import fronts ( optionaly is there are any images in img/fonts/*.svg)
 @import "icons";
 
+// Lightbox gallery
+@import "lib/lightgallery/lightgallery";
+
 // Import google fonts. Add fonts in src/fonts/google/fonts.list
 @import "google-fonts";
 

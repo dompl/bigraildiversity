@@ -29,6 +29,10 @@ if ( ! class_exists('VC_Element_Blank')) {
           'value'       => __('Add title here', 'TEXT_DOMAIN'),
           'description' => __('Section title', 'TEXT_DOMAIN'),
         ),
+        $this->param_text_alignment('align'),
+        $this->param_space('above'),
+        $this->param_space('below'),
+        $this->prevent_space_on_mobile(),
         $this->param_additional_id('custom_id'),
         $this->param_additional_class('custom_class'),
       );
@@ -63,13 +67,16 @@ if ( ! class_exists('VC_Element_Blank')) {
       extract(shortcode_atts(array(
         'text'         => '',
         'animation'    => '',
+        'space_above'  => __('None', 'TEXT_DOMAIN'),
+        'space_below'  => __('None', 'TEXT_DOMAIN'),
+        'align'        => __('Left', 'TEXT_DOMAIN'),
         'custom_class' => '',
         'custom_id'    => '',
       ), $atts));
 
       // $href = vc_build_link( $href ); // Build Link
       // $content = wpb_js_remove_wpautop($content, true); // Content
-
+      // $text              = $this->replace_brackets_with_tags($text);
       $animation_classes = $this->getCSSAnimation($animation);
       $custom_class      = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
       $custom_id         = $custom_id != '' ? ' id="' . $custom_id . '"' : false;

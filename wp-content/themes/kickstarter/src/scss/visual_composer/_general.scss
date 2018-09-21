@@ -139,10 +139,11 @@
     }
 }
 /* Font Sizes */
+
 .line-height {
-  @include breakpoint(max-width $md) {
-      line-height:1.2!important;
-  }
+    @include breakpoint(max-width $md) {
+        line-height: 1.2!important;
+    }
 }
 @each $size in $brdc-font-sizes {
     .font- {
@@ -181,5 +182,8 @@
 .align- {
     &center {
         text-align: center;
+    }
+    &right {
+        text-align: right;
     }
 }
