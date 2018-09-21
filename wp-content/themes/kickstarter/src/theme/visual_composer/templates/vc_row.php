@@ -55,7 +55,7 @@ wp_enqueue_script('wpb_composer_front_js');
 $el_class = $this->getExtraClass($el_class) . $this->getCSSAnimation($css_animation);
 
 $css_classes = array(
-  'vc_row',
+  // 'vc_row',
   'wpb_row',
   //deprecated
   'vc_row-fluid',
@@ -67,11 +67,13 @@ $css_classes = array(
  *  ********************************************************
  */
 
-if ($background_style != '') {
-  $css_classes[] = ' brdc-column ';
-  if ($background_style != 'bcg-default') {
-    $css_classes[] = $background_style;
-  }
+if ($brdc_container_background != '') {
+  $css_classes[] = $brdc_container_background;
+  $css_classes[] = 'clx brdc-bcg';
+}
+
+if ($brdc_container_width != '') {
+  $css_classes[] = $brdc_container_width;
 }
 
 if ('yes' === $disable_element) {
@@ -178,11 +180,14 @@ if ( ! empty($parallax_image)) {
 if ( ! $parallax && $has_video_bg) {
   $wrapper_attributes[] = 'data-vc-video-bg="' . esc_attr($video_bg_url) . '"';
 }
-$css_class            = preg_replace('/\s+/', ' ', apply_filters(VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, implode(' ', array_filter(array_unique($css_classes))), $this->settings['base'], $atts));
+$css_class = preg_replace('/\s+/', ' ', apply_filters(VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, implode(' ', array_filter(array_unique($css_classes))), $this->settings['base'], $atts));
+
 $wrapper_attributes[] = 'class="' . esc_attr(trim($css_class)) . '"';
 
 $output .= '<div ' . implode(' ', $wrapper_attributes) . '>';
+$output .= $brdc_container_width === 'container-wide' || $brdc_container_width === 'container-narrow' ? '<div class="container-inner clx container-inner-' . $brdc_container_width . '">' : '';
 $output .= wpb_js_remove_wpautop($content);
+$output .= $brdc_container_width === 'container-wide' || $brdc_container_width === 'container-narrow' ? '</div>' : '';
 $output .= '</div>';
 $output .= $after_output;
 

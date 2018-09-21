@@ -1,0 +1,33 @@
+/*  ********************************************************
+ *   Classes for additional settings for vc_row
+ *  ********************************************************
+ */
+
+@mixin content_container_styles( $color: color(text)) {
+  color:$color;
+}
+.container-full, .wide-container, .container-narrow {
+    @extend %first-element;
+    @extend %last-element;
+    .vc_column_container {
+        .vc_column-inner {
+            padding: 0;
+        }
+    }
+}
+/* Narrow container */
+
+.container-narrow {
+    .container-inner {
+        padding: 60px 80px; // padding-right:80px;
+    }
+}
+.brdc-bcg {
+    border-radius: $border-radius-base;
+}
+.bcg- {
+    /* White background */
+    &white {
+        background: white;
+    }
+}

@@ -141,9 +141,7 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
       ob_start()?>
       <?php echo $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : ''; ?>
       <div class="brdc-custom-heading<?php echo $cspacer_class ?><?php echo $prevent ? '' : ' no-prevent' ?>">
-       <div class="container">
         <?php echo "<$tag class='custom-heading-$random $class $animation_classes'>" . do_shortcode($text) . "</$tag>" ?>
-      </div>
     </div>
     <?php if ((int) str_replace('px', '', $font_size) > 20): ?>
     <script>

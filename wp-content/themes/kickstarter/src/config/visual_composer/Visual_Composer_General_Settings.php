@@ -73,6 +73,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       $colours = array(
         'Default',
         'White',
+        'Gray Light',
         'Balck',
         'Green',
         'WIR',

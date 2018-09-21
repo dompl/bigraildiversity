@@ -73,8 +73,14 @@
 .center-xy {
     @include scut-center-transform();
 }
-.container {
+.container, .wide-container {
     @extend %container;
+}
+.container-narrow {
+    margin-left:auto;
+    margin-right:auto;
+    width:900px;
+    max-width:95%;
 }
 %init-slick {
     visibility: hidden;
