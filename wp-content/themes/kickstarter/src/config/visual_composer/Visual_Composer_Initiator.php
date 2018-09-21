@@ -5,6 +5,7 @@
  */
 namespace config\visual_composer;
 use config\visual_composer\Visual_Composer_General_Settings;
+use config\visual_composer\Visual_Composer_Params_Extenders;
 use theme\visual_composer\VC_Element_Blank;
 use theme\visual_composer\VC_RBDC_Page_Banner;
 use theme\visual_composer\VC_BRDC_Custom_Title;
@@ -31,6 +32,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       self::$loaded = true;
 
       new Visual_Composer_General_Settings();
+      new Visual_Composer_Params_Extenders();
       new VC_Element_Blank();
       new VC_RBDC_Page_Banner();
       new VC_BRDC_Custom_Title();

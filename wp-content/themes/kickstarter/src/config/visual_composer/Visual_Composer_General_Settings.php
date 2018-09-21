@@ -8,8 +8,9 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
   class Visual_Composer_General_Settings extends Visual_Composer_Additional_Params {
 
     public function __construct() {
-      add_action('vc_before_init', array($this, 'vc_remove_elements')); // remove unwanted visual composer elements
-      add_action('vc_before_init', array($this, 'vc_disable_front'));   // remove fron end editor
+      add_action('vc_before_init', array($this, 'vc_remove_elements'));                  // remove unwanted visual composer elements
+      add_action('vc_before_init', array($this, 'vc_disable_front'));                    // remove fron end editor
+      add_action('vc_before_init', array($this, 'set_visual_composer_template_folder')); // add template folder
     }
 
     public function replace_brackets_with_tags($field = '') {
@@ -134,6 +135,13 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       }
 
       return $space;
+    }
+
+    /* Ser visual composer template foldee */
+
+    public function set_visual_composer_template_folder() {
+      $templage_folder = get_stylesheet_directory() . '/theme/visual_composer/templates';
+      vc_set_shortcodes_templates_dir($templage_folder);
     }
   }
 }
