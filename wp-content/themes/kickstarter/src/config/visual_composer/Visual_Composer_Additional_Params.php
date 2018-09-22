@@ -8,7 +8,21 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
 
     public function __construct() {}
 
-    public function param_additional_class($param_name = 'custom_class') {
+    public function param_text_tags($param_name = 'tag', $group = 'Content') {
+      return array(
+        'type'        => 'dropdown',
+        'holder'      => 'div',
+        'class'       => 'vc_hidden',
+        'heading'     => __('Title tag', 'TEXT_DOMAIN'),
+        'param_name'  => $param_name,
+        'group'       => __($group, 'TEXT_DOMAIN'),
+        'value'       => array('h1', 'h2', 'h3', 'h4', 'h5', 'p', 'div'),
+        'description' => __('Set title tag', 'TEXT_DOMAIN'),
+        'std'         => 'h2',
+      );
+    }
+
+    public function param_additional_class($param_name = 'custom_class', $group = 'Content') {
 
       return array(
         'type'        => 'textfield',
@@ -17,13 +31,13 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
         'vc_label'    => false,
         'heading'     => __('Extra class name', 'TEXT_DOMAIN'),
         'param_name'  => $param_name,
-        'group'       => __('Content', 'TEXT_DOMAIN'),
+        'group'       => __($group, 'TEXT_DOMAIN'),
         'value'       => '',
         'description' => __('Style particular content element differently - add a class name and refer to it in custom CSS.', 'TEXT_DOMAIN'),
       );
     }
 
-    public function param_additional_id($param_name = 'custom_id') {
+    public function param_additional_id($param_name = 'custom_id', $group = 'Content') {
 
       return array(
         'type'        => 'textfield',
@@ -32,17 +46,18 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
         'vc_label'    => false,
         'heading'     => __('Element ID', 'TEXT_DOMAIN'),
         'param_name'  => $param_name,
-        'group'       => __('Content', 'TEXT_DOMAIN'),
+        'group'       => __($group, 'TEXT_DOMAIN'),
         'value'       => '',
         'description' => __('Enter element ID (Note: make sure it is unique and valid according to <a href="https://www.w3schools.com/tags/att_global_id.asp" target="_blank">w3c specification</a>).', 'TEXT_DOMAIN'),
       );
     }
 
-    public function param_animation_classes($param_name = 'animation') {
+    public function param_animation_classes($param_name = 'animation', $group = 'Content') {
       return array(
         'type'        => 'animation_style',
         'heading'     => __('Animation Style', 'TEXT_DOMAIN'),
         'param_name'  => $param_name,
+        'group'       => __($group, 'TEXT_DOMAIN'),
         'description' => __('Select type of animation for element to be animated when it "enters" the browsers viewport (Note: works only in modern browsers).', 'TEXT_DOMAIN'),
         'admin_label' => false,
         'weight'      => 0,
@@ -66,15 +81,15 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
       );
     }
 
-    /* Font sizes */
-    public function param_font_weight($param_name = 'font_weight') {
+    /* Font weight */
+    public function param_font_weight($param_name = 'font_weight', $group = 'Settings') {
       return array(
         'type'        => 'dropdown',
         'holder'      => 'div',
         'class'       => 'vc_hidden',
         'heading'     => __('Font weight', 'TEXT_DOMAIN'),
         'param_name'  => $param_name,
-        'group'       => __('Settings', 'TEXT_DOMAIN'),
+        'group'       => __($group, 'TEXT_DOMAIN'),
         'value'       => array('Default', 'Extra Bold', 'Bolder', 'Bold', 'Light', 'Lighter', 'Extra Light'),
         'description' => __('Set font weight', 'TEXT_DOMAIN'),
         'std'         => 'Default',
@@ -82,14 +97,14 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
     }
 
     /* Font sizes */
-    public function param_font_sizes($param_name = 'font_size') {
+    public function param_font_sizes($param_name = 'font_size', $group = 'Settings') {
       return array(
         'type'        => 'dropdown',
         'holder'      => 'div',
         'class'       => 'vc_hidden',
         'heading'     => __('Font size', 'TEXT_DOMAIN'),
         'param_name'  => $param_name,
-        'group'       => __('Settings', 'TEXT_DOMAIN'),
+        'group'       => __($group, 'TEXT_DOMAIN'),
         'value'       => $this->font_sizes(),
         'description' => __('Set font size', 'TEXT_DOMAIN'),
         'std'         => '16px',
@@ -97,14 +112,14 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
     }
 
     /* Colours */
-    public function param_colors($param_name = 'color') {
+    public function param_colors($param_name = 'color', $group = 'Settings', $title = 'Colour') {
       return array(
         'type'        => 'dropdown',
         'holder'      => 'div',
         'class'       => 'vc_hidden',
-        'heading'     => __('Colour', 'TEXT_DOMAIN'),
+        'heading'     => __($title, 'TEXT_DOMAIN'),
         'param_name'  => $param_name,
-        'group'       => __('Settings', 'TEXT_DOMAIN'),
+        'group'       => __($group, 'TEXT_DOMAIN'),
         'value'       => $this->brdc_colours(),
         'description' => __('Set colour', 'TEXT_DOMAIN'),
         'std'         => 'Default',
@@ -112,14 +127,14 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
     }
 
     /* Line heights */
-    public function param_line_height($param_name = 'line_height') {
+    public function param_line_height($param_name = 'line_height', $group = 'Settings', $heading = 'Line height') {
       return array(
         'type'        => 'dropdown',
         'holder'      => 'div',
         'class'       => 'vc_hidden',
-        'heading'     => __('Line height', 'TEXT_DOMAIN'),
+        'heading'     => __($heading, 'TEXT_DOMAIN'),
         'param_name'  => $param_name,
-        'group'       => __('Settings', 'TEXT_DOMAIN'),
+        'group'       => __($group, 'TEXT_DOMAIN'),
         'value'       => $this->line_heights(),
         'description' => __('Set line height', 'TEXT_DOMAIN'),
         'std'         => '18px',

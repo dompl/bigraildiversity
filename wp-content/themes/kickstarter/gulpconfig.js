@@ -85,7 +85,7 @@ module.exports = {
                 modules + 'blazy/blazy.js', // https://github.com/dinbror/blazy
                 // modules + 'slick-carousel/slick/slick.js', // https://github.com/kenwheeler/slick/
                 // modules + 'wowjs/dist/wow.js', // https://github.com/matthieua/WOW
-                // modules + 'modaal/dist/js/modaal.js', // https://github.com/humaan/Modaal
+                modules + 'modaal/dist/js/modaal.js', // https://github.com/humaan/Modaal
                 modules + 'jquery-match-height/dist/jquery.matchHeight.js', // https://github.com/liabru/jquery-match-height
                 // src + 'js/lib/cookie-bar.js',
                 src + 'js/lib/navigation.js',

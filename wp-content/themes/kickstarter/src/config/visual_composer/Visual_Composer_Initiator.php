@@ -13,6 +13,7 @@ use theme\visual_composer\VC_RBDC_Page_Banner;
 use theme\visual_composer\VC_BRDC_Custom_Title;
 use theme\visual_composer\VC_BRDC_Spacer;
 use theme\visual_composer\VC_BRDC_Single_Image;
+use theme\visual_composer\VC_BRDC_Modal_Call_For_Action;
 
 if ( ! class_exists('Visual_Composer_General_Settings')) {
 
@@ -43,6 +44,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       new VC_BRDC_Custom_Title();
       new VC_BRDC_Spacer();
       new VC_BRDC_Single_Image();
+      new VC_BRDC_Modal_Call_For_Action();
 
     }
   }

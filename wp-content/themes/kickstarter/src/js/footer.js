@@ -5,6 +5,7 @@
 			//=require includes/navigation.js
 			//=require includes/cookie-bar.js
 			//=require includes/blazy.js
+			//=require includes/modaal.js
 		}
 
 		/* Initaite plugins */
