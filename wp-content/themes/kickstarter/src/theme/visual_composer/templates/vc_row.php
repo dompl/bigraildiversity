@@ -47,6 +47,7 @@ $background_style     = '';
 $disable_element      = '';
 $output               =
 $after_output         = '';
+$brdc_container_icon  = '';
 $atts                 = vc_map_get_attributes($this->getShortcode(), $atts);
 extract($atts);
 
@@ -186,6 +187,7 @@ $wrapper_attributes[] = 'class="' . esc_attr(trim($css_class)) . '"';
 
 $output .= '<div ' . implode(' ', $wrapper_attributes) . '>';
 $output .= $brdc_container_width === 'container-wide' || $brdc_container_width === 'container-narrow' ? '<div class="container-inner clx container-inner-' . $brdc_container_width . '">' : '';
+$output .= $brdc_container_icon != false || $brdc_container_icon != '' ? '<div class="container-icon"><i class="' . $brdc_container_icon . '"></i></div>' : '';
 $output .= wpb_js_remove_wpautop($content);
 $output .= $brdc_container_width === 'container-wide' || $brdc_container_width === 'container-narrow' ? '</div>' : '';
 $output .= '</div>';

@@ -3,8 +3,16 @@
  *  ********************************************************
  */
 
-@mixin content_container_styles( $color: color(text)) {
-  color:$color;
+@mixin content_container_styles( $color: text, $background:white) {
+    color: color($color);
+    background: color($background);
+    @if  $background !=white  {
+        .container-icon i {
+            background-color: color($color);
+            border-color: color($background);
+            color: color($background);
+        }
+    }
 }
 .container-full, .wide-container, .container-narrow {
     @extend %first-element;
@@ -24,10 +32,38 @@
 }
 .brdc-bcg {
     border-radius: $border-radius-base;
+    position: relative;
+    .container-icon {
+        $size: 50px;
+        position: absolute;
+        @include scut-center-transform(x);
+        height: $size;
+        width: $size;
+        top: -25px;
+        i {
+            height: $size;
+            width: $size;
+            background: color(green);
+            color: white;
+            border-radius: 50%;
+            display: block;
+            line-height: $size;
+            text-align: center;
+            font-size: 26px;
+            border: 3px solid white;
+        }
+    }
 }
 .bcg- {
     /* White background */
     &white {
         background: white;
+    }
+    /* Green */
+    &green {
+        @include content_container_styles(white, green);
+    }
+    &blue {
+        @include content_container_styles(white, wir);
     }
 }
