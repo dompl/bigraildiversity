@@ -20,6 +20,17 @@ if ( ! class_exists('VC_BRDC_Modal_Call_For_Action')) {
 
       $params = array(
         array(
+          'type'        => 'dropdown',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'heading'     => __('Columns per row', 'TEXT_DOMAIN'),
+          'param_name'  => 'cols',
+          'group'       => __('Content', 'TEXT_DOMAIN'),
+          'value'       => array(1, 2, 3, 4, 5, 6),
+          'description' => __('Set the amount of columns per row', 'TEXT_DOMAIN'),
+          'std'         => 2,
+        ),
+        array(
           'type'       => 'param_group',
           'value'      => 'Banner slides',
           'group'      => __('Content', 'TEXT_DOMAIN'),
@@ -79,6 +90,7 @@ if ( ! class_exists('VC_BRDC_Modal_Call_For_Action')) {
               'value'       => __('%title%', 'TEXT_DOMAIN'),
               'description' => __('Leave %title% for lowercase page title', 'TEXT_DOMAIN'),
             ),
+
             /* show content in popup - show_in_popup*/
             array(
               'type'        => 'checkbox',
@@ -143,6 +155,7 @@ if ( ! class_exists('VC_BRDC_Modal_Call_For_Action')) {
             ),
           ),
 ),
+
 $this->param_text_alignment('align', 'Text Settings'),
 $this->param_text_tags('tag', 'Text Settings'),
 $this->param_font_sizes('font_size', 'Text Settings'),
@@ -152,6 +165,16 @@ $this->param_colors('color', 'Text Settings'),
 $this->param_space('above'),
 $this->param_space('below'),
 $this->prevent_space_on_mobile(),
+array(
+  'type'        => 'textfield',
+  'holder'      => 'div',
+  'class'       => 'vc_hidden',
+  'heading'     => __('Image height', 'TEXT_DOMAIN'),
+  'param_name'  => 'img_height',
+  'group'       => __('Settings', 'TEXT_DOMAIN'),
+  'value'       => 150,
+  'description' => __('Set call for action image height', 'TEXT_DOMAIN'),
+),
 $this->param_additional_id('custom_id', 'Settings'),
 $this->param_additional_class('custom_class', 'Settings'),
 $this->param_animation_classes('animation', 'Settings'),
@@ -186,6 +209,7 @@ return $params;
 
       extract(shortcode_atts(array(
         'calls'        => '',
+        'img_height'   => 150,
         'animation'    => '',
         'space_above'  => __('None', 'TEXT_DOMAIN'),
         'space_below'  => __('None', 'TEXT_DOMAIN'),
@@ -199,6 +223,7 @@ return $params;
         'space_above'  => __('None', 'TEXT_DOMAIN'),
         'space_below'  => __('None', 'TEXT_DOMAIN'),
         'align'        => 'Left',
+        'cols'         => 2,
         'color'        => 'Default',
       ), $atts));
 
@@ -227,45 +252,114 @@ return $params;
         $i++;
       }
 
-      $random = rand(10, 100000);
-      // $href = vc_build_link( $href ); // Build Link
-      // $content = wpb_js_remove_wpautop($content, true); // Content
-      // $text              = $this->replace_brackets_with_tags($text);
+      $random            = rand(10, 100000);
       $animation_classes = $this->getCSSAnimation($animation);
       $custom_class      = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
       $custom_id         = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
       $calls             = vc_param_group_parse_atts($calls);
+      $calls_count       = count($calls);
       ob_start()?>
       <?php echo $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : ''; ?>
-      <div class="brdc-custom-heading<?php echo $cspacer_class ?><?php echo $prevent ? '' : ' no-prevent' ?>">
 
-        <?php foreach ($calls as $call): ?>
-          <?php var_dump($call)?>
-          <?php
+      <div class="<?php echo "colsumns-$cols" ?> colsumns <?php echo $calls_count < $cols ? 'around' : 'between' ?> flex brdc-custom-calls<?php echo $cspacer_class ?><?php echo $prevent ? '' : ' no-prevent' ?>">
+
+        <?php foreach ($calls as $call):
+
           $link_to           = $call['link_to'];
-          $title             = $call['title'];
+          $title             = $this->replace_brackets_with_tags($call['title']);
           $text              = $call['text'];
-          $img               = $call['img'];
+          $image             = $call['img'];
           $show_img_in_popup = $call['show_in_popup'];
-          ?>
-        <?php endforeach?>
 
-      </div>
-      <?php echo $custom_class || $custom_id ? '</div>' : ''; ?>
-      <?php if ((int) str_replace('px', '', $font_size) > 20): ?>
-      <script>
-        jQuery(function() {
-          jQuery('.custom-heading-<?php echo $random ?>').fitText(1.5, { minFontSize: '<?php echo (int) round((str_replace('px', '', $font_size) / 1.5), 0) . 'px' ?>', maxFontSize: '<?php echo $font_size ?>' });;
-        });
-      </script>
-    <?php endif;?>
-    <?php
+          /* Build image */
+          $img = false;
+          if ($call['img']) {
 
-    $item = ob_get_contents();
-    ob_end_clean();
+            $image = wpimage('img=' . (int) $call['img'] . '&h=400&retina=false&upscale=true&crop=false&single=false');
+            if ($img_height < imagedata($call['img'])['height']) {
+              $height      = (int) imagedata($call['img'])['height'] * 5;
+              $width       = (int) imagedata($call['img'])['width'] * 5;
+              $large_image = wpimage('img=' . (int) $call['img'] . '&h=' . $height . '&w=' . $width . 'retina=false&upscale=true&crop=true&single=true');
+              $image       = wpimage('img=' . $large_image . '&h=' . $img_height . '&w=' . $width . 'retina=false&upscale=true&crop=false&single=false');
+            }
+            $img = sprintf('<div class="call-image %s"><figure><img src="%s" data-src="%s" alt="%s" class="lazy" ></figure></div>',
+              $this->pixels_class($align, 'align'),
+              wpimagebase(),
+              $image[0],
+              imagedata($call['img'])['alt'],
+              imagedata($call['img'])['width']
+            );
+          }
+          /* Title */
+          $the_title = ($call['title']) ? "<$tag  data-mh=\"call-title\" class='call-title custom-call-title-$random $class $animation_classes'>" . do_shortcode($title) . "</$tag>" : '';
 
-    return $item;
-  }
+          $modal_rand = rand(10, 10000);
+          /* link */
+          $link = array();
+          if ($link_to == 'link') {
+            $href    = vc_build_link($call['custom_link']);
+            $link    = array();
+            $link[0] = '</a>';
+            $link[1] = '<a href="' . esc_url($href['url']) . '" title="' . $href['title'] . '" target="' . $href['target'] . '" class="display-block clx">';
+            $link[2] = '<a href="' . esc_url($href['url']) . '" title="' . $href['title'] . '" target="' . $href['target'] . '" class="button default color-green">';
+          } elseif ($link_to == 'popup') {
+            $link    = array();
+            $link[0] = '</a>';
+            $link[1] = '<a href="#modal-' . $modal_rand . '" data-modaal-type="inline" data-modaal-width="650" data-modaal-animation="fade" class="modaal display-block clx">';
+            $link[2] = '<a href="#modal-' . $modal_rand . '" data-modaal-type="inline" data-modaal-width="650" data-modaal-animation="fade" class="modaal button default color-green">';
+          }?>
+          <div class="call-for-action <?php echo "cols-$cols" ?> ">
+            <?php echo $img ? $link[1] . $img . $link[0] : '' ?>
+            <?php echo $the_title ? $link[1] . $the_title . $link[0] : '' ?>
+            <?php if ($call['pop_button_text'] != ''): ?>
+            <div class="<?php echo $this->pixels_class($align, 'align') ?>"><?php echo $link[2] . $call['pop_button_text'] . $link[0] ?></div>
+            <?php endif ?>
+            <?php if ($href['url'] != '' && $href['title'] != '' && $call['link_to'] == 'link'): ?>
+              <div class="<?php echo $this->pixels_class($align, 'align') ?>"><?php echo $link[2] . $href['title'] . $link[0] ?></div>
+            <?php endif; ?>
+            <?php
+            /* Popup Image */
+            if ($link_to == 'popup'): ?>
+              <div id="modal-<?php echo $modal_rand ?>" style="display:none;">
+               <?php if ($img && $show_img_in_popup == true): ?>
+                <div class="popup-image">
+                  <?php
+                  printf('<div class="call-image"><figure><img src="%s" alt="%s" height="' . $img_height . '"></figure></div>',
+                    $image[0],
+                    imagedata($call['img'])['alt'],
+                    imagedata($call['img'])['width']
+                  );?>
+                </div>
+              <?php endif;
+              /* Pop Up Title */
+              if ($call['popuptitle'] != ''): ?>
+                <p class="popup-title"><?php echo str_replace('%title%', $title, $call['popuptitle']) ?></p>
+              <?php endif;
+              /* PopUp Text */
+              if ($call['text'] != ''): ?>
+                <div class="popup-text"><?php echo $call['text']; ?></div>
+              <?php endif?>
+            </div>
+          <?php endif;?>
+        </div>
+
+        <?php if ((int) str_replace('px', '', $font_size) > 20): ?>
+        <script>
+          jQuery(function() {
+            jQuery('.custom-call-title-<?php echo $random ?>').fitText(1.5, { minFontSize: '<?php echo (int) round((str_replace('px', '', $font_size) / 1.5), 0) . 'px' ?>', maxFontSize: '<?php echo $font_size ?>' });;
+          });
+        </script>
+      <?php endif;?>
+    <?php endforeach?>
+  </div>
+  <?php echo $custom_class || $custom_id ? '</div>' : ''; ?>
+  <?php
+
+  $item = ob_get_contents();
+  ob_end_clean();
+
+  return $item;
+}
 }
 
 }

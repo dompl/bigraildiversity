@@ -1,0 +1,30 @@
+/*  ********************************************************
+ *   Columns layout
+ *  ********************************************************
+ */
+
+@mixin column-item( $margin: 1.5, $cols: 1) {
+    margin-left : - percentage($margin / 100);
+    margin-right: - percentage($margin / 100);
+    .cols-#{$cols} {
+        margin-left:percentage($margin / 100);
+        margin-right:percentage($margin / 100);
+        width: percentage( 97 / $cols / 100);
+    }
+}
+.cols-1 {
+
+}
+.cols-2 {
+  @include column-item(1.5, 2);
+}
+.colsumns-3 {
+    @include column-item(1.5, 3);
+}
+.cols-4 {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    width: percentage( 97 / 4 / 100);
+}
+.cols-5 {}
+.cols-6 {}

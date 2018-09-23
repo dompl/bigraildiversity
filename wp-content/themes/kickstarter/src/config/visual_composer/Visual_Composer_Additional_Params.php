@@ -146,8 +146,8 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
       return array(
         'type'        => 'dropdown',
         'holder'      => 'div',
-        'class'       => 'vc_hidden',
-        'heading'     => __('Space above', 'TEXT_DOMAIN'),
+        'class'       => "vc_label vc_space vc_space_$param_name",
+        'heading'     => __('Space ' . $param_name , 'TEXT_DOMAIN'),
         'param_name'  => 'space_' . $param_name,
         'group'       => __('Spaces', 'TEXT_DOMAIN'),
         'value'       => $this->vertical_space(),

@@ -1,8 +1,4 @@
-<?php echo config\theme\header::header('UA-71890077-1'); // Pass GA code        ?>
-<button class="inline">Show</button>
-<div id="inline" style="display:none;">
-  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-</div>
+<?php echo config\theme\header::header('UA-71890077-1'); // Pass GA code ?>
 <header id="header" class="top-header">
   <div id="top">
     <div class="container flex-center">

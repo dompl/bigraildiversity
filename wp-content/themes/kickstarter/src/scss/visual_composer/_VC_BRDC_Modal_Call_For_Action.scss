@@ -1,0 +1,69 @@
+/*  ********************************************************
+ *   Custom call for action
+ *  ********************************************************
+ */
+
+.brdc-custom-calls {
+    &.flex {
+        display: flex; //flex-wrap:wrap;
+        &.between {
+            justify-content: space-around;
+        }
+        &.around {
+            justify-content: space-evenly;
+        }
+    }
+    /* Title */
+    .call-title, .button {
+        margin-top: spacer(.5)!important;
+        margin-bottom: 0;
+    }
+}
+/* Modal */
+
+.modaal-wrapper {
+    .modaal-container {
+          border-radius:$border-radius-base;
+        .modaal-content-container {
+
+            padding: 30px;
+            position: relative;
+            text-align: center;
+
+            &:after {
+              content:"";
+              height: 5px;
+              width: 100%;
+              position:absolute;
+              bottom:0;
+              left:0;
+              background: url(img/theme/bar.gif);
+              border-radius: 0 0 $border-radius-base $border-radius-base;
+               background-size: 800px auto;
+            }
+            .popup-image {
+                position: absolute;
+                top: -90px;
+                img {
+                    width: auto;
+                    max-width: 100%;
+                    height: 180px;
+                }
+                @include scut-center-transform(x);
+                +.popup-title {
+                    margin-top: 70px;
+                }
+            }
+            .popup-title {
+                color: color(brand);
+                font-weight: $font-weight-bold;
+                font-size: 20px;
+                text-align: center;
+                line-height: 1.2;
+            }
+            .popup-text {
+              font-size:12px;
+            }
+        }
+    }
+}

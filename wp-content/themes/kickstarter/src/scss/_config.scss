@@ -58,10 +58,29 @@ $slicer-breakpoints: $xs $sm $md $lg $xl $xxl;
 $spacer: 30px;
 // Transition
 $transition-time: 0.3s;
-$colors: ( body-background: #fbfafa, brand: #9DC330, gray: #585858, gray-light: #bababa, text: gray, link: brand, link-hover: brand, white: #FFFFFD, balck: #000001, purple-medium: #A37CB6, red: #9E1254, purple-light: #E774AB, green: #54B045, orange: #F8AC23, purple-dark: #83378C, blue-light: #3EC0F0, pink: #E72583, blue-dark: #125DA4, wir: #014C99);
+$colors: ( body-background: #fbfafa,
+  brand: #9DC330,
+  gray: #585858,
+  gray-light: #bababa,
+  text: gray,
+  link: brand,
+  link-hover: brand,
+  white: #FFFFFD,
+  balck: #000001,
+  purple-medium: #A37CB6,
+  red: #9E1254,
+  purple-light: #E774AB,
+  green: #54B045,
+  orange: #F8AC23,
+  purple-dark: #83378C,
+  blue-light: #3EC0F0,
+  pink: #E72583,
+  blue-dark: #125DA4,
+  wir: #014C99,
+  default:text);
 /* Brand colours array */
 
-$brdc-colours: purple-medium, red, purple-light, green, orange, purple-dark, blue-light, pink, blue-dark, wir, white, black, gray-light;
+$brdc-colours: default, purple-medium, red, purple-light, green, orange, purple-dark, blue-light, pink, blue-dark, wir, white, black, gray-light;
 $brdc-font-sizes: 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 60;
 // Available social colours
 $_social: ( facebook: #365397, twitter: #00a9f1, linkedin: #006db3, apple: #737373, google: #4285f4, google-plus: #e0452c, youtube: #ff3333, vimeo: #48b6ed, pinterest: #ce1a19, yelp: #c30f00, dribbble: #ed4584, amazon: #ff9700, ebay: #083790, skype: #00acf4, instagram: #396d9a, dropbox: #0d84de, flickr: #ea0066, github: #2f2f2f, basecamp: #6bbd6d, tumblr: #304c68, foursquare: #207dc5, box: #1277bc)!default;

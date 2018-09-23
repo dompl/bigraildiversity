@@ -1,3 +1,3 @@
-$('.inline').modaal({
-	content_source: '#inline'
-});
+// $('.modal-popup').modaal({
+// 	content_source: '#modal-popup'
+// });

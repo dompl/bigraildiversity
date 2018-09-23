@@ -120,11 +120,25 @@
     }
 }
 /* Colours */
-
+@mixin button($color : brand) {
+  &.button {
+    background:color($color);
+    color:white;
+    border-radius:$border-radius-base;
+    padding:5px 10px;
+    display: inline-block;
+    font-weight:$font-weight-bold;
+    text-transform: uppercase;
+    &:hover {
+      background:darken(color($color) , 10%);
+    }
+  }
+}
 @each $color in $brdc-colours {
     .color- {
         &#{$color} {
             color: color($color);
+            @include button($color);
         }
     }
     .background- {
