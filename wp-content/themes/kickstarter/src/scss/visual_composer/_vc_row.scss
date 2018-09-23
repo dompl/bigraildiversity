@@ -6,7 +6,7 @@
 @mixin content_container_styles( $color: text, $background:white) {
     color: color($color);
     background: color($background);
-    @if  $background !=white  {
+    @if $background !=white {
         .container-icon i {
             background-color: color($color);
             border-color: color($background);
@@ -28,6 +28,20 @@
 .container-narrow {
     .container-inner {
         padding: 60px 80px; // padding-right:80px;
+        &.prevent-margin {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        @include breakpoint(max-width $md) {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            &.prevent-margin {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
     }
 }
 .brdc-bcg {
