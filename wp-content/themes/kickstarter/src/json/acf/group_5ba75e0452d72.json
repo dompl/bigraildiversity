@@ -35,8 +35,27 @@
             "placeholder": ""
         },
         {
+            "key": "field_5ba75eb9979f5",
+            "label": "Attendee short description",
+            "name": "attendee_short_description",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
             "key": "field_5ba75e17979f0",
-            "label": "Images",
+            "label": "Logo",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -75,41 +94,6 @@
             "mime_types": ""
         },
         {
-            "key": "field_5ba75e93979f4",
-            "label": "Content",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "left",
-            "endpoint": 0
-        },
-        {
-            "key": "field_5ba75eb9979f5",
-            "label": "Attendee short description",
-            "name": "attendee_short_description",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
-        },
-        {
             "key": "field_5ba75edf979f6",
             "label": "Testimonial",
             "name": "",
@@ -126,10 +110,10 @@
             "endpoint": 0
         },
         {
-            "key": "field_5ba75f9e316d7",
-            "label": "Testimonial - Person",
-            "name": "testimonial_person",
-            "type": "text",
+            "key": "field_5ba76cbf86c73",
+            "label": "Testomonials",
+            "name": "testimonials_list",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -138,49 +122,89 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5ba75f85316d6",
-            "label": "Testimonial - Company",
-            "name": "testimonial_company",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5ba75f7a316d5",
-            "label": "Full testimonial",
-            "name": "full_testimonial",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
+            "collapsed": "field_5ba76cdc86c74",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Testimonial",
+            "sub_fields": [
+                {
+                    "key": "field_5ba76cdc86c74",
+                    "label": "Person",
+                    "name": "person",
+                    "type": "text",
+                    "instructions": "Name of the person who created the testimonial",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ba76ced86c75",
+                    "label": "Company",
+                    "name": "company",
+                    "type": "text",
+                    "instructions": "Leave <strong>%company%<\/strong> to display company name under the testimonial in sliders across the website.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "%company%",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ba76cf486c76",
+                    "label": "Testimonial",
+                    "name": "testimonial",
+                    "type": "wysiwyg",
+                    "instructions": "Full testimonial",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
+                    "key": "field_5ba76d661634e",
+                    "label": "Display in sliders",
+                    "name": "in_slider",
+                    "type": "true_false",
+                    "instructions": "Display this testimonial in slider across the website",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                }
+            ]
         },
         {
             "key": "field_5ba75fb2316d8",
@@ -199,33 +223,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_5ba75fbd316d9",
-            "label": "Sponsorship",
-            "name": "sponsorship_year",
-            "type": "checkbox",
-            "instructions": "If this attendee was a sponsor, please set for which year.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "sponsor_2016": "2016 Sponsorship",
-                "sponsor_2017": "2017 Sponsorship",
-                "sponsor_2018": "2018 Sponsorship",
-                "sponsor_2019": "2019 Sponsorship",
-                "sponsor_2020": "2020 Sponsorship"
-            },
-            "allow_custom": 0,
-            "default_value": [],
-            "layout": "horizontal",
-            "toggle": 0,
-            "return_format": "value",
-            "save_custom": 0
-        },
-        {
             "key": "field_5ba7604b316da",
             "label": "Attendance",
             "name": "attendance",
@@ -239,11 +236,38 @@
                 "id": ""
             },
             "choices": {
-                "atendee_2016": "2016 Attendance",
-                "atendee_2017": "2017 Attendance",
-                "atendee_2018": "2018 Attendance",
-                "atendee_2019": "2019 Attendance",
-                "atendee_2020": "2020 Attendence"
+                "atendee_2016": "2016",
+                "atendee_2017": "2017",
+                "atendee_2018": "2018",
+                "atendee_2019": "2019",
+                "atendee_2020": "2020"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "horizontal",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_5ba75fbd316d9",
+            "label": "Sponsorship",
+            "name": "sponsorship_year",
+            "type": "checkbox",
+            "instructions": "If this attendee was a sponsor, please set for which year.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "sponsor_2016": "2016",
+                "sponsor_2017": "2017",
+                "sponsor_2018": "2018",
+                "sponsor_2019": "2019",
+                "sponsor_2020": "2020"
             },
             "allow_custom": 0,
             "default_value": [],
@@ -270,5 +294,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1537695916
+    "modified": 1537699478
 }
