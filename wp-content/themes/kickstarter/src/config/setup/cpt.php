@@ -10,16 +10,16 @@ use PostTypes\PostType;
 class cpt {
 
     public function __construct() {
-        // $this->portfolio();
+         $this->portfolio();
     }
 
     public function portfolio() {
 
         $names = array(
-            'name'     => 'portfolio',
-            'singular' => 'Portfolio',
-            'plural'   => 'Portfolio',
-            'slug'     => 'our-work',
+            'name'     => 'Atendees',
+            'singular' => 'Atendee',
+            'plural'   => 'Atendees',
+            'slug'     => 'attendees',
         );
 
         $portfolio = new PostType($names);

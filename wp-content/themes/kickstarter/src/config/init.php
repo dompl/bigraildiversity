@@ -62,7 +62,7 @@ class init {
         /**
          * Theme setup - Custom post types
          */
-        // new cpt();
+        new cpt();
 
         /**
          * Disable plugins on local developmebt
