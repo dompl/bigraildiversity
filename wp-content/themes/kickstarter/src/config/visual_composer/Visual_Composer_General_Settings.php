@@ -11,6 +11,8 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       add_action('vc_before_init', array($this, 'vc_remove_elements'));                  // remove unwanted visual composer elements
       add_action('vc_before_init', array($this, 'vc_disable_front'));                    // remove fron end editor
       add_action('vc_before_init', array($this, 'set_visual_composer_template_folder')); // add template folder
+      add_filter('acf/load_field/key=field_5ba7604b316da', array(&$this, 'acf_load_dates'));
+      add_filter('acf/load_field/key=field_5ba75fbd316d9', array(&$this, 'acf_load_dates'));
     }
 
     public function replace_brackets_with_tags($field = '') {
@@ -136,6 +138,33 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       }
 
       return $space;
+    }
+
+    public function acf_load_years() {
+      return range(2016, (date('Y') + 1));
+    }
+
+    public function years() {
+      $years = array();
+      foreach ($this->acf_load_years() as $year) {
+        $years[$year] = $year;
+      }
+      return $years;
+    }
+
+    public function acf_load_dates($field) {
+
+      $field['choices'] = array();
+      $years            = $this->acf_load_years();
+
+      foreach ($this->acf_load_years() as $choice) {
+
+        $value                     = $years[0];
+        $label                     = $years[0];
+        $field['choices'][$value]  = $label;
+        $field['choices'][$choice] = $choice;
+      }
+      return $field;
     }
 
     /* Ser visual composer template foldee */

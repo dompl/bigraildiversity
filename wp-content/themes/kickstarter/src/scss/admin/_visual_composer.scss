@@ -94,14 +94,14 @@
     p {
         font-size: 11px!important;
         text-align: right;
-        padding-right:15px;
+        padding-right: 15px;
     }
     &.vc_space_below, &.vc_space_above {
         &:before {
             position: absolute;
             font-size: 11px;
             right: 0px;
-            top:1px;
+            top: 1px;
         }
     }
     &.vc_space_below {

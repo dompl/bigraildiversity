@@ -77,18 +77,16 @@ if ( ! class_exists('VC_Element_Blank')) {
       // $href = vc_build_link( $href ); // Build Link
       // $content = wpb_js_remove_wpautop($content, true); // Content
       // $text              = $this->replace_brackets_with_tags($text);
+      $item              = '';
       $animation_classes = $this->getCSSAnimation($animation);
       $custom_class      = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
       $custom_id         = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
 
-      ob_start()?>
-      <?php echo $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : ''; ?>
-       <!-- Content goes here -->
-       <?php echo $custom_class || $custom_id ? '</div>' : ''; ?>
-       <?php
+      $item .= $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : '';
+      $item .= '<div class="' . $this->pixels_class($align, 'align') . ' ' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
 
-      $item = ob_get_contents();
-      ob_end_clean();
+      $item .= '</div>';
+      $item .= $custom_class || $custom_id ? '</div>' : '';
 
       return $item;
     }

@@ -147,7 +147,7 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
         'type'        => 'dropdown',
         'holder'      => 'div',
         'class'       => "vc_label vc_space vc_space_$param_name",
-        'heading'     => __('Space ' . $param_name , 'TEXT_DOMAIN'),
+        'heading'     => __('Space ' . $param_name, 'TEXT_DOMAIN'),
         'param_name'  => 'space_' . $param_name,
         'group'       => __('Spaces', 'TEXT_DOMAIN'),
         'value'       => $this->vertical_space(),
@@ -167,6 +167,60 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
         'group'       => __('Spaces', 'TEXT_DOMAIN'),
         'value'       => array(__('Prevent', 'TEXT_DOMAIN') => true),
         'description' => __('Prevent space from reducing it size on mobile/tablet devices', 'TEXT_DOMAIN'),
+        'std'         => false,
+      );
+    }
+
+    /**
+     * Slider settings
+     * ---
+     */
+    public function slider_items_per_show() {
+      return array(
+        'type'        => 'dropdown',
+        'holder'      => 'div',
+        'class'       => 'vc_hidden',
+        'admin_label' => false,
+        'heading'     => __('Slides count', 'TEXT_DOMAIN'),
+        'param_name'  => 'slides_count',
+        'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
+        'value'       => array(1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6),
+        'description' => __('How many slides would you like to show in slider.', 'TEXT_DOMAIN'),
+        'std'         => 1,
+      );
+    }
+
+    public function slider_display_navigation() {
+      return array(
+        'type'        => 'checkbox',
+        'holder'      => 'div',
+        'class'       => 'vc_hidden',
+        'admin_label' => false,
+        'heading'     => __('Slider navigation', 'TEXT_DOMAIN'),
+        'param_name'  => 'slider_navigation',
+        'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
+        'value'       => array(
+          __('Display dots', 'TEXT_DOMAIN')   => 'dots',
+          __('Display arrows', 'TEXT_DOMAIN') => 'arrows',
+        ),
+        'description' => __('What type of navigation would you like to show in slider?', 'TEXT_DOMAIN'),
+        'std'         => 'dots',
+      );
+    }
+
+    public function slider_autoplay() {
+      return array(
+        'type'        => 'checkbox',
+        'holder'      => 'div',
+        'class'       => 'vc_hidden',
+        'admin_label' => false,
+        'heading'     => __('Autoplay', 'TEXT_DOMAIN'),
+        'param_name'  => 'slider_autoplay',
+        'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
+        'value'       => array(
+          __('Activate autoplay', 'TEXT_DOMAIN') => 'autoplay',
+        ),
+        'description' => __('What type of navigation would you like to show in slider?', 'TEXT_DOMAIN'),
         'std'         => false,
       );
     }
