@@ -175,53 +175,89 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
      * Slider settings
      * ---
      */
-    public function slider_items_per_show() {
+    public function slick_slider_settings() {
       return array(
-        'type'        => 'dropdown',
-        'holder'      => 'div',
-        'class'       => 'vc_hidden',
-        'admin_label' => false,
-        'heading'     => __('Slides count', 'TEXT_DOMAIN'),
-        'param_name'  => 'slides_count',
-        'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
-        'value'       => array(1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6),
-        'description' => __('How many slides would you like to show in slider.', 'TEXT_DOMAIN'),
-        'std'         => 1,
-      );
-    }
-
-    public function slider_display_navigation() {
-      return array(
-        'type'        => 'checkbox',
-        'holder'      => 'div',
-        'class'       => 'vc_hidden',
-        'admin_label' => false,
-        'heading'     => __('Slider navigation', 'TEXT_DOMAIN'),
-        'param_name'  => 'slider_navigation',
-        'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
-        'value'       => array(
-          __('Display dots', 'TEXT_DOMAIN')   => 'dots',
-          __('Display arrows', 'TEXT_DOMAIN') => 'arrows',
+        array(
+          'type'        => 'dropdown',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'admin_label' => false,
+          'heading'     => __('Slides to show', 'TEXT_DOMAIN'),
+          'param_name'  => 'slides_to_show',
+          'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
+          'value'       => array(1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6),
+          'description' => __('How many slides would you like to show in slider.', 'TEXT_DOMAIN'),
+          'std'         => 1,
         ),
-        'description' => __('What type of navigation would you like to show in slider?', 'TEXT_DOMAIN'),
-        'std'         => 'dots',
-      );
-    }
-
-    public function slider_autoplay() {
-      return array(
-        'type'        => 'checkbox',
-        'holder'      => 'div',
-        'class'       => 'vc_hidden',
-        'admin_label' => false,
-        'heading'     => __('Autoplay', 'TEXT_DOMAIN'),
-        'param_name'  => 'slider_autoplay',
-        'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
-        'value'       => array(
-          __('Activate autoplay', 'TEXT_DOMAIN') => 'autoplay',
+        array(
+          'type'        => 'dropdown',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'admin_label' => false,
+          'heading'     => __('Slides to scroll', 'TEXT_DOMAIN'),
+          'param_name'  => 'slides_to_scroll',
+          'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
+          'value'       => array(1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6),
+          'description' => __('How many slides would you like to scroll on one click', 'TEXT_DOMAIN'),
+          'std'         => 1,
         ),
-        'description' => __('What type of navigation would you like to show in slider?', 'TEXT_DOMAIN'),
-        'std'         => false,
+        array(
+          'type'        => 'checkbox',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'admin_label' => false,
+          'heading'     => __('Slider center mode', 'TEXT_DOMAIN'),
+          'param_name'  => 'slider_center_mode',
+          'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
+          'value'       => array(
+            __('Yes', 'TEXT_DOMAIN') => true,
+          ),
+          'description' => __('Run center mode in slider', 'TEXT_DOMAIN'),
+          'std'         => false,
+        ),
+        array(
+          'type'        => 'checkbox',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'admin_label' => false,
+          'heading'     => __('Slider infnite mode', 'TEXT_DOMAIN'),
+          'param_name'  => 'slider_infinite',
+          'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
+          'value'       => array(
+            __('Activate infinite mode', 'TEXT_DOMAIN') => true,
+          ),
+          'description' => __('If active your slides will scroll in an infinite loop.', 'TEXT_DOMAIN'),
+          'std'         => true,
+        ),
+        array(
+          'type'        => 'checkbox',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'admin_label' => false,
+          'heading'     => __('Slider navigation', 'TEXT_DOMAIN'),
+          'param_name'  => 'slider_navigation',
+          'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
+          'value'       => array(
+            __('Display dots', 'TEXT_DOMAIN')   => 'dots',
+            __('Display arrows', 'TEXT_DOMAIN') => 'arrows',
+          ),
+          'description' => __('What type of navigation would you like to show in slider?', 'TEXT_DOMAIN'),
+          'std'         => 'dots',
+        ),
+        array(
+          'type'        => 'checkbox',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'admin_label' => false,
+          'heading'     => __('Autoplay', 'TEXT_DOMAIN'),
+          'param_name'  => 'slider_autoplay',
+          'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
+          'value'       => array(
+            __('Activate autoplay', 'TEXT_DOMAIN') => true,
+          ),
+          'description' => __('What type of navigation would you like to show in slider?', 'TEXT_DOMAIN'),
+          'std'         => true,
+        ),
       );
     }
   }

@@ -58,15 +58,20 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
           'description' => __('Display company names under the logos', 'TEXT_DOMAIN'),
           'std'         => false,
         ),
-        $this->slider_items_per_show(),
-        $this->slider_display_navigation(),
-        $this->slider_autoplay(),
+        // $this->slider_items_per_show(),
+        // $this->slider_display_navigation(),
+        // $this->slider_autoplay(),
         $this->param_space('above'),
         $this->param_space('below'),
         $this->prevent_space_on_mobile(),
         $this->param_additional_id('custom_id'),
         $this->param_additional_class('custom_class'),
       );
+
+      foreach ($this->slick_slider_settings() as $value) {
+        $params[] = $value;
+      }
+
       return $params;
     }
 
@@ -96,16 +101,19 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
     public function VC_Sponsors_Slider_shortcode_callback($atts, $content = null) {
 
       extract(shortcode_atts(array(
-        'type'              => 'sponsorship_year',
-        'year'              => date('Y'),
-        'company'           => false,
-        'slides_count'      => 1,
-        'slider_navigation' => 'dots',
-        'slider_autoplay'   => false,
-        'space_above'       => __('None', 'TEXT_DOMAIN'),
-        'space_below'       => __('None', 'TEXT_DOMAIN'),
-        'custom_class'      => '',
-        'custom_id'         => '',
+        'type'               => 'sponsorship_year',
+        'year'               => date('Y'),
+        'company'            => false,
+        'slides_to_show'     => '1',
+        'slides_to_scroll'   => '1',
+        'slider_center_mode' => false,
+        'slider_infinite'    => true,
+        'slider_autoplay'    => true,
+        'slider_navigation'  => 'dots',
+        'space_above'        => __('None', 'TEXT_DOMAIN'),
+        'space_below'        => __('None', 'TEXT_DOMAIN'),
+        'custom_class'       => '',
+        'custom_id'          => '',
       ), $atts));
 
       $years = explode(',', $year);
@@ -135,7 +143,17 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
 
       if ($posts) {
 
-        $item .= '<div class="sponsor-atendee-slider"><ul class="list-inline">';
+        wp_enqueue_script('ks-slick-js', get_template_directory_uri() . '/js/x-slick.js', array('jquery'), '1.6.11', true);
+
+        $slick_settings = '';
+        $slick_settings .= '"slidesToShow": ' . $slides_to_show . ', ';
+        $slick_settings .= '"slidesToScroll": ' . $slides_to_scroll . ', ';
+        $slick_settings .= '"centerMode": ' . ($slider_center_mode ? 'true, ' : 'false, ');
+        $slick_settings .= '"infinite": ' . ($slider_infinite ? 'true, ' : 'false, ');
+        $slick_settings .= '"autoplay": ' . ($slider_autoplay ? 'true' : 'false');
+        // $slick_settings .= '"slider_navigation": ' . $slider_navigation . ', ';
+        //
+        $item .= '<div class="sponsor-atendee-slider"><ul class="list-inline sponsor-slider slick-equal" data-slick=\'{'.$slick_settings.'}\'>';
 
         foreach ($posts as $post) {
 
@@ -144,12 +162,12 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
 
           if ($logo) {
 
-            $item .= sprintf('<li><a href="%s" title="%s"><div class="logo"><img src="%s" alt="%s"></div>%s</a></li>',
+            $item .= sprintf('<li><div class="logo"><a href="%1$s" title="%2$s"><img data-lazy="%3$s" alt="%4$s"></a></div>%5$s</li>',
               esc_url(get_permalink($id)),
               __('Find out more about', 'TEXT_DOMAIN') . ' ' . esc_html(get_the_title($id)),
-              wpimage('img=' . (int) $logo . '&h=100&retina=false&crop=false'),
+              wpimage('img=' . (int) $logo . '&h=200&w=150&retina=false&crop=false'),
               esc_html(get_the_title($id)) . ' ' . __('logo', 'TEXT_DOMAIN'),
-               $company ? '<span class="company-name">' . esc_html(get_the_title($id)) . '</span>' : ''
+              $company ? '<span class="company-name">' . esc_html(get_the_title($id)) . '</span>' : ''
             );
 
           }

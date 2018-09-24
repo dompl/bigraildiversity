@@ -1,0 +1,45 @@
+/*  ********************************************************
+ *   Sponsor atendees slider
+ *  ********************************************************
+ */
+
+.sponsor-atendee-slider {
+    li {
+        display: flex!important;
+        text-align: center; // flex-direction:row;
+        height: 100%;
+        flex-direction: column;
+        .logo {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            text-align: center;
+            a {
+              display:block;
+              width: 100%;
+              text-align: center;
+              img {
+                display:inline-block;
+              }
+            }
+        }
+        span {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: color(gray-light);
+        }
+    }
+    .slick-track {
+        display: flex;
+        .slick-slide {
+            display: flex;
+            height: auto;
+            align-items: center; //optional
+            justify-content: center; //optional
+            >div {
+                display: flex;
+                height: 100%;
+            }
+        }
+    }
+}

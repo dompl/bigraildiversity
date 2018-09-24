@@ -65,6 +65,7 @@ module.exports = {
             jquery: ['jquery'],
             footer: ['footer'],
             header: ['header'],
+            slick: ['slick'],
             lightgallery: ['lightgallery'],
         },
         chunks: {
@@ -79,6 +80,10 @@ module.exports = {
             header: [
                 src + 'js/lib/fittextjs.js',
                 src + 'js/header.js',
+            ],
+            slick: [
+                modules + 'slick-carousel/slick/slick.js', // https://github.com/kenwheeler/slick/,
+                src + 'js/slick.js',
             ],
             footer: [
                 modules + 'jquery-pjax/jquery.pjax.js',
