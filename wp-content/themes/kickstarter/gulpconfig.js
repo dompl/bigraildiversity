@@ -67,6 +67,7 @@ module.exports = {
             header: ['header'],
             slick: ['slick'],
             lightgallery: ['lightgallery'],
+            visual_composer: ['visual_composer'],
         },
         chunks: {
             jquery: [
@@ -76,6 +77,9 @@ module.exports = {
             lightgallery: [
                 src + 'js/lib/lightgallery.js', // https://github.com/sachinchoolur/lightGallery
                 src + 'js/lightgallery.js',
+            ],
+            visual_composer: [
+                src + 'js/visual_composer.js',
             ],
             header: [
                 src + 'js/lib/fittextjs.js',

@@ -13,6 +13,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       add_action('vc_before_init', array($this, 'set_visual_composer_template_folder')); // add template folder
       add_filter('acf/load_field/key=field_5ba7604b316da', array(&$this, 'acf_load_dates'));
       add_filter('acf/load_field/key=field_5ba75fbd316d9', array(&$this, 'acf_load_dates'));
+      add_filter('acf/load_field/key=field_5bab12baf0b41', array(&$this, 'acf_load_dates'));
     }
 
     public function replace_brackets_with_tags($field = '') {
@@ -47,7 +48,10 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
     }
 
     // Visual Composer Icon
-    public function icon() {
+    public function icon( $icon = false ) {
+      if ( $icon != false ) {
+          return get_template_directory_uri() . '/img/vc/icons/' . $icon;
+      }
       return get_template_directory_uri() . '/img/theme/vc_icon.png';
     }
 
@@ -164,6 +168,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
         $field['choices'][$value]  = $label;
         $field['choices'][$choice] = $choice;
       }
+      $field['default_value'] = date('Y');
       return $field;
     }
 

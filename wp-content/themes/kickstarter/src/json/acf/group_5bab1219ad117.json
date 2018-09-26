@@ -1,0 +1,90 @@
+{
+    "key": "group_5bab1219ad117",
+    "title": "Winners List",
+    "fields": [
+        {
+            "key": "field_5bab1224f0b3f",
+            "label": "Add Winners",
+            "name": "add_winners",
+            "type": "repeater",
+            "instructions": "Winners have to be added in the following format:<strong>company name|team name|score<\/strong> per each line comma separated. Example : BOMBARDIER\/TFL|OFF THE RAILS|279<br \/>\r\nThe order does not matter but it is important to have the 3 values separated with pipe <strong>|<\/strong>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5bab129df0b40",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Winner",
+            "sub_fields": [
+                {
+                    "key": "field_5bab129df0b40",
+                    "label": "Winner",
+                    "name": "winner_data",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5bab12baf0b41",
+                    "label": "Winner year",
+                    "name": "winner_year",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "2016": 2016,
+                        "2017": 2017,
+                        "2018": 2018,
+                        "2019": 2019
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "default_value": "2018",
+                    "layout": "horizontal",
+                    "return_format": "value",
+                    "save_other_choice": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "winnters-list"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1537938961
+}

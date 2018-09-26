@@ -33,47 +33,53 @@
       @if $filename == chevron-down {
         $char: "\E002";
       }
-      @if $filename == chevron-up {
+      @if $filename == chevron-left {
         $char: "\E003";
       }
-      @if $filename == envelope-bold {
+      @if $filename == chevron-right {
         $char: "\E004";
       }
-      @if $filename == envelope {
+      @if $filename == chevron-up {
         $char: "\E005";
       }
-      @if $filename == facebook {
+      @if $filename == envelope-bold {
         $char: "\E006";
       }
-      @if $filename == menu-close {
+      @if $filename == envelope {
         $char: "\E007";
       }
-      @if $filename == menu-indicator-down {
+      @if $filename == facebook {
         $char: "\E008";
       }
-      @if $filename == menu-indicator-left {
+      @if $filename == menu-close {
         $char: "\E009";
       }
-      @if $filename == menu-indicator-right {
+      @if $filename == menu-indicator-down {
         $char: "\E00A";
       }
-      @if $filename == menu-indicator-up {
+      @if $filename == menu-indicator-left {
         $char: "\E00B";
       }
-      @if $filename == phone-bold {
+      @if $filename == menu-indicator-right {
         $char: "\E00C";
       }
-      @if $filename == phone {
+      @if $filename == menu-indicator-up {
         $char: "\E00D";
       }
-      @if $filename == quotes {
+      @if $filename == phone-bold {
         $char: "\E00E";
       }
-      @if $filename == star {
+      @if $filename == phone {
         $char: "\E00F";
       }
-      @if $filename == twitter {
+      @if $filename == quotes {
         $char: "\E010";
+      }
+      @if $filename == star {
+        $char: "\E011";
+      }
+      @if $filename == twitter {
+        $char: "\E012";
       }
 
     @return $char;
@@ -96,6 +102,12 @@
   }
   .icon-chevron-down {
     @include icon(chevron-down);
+  }
+  .icon-chevron-left {
+    @include icon(chevron-left);
+  }
+  .icon-chevron-right {
+    @include icon(chevron-right);
   }
   .icon-chevron-up {
     @include icon(chevron-up);

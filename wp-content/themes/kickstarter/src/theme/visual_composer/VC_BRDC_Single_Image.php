@@ -132,7 +132,7 @@ if ( ! class_exists('VC_BRDC_Single_Image')) {
           'base'              => 'VC_BRDC_Single_Image_shortcode',
           'class'             => '',
           'category'          => $this->tab_category(),
-          'icon'              => $this->icon(),
+          'icon'              => $this->icon('icon-image.svg'),
           'description'       => __($description, 'TEXT_DOMAIN'),
           'admin_enqueue_css' => $this->admin_css(),
           'params'            => $this->params(),

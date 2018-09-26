@@ -36,8 +36,8 @@ class init {
          * $acf->init('page_title=Porfolio Settings&menu_title=Settings&menu_slug=portfolio-settings&parent_slug=edit.php?post_type=page');
          */
         $acf = new acf();
-
         $acf->init();
+        $acf->init('page_title='. get_bloginfo('name').' Winners List&menu_title=Winners List&menu_slug=winnters-list&parent_slug=edit.php?post_type=atendees');
 
         /**
          * Initiate navigation

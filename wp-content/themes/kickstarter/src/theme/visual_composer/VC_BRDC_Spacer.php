@@ -50,7 +50,7 @@ if ( ! class_exists('VC_BRDC_Spacer')) {
           'base'              => 'VC_BRDC_Spacer_shortcode',
           'class'             => '',
           'category'          => $this->tab_category(),
-          'icon'              => $this->icon(),
+          'icon'              => $this->icon('icon-spacer.svg'),
           'description'       => __($description, 'TEXT_DOMAIN'),
           'admin_enqueue_css' => $this->admin_css(),
           'params'            => $this->params(),

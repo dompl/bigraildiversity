@@ -1,0 +1,26 @@
+/*  ********************************************************
+ *   General styles for slick slider
+ *  ********************************************************
+ */
+
+.slick-slider {
+    visibility: hidden;
+    &.slick-initialized {
+        visibility: visible;
+    }
+    i {
+        cursor: pointer!important;
+        @include scut-center-transform(y);
+        font-size: 26px;
+        color: color(gray-light);
+        &:hover {
+            color: color(brand);
+        }
+        &.icon-chevron-left {
+            left: -20px;
+        }
+        &.icon-chevron-right {
+            right: -20px;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+/*  ********************************************************
+ *   General styles for slick slider
+ *  ********************************************************
+ */
+body {
+  display: none;
+}
+.slick-slider {
+    visibility: hidden;
+    &.slick-initialized {
+        visibility: visible;
+    }
+    i {
+        display: none!important;
+        @include scut-center-transform(x);
+    }
+}

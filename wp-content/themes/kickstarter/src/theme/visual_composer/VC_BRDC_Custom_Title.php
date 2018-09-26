@@ -69,7 +69,7 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
           'base'              => 'VC_BRDC_Custom_Title_shortcode',
           'class'             => '',
           'category'          => $this->tab_category(),
-          'icon'              => $this->icon(),
+          'icon'              => $this->icon('icon-title.svg'),
           'description'       => __($description, 'TEXT_DOMAIN'),
           'admin_enqueue_css' => $this->admin_css(),
           'params'            => $this->params(),
