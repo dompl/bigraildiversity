@@ -1,9 +1,9 @@
 {
-    "key": "group_5ba75e0452d72",
+    "key": "group_5bab6243853cd",
     "title": "General Informations",
     "fields": [
         {
-            "key": "field_5ba75e5e979f2",
+            "key": "field_5bab6243898bb",
             "label": "Information",
             "name": "",
             "type": "tab",
@@ -19,7 +19,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_5ba75e71979f3",
+            "key": "field_5bab6243898ca",
             "label": "Website URL",
             "name": "attendee_website_url",
             "type": "url",
@@ -35,7 +35,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_5ba75e3e979f1",
+            "key": "field_5bab6243898d6",
             "label": "Add logo",
             "name": "add_attendee_logo",
             "type": "image",
@@ -59,7 +59,7 @@
             "mime_types": ""
         },
         {
-            "key": "field_5ba75eb9979f5",
+            "key": "field_5bab6243898e1",
             "label": "Short description",
             "name": "attendee_short_description",
             "type": "wysiwyg",
@@ -78,7 +78,7 @@
             "delay": 0
         },
         {
-            "key": "field_5ba75edf979f6",
+            "key": "field_5bab6243898ec",
             "label": "Testimonial",
             "name": "",
             "type": "tab",
@@ -94,7 +94,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_5ba76cbf86c73",
+            "key": "field_5bab6243898f7",
             "label": "Testomonials",
             "name": "testimonials_list",
             "type": "repeater",
@@ -113,7 +113,7 @@
             "button_label": "Add Testimonial",
             "sub_fields": [
                 {
-                    "key": "field_5ba76cdc86c74",
+                    "key": "field_5bab6243a2aa5",
                     "label": "Person",
                     "name": "person",
                     "type": "text",
@@ -132,7 +132,7 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_5ba76ced86c75",
+                    "key": "field_5bab6243a2ab6",
                     "label": "Company",
                     "name": "company",
                     "type": "text",
@@ -151,7 +151,7 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_5ba76cf486c76",
+                    "key": "field_5bab6243a2ac2",
                     "label": "Testimonial",
                     "name": "testimonial",
                     "type": "wysiwyg",
@@ -170,7 +170,7 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_5ba76d661634e",
+                    "key": "field_5bab6243a2acd",
                     "label": "Display in sliders",
                     "name": "in_slider",
                     "type": "true_false",
@@ -191,7 +191,7 @@
             ]
         },
         {
-            "key": "field_5ba75fb2316d8",
+            "key": "field_5bab624389902",
             "label": "Settings",
             "name": "",
             "type": "tab",
@@ -207,7 +207,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_5ba7604b316da",
+            "key": "field_5bab62438990d",
             "label": "Attendance",
             "name": "attendance_year",
             "type": "checkbox",
@@ -226,33 +226,9 @@
                 "2019": 2019
             },
             "allow_custom": 0,
-            "default_value": "2018",
-            "layout": "horizontal",
-            "toggle": 0,
-            "return_format": "value",
-            "save_custom": 0
-        },
-        {
-            "key": "field_5ba75fbd316d9",
-            "label": "Sponsorship",
-            "name": "sponsorship_year",
-            "type": "checkbox",
-            "instructions": "If this attendee was a sponsor, please set for which year.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "2016": 2016,
-                "2017": 2017,
-                "2018": 2018,
-                "2019": 2019
-            },
-            "allow_custom": 0,
-            "default_value": "2018",
+            "default_value": [
+                2018
+            ],
             "layout": "horizontal",
             "toggle": 0,
             "return_format": "value",
@@ -264,7 +240,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "atendees"
+                "value": "supportingorgs"
             }
         ]
     ],
@@ -275,6 +251,6 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
-    "description": "Attendees",
-    "modified": 1537957894
+    "description": "Supporting Organisation",
+    "modified": 1537958679
 }

@@ -28,11 +28,12 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
           'admin_label' => true,
           'group'       => __('Content', 'TEXT_DOMAIN'),
           'value'       => array(
-            __('Sponsors', 'TEXT_DOMAIN')  => 'sponsorship_year',
-            __('Attendees', 'TEXT_DOMAIN') => 'attendance_year',
+            __('Sponsors', 'TEXT_DOMAIN')                 => 'atendees_sponsor',
+            __('Attendees', 'TEXT_DOMAIN')                => 'atendees',
+            __('Supporting Organisations', 'TEXT_DOMAIN') => 'supportingorgs',
           ),
           'description' => __('Select type of content', 'TEXT_DOMAIN'),
-          'std'         => 'sponsorship_year',
+          'std'         => 'atendees',
         ),
         array(
           'type'        => 'checkbox',
@@ -43,7 +44,7 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
           'admin_label' => true,
           'group'       => __('Content', 'TEXT_DOMAIN'),
           'value'       => $this->years(),
-          'description' => __('Select for which ear you want to show the sponsors/atendees.', 'TEXT_DOMAIN'),
+          'description' => __('Select for which ear you want to show the sponsors/atendees/supporting organisations.', 'TEXT_DOMAIN'),
           'std'         => date('Y'),
         ),
         array(
@@ -81,8 +82,8 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
      */
     public function VC_Sponsors_Slider_section_map() {
 
-      $title       = 'Sponsors/Attendees Slider'; // Shortcode description
-      $description = 'Add sponsors slider';       // Shortcode Name
+      $title       = 'Logo Slider';                               // Shortcode description
+      $description = 'Sponsors/Attendees/Supporting Orgs Slider'; // Shortcode Name
 
       vc_map(
         array(
@@ -101,7 +102,7 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
     public function VC_Sponsors_Slider_shortcode_callback($atts, $content = null) {
 
       extract(shortcode_atts(array(
-        'type'               => 'sponsorship_year',
+        'type'               => 'atendees',
         'year'               => (int) date('Y'),
         'company'            => false,
         'slides_to_show'     => '1',
@@ -118,23 +119,26 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
 
       $years = explode(',', $year);
 
+      $type = str_replace('_sponsor', '', $type);
+
+      $key_type = ($type == 'atendees' || $type == 'supportingorgs') ? 'attendance_year' : 'sponsorship_year';
       /* Build query args */
       $args = array(
-        'post_type'      => 'atendees',
-        'posts_per_page' => - 1,
+        'post_type'      => $type,
+        'posts_per_page' => -1,
         'meta_query'     => array(
           // 'relation' => 'AND',
           array(
-            'key'     => (string) $type,
+            'key'     => (string) $key_type,
             'value'   => (int) $years,
             'compare' => '!=',
           ),
         ),
       );
 
-      $item              = '';
-      $custom_class      = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
-      $custom_id         = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
+      $item         = '';
+      $custom_class = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
+      $custom_id    = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
 
       $item .= $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : '';
 
@@ -152,7 +156,7 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
         $slick_settings .= '"autoplay": ' . ($slider_autoplay ? 'true' : 'false');
         // $slick_settings .= '"slider_navigation": ' . $slider_navigation . ', ';
         //
-        $item .= '<div class="sponsor-atendee-slider"><ul class="list-inline sponsor-slider slick-equal" data-slick=\'{'.$slick_settings.'}\'>';
+        $item .= '<div class="sponsor-atendee-slider"><ul class="list-inline sponsor-slider slick-equal" data-slick=\'{' . $slick_settings . '}\'>';
 
         foreach ($posts as $post) {
 
@@ -166,7 +170,7 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
               __('Find out more about', 'TEXT_DOMAIN') . ' ' . esc_html(get_the_title($id)),
               wpimage('img=' . (int) $logo . '&h=200&w=150&retina=false&crop=false'),
               esc_html(get_the_title($id)) . ' ' . __('logo', 'TEXT_DOMAIN'),
-              $company ? '<span class="company-name">' . esc_html(get_the_title($id)) . '</span>' : ''
+              $company ? '<span class="company-name company-name-att">' . esc_html(get_the_title($id)) . '</span>' : ''
             );
 
           }

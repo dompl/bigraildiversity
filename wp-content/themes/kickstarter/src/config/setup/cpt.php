@@ -9,25 +9,53 @@ use PostTypes\PostType;
 
 class cpt {
 
-    public function __construct() {
-         $this->portfolio();
-    }
+  public function __construct() {
+    $this->attendees();
+    $this->supporting_organisations();
+  }
 
-    public function portfolio() {
+  public function attendees() {
 
-        $names = array(
-            'name'     => 'Atendees',
-            'singular' => 'Atendee',
-            'plural'   => 'Atendees',
-            'slug'     => 'attendees',
-        );
+    $options = array(
+      'has_archive' => false,
+    );
 
-        $portfolio = new PostType($names);
+    $names = array(
+      'name'     => 'Atendees',
+      'singular' => 'Atendee',
+      'plural'   => 'Atendees',
+      'slug'     => 'attendees',
+    );
 
-        $portfolio->icon('dashicons-image-filter');
+    $attendees = new PostType($names, $options);
 
-        return $portfolio->register();
+    $attendees->icon('dashicons-image-filter');
 
-    }
+    return $attendees->register();
+  }
+
+  public function supporting_organisations() {
+
+    $options = array(
+      'has_archive' => false,
+    );
+
+    $names = array(
+      'name'     => 'Supporting Orgs',
+      'singular' => 'Supporting Organisation',
+      'plural'   => 'Supporting Orgs',
+      'slug'     => 'supporting-organisations',
+    );
+
+    $supporting_organisations = new PostType($names, $options);
+
+    $supporting_organisations->labels(array(
+      'add_new_item' => __('Add new Supporting Organisation'),
+    ));
+
+    $supporting_organisations->icon('dashicons-image-filter');
+
+    return $supporting_organisations->register();
+  }
 
 }

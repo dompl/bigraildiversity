@@ -131,14 +131,13 @@ if ( ! class_exists('VC_BRDC_Winners_Table')) {
       $winners = array_reverse($winner);
 
       $item              = '';
-      $animation_classes = $this->getCSSAnimation($animation);
       $custom_class      = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
       $custom_id         = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
 
       if ($winners) {
         $i = 1;
         $item .= $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : '';
-        $item .= '<div class="' . $this->pixels_class($align, 'align') . ' ' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
+        $item .= '<div class="' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
 
         $item .= '<ul class="winners-table list-unstyled">';
         $item .= '<li><span class="item item-company header">' . __('Company Name', 'TEXT_DOMAIN') . '</span><span class="item item-team-name header">' . __('Team Name', 'TEXT_DOMAIN') . '</span><span class="item item-score header">' . __('Score', 'TEXT_DOMAIN') . '</span></li>';
