@@ -108,6 +108,7 @@ if ( ! class_exists('VC_BRDC_Simple_Button')) {
         'space_above'  => __('None', 'TEXT_DOMAIN'),
         'space_below'  => __('None', 'TEXT_DOMAIN'),
         'align'        => __('Left', 'TEXT_DOMAIN'),
+        'size'         => 'medium',
         'custom_class' => '',
         'custom_id'    => '',
       ), $atts));

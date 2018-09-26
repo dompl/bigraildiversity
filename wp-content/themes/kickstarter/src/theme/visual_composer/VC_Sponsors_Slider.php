@@ -102,7 +102,7 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
 
       extract(shortcode_atts(array(
         'type'               => 'sponsorship_year',
-        'year'               => date('Y'),
+        'year'               => (int) date('Y'),
         'company'            => false,
         'slides_to_show'     => '1',
         'slides_to_scroll'   => '1',
@@ -121,19 +121,18 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
       /* Build query args */
       $args = array(
         'post_type'      => 'atendees',
-        'posts_per_page' => -1,
+        'posts_per_page' => - 1,
         'meta_query'     => array(
           // 'relation' => 'AND',
           array(
-            'key'     => $type,
-            'value'   => $years,
+            'key'     => (string) $type,
+            'value'   => (int) $years,
             'compare' => '!=',
           ),
         ),
       );
 
       $item              = '';
-      $animation_classes = $this->getCSSAnimation($animation);
       $custom_class      = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
       $custom_id         = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
 
