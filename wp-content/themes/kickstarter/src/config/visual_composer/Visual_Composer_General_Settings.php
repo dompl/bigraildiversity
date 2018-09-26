@@ -14,6 +14,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       add_filter('acf/load_field/key=field_5ba7604b316da', array(&$this, 'acf_load_dates'));
       add_filter('acf/load_field/key=field_5ba75fbd316d9', array(&$this, 'acf_load_dates'));
       add_filter('acf/load_field/key=field_5bab12baf0b41', array(&$this, 'acf_load_dates'));
+      add_filter('acf/load_field/key=field_5bab7866eaea2', array(&$this, 'acf_load_sponsors'));
     }
 
     public function replace_brackets_with_tags($field = '') {
@@ -34,6 +35,33 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       }
     }
 
+    public function acf_load_sponsors( $field ) {
+
+      $args = array(
+        'post_type'      => array('atendees', 'supportingorgs'),
+        'posts_per_page' => -1,
+      );
+
+      $posts = get_posts($args);
+
+      if ( ! $posts) {
+        return;
+      }
+
+      $field['choices'] = array();
+
+      foreach ($posts as $post) {
+
+        $value = $post->ID;
+        $label = get_the_title($post->ID) . ' (' . (get_post_type($post->ID) == 'atendees' ? 'Attendees' : 'Supporting Orgs') . ')';
+
+        $field['choices'][$value] = $label;
+
+      }
+      wp_reset_postdata();
+      return $field;
+    }
+
     /* Disable front end */
     public function vc_disable_front() {
       if ( ! defined('WPB_VC_VERSION')) {
@@ -48,9 +76,9 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
     }
 
     // Visual Composer Icon
-    public function icon( $icon = false ) {
-      if ( $icon != false ) {
-          return get_template_directory_uri() . '/img/vc/icons/' . $icon;
+    public function icon($icon = false) {
+      if ($icon != false) {
+        return get_template_directory_uri() . '/img/vc/icons/' . $icon;
       }
       return get_template_directory_uri() . '/img/theme/vc_icon.png';
     }
@@ -145,7 +173,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
     }
 
     public function acf_load_years() {
-      return range(2016, (date('Y') + 1));
+      return range(2017, (date('Y') + 1));
     }
 
     public function years() {

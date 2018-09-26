@@ -1,7 +1,7 @@
 <?php
 /**
  * Create Custom Post type
- * Documentation : https://github.com/jjgrainger/PostTypes
+ * Documentation : https://github.com/jjgrainger/PostTypeshttps://github.com/jjgrainger/PostTypes
  * ---
  */
 namespace config\setup;
@@ -10,14 +10,43 @@ use PostTypes\PostType;
 class cpt {
 
   public function __construct() {
+    $this->challenges();
     $this->attendees();
     $this->supporting_organisations();
+  }
+
+  public function challenges() {
+
+    $options = array(
+      'has_archive'   => false,
+      'menu_position' => 5,
+    );
+
+    $names = array(
+      'name'     => 'Challenges',
+      'singular' => 'Challenge',
+      'plural'   => 'Challenges',
+      'slug'     => 'challenges',
+    );
+
+    $challenges = new PostType($names, $options);
+
+    $challenges->labels(
+      array(
+        'add_new_item' => __('Add new Challenge'),
+      )
+    );
+
+    $challenges->icon('dashicons-image-filter');
+
+    return $challenges->register();
   }
 
   public function attendees() {
 
     $options = array(
-      'has_archive' => false,
+      'has_archive'   => false,
+      'menu_position' => 5,
     );
 
     $names = array(
@@ -37,7 +66,8 @@ class cpt {
   public function supporting_organisations() {
 
     $options = array(
-      'has_archive' => false,
+      'has_archive'   => false,
+      'menu_position' => 5,
     );
 
     $names = array(
