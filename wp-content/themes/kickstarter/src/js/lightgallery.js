@@ -15,7 +15,8 @@
             share: false,
             thumbnail: false,
             getCaptionFromTitleOrAlt: false,
-            selector : '.jig-link'
+            selector : $(this).find('a'),
+            // galleryItems = $(this.s.selectWithin).find(this.s.selector);
         });
     });
 }(jQuery));

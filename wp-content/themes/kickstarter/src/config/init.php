@@ -3,6 +3,7 @@
 namespace config;
 
 use config\plugins\acf;
+use config\plugins\Stephanis_Custom_Content_Width;
 use config\setup\enqueue;
 use config\setup\defaults;
 use config\setup\cpt;
@@ -58,6 +59,7 @@ class init {
 
         /* Visual Composer */
         new Visual_Composer_Initiator();
+        new Stephanis_Custom_Content_Width();
 
         /**
          * Theme setup - Custom post types

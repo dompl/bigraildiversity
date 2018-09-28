@@ -58,63 +58,56 @@ if ( ! class_exists('VC_BRDC_Image_Gallery')) {
           'std'         => true,
         ),
         array(
-          'type'        => 'numeric',
+          'type'        => 'checkbox',
           'holder'      => 'div',
           'class'       => 'vc_hidden',
-          'heading'     => __('Target row height', 'TEXT_DOMAIN'),
-          'param_name'  => 'row_height',
+          'heading'     => __('Images order', 'TEXT_DOMAIN'),
+          'param_name'  => 'orderby',
           'group'       => __('Gellery settings', 'TEXT_DOMAIN'),
-          'value'       => '',
-          'description' => __('Desired row height in pixels, e.g. 200 (without px).', 'TEXT_DOMAIN'),
+          'value'       => array(__('Display images in random order', 'TEXT_DOMAIN') => 'rand'),
+          'description' => __('Display gallery in random order.', 'TEXT_DOMAIN'),
           'dependency'  => array(
             'element' => 'gallery_type',
             'value'   => array('mosaic'),
           ),
-        ),
-        array(
-          'type'        => 'numeric',
-          'holder'      => 'div',
-          'class'       => 'vc_hidden',
-          'heading'     => __('Spacing between the thumbnails', 'TEXT_DOMAIN'),
-          'param_name'  => 'thumbs_spacing',
-          'group'       => __('Gellery settings', 'TEXT_DOMAIN'),
-          'value'       => 5,
-          'description' => __('Enter a number like 0, 1, 4 or 10 (without px).', 'TEXT_DOMAIN'),
-          'dependency'  => array(
-            'element' => 'gallery_type',
-            'value'   => array('mosaic'),
-          ),
-        ),
-        array(
-          'type'        => 'textfield',
-          'holder'      => 'div',
-          'class'       => 'vc_hidden',
-          'heading'     => __('Thumbnail aspect ratio', 'TEXT_DOMAIN'),
-          'param_name'  => 'aspect_ratio',
-          'group'       => __('Gellery settings', 'TEXT_DOMAIN'),
-          'value'       => '',
-          'description' => __('To crop your thumbs enter a ratio: 1, 1:1 or 1/1 (square) 2.35:1 or 16:9 (wide), 4/3, 1.5 or similar - to lock it, look at the next setting.', 'TEXT_DOMAIN'),
-          'dependency'  => array(
-            'element' => 'gallery_type',
-            'value'   => array('mosaic'),
-          ),
+          'std'         => false,
         ),
         array(
           'type'        => 'dropdown',
           'holder'      => 'div',
           'class'       => 'vc_hidden',
-          'heading'     => __('Disable cropping', 'TEXT_DOMAIN'),
-          'param_name'  => 'disable_cropping',
+          'heading'     => __('Image size', 'TEXT_DOMAIN'),
+          'param_name'  => 'size',
           'group'       => __('Gellery settings', 'TEXT_DOMAIN'),
           'value'       => array(
-            __('Default', 'TEXT_DOMAIN')                                                 => 'default',
-            __('No, respect the row height and allow some cropping.', 'TEXT_DOMAIN')     => 'no',
-            __('Yes, lock aspect ratio and use 50px minimum row height.', 'TEXT_DOMAIN') => 'yes',
-            __('Yes, but only on mobile devices.', 'TEXT_DOMAIN')                        => 'yes-mobile',
-            __('Gellery settings', 'TEXT_DOMAIN')                                        => '',
+            __('Thumbnail', 'TEXT_DOMAIN') => 'thumbnail',
+            __('Medium', 'TEXT_DOMAIN')    => 'medium',
+            __('Large', 'TEXT_DOMAIN')     => 'large',
+            __('Full', 'TEXT_DOMAIN')      => 'Full',
           ),
-          'description' => __('Use this to avoid cropping or to lock your selected aspect ratio.', 'TEXT_DOMAIN'),
-          'std'         => 'default',
+          'description' => __('Gallery images size', 'TEXT_DOMAIN'),
+          'std'         => 'thumbnail',
+          'dependency'  => array(
+            'element' => 'gallery_type',
+            'value'   => array('mosaic'),
+          ),
+        ),
+
+        array(
+          'type'        => 'dropdown',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'heading'     => __('Gallery type', 'TEXT_DOMAIN'),
+          'param_name'  => 'type',
+          'group'       => __('Gellery settings', 'TEXT_DOMAIN'),
+          'value'       => array(
+            __('Thumbnail Grid', 'TEXT_DOMAIN') => 'thumbnails',
+            __('Tiled Mosaic', 'TEXT_DOMAIN')   => 'rectangular',
+            __('Square Tiles', 'TEXT_DOMAIN')   => 'square',
+            __('Circles', 'TEXT_DOMAIN')        => 'circle',
+          ),
+          'description' => __('Set gallery type', 'TEXT_DOMAIN'),
+          'std'         => 'rectangular',
           'dependency'  => array(
             'element' => 'gallery_type',
             'value'   => array('mosaic'),
@@ -185,14 +178,6 @@ if ( ! class_exists('VC_BRDC_Image_Gallery')) {
         'images'              => '',
         'gallery_type'        => 'mosaic',
         'open_in_lightbox'    => true,
-        'initially_load'      => '',
-        'row_height'          => '',
-        'thumbs_spacing'      => '',
-        'aspect_ratio'        => '',
-        'disable_cropping'    => 'default',
-        'load_more'           => 'off',
-        'load_more_text'      => '',
-        'load_more_offset'    => '',
         'space_above'         => __('None', 'TEXT_DOMAIN'),
         'space_below'         => __('None', 'TEXT_DOMAIN'),
         'custom_class'        => '',
@@ -204,11 +189,17 @@ if ( ! class_exists('VC_BRDC_Image_Gallery')) {
         'slider_autoplay'     => true,
         'slider_navigation'   => 'dots',
         'slides_image_height' => 100,
+        'orderby'             => false,
+        'size'                => 'thumbnail',
+        'size'                => 'thumbnail',
+        'type'                => 'rectangular',
+        'link'                => 'file',
       ), $atts));
 
-      // $href = vc_build_link( $href ); // Build Link
-      // $content = wpb_js_remove_wpautop($content, true); // Content
-      // $text              = $this->replace_brackets_with_tags($text);
+      if ( ! $images) {
+        return;
+      }
+
       $item         = '';
       $custom_class = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
       $custom_id    = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
@@ -227,17 +218,13 @@ if ( ! class_exists('VC_BRDC_Image_Gallery')) {
          * Mosaic Gallery
          * ---
          */
-        //$item .= do_shortcode("[justified_image_grid ids=$images thumbs_spacing=5 row_height=400 caption=off mobile_caption=off caption_match_width=no overlay=off mobile_overlay=off lightbox=custom aspect_ratio=16:9 disable_cropping=no load_more=scroll load_more_text=wefdfs load_more_count_text=none load_more_offset=2 load_more_mobile=scroll initially_load=2]");
-        $row_height     = $row_height != '' ? ' row_height=' . $row_height : '';
-        $thumbs_spacing = $thumbs_spacing != '' ? ' thumbs_spacing=' . ($thumbs_spacing != '0' ? $thumbs_spacing - 2 : $thumbs_spacing) : ' thumbs_spacing=0';
-        // $load_more_offset = $load_more_offset != '' ? ' load_more_offset=' . $load_more_offset : '';
-        $aspect_ratio     = $aspect_ratio != '' ? ' aspect_ratio=' . $aspect_ratio : '';
-        $disable_cropping = $disable_cropping != 'default' ? ' disable_cropping=' . $disable_cropping : '';
-        // $load_more        = $load_more != 'default' ? ' load_more=' . $load_more : 'load_more=off';
-        // $load_more_text   = $load_more_text != '' ? ' load_more_text=' . $load_more_text : __('Load more', 'TEXT_DOMAIN');
-        // $load_more_offset = $load_more_offset != '' ? ' load_more_offset=' . $load_more_offset : '';
+        $settings = $orderby ? " orderby=$orderby " : '';
+        $settings .= $size ? " size=$size " : '';
+        $settings .= $type ? " type=$type " : '';
+        $settings .=   $open_in_lightbox ? " link=file " : 'link=none ';
 
-        $item .= do_shortcode('[justified_image_grid ids=' . $images . ' caption=off mobile_caption=off caption_match_width=no overlay=off mobile_overlay=off lightbox=custom load_more=scroll load_more_count_text=none load_more_auto_width=off ' . $aspect_ratio . $thumbs_spacing . $load_more_offset . $row_height . $disable_cropping . ']');
+        $item .= do_shortcode('[gallery ' . $settings . ' ids="' . $images . '"]');
+        // $item .= do_shortcode('[gallery <span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">﻿</span> data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" ' . $settings . ' ids="' . $images . '"]');
 
       } else {
 
