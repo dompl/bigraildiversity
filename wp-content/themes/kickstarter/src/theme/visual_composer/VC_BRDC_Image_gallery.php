@@ -3,13 +3,13 @@
 namespace theme\visual_composer;
 use config\visual_composer\Visual_Composer_General_Settings;
 
-if ( ! class_exists('VC_BRDC_Image_gallery')) {
+if ( ! class_exists('VC_BRDC_Image_Gallery')) {
 
-  class VC_BRDC_Image_gallery extends Visual_Composer_General_Settings {
+  class VC_BRDC_Image_Gallery extends Visual_Composer_General_Settings {
 
     public function __construct() {
-      add_action('vc_before_init', array(&$this, 'VC_BRDC_Image_gallery_section_map'));
-      add_shortcode('VC_BRDC_Image_gallery_shortcode', array(&$this, 'VC_BRDC_Image_gallery_shortcode_callback'));
+      add_action('vc_before_init', array(&$this, 'VC_BRDC_Image_Gallery_section_map'));
+      add_shortcode('VC_BRDC_Image_Gallery_shortcode', array(&$this, 'VC_BRDC_Image_Gallery_shortcode_callback'));
     }
 
     /**
@@ -160,7 +160,7 @@ if ( ! class_exists('VC_BRDC_Image_gallery')) {
      * Visual Composer Map
      * ---
      */
-    public function VC_BRDC_Image_gallery_section_map() {
+    public function VC_BRDC_Image_Gallery_section_map() {
 
       $title       = 'Image Gallery';            // Shortcode description
       $description = 'Add custom image gallery'; // Shortcode Name
@@ -168,7 +168,7 @@ if ( ! class_exists('VC_BRDC_Image_gallery')) {
       vc_map(
         array(
           'name'              => __($title, 'TEXT_DOMAIN'),
-          'base'              => 'VC_BRDC_Image_gallery_shortcode',
+          'base'              => 'VC_BRDC_Image_Gallery_shortcode',
           'class'             => '',
           'category'          => $this->tab_category(),
           'icon'              => $this->icon('icon-gallery.svg'),
@@ -179,7 +179,7 @@ if ( ! class_exists('VC_BRDC_Image_gallery')) {
       );
     }
 
-    public function VC_BRDC_Image_gallery_shortcode_callback($atts, $content = null) {
+    public function VC_BRDC_Image_Gallery_shortcode_callback($atts, $content = null) {
 
       extract(shortcode_atts(array(
         'images'              => '',
