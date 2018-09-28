@@ -8,6 +8,9 @@
     &.slick-initialized {
         visibility: visible;
     }
+    * {
+        outline: none!important;
+    }
     i {
         cursor: pointer!important;
         @include scut-center-transform(y);
@@ -21,6 +24,84 @@
         }
         &.icon-chevron-right {
             right: -20px;
+        }
+    }
+}
+@mixin dots($color: brand) {
+    button {
+        background-color: color($color);
+        &:hover {
+            background-color: darken(color($color), 5%);
+        }
+    }
+}
+.slick-dots {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    li {
+        display: inline-block!important;
+        margin: 0 4px;
+        float: none;
+        /*
+          &:nth-child(1) ,&:nth-child(12),&:nth-child(24)  {  @include dots(purple-medium); }
+        &:nth-child(2) ,&:nth-child(13),&:nth-child(25)  {  @include dots(red); }
+        &:nth-child(3) ,&:nth-child(14),&:nth-child(26)  {  @include dots(red); }
+        &:nth-child(4) ,&:nth-child(15),&:nth-child(27)  {  @include dots(purple-light); }
+        &:nth-child(5) ,&:nth-child(6) ,&:nth-child(28) {  @include dots(green); }
+        &:nth-child(6) ,&:nth-child(17),&:nth-child(30)  {  @include dots(orange); }
+        &:nth-child(7) ,&:nth-child(19),&:nth-child(31)  {  @include dots(purple-dark); }
+        &:nth-child(8) ,&:nth-child(20),&:nth-child(32)  {  @include dots(blue-light); }
+        &:nth-child(9) ,&:nth-child(21),&:nth-child(33)  {  @include dots(wir); }
+        &:nth-child(10),&:nth-child(22),&:nth-child(34)   {  @include dots(blue-dark); }
+        &:nth-child(11),&:nth-child(23),&:nth-child(35)   {  @include dots(pink); }
+         */
+        &:nth-child(1), &:nth-child(12), &:nth-child(24) {
+            @include dots(purple-medium);
+        }
+        &:nth-child(2), &:nth-child(13), &:nth-child(25) {
+            @include dots(red);
+        }
+        &:nth-child(3), &:nth-child(14), &:nth-child(26) {
+            @include dots(red);
+        }
+        &:nth-child(4), &:nth-child(15), &:nth-child(27) {
+            @include dots(purple-light);
+        }
+        &:nth-child(5), &:nth-child(6), &:nth-child(28) {
+            @include dots(green);
+        }
+        &:nth-child(6), &:nth-child(17), &:nth-child(30) {
+            @include dots(orange);
+        }
+        &:nth-child(7), &:nth-child(19), &:nth-child(31) {
+            @include dots(purple-dark);
+        }
+        &:nth-child(8), &:nth-child(20), &:nth-child(32) {
+            @include dots(blue-light);
+        }
+        &:nth-child(9), &:nth-child(21), &:nth-child(33) {
+            @include dots(wir);
+        }
+        &:nth-child(10), &:nth-child(22), &:nth-child(34) {
+            @include dots(blue-dark);
+        }
+        &:nth-child(11), &:nth-child(23), &:nth-child(35) {
+            @include dots(pink);
+        }
+        button {
+            height: 14px;
+            width: 10px;
+            line-height: 14px;
+            text-align: center;
+            border: none!important;
+            background: color(brand);
+            text-indent: -99999px;
+            border-radius: 50%;
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 }

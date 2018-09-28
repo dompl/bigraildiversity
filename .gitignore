@@ -96,3 +96,4 @@ SERVER_DATA.txt
 /sitemap.xml.gz
 config.codekit3
 wp-content/plugins/ks-resize-img/
+wp-content/plugins/justified-image-grid/cache/

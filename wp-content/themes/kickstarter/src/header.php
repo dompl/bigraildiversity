@@ -1,5 +1,4 @@
 <?php echo config\theme\header::header('UA-71890077-1'); // Pass GA code ?>
-<?php echo do_shortcode( '[justified_image_grid ids=328,326,324,284,282,280,278,275 caption=off mobile_caption=off caption_match_width=no overlay=off mobile_overlay=off lightbox=custom]' ); ?>
 <header id="header" class="top-header">
   <div id="top">
     <div class="container flex-center">

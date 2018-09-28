@@ -17,6 +17,7 @@ if ( ! class_exists('Visual_Composer_Custom_Elements')) {
       vc_add_shortcode_param('image_sizer_width', array(&$this, 'image_sizer_width_callback'));
       vc_add_shortcode_param('image_sizer_height', array(&$this, 'image_sizer_height_callback'));
       vc_add_shortcode_param('custom_radio', array(&$this, 'custom_radio_callback'));
+      vc_add_shortcode_param('numeric', array(&$this, 'numeric_callback'));
     }
 
     /**
@@ -35,6 +36,19 @@ if ( ! class_exists('Visual_Composer_Custom_Elements')) {
         }
       }
       return $output;
+    }
+
+      /* Numeric field */
+    public function numeric_callback($settings, $value) {
+
+      $param = sprintf('<div class="vc_numeric"><input name="%1$s" type="number" class="wpb_vc_param_value wpb-textinput %1$s %2$s_field" value="%3$s" /></div>',
+        esc_attr($settings['param_name']),
+        esc_attr($settings['type']),
+        esc_attr($value)
+      );
+
+      return $param;
+
     }
 
     /* Image height */
