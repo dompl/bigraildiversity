@@ -173,7 +173,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
     }
 
     public function acf_load_years() {
-      return range(2017, (date('Y') + 1));
+      return range(2016, (date('Y') + 1));
     }
 
     public function years() {
