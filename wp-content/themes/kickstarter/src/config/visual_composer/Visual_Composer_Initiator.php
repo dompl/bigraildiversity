@@ -18,6 +18,7 @@ use theme\visual_composer\VC_BRDC_Simple_Button;
 use theme\visual_composer\VC_Sponsors_Slider;
 use theme\visual_composer\VC_BRDC_Winners_Table;
 use theme\visual_composer\VC_BRDC_Image_Gallery;
+use theme\visual_composer\VC_BRDC_Bullet_List;
 
 if ( ! class_exists('Visual_Composer_General_Settings')) {
 
@@ -53,6 +54,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       new VC_Sponsors_Slider();
       new VC_BRDC_Winners_Table();
       new VC_BRDC_Image_Gallery();
+      new VC_BRDC_Bullet_List();
 
     }
   }

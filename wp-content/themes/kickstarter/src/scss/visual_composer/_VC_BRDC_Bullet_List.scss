@@ -1,0 +1,74 @@
+/*  ********************************************************
+ *   Bullet list.
+ *  ********************************************************
+ */
+
+@mixin list( $color:brand) {
+    &:before {
+        color: color($color);
+    }
+}
+.bullet-list {
+    &.columns-3 {
+        column-count: 3;
+        @include breakpoint(max-width $md) {
+            column-count: 2;
+        }
+        @include breakpoint(max-width $sm) {
+            column-count: 1;
+        }
+    }
+    &.columns-2 {
+        column-count: 2;
+        @include breakpoint(max-width $sm) {
+            column-count: 1;
+        }
+    }
+    li {
+        margin-top: 10px;
+        line-height: 1.44;
+        @include icon('circle') {
+            float: left;
+            font-size: 12px;
+            margin-top: 1.5px;
+            width: 20px;
+        }
+        span {
+            float: left;
+            width: calc(100% - 20px);
+        }
+        &:nth-child(1), &:nth-child(12), &:nth-child(24) {
+            @include list(purple-medium);
+        }
+        &:nth-child(2), &:nth-child(13), &:nth-child(25) {
+            @include list(red);
+        }
+        &:nth-child(3), &:nth-child(14), &:nth-child(26) {
+            @include list(red);
+        }
+        &:nth-child(4), &:nth-child(15), &:nth-child(27) {
+            @include list(purple-light);
+        }
+        &:nth-child(5), &:nth-child(6), &:nth-child(28) {
+            @include list(green);
+        }
+        &:nth-child(6), &:nth-child(17), &:nth-child(30) {
+            @include list(orange);
+        }
+        &:nth-child(7), &:nth-child(19), &:nth-child(31) {
+            @include list(purple-dark);
+        }
+        &:nth-child(8), &:nth-child(20), &:nth-child(32) {
+            @include list(blue-light);
+        }
+        &:nth-child(9), &:nth-child(21), &:nth-child(33) {
+            @include list(wir);
+        }
+        &:nth-child(10), &:nth-child(22), &:nth-child(34) {
+            @include list(blue-dark);
+        }
+        &:nth-child(11), &:nth-child(23), &:nth-child(35) {
+            @include list(pink);
+        }
+    }
+}

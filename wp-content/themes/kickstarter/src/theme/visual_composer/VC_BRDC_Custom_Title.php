@@ -35,7 +35,7 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
           'param_name'  => 'text',
           'group'       => __('Content', 'TEXT_DOMAIN'),
           'value'       => __('Add title here', 'TEXT_DOMAIN'),
-          'description' => __('Add title text', 'TEXT_DOMAIN'),
+          'description' => __('Add title text. You can use variable <strong>%title%</strong> to display page title.', 'TEXT_DOMAIN'),
         ),
         $this->param_text_tags('tag'),
         $this->param_additional_id('custom_id'),
@@ -95,7 +95,10 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
         'prevent'      => false,
       ), $atts));
 
+      wp_reset_query();
+
       $text              = $this->replace_brackets_with_tags($text);
+      $text              = str_replace('%title%', strtoupper(the_title_attribute('echo=0&post=' . get_the_ID())), $text);
       $animation_classes = $this->getCSSAnimation($animation);
       $custom_class      = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
       $custom_id         = $custom_id != '' ? ' id="' . $custom_id . '"' : false;

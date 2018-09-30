@@ -42,44 +42,47 @@
       @if $filename == chevron-up {
         $char: "\E005";
       }
-      @if $filename == envelope-bold {
+      @if $filename == circle {
         $char: "\E006";
       }
-      @if $filename == envelope {
+      @if $filename == envelope-bold {
         $char: "\E007";
       }
-      @if $filename == facebook {
+      @if $filename == envelope {
         $char: "\E008";
       }
-      @if $filename == menu-close {
+      @if $filename == facebook {
         $char: "\E009";
       }
-      @if $filename == menu-indicator-down {
+      @if $filename == menu-close {
         $char: "\E00A";
       }
-      @if $filename == menu-indicator-left {
+      @if $filename == menu-indicator-down {
         $char: "\E00B";
       }
-      @if $filename == menu-indicator-right {
+      @if $filename == menu-indicator-left {
         $char: "\E00C";
       }
-      @if $filename == menu-indicator-up {
+      @if $filename == menu-indicator-right {
         $char: "\E00D";
       }
-      @if $filename == phone-bold {
+      @if $filename == menu-indicator-up {
         $char: "\E00E";
       }
-      @if $filename == phone {
+      @if $filename == phone-bold {
         $char: "\E00F";
       }
-      @if $filename == quotes {
+      @if $filename == phone {
         $char: "\E010";
       }
-      @if $filename == star {
+      @if $filename == quotes {
         $char: "\E011";
       }
-      @if $filename == twitter {
+      @if $filename == star {
         $char: "\E012";
+      }
+      @if $filename == twitter {
+        $char: "\E013";
       }
 
     @return $char;
@@ -111,6 +114,9 @@
   }
   .icon-chevron-up {
     @include icon(chevron-up);
+  }
+  .icon-circle {
+    @include icon(circle);
   }
   .icon-envelope-bold {
     @include icon(envelope-bold);

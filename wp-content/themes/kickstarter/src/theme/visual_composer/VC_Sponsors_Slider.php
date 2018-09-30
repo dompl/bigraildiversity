@@ -2,6 +2,7 @@
 
 namespace theme\visual_composer;
 use config\visual_composer\Visual_Composer_General_Settings;
+use WP_Query;
 
 if ( ! class_exists('VC_Sponsors_Slider')) {
 
@@ -44,7 +45,7 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
           'admin_label' => true,
           'group'       => __('Content', 'TEXT_DOMAIN'),
           'value'       => $this->years(),
-          'description' => __('Select for which ear you want to show the sponsors/atendees/supporting organisations.', 'TEXT_DOMAIN'),
+          'description' => __('Select for which year you want to show the logos.', 'TEXT_DOMAIN'),
           'std'         => date('Y'),
         ),
         array(
@@ -119,22 +120,27 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
 
       $years = explode(',', $year);
 
+      $key_type = ($type == 'atendees' || $type == 'supportingorgs') ? 'attendance_year' : 'sponsorship_year';
+
       $type = str_replace('_sponsor', '', $type);
 
-      $key_type = ($type == 'atendees' || $type == 'supportingorgs') ? 'attendance_year' : 'sponsorship_year';
+      $year = explode(',', $year);
       /* Build query args */
       $args = array(
-        'post_type'      => $type,
+        'post_type'      => 'atendees',
         'posts_per_page' => -1,
-        'meta_query'     => array(
-          // 'relation' => 'AND',
-          array(
-            'key'     => (string) $key_type,
-            'value'   => (int) $years,
-            'compare' => '!=',
-          ),
-        ),
       );
+
+      foreach ($year as $y) {
+        $args['meta_query']['relation'] = 'OR';
+        $args['meta_query'][]           = array(
+          'key'     => 'sponsorship_year',
+          'value'   => $y,
+          'compare' => 'LIKE',
+        );
+      }
+
+      // print_r($args);
 
       $item         = '';
       $custom_class = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
@@ -142,9 +148,9 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
 
       $item .= $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : '';
 
-      $posts = get_posts($args);
+      $the_query = new WP_Query($args);
 
-      if ($posts) {
+      if ($the_query->have_posts()) {
 
         wp_enqueue_script('ks-slick-js', get_template_directory_uri() . '/js/x-slick.js', array('jquery'), '1.6.11', true);
 
@@ -158,10 +164,11 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
         //
         $item .= '<div class="sponsor-atendee-slider"><ul class="list-inline sponsor-slider slick-equal" data-slick=\'{' . $slick_settings . '}\'>';
 
-        foreach ($posts as $post) {
+        while ($the_query->have_posts()) {$the_query->the_post();
 
-          $id   = $post->ID;
-          $logo = get_field('add_attendee_logo', $id);
+          $id    = get_the_ID();
+          $logo  = get_field('add_attendee_logo', $id);
+          $year1 = get_field('sponsorship_year', $id);
 
           if ($logo) {
 
@@ -180,7 +187,7 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
         $item .= '</ul></div>';
 
       }
-      wp_reset_postdata();
+      wp_reset_query();
       $item .= $custom_class || $custom_id ? '</div>' : '';
 
       return $item;
