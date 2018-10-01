@@ -13,7 +13,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
       add_shortcode('VC_BRDC_Challanges_shortcode', array(&$this, 'VC_BRDC_Challanges_shortcode_callback'));
     }
 
-    public function settings() {
+    public function challanges_settings() {
 
       return array(
         'simgh'  => 150, // Sponsor image height (in pixlex)
@@ -158,7 +158,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
       if ($batch_year != '' && in_array('batch', $challange) && get_field('new_batch', $post_id) == true) {
         $batch = wp_upload_dir()['baseurl'] . '/2018/10/batch-' . $batch_year . '.png';
         $sponsor_batch .= sprintf('<div class="spon-batch"><img ' . $image_source . '="%s" alt="%s"></div>',
-          wpimage('img=' . $batch . '&h=' . $this->settings()['sbatch'] . '&w=' . $this->settings()['sbatch']),
+          wpimage('img=' . $batch . '&h=' . $this->challanges_settings()['sbatch'] . '&w=' . $this->challanges_settings()['sbatch']),
           sprintf('%s challange is new in %s', the_title_attribute('echo=0&post=' . $post_id), $batch_year)
         );
       }
@@ -168,15 +168,17 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
         $sponsor .= sprintf('<div class="sp-logo"><a href="%s" title="%s"><img ' . $image_source . '="%s" alt="%s"/></a>%s</div>',
           esc_url(get_the_permalink($post_id)),
           sprintf(__('Discover more about %s challange.', 'TEXT_DOMAIN'), the_title_attribute('echo=0&post=' . $post_id)),
-          wpimage('img=' . $sponsor_image . '&h=' . $this->settings()['lh'] . '&w=' . $this->settings()['lw'] . '&retina=' . ($display = 'columns' ? true : false) . '&crop=false'),
+          wpimage('img=' . $sponsor_image . '&h=' . $this->challanges_settings()['lh'] . '&w=' . $this->challanges_settings()['lw'] . '&retina=' . ($display = 'columns' ? true : false) . '&crop=false'),
           the_title_attribute('echo=0&post=' . $sponsor_id) . ' ' . __('logo', 'TEXT_DOMAIN'),
           $sponsor_batch
         );
       }
       // Challange image
       if (in_array('image', $challange) && get_field('challenge_main_image', $post_id) != '') {
-        $image = wpimage('img=' . get_field('challenge_main_image', $post_id) . '&h=' . $this->settings()['simgh'] . '&w=' . $this->settings()['simgw'] . '&crop=true&retina=' . ($display = 'columns' ? true : false));
-        $sponsor .= sprintf('<div class="challange-image"><a href="" title=""><img ' . $image_source . '="%s" /></a></div>',
+        $image = wpimage('img=' . get_field('challenge_main_image', $post_id) . '&h=' . $this->challanges_settings()['simgh'] . '&w=' . $this->challanges_settings()['simgw'] . '&crop=true&retina=' . ($display = 'columns' ? true : false));
+        $sponsor .= sprintf('<div class="challange-image"><a href="%s" title=""><img ' . $image_source . '="%s" /></a></div>',
+          esc_url(get_the_permalink($post_id)),
+          sprintf(__('Discover more about %s challange.', 'TEXT_DOMAIN'), the_title_attribute('echo=0&post=' . $post_id)),
           $image
         );
       }
