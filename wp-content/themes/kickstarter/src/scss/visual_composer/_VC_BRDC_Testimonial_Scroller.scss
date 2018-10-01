@@ -1,0 +1,29 @@
+/*  ********************************************************
+ *   Testimonials Slider
+ *  ********************************************************
+ */
+
+.testimonial-slider {
+    text-align: center;
+    .full-tesimonial {
+        font-style: italic;
+        font-size:14px;
+        @include breakpoint(min-width $md) {
+            margin: 0 10px;
+        }
+    }
+    .company, .name, .logo, .website {
+        margin-top: spacer(.5);
+        font-weight: $font-weight-bold;
+        text-align: center;
+    }
+    .website {
+        text-transform: uppercase;
+    }
+    .logo {
+        a {
+            display: inline-block;
+            text-align: center;
+        }
+    }
+}
