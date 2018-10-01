@@ -176,7 +176,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
       // Challange image
       if (in_array('image', $challange) && get_field('challenge_main_image', $post_id) != '') {
         $image = wpimage('img=' . get_field('challenge_main_image', $post_id) . '&h=' . $this->challanges_settings()['simgh'] . '&w=' . $this->challanges_settings()['simgw'] . '&crop=true&retina=' . ($display = 'columns' ? true : false));
-        $sponsor .= sprintf('<div class="challange-image"><a href="%s" title=""><img ' . $image_source . '="%s" /></a></div>',
+        $sponsor .= sprintf('<div class="challange-image"><a href="%s" title="%s"><img ' . $image_source . '="%s" /></a></div>',
           esc_url(get_the_permalink($post_id)),
           sprintf(__('Discover more about %s challange.', 'TEXT_DOMAIN'), the_title_attribute('echo=0&post=' . $post_id)),
           $image
