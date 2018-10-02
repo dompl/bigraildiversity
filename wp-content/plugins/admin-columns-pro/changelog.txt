@@ -1,7 +1,18 @@
 == Changelog ==
 
+= 4.3.8 =
+Release Date: September 25th, 2018
+
+* [Added] Media Column: Post Type
+* [Added] New hook `acp/horizontal_scrolling/enable` to enable horizontal scrolling for a specific overview
+* [Improved] Limit to check for updates once per request (if WP triggers the update check)
+* [Updated] Admin Column Core changes ( Release 3.2.7 )
+    * [Fixed] jQuery noConflict fixes for column settings page
+    * [Improved] Post title column is now always available
+    * [Improved] Disable autoloading for ACP options
+
 = 4.3.7 =
-Release Date: August 21th, 2018
+Release Date: August 21st, 2018
 
 * [Fixed] Fatal error on Taxonomy overview pages when filtering on meta columns
 * [Improved] Re-added Pro features for MS User overview pages

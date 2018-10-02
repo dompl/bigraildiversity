@@ -15,19 +15,19 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin-columns-pro/classes/Layout.php:174, admin-columns-pro/classes/LayoutScreen/Columns.php:527, admin-columns-pro/classes/Column/User/Roles.php:16
+#: admin-columns-pro/classes/Layout.php:174, admin-columns-pro/classes/LayoutScreen/Columns.php:527, admin-columns-pro/classes/Column/User/Roles.php:17
 msgid "Roles"
 msgstr ""
 
-#: admin-columns-pro/classes/Layout.php:181, admin-columns-pro/classes/Settings/Column/CustomFieldType.php:68, admin-columns-pro/classes/Settings/Column/User.php:19
+#: admin-columns-pro/classes/Layout.php:181, admin-columns-pro/classes/Settings/Column/CustomFieldType.php:67, admin-columns-pro/classes/Settings/Column/User.php:19
 msgid "User"
 msgstr ""
 
-#: admin-columns-pro/classes/NetworkAdmin.php:30
+#: admin-columns-pro/classes/NetworkAdmin.php:28
 msgid "Admin Columns Settings"
 msgstr ""
 
-#: admin-columns-pro/classes/NetworkAdmin.php:30, admin-columns-pro/classes/NetworkAdmin.php:57
+#: admin-columns-pro/classes/NetworkAdmin.php:28, admin-columns-pro/classes/NetworkAdmin.php:54
 msgid "Admin Columns"
 msgstr ""
 
@@ -43,89 +43,89 @@ msgstr ""
 msgid "If you have feedback or have found a bug, please report it on <a href=\"%s\" target=\"_blank\">our forum</a>."
 msgstr ""
 
-#: admin-columns-pro/classes/Check/Expired.php:83
+#: admin-columns-pro/classes/Check/Expired.php:88
 msgid "My Account Page"
 msgstr ""
 
-#: admin-columns-pro/classes/Check/Expired.php:86
+#: admin-columns-pro/classes/Check/Expired.php:91
 msgid "Your Admin Columns Pro license has expired on %s. To receive updates, renew your license on the %s."
 msgstr ""
 
-#: admin-columns-pro/classes/Check/Renewal.php:144
+#: admin-columns-pro/classes/Check/Renewal.php:151
 msgid "1 day"
 msgid_plural "%s days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin-columns-pro/classes/Check/Renewal.php:145
+#: admin-columns-pro/classes/Check/Renewal.php:152
 msgid "Renew your license"
 msgstr ""
 
-#: admin-columns-pro/classes/Check/Renewal.php:150
+#: admin-columns-pro/classes/Check/Renewal.php:157
 msgid "Your Admin Columns Pro license will expire in %s. %s before %s to get a %d%% discount!"
 msgstr ""
 
-#: admin-columns-pro/classes/Check/Renewal.php:159
+#: admin-columns-pro/classes/Check/Renewal.php:166
 msgid "Your Admin Columns Pro license will expire in %s. %s before %s to get a discount!"
 msgstr ""
 
-#: admin-columns-pro/classes/Editing/Addon.php:82
+#: admin-columns-pro/classes/Editing/Addon.php:79
 msgid "Invalid item ID."
 msgstr ""
 
-#: admin-columns-pro/classes/Editing/Addon.php:88, admin-columns-pro/classes/Editing/Addon.php:203
+#: admin-columns-pro/classes/Editing/Addon.php:85, admin-columns-pro/classes/Editing/Addon.php:195
 msgid "Invalid list screen."
 msgstr ""
 
-#: admin-columns-pro/classes/Editing/Addon.php:95, admin-columns-pro/classes/Editing/Addon.php:209, admin-columns-pro/classes/Editing/Addon.php:213
+#: admin-columns-pro/classes/Editing/Addon.php:92, admin-columns-pro/classes/Editing/Addon.php:201, admin-columns-pro/classes/Editing/Addon.php:205
 msgid "Invalid column."
 msgstr ""
 
-#: admin-columns-pro/classes/Editing/Addon.php:99
+#: admin-columns-pro/classes/Editing/Addon.php:96
 msgid "Column does not support editing."
 msgstr ""
 
-#: admin-columns-pro/classes/Editing/Addon.php:105
+#: admin-columns-pro/classes/Editing/Addon.php:102
 msgid "User does not have write permissions"
 msgstr ""
 
-#: admin-columns-pro/classes/Editing/Addon.php:282
+#: admin-columns-pro/classes/Editing/Addon.php:273
 msgid "Enable inline editing for Custom Fields. Default is <code>off</code>"
 msgstr ""
 
-#: admin-columns-pro/classes/Editing/Addon.php:285
+#: admin-columns-pro/classes/Editing/Addon.php:276
 msgid "Inline edit will display all the raw values in an editable text field."
 msgstr ""
 
-#: admin-columns-pro/classes/Editing/Addon.php:287
+#: admin-columns-pro/classes/Editing/Addon.php:278
 msgid "Please read <a href='%s'>our documentation</a> if you plan to use these fields."
 msgstr ""
 
-#: admin-columns-pro/classes/Export/Addon.php:72
+#: admin-columns-pro/classes/Export/Addon.php:70
 msgid "Creation of Admin Columns export directory failed. Please make sure that your uploads folder is writable."
 msgstr ""
 
-#: admin-columns-pro/classes/LayoutScreen/Columns.php:43
+#: admin-columns-pro/classes/LayoutScreen/Columns.php:44
 msgid "You can make an editable copy of this set by clicking %s on the right."
 msgstr ""
 
-#: admin-columns-pro/classes/LayoutScreen/Columns.php:96, admin-columns-pro/classes/Admin/Page/ExportImport.php:175
+#: admin-columns-pro/classes/LayoutScreen/Columns.php:97, admin-columns-pro/classes/Admin/Page/ExportImport.php:175
 msgid "Original"
 msgstr ""
 
-#: admin-columns-pro/classes/LayoutScreen/Columns.php:107
+#: admin-columns-pro/classes/LayoutScreen/Columns.php:108
 msgid "Column set not created."
 msgstr ""
 
-#: admin-columns-pro/classes/LayoutScreen/Columns.php:122
+#: admin-columns-pro/classes/LayoutScreen/Columns.php:123
 msgid "Set %s succesfully created."
 msgstr ""
 
-#: admin-columns-pro/classes/LayoutScreen/Columns.php:143
+#: admin-columns-pro/classes/LayoutScreen/Columns.php:144
 msgid "Screen does not exist."
 msgstr ""
 
-#: admin-columns-pro/classes/LayoutScreen/Columns.php:148
+#: admin-columns-pro/classes/LayoutScreen/Columns.php:149
 msgid "Column set %s succesfully deleted."
 msgstr ""
 
@@ -213,7 +213,7 @@ msgstr ""
 msgid "optional"
 msgstr ""
 
-#: admin-columns-pro/classes/LayoutScreen/Columns.php:581, admin-columns-pro/classes/Admin/Page/ExportImport.php:669, admin-columns-pro/classes/Admin/Page/ExportImport.php:769
+#: admin-columns-pro/classes/LayoutScreen/Columns.php:581, admin-columns-pro/classes/Admin/Page/ExportImport.php:682, admin-columns-pro/classes/Admin/Page/ExportImport.php:782
 msgid "Instructions"
 msgstr ""
 
@@ -221,15 +221,15 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: admin-columns-pro/classes/LayoutScreen/Table.php:70, admin-columns-pro/classes/LayoutScreen/Table.php:74
+#: admin-columns-pro/classes/LayoutScreen/Table.php:68, admin-columns-pro/classes/LayoutScreen/Table.php:72
 msgid "Switch View"
 msgstr ""
 
-#: admin-columns-pro/classes/License/API.php:130
+#: admin-columns-pro/classes/License/API.php:129
 msgid "Empty response from API."
 msgstr ""
 
-#: admin-columns-pro/classes/License/Manager.php:143
+#: admin-columns-pro/classes/License/Manager.php:148
 msgid "Licence not active. Enter your license key on <a href='%s'>the settings page</a>."
 msgstr ""
 
@@ -241,75 +241,75 @@ msgstr ""
 msgid "Wrong response from API."
 msgstr ""
 
-#: admin-columns-pro/classes/License/Settings.php:213
+#: admin-columns-pro/classes/License/Settings.php:211
 msgid "Updates"
 msgstr ""
 
-#: admin-columns-pro/classes/License/Settings.php:214
+#: admin-columns-pro/classes/License/Settings.php:212
 msgid "Enter your license code to receive automatic updates."
 msgstr ""
 
-#: admin-columns-pro/classes/License/Settings.php:243
+#: admin-columns-pro/classes/License/Settings.php:240
 msgid "network settings page"
 msgstr ""
 
-#: admin-columns-pro/classes/License/Settings.php:249
+#: admin-columns-pro/classes/License/Settings.php:246
 msgid "The license can be managed on the %s."
 msgstr ""
 
-#: admin-columns-pro/classes/License/Settings.php:268
+#: admin-columns-pro/classes/License/Settings.php:265
 msgid "License has expired on %s"
 msgstr ""
 
-#: admin-columns-pro/classes/License/Settings.php:269, admin-columns-pro/classes/License/Settings.php:275
+#: admin-columns-pro/classes/License/Settings.php:266, admin-columns-pro/classes/License/Settings.php:272
 msgid "Deactivate license"
 msgstr ""
 
-#: admin-columns-pro/classes/License/Settings.php:274
+#: admin-columns-pro/classes/License/Settings.php:271
 msgid "Automatic updates are enabled."
 msgstr ""
 
-#: admin-columns-pro/classes/License/Settings.php:278
+#: admin-columns-pro/classes/License/Settings.php:275
 msgid "License is valid until %s"
 msgstr ""
 
-#: admin-columns-pro/classes/License/Settings.php:285
+#: admin-columns-pro/classes/License/Settings.php:282
 msgid "Enter your license code"
 msgstr ""
 
-#: admin-columns-pro/classes/License/Settings.php:286
+#: admin-columns-pro/classes/License/Settings.php:283
 msgid "Update license"
 msgstr ""
 
-#: admin-columns-pro/classes/License/Settings.php:288
+#: admin-columns-pro/classes/License/Settings.php:285
 msgid "You can find your license key on your %s."
 msgstr ""
 
-#: admin-columns-pro/classes/License/Settings.php:288
+#: admin-columns-pro/classes/License/Settings.php:285
 msgid "account page"
 msgstr ""
 
-#: admin-columns-pro/classes/Sorting/Addon.php:88
+#: admin-columns-pro/classes/Sorting/Addon.php:86
 msgid "Show all results when sorting."
 msgstr ""
 
-#: admin-columns-pro/classes/Sorting/Addon.php:129
+#: admin-columns-pro/classes/Sorting/Addon.php:127
 msgid "Sorting Preferences"
 msgstr ""
 
-#: admin-columns-pro/classes/Sorting/Addon.php:130
+#: admin-columns-pro/classes/Sorting/Addon.php:128
 msgid "This will reset the sorting preference for all users."
 msgstr ""
 
-#: admin-columns-pro/classes/Sorting/Addon.php:144
+#: admin-columns-pro/classes/Sorting/Addon.php:141
 msgid "Reset sorting preferences"
 msgstr ""
 
-#: admin-columns-pro/classes/Sorting/Addon.php:165
+#: admin-columns-pro/classes/Sorting/Addon.php:161
 msgid "All sorting preferences have been reset."
 msgstr ""
 
-#: admin-columns-pro/classes/Table/HorizontalScrolling.php:68
+#: admin-columns-pro/classes/Table/HorizontalScrolling.php:70
 msgid "Horizontal Scrolling"
 msgstr ""
 
@@ -435,131 +435,131 @@ msgid_plural "sets"
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:336
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:339
 msgid "read only"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:667
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:680
 msgid "Results"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:672
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:685
 msgid "Using the PHP export"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:674, admin-columns-pro/classes/Admin/Page/ExportImport.php:754
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:687, admin-columns-pro/classes/Admin/Page/ExportImport.php:767
 msgid "Copy the generated PHP code in the right column"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:675, admin-columns-pro/classes/Admin/Page/ExportImport.php:755
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:688, admin-columns-pro/classes/Admin/Page/ExportImport.php:768
 msgid "Insert the code in your themes functions.php or in your plugin (on the init action)"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:676, admin-columns-pro/classes/Admin/Page/ExportImport.php:756
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:689, admin-columns-pro/classes/Admin/Page/ExportImport.php:769
 msgid "Your columns settings are now loaded from your PHP code instead of from your stored settings!"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:689
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:702
 msgid "Columns"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:690
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:703
 msgid "Select the columns to be exported."
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:713
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:726
 msgid "select all"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:716
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:729
 msgid "deselect all"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:720
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:733
 msgid "Export PHP"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:721, admin-columns-pro/classes/Admin/Page/ExportImport.php:736
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:734, admin-columns-pro/classes/Admin/Page/ExportImport.php:749
 msgid "Download export file"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:725
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:738
 msgid "No stored column settings are found."
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:737
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:750
 msgid "Admin Columns will export to a format compatible with the Admin Columns import functionality."
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:739, admin-columns-pro/classes/Admin/Page/ExportImport.php:752
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:752, admin-columns-pro/classes/Admin/Page/ExportImport.php:765
 msgid "Select the columns you like to export from the list in the left column"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:740
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:753
 msgid "Click the &quot;Download export file&quot; button"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:741
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:754
 msgid "Save the .json-file when prompted"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:742
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:755
 msgid "Go to the Admin Columns import/export page in your other installation"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:743
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:756
 msgid "Select the export .json-file"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:744
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:757
 msgid "Click the &quot;Start import&quot; button"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:745
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:758
 msgid "That's it!"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:749
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:762
 msgid "Export to PHP"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:750
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:763
 msgid "Admin Columns will export PHP code you can directly insert in your plugin or theme."
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:753
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:766
 msgid "Click the &quot;Export to PHP&quot; button"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:766
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:779
 msgid "Import"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:767
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:780
 msgid "Import your Admin Column settings here."
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:772
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:785
 msgid "Import Columns Types"
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:774
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:787
 msgid "Choose a Admin Columns Export file to upload."
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:775
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:788
 msgid "Click upload file and import."
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:776
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:789
 msgid "That's it! You imported settings are now active."
 msgstr ""
 
-#: admin-columns-pro/classes/Admin/Page/ExportImport.php:787
+#: admin-columns-pro/classes/Admin/Page/ExportImport.php:800
 msgid "Upload file and import"
 msgstr ""
 
-#: admin-columns-pro/classes/Column/Comment/PostType.php:16, ac-addon-types/classes/Settings/ChildPostType.php:31, ac-addon-types/classes/Settings/ParentPostType.php:31, admin-columns-pro/classes/Settings/Column/NetworkSite/PostCount.php:32
+#: admin-columns-pro/classes/Column/Comment/PostType.php:16, admin-columns-pro/classes/Column/Media/PostType.php:15, ac-addon-types/classes/Settings/ChildPostType.php:31, ac-addon-types/classes/Settings/ParentPostType.php:31, admin-columns-pro/classes/Settings/Column/NetworkSite/PostCount.php:32
 msgid "Post Type"
 msgstr ""
 
@@ -637,15 +637,15 @@ msgstr[1] ""
 msgid "Latest Comment"
 msgstr ""
 
-#: admin-columns-pro/classes/Column/Post/LinkCount.php:18
+#: admin-columns-pro/classes/Column/Post/LinkCount.php:17
 msgid "Link Count"
 msgstr ""
 
-#: admin-columns-pro/classes/Column/Post/LinkCount.php:37
+#: admin-columns-pro/classes/Column/Post/LinkCount.php:36
 msgid "Internal Links"
 msgstr ""
 
-#: admin-columns-pro/classes/Column/Post/LinkCount.php:38
+#: admin-columns-pro/classes/Column/Post/LinkCount.php:37
 msgid "External Links"
 msgstr ""
 
@@ -667,7 +667,7 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-#: admin-columns-pro/classes/Column/Taxonomy/TaxonomyParent.php:15
+#: admin-columns-pro/classes/Column/Taxonomy/TaxonomyParent.php:14
 msgid "Parent"
 msgstr ""
 
@@ -683,47 +683,47 @@ msgstr ""
 msgid "This will make the column support inline editing."
 msgstr ""
 
-#: admin-columns-pro/classes/Editing/classes/Settings.php:40, admin-columns-pro/classes/Editing/classes/Model/CustomField.php:61
+#: admin-columns-pro/classes/Editing/classes/Settings.php:40, admin-columns-pro/classes/Editing/classes/Model/CustomField.php:59
 msgid "Inline Editing"
 msgstr ""
 
-#: admin-columns-pro/classes/Export/classes/Admin.php:53
+#: admin-columns-pro/classes/Export/classes/Admin.php:52
 msgid "The requested file does not exist."
 msgstr ""
 
-#: admin-columns-pro/classes/Export/classes/Admin.php:69
+#: admin-columns-pro/classes/Export/classes/Admin.php:68
 msgid "The requested file could not be processed."
 msgstr ""
 
-#: admin-columns-pro/classes/Export/classes/Strategy.php:80
+#: admin-columns-pro/classes/Export/classes/Strategy.php:73
 msgid "Invalid value supplied for export counter."
 msgstr ""
 
-#: admin-columns-pro/classes/Export/classes/Strategy.php:85
+#: admin-columns-pro/classes/Export/classes/Strategy.php:78
 msgid "Invalid value supplied for export hash."
 msgstr ""
 
-#: admin-columns-pro/classes/Export/classes/Strategy.php:253
+#: admin-columns-pro/classes/Export/classes/Strategy.php:237
 msgid "Export"
 msgstr ""
 
-#: admin-columns-pro/classes/Export/classes/Strategy.php:254, admin-columns-pro/classes/Export/classes/TableScreenOptions.php:47
+#: admin-columns-pro/classes/Export/classes/Strategy.php:238, admin-columns-pro/classes/Export/classes/TableScreenOptions.php:47
 msgid "Export to CSV"
 msgstr ""
 
-#: admin-columns-pro/classes/Export/classes/Strategy.php:255
+#: admin-columns-pro/classes/Export/classes/Strategy.php:239
 msgid "Exporting current list of items."
 msgstr ""
 
-#: admin-columns-pro/classes/Export/classes/Strategy.php:256
+#: admin-columns-pro/classes/Export/classes/Strategy.php:240
 msgid "Processed {0} of {1} items ({2}%)."
 msgstr ""
 
-#: admin-columns-pro/classes/Export/classes/Strategy.php:257
+#: admin-columns-pro/classes/Export/classes/Strategy.php:241
 msgid "Export completed ({0} items). Your download will start automatically. If this does not happen, you can download the file again: "
 msgstr ""
 
-#: admin-columns-pro/classes/Export/classes/Strategy.php:258
+#: admin-columns-pro/classes/Export/classes/Strategy.php:242
 msgid "Download File"
 msgstr ""
 
@@ -739,11 +739,11 @@ msgstr ""
 msgid "Past dates"
 msgstr ""
 
-#: admin-columns-pro/classes/Filtering/classes/Model.php:167, ac-addon-woocommerce/classes/Filtering/Product/Thumb.php:12
+#: admin-columns-pro/classes/Filtering/classes/Model.php:166, ac-addon-woocommerce/classes/Filtering/Product/Thumb.php:12
 msgid "Without %s"
 msgstr ""
 
-#: admin-columns-pro/classes/Filtering/classes/Model.php:168, ac-addon-woocommerce/classes/Filtering/Product/Thumb.php:13
+#: admin-columns-pro/classes/Filtering/classes/Model.php:167, ac-addon-woocommerce/classes/Filtering/Product/Thumb.php:13
 msgid "Has %s"
 msgstr ""
 
@@ -775,7 +775,7 @@ msgstr ""
 msgid "Loading values"
 msgstr ""
 
-#: admin-columns-pro/classes/Settings/Column/CustomFieldType.php:67
+#: admin-columns-pro/classes/Settings/Column/CustomFieldType.php:66
 msgid "Post"
 msgstr ""
 
@@ -807,15 +807,15 @@ msgstr ""
 msgid "Sorting"
 msgstr ""
 
-#: admin-columns-pro/classes/ThirdParty/bbPress/Addon.php:86
+#: admin-columns-pro/classes/ThirdParty/bbPress/Addon.php:89
 msgid "bbPress"
 msgstr ""
 
-#: admin-columns-pro/classes/ThirdParty/RelatedPosts/Addon.php:29, admin-columns-pro/classes/ThirdParty/RelatedPosts/Column.php:19
+#: admin-columns-pro/classes/ThirdParty/RelatedPosts/Addon.php:29, admin-columns-pro/classes/ThirdParty/RelatedPosts/Column.php:18
 msgid "Related Posts"
 msgstr ""
 
-#: ac-addon-acf/classes/Field/File.php:21
+#: ac-addon-acf/classes/Field/File.php:27
 msgid "Invalid attachment"
 msgstr ""
 
@@ -1023,11 +1023,11 @@ msgstr ""
 msgid "Full Address"
 msgstr ""
 
-#: admin-columns-pro/classes/Editing/classes/Model/CustomField.php:62
+#: admin-columns-pro/classes/Editing/classes/Model/CustomField.php:60
 msgid "Inline Editing for Custom Fields is not enabled. Enable inline editing for Custom Fields on the %s."
 msgstr ""
 
-#: admin-columns-pro/classes/Editing/classes/Model/CustomField.php:62
+#: admin-columns-pro/classes/Editing/classes/Model/CustomField.php:60
 msgid "settings screen"
 msgstr ""
 
@@ -1095,7 +1095,7 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
-#: admin-columns-pro/classes/Export/classes/Exporter/CSV.php:39
+#: admin-columns-pro/classes/Export/classes/Exporter/CSV.php:42
 msgid "The requested file could not be downloaded."
 msgstr ""
 
@@ -1115,15 +1115,15 @@ msgstr ""
 msgid "Future / Past"
 msgstr ""
 
-#: admin-columns-pro/classes/Filtering/classes/Settings/Ranged.php:31
+#: admin-columns-pro/classes/Filtering/classes/Settings/Ranged.php:30
 msgid "Range"
 msgstr ""
 
-#: admin-columns-pro/classes/Filtering/classes/Settings/Ranged.php:37
+#: admin-columns-pro/classes/Filtering/classes/Settings/Ranged.php:36
 msgid "This will allow you to set the filter format."
 msgstr ""
 
-#: admin-columns-pro/classes/Filtering/classes/Settings/Ranged.php:36
+#: admin-columns-pro/classes/Filtering/classes/Settings/Ranged.php:35
 msgid "Filter by"
 msgstr ""
 
@@ -1195,8 +1195,12 @@ msgstr ""
 msgid "Site Enabled"
 msgstr ""
 
-#: admin-columns-pro/classes/Sorting/classes/Table/Screen.php:71
-msgid "Sorted by %s"
+#: admin-columns-pro/classes/Sorting/classes/Table/Screen.php:70
+msgid "Reset Sorting"
+msgstr ""
+
+#: admin-columns-pro/classes/Sorting/classes/Table/Screen.php:68
+msgid "Sorted by "
 msgstr ""
 
 #: admin-columns-pro/classes/ThirdParty/YoastSeo/Column/PrimaryTaxonomy.php:15
@@ -1763,7 +1767,7 @@ msgstr ""
 msgid "Excerpt automatically generated from content."
 msgstr ""
 
-#: admin-columns-pro/classes/Editing/classes/Model/User/Username.php:35
+#: admin-columns-pro/classes/Editing/classes/Model/User/Username.php:36
 msgid "The username already exists."
 msgstr ""
 

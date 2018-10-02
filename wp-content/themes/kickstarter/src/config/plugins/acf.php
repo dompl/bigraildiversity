@@ -10,7 +10,7 @@ use config\helpers\config;
 class acf extends config {
 
     // Advanced Custom Fields activation key
-    const ACF_ACTIVATION_KEY = 'b3JkZXJfaWQ9NDA5NzF8dHlwZT1kZXZlbG9wZXJ8ZGF0ZT0yMDE0LTA5LTMwIDE0OjIxOjUy';
+    // const ACF_ACTIVATION_KEY = 'b3JkZXJfaWQ9NDA5NzF8dHlwZT1kZXZlbG9wZXJ8ZGF0ZT0yMDE0LTA5LTMwIDE0OjIxOjUy';
 
     public function __construct() {
 
@@ -21,9 +21,9 @@ class acf extends config {
             add_filter('acf/settings/load_json', array(&$this, 'ks_json_load_point')); // Change json load points
 
             // Activate Advanced Custom Fileds Key
-            if (is_admin() && ! acf_pro_get_license_key()) {
-                acf_pro_update_license(self::ACF_ACTIVATION_KEY);
-            }
+            // if (is_admin() && ! acf_pro_get_license_key()) {
+            //     acf_pro_update_license(self::ACF_ACTIVATION_KEY);
+            // }
         }
 
     }

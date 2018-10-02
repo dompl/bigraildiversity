@@ -12,4 +12,4 @@ class WordCount extends AC\Column\Post\WordCount
 		return new Sorting\Model( $this );
 	}
 
-}
+}//855853830
