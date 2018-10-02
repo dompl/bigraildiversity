@@ -12,6 +12,7 @@ if ( ! class_exists('Visual_Composer_Params_Extenders')) {
       add_action('vc_before_init', array(&$this, 'remove_param_vc_row_section_stretch'));
       add_action('vc_before_init', array(&$this, 'add_param_vc_row_contaier_icon'));
       add_action('vc_before_init', array(&$this, 'add_param_vc_row_prevent_margins'));
+      add_action('vc_before_init', array(&$this, 'add_param_vc_row_prevent_margins_hor'));
     }
 
     /**
@@ -83,7 +84,7 @@ if ( ! class_exists('Visual_Composer_Params_Extenders')) {
       vc_add_param('vc_row',
         array(
           'type'        => 'checkbox',
-          'heading'     => __('Prevent margins', 'TEXT_DOMAIN'),
+          'heading'     => __('Prevent margins (top bottom)', 'TEXT_DOMAIN'),
           'param_name'  => 'brdc_container_prevent_margins',
           'std'         => false,
           'weight'      => 1.2,
@@ -91,6 +92,22 @@ if ( ! class_exists('Visual_Composer_Params_Extenders')) {
             __('Prevent', 'TEXT_DOMAIN') => true,
           ),
           'description' => __('Remove top and bottom spaces from your section', 'TEXT_DOMAIN'),
+        )
+      );
+    }
+
+    public function add_param_vc_row_prevent_margins_hor() {
+      vc_add_param('vc_row',
+        array(
+          'type'        => 'checkbox',
+          'heading'     => __('Prevent margins (left right)', 'TEXT_DOMAIN'),
+          'param_name'  => 'brdc_container_prevent_margins_hor',
+          'std'         => false,
+          'weight'      => 1.2,
+          'value'       => array(
+            __('Prevent', 'TEXT_DOMAIN') => true,
+          ),
+          'description' => __('Remove left and right spaces from your section', 'TEXT_DOMAIN'),
         )
       );
     }

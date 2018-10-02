@@ -3,6 +3,33 @@
  *  ********************************************************
  */
 
+@mixin container-behavior() {
+    .vc_column_container>.vc_column-inner {
+        padding-left: 0;
+        padding-right: 0;
+    }
+        .container-inner {
+            padding: 60px 80px; // padding-right:80px;
+            &.prevent-margin {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            &.prevent-margin-hor {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            @include breakpoint(max-width $md) {
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 30px;
+                padding-bottom: 30px;
+                &.prevent-margin {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+            }
+        }
+}
 @mixin content_container_styles( $color: text, $background:white) {
     color: color($color);
     background: color($background);
@@ -23,26 +50,14 @@
         }
     }
 }
+/* Wide container */
+.container-wide {
+    @extend %container;
+    @include container-behavior();
+}
 /* Narrow container */
-
 .container-narrow {
-    .container-inner {
-        padding: 60px 80px; // padding-right:80px;
-        &.prevent-margin {
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-        @include breakpoint(max-width $md) {
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 30px;
-            padding-bottom: 30px;
-            &.prevent-margin {
-                padding-top: 0;
-                padding-bottom: 0;
-            }
-        }
-    }
+    @include container-behavior();
 }
 .brdc-bcg {
     border-radius: $border-radius-base;
