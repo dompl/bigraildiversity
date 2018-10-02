@@ -3,11 +3,13 @@
  *  ********************************************************
  */
 
-.slick-slider {
+.sli {
     visibility: hidden;
     &.slick-initialized {
         visibility: visible;
     }
+}
+.slick-slider {
     * {
         outline: none!important;
     }
@@ -40,6 +42,8 @@
     text-align: center;
     width: 100%;
     margin-top: 10px;
+    margin-left: 0!important;
+    padding-left: 0!important;
     li {
         display: inline-block!important;
         margin: 0 4px;

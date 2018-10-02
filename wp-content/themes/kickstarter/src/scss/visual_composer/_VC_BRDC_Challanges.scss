@@ -1,0 +1,252 @@
+/*  ********************************************************
+ *   Challanges List
+ *  ********************************************************
+ */
+
+@mixin line-colorline-color( $color: brand) {
+    .line {
+        background-color: color($color)!important;
+
+    }
+}
+@mixin all-lines() {
+    &:nth-child(1), &:nth-child(12), &:nth-child(24) {
+        @include line-colorline-color(purple-medium);
+    }
+    &:nth-child(2), &:nth-child(13), &:nth-child(25) {
+        @include line-colorline-color(red);
+    }
+    &:nth-child(3), &:nth-child(14), &:nth-child(26) {
+        @include line-colorline-color(red);
+    }
+    &:nth-child(4), &:nth-child(15), &:nth-child(27) {
+        @include line-colorline-color(purple-light);
+    }
+    &:nth-child(5), &:nth-child(6), &:nth-child(28) {
+        @include line-colorline-color(green);
+    }
+    &:nth-child(6), &:nth-child(17), &:nth-child(30) {
+        @include line-colorline-color(orange);
+    }
+    &:nth-child(7), &:nth-child(19), &:nth-child(31) {
+        @include line-colorline-color(purple-dark);
+    }
+    &:nth-child(8), &:nth-child(20), &:nth-child(32) {
+        @include line-colorline-color(blue-light);
+    }
+    &:nth-child(9), &:nth-child(21), &:nth-child(33) {
+        @include line-colorline-color(wir);
+    }
+    &:nth-child(10), &:nth-child(22), &:nth-child(34) {
+        @include line-colorline-color(blue-dark);
+    }
+    &:nth-child(11), &:nth-child(23), &:nth-child(35) {
+        @include line-colorline-color(pink);
+    }
+}
+@mixin w( $items: 4) {
+    $width: percentage( 1 / $items);
+    flex: 1 0 calc( #{$width} - 20px);
+}
+@mixin item-width( $items: 4) {
+    .challange-item {
+        @include w($items);
+        /* explanation below */
+        margin: 10px;
+        @include breakpoint(max-width $sm) {
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @content;
+    }
+}
+.challanges-container {
+    margin: 0 -10px;
+    text-align: center;
+    .slick-slide {
+        @include all-lines();
+    }
+    .line {
+        margin-top: spacer(.5);
+        display: block;
+        height: 4px;
+        width: 100%;
+        background: color(brand);
+        border-radius:0 0 $border-radius-base $border-radius-base ;
+    }
+    .bcg-white {
+        position: relative;
+        .line {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            left: 0;
+        }
+    }
+    &.challanges-in-slick {
+        .slick-slide {
+            margin-left: 10px;
+            margin-right: 10px;
+            background-color: trasnaprent;
+        }
+        .challange-image {
+            position: relative;
+            .spon-batch {
+                top: auto;
+                bottom: -8px;
+                right: -14px;
+            }
+        }
+    }
+    &.challanges-in-columns {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        &.row-6 {
+            @include item-width(6) {
+                @include breakpoint(max-width $xxl) {
+                    @include w(5);
+                }
+                @include breakpoint(max-width $xl) {
+                    @include w(4);
+                }
+                @include breakpoint(max-width $lg) {
+                    @include w(3);
+                }
+                @include breakpoint(max-width $md) {
+                    @include w(2);
+                }
+                @include breakpoint(max-width $sm) {
+                    @include w(1);
+                }
+            }
+        }
+        &.row-5 {
+            @include item-width(5) {
+                @include breakpoint(max-width $xl) {
+                    @include w(4);
+                }
+                @include breakpoint(max-width $lg) {
+                    @include w(3);
+                }
+                @include breakpoint(max-width $md) {
+                    @include w(2);
+                }
+                @include breakpoint(max-width $sm) {
+                    @include w(1);
+                }
+            }
+        }
+        &.row-4 {
+            @include item-width(4) {
+                @include breakpoint(max-width $lg) {
+                    @include w(3);
+                }
+                @include breakpoint(max-width $md) {
+                    @include w(2);
+                }
+                @include breakpoint(max-width $sm) {
+                    @include w(1);
+                }
+            }
+        }
+        &.row-3 {
+            @include item-width(3);
+        }
+        &.row-2 {
+            @include item-width(2);
+        }
+        &.row-1 {
+            @include item-width(1);
+        }
+        .challange-item {
+            @extend %transition;
+            @include all-lines();
+            &:hover {
+                transform: translateY(-5px);
+            }
+            .inner {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        .bcg-white {
+            box-shadow: 0px 4px 15px rgba(#888888, .2);
+            @extend %transition;
+            &:hover {
+                box-shadow: 0px 8px 20px rgba(#888888, .1);
+            }
+        }
+    }
+    .challange-item {
+        display: flex;
+        .bcg-white {
+            background: white;
+            padding: 10px 10px 20px 10px;
+            border-radius: $border-radius-base;
+        }
+    }
+    .sponsor-container {
+        .sp-word {
+            text-transform: uppercase;
+            font-weight: $font-weight-bold;
+            color: lighten(color(text), 50%);
+            &.has-sp {
+                color: lighten(color(text), 30%);
+            }
+        }
+        .sp-logo {
+            margin: 10px;
+            img {
+                height: 60px;
+            }
+        }
+    }
+    .challange-image {
+        position: relative;
+        .spon-batch {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            height: 60px;
+            width: 60px;
+            img {
+                width: 50px;
+                margin-top: 6px;
+                border-radius: 50%;
+                background: rgba(white, .7);
+                padding: 3px;
+            }
+        }
+    }
+    .challange-title {
+        h3 {
+            line-height: 1;
+            margin-top: -4px;
+            display: block;
+            margin-bottom: 0;
+        }
+        a {
+            font-size: 16px;
+            text-transform: uppercase;
+            color: color(text);
+            font-weight: $font-weight-bolder;
+        }
+    }
+    .description-inner {
+        a {
+            color: lighten(color(text), 20%);
+            line-height: 1.4;
+            @include em('font-size', 13px);
+        }
+    }
+    /* Margins */
+    .challange-title {
+        margin-top: spacer(1);
+    }
+    .description-inner, .challange-button {
+        margin-top: spacer(.5);
+    }
+}

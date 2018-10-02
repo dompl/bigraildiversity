@@ -27,62 +27,101 @@
   @function icon-char($filename) {
     $char: "";
     
-      @if $filename == bars {
+      @if $filename == award {
         $char: "\E001";
       }
-      @if $filename == chevron-down {
+      @if $filename == bars {
         $char: "\E002";
       }
-      @if $filename == chevron-left {
+      @if $filename == bell {
         $char: "\E003";
       }
-      @if $filename == chevron-right {
+      @if $filename == bookmark {
         $char: "\E004";
       }
-      @if $filename == chevron-up {
+      @if $filename == boxing-glove {
         $char: "\E005";
       }
-      @if $filename == circle {
+      @if $filename == calendar-alt {
         $char: "\E006";
       }
-      @if $filename == envelope-bold {
+      @if $filename == calendar-times {
         $char: "\E007";
       }
-      @if $filename == envelope {
+      @if $filename == camera-alt {
         $char: "\E008";
       }
-      @if $filename == facebook {
+      @if $filename == chevron-down {
         $char: "\E009";
       }
-      @if $filename == menu-close {
+      @if $filename == chevron-left {
         $char: "\E00A";
       }
-      @if $filename == menu-indicator-down {
+      @if $filename == chevron-right {
         $char: "\E00B";
       }
-      @if $filename == menu-indicator-left {
+      @if $filename == chevron-up {
         $char: "\E00C";
       }
-      @if $filename == menu-indicator-right {
+      @if $filename == circle {
         $char: "\E00D";
       }
-      @if $filename == menu-indicator-up {
+      @if $filename == clock {
         $char: "\E00E";
       }
-      @if $filename == phone-bold {
+      @if $filename == envelope-bold {
         $char: "\E00F";
       }
-      @if $filename == phone {
+      @if $filename == envelope {
         $char: "\E010";
       }
-      @if $filename == quotes {
+      @if $filename == facebook {
         $char: "\E011";
       }
-      @if $filename == star {
+      @if $filename == map-marked-alt {
         $char: "\E012";
       }
-      @if $filename == twitter {
+      @if $filename == menu-close {
         $char: "\E013";
+      }
+      @if $filename == menu-indicator-down {
+        $char: "\E014";
+      }
+      @if $filename == menu-indicator-left {
+        $char: "\E015";
+      }
+      @if $filename == menu-indicator-right {
+        $char: "\E016";
+      }
+      @if $filename == menu-indicator-up {
+        $char: "\E017";
+      }
+      @if $filename == phone-bold {
+        $char: "\E018";
+      }
+      @if $filename == phone {
+        $char: "\E019";
+      }
+      @if $filename == quotes {
+        $char: "\E01A";
+      }
+      @if $filename == ribbon {
+        $char: "\E01B";
+      }
+      @if $filename == star {
+        $char: "\E01C";
+      }
+      @if $filename == subway {
+        $char: "\E01D";
+      }
+      @if $filename == train {
+        $char: "\E01E";
+      }
+      @if $filename == trophy-alt {
+        $char: "\E01F";
+      }
+      @if $filename == twitter {
+        $char: "\E020";
       }
 
     @return $char;
@@ -100,8 +139,29 @@
     }
   }
 
+  .icon-award {
+    @include icon(award);
+  }
   .icon-bars {
     @include icon(bars);
+  }
+  .icon-bell {
+    @include icon(bell);
+  }
+  .icon-bookmark {
+    @include icon(bookmark);
+  }
+  .icon-boxing-glove {
+    @include icon(boxing-glove);
+  }
+  .icon-calendar-alt {
+    @include icon(calendar-alt);
+  }
+  .icon-calendar-times {
+    @include icon(calendar-times);
+  }
+  .icon-camera-alt {
+    @include icon(camera-alt);
   }
   .icon-chevron-down {
     @include icon(chevron-down);
@@ -118,6 +178,9 @@
   .icon-circle {
     @include icon(circle);
   }
+  .icon-clock {
+    @include icon(clock);
+  }
   .icon-envelope-bold {
     @include icon(envelope-bold);
   }
@@ -126,6 +189,9 @@
   }
   .icon-facebook {
     @include icon(facebook);
+  }
+  .icon-map-marked-alt {
+    @include icon(map-marked-alt);
   }
   .icon-menu-close {
     @include icon(menu-close);
@@ -151,8 +217,20 @@
   .icon-quotes {
     @include icon(quotes);
   }
+  .icon-ribbon {
+    @include icon(ribbon);
+  }
   .icon-star {
     @include icon(star);
+  }
+  .icon-subway {
+    @include icon(subway);
+  }
+  .icon-train {
+    @include icon(train);
+  }
+  .icon-trophy-alt {
+    @include icon(trophy-alt);
   }
   .icon-twitter {
     @include icon(twitter);

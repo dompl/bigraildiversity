@@ -16,11 +16,11 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
     public function challanges_settings() {
 
       return array(
-        'simgh'  => 150, // Sponsor image height (in pixlex)
-        'simgw'  => 220, // Sponsor image height (in pixlex)
+        'simgh'  => 280, // Sponsor image height (in pixlex)
+        'simgw'  => 400, // Sponsor image height (in pixlex)
         'sbatch' => 100, // Batch Size (in pixlex)
-        'lw'     => 100, // Batch Size (in pixlex)
-        'lh'     => 100, // Batch Size (in pixlex)
+        'lw'     => 120, // Batch Size (in pixlex)
+        'lh'     => 120, // Batch Size (in pixlex)
       );
 
     }
@@ -60,6 +60,33 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
           ),
           'description' => __('How would you like to display the challanges list', 'TEXT_DOMAIN'),
           'std'         => 'slick',
+        ),
+        array(
+          'type'        => 'dropdown',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'heading'     => __('Challanges per row', 'TEXT_DOMAIN'),
+          'param_name'  => 'row',
+          'admin_label' => true,
+          'group'       => __('Content', 'TEXT_DOMAIN'),
+          'value'       => array(1, 2, 3, 4, 5, 6),
+          'description' => __('How many challanges would you like to show in a one row', 'TEXT_DOMAIN'),
+          'std'         => 4,
+        ),
+        array(
+          'type'        => 'dropdown',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'heading'     => __('Background', 'TEXT_DOMAIN'),
+          'param_name'  => 'bcg',
+          'admin_label' => false,
+          'group'       => __('Content', 'TEXT_DOMAIN'),
+          'value'       => array(
+            __('White', 'TEXT_DOMAIN')       => 'white',
+            __('Transparent', 'TEXT_DOMAIN') => 'transparent',
+          ),
+          'description' => __('Bacground for challange container. Transparent will also remove inner horizontal spaces.', 'TEXT_DOMAIN'),
+          'std'         => 'white',
         ),
         array(
           'type'        => 'checkbox',
@@ -126,21 +153,15 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
       );
     }
 
-    public function barch_url($year = '') {
-      if ($year === '') {
-        return;
-      }
-      return get_template_directory_uri() . '/img/theme/batch-' . $date . '.png';
-    }
-
     /* Challange sponsor */
     public function sponsor($post_id = '', $challange = '', $batch_year = '', $display = 'columns') {
 
-      if ($challange == '' || ! in_array('sponsor', $challange)) {
+      if ($challange == '') {
         return;
       }
 
-      $image_source = $display == 'columns' ? 'class="lazy" src="' . wpimagebase() . '" data-src' : 'data-lazy';
+      $image_source = $display == 'columns' ? 'class="lazy" src="' . wpimagebase() . '" data-src' : 'src';
+      $retina       = $display == 'columns' ? 'false' : 'false';
 
       $sponsor    = '';
       $sponsor_id = get_field('challange_sponsor', $post_id);
@@ -148,44 +169,54 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
       $has_sponsor  = (get_field('challange_sponsor', $post_id) != '') ? true : false;
       $sponsor_word = $has_sponsor ? __('Sponsored by', 'TEXT_DOMAIN') : __('Sponsorship', 'TEXT_DOMAIN');
 
-      $sponsor .= '<div class="sponsor-container">';
-      $sponsor .= '<span class="sp-word' . ($has_sponsor ? ' has-sp' : '') . '">' . $sponsor_word . '</span>';
+      if (in_array('sponsor', $challange)) {
 
-      $sponsor_image = get_field('add_attendee_logo', $sponsor_id);
+        $sponsor .= '<div class="sponsor-container">';
+        $sponsor .= '<span class="sp-word' . ($has_sponsor ? ' has-sp' : '') . '">' . $sponsor_word . '</span>';
 
-      // Sponsor batch
-      $sponsor_batch = '';
+        $sponsor_image = get_field('add_attendee_logo', $sponsor_id);
+
+        // Sponsor logo image
+        if ($sponsor_image != '') {
+          $sponsor .= sprintf('<div class="sp-logo"><a href="%s" title="%s"><img ' . $image_source . '="%s" alt="%s"/></a></div>',
+            esc_url(get_the_permalink($post_id)),
+            sprintf(__('Discover more about %s challange.', 'TEXT_DOMAIN'), the_title_attribute('echo=0&post=' . $post_id)),
+            wpimage('img=' . $sponsor_image . '&h=' . $this->challanges_settings()['lh'] . '&w=' . $this->challanges_settings()['lw'] . '&retina=' . $retina . '&crop=false'),
+            the_title_attribute('echo=0&post=' . $sponsor_id) . ' ' . __('logo', 'TEXT_DOMAIN')
+          );
+        } else {
+          $sponsor .= sprintf('<div class="sp-logo"><img ' . $image_source . '="%s" alt="%s"/></div>',
+            wpimage('img=624&h=' . $this->challanges_settings()['lh'] . '&w=' . $this->challanges_settings()['lw'] . '&retina=' . $retina . '&crop=false'),
+            sprintf(__('Discover more about %s challange.', 'TEXT_DOMAIN'), the_title_attribute('echo=0&post=' . $post_id))
+          );
+        }
+        $sponsor .= '</div>';
+      }
+
+      // Challange image batch
+      $challange_batch = '';
       if ($batch_year != '' && in_array('batch', $challange) && get_field('new_batch', $post_id) == true) {
         $batch = wp_upload_dir()['baseurl'] . '/2018/10/batch-' . $batch_year . '.png';
-        $sponsor_batch .= sprintf('<div class="spon-batch"><img ' . $image_source . '="%s" alt="%s"></div>',
+        $challange_batch .= sprintf('<div class="spon-batch"><img ' . $image_source . '="%s" alt="%s"></div>',
           wpimage('img=' . $batch . '&h=' . $this->challanges_settings()['sbatch'] . '&w=' . $this->challanges_settings()['sbatch']),
           sprintf('%s challange is new in %s', the_title_attribute('echo=0&post=' . $post_id), $batch_year)
         );
       }
-
-      // Sponsor logo image
-      if ($sponsor_image != '') {
-        $sponsor .= sprintf('<div class="sp-logo"><a href="%s" title="%s"><img ' . $image_source . '="%s" alt="%s"/></a>%s</div>',
-          esc_url(get_the_permalink($post_id)),
-          sprintf(__('Discover more about %s challange.', 'TEXT_DOMAIN'), the_title_attribute('echo=0&post=' . $post_id)),
-          wpimage('img=' . $sponsor_image . '&h=' . $this->challanges_settings()['lh'] . '&w=' . $this->challanges_settings()['lw'] . '&retina=' . ($display = 'columns' ? true : false) . '&crop=false'),
-          the_title_attribute('echo=0&post=' . $sponsor_id) . ' ' . __('logo', 'TEXT_DOMAIN'),
-          $sponsor_batch
-        );
-      }
       // Challange image
       if (in_array('image', $challange) && get_field('challenge_main_image', $post_id) != '') {
-        $image = wpimage('img=' . get_field('challenge_main_image', $post_id) . '&h=' . $this->challanges_settings()['simgh'] . '&w=' . $this->challanges_settings()['simgw'] . '&crop=true&retina=' . ($display = 'columns' ? true : false));
-        $sponsor .= sprintf('<div class="challange-image"><a href="%s" title="%s"><img ' . $image_source . '="%s" /></a></div>',
+
+        $image = wpimage('img=' . get_field('challenge_main_image', $post_id) . '&h=' . $this->challanges_settings()['simgh'] . '&w=' . $this->challanges_settings()['simgw'] . '&crop=true&retina=' . $retina);
+        $sponsor .= sprintf('<div class="challange-image"><a href="%s" title="%s"><img ' . $image_source . '="%s" />%s</a></div>',
           esc_url(get_the_permalink($post_id)),
-          sprintf(__('Discover more about %s challange.', 'TEXT_DOMAIN'), the_title_attribute('echo=0&post=' . $post_id)),
-          $image
+          sprintf(__('Discover more about %s challange', 'TEXT_DOMAIN'), str_replace('Challenge', '', the_title_attribute('echo=0&post=' . $post_id))),
+          $image,
+          $challange_batch
         );
       }
 
       // Challange name
       if (in_array('title', $challange)) {
-        $sponsor .= sprintf('<div class="challange-title display-%1$s"><h3><a href="%2$s" title="%3$s">%4$s</a></h3></div>',
+        $sponsor .= sprintf('<div class="challange-title display-%1$s" data-mh="c-title"><h3><a href="%2$s" title="%3$s">%4$s</a></h3></div>',
           $display,
           esc_url(get_permalink($post_id)),
           sprintf(__('Discover more about %s challange.', 'TEXT_DOMAIN'), the_title_attribute('echo=0&post=' . $post_id)),
@@ -193,14 +224,10 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
         );
       }
 
-      if (in_array('line', $challange)) {
-        $sponsor .= sprintf('<span class="line"></span>');
-      }
-
       // Challange short description
       if (in_array('description', $challange)) {
 
-        $sponsor .= sprintf('<div class="challange-description"><div class="description-inner"><a href="%s">%s</a></div></div>',
+        $sponsor .= sprintf('<div class="challange-description" data-mh="c-description"><div class="description-inner first-last"><a href="%s">%s</a></div></div>',
           esc_url(get_permalink($post_id)),
           get_field('attendee_short_description', $post_id)
         );
@@ -216,7 +243,6 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
         );
       }
 
-      $sponsor .= '</div>';
       return $sponsor;
     }
 
@@ -226,6 +252,8 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
         'year'         => date('Y'),
         'batch_year'   => date('Y'),
         'display'      => 'slick',
+        'bcg'          => 'white',
+        'row'          => 4,
         'challange'    => 'sponsor,image,title,description,button,batch,line',
         'space_above'  => __('None', 'TEXT_DOMAIN'),
         'space_below'  => __('None', 'TEXT_DOMAIN'),
@@ -244,6 +272,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
       $args = array(
         'post_type'      => 'challenges',
         'posts_per_page' => -1,
+        'post__not_in'   => array(get_the_ID()),
       );
 
       foreach ($year as $y) {
@@ -259,26 +288,37 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
 
       if ($the_query->have_posts()) {
 
+        if ($display == 'slick') {
+          wp_enqueue_script('ks-slick-js', get_template_directory_uri() . '/js/x-slick.js', array('jquery'), '1.6.11', true);
+        }
+
+        $slick_settings = '';
+        if ($display == 'slick') {
+          $slick_settings = ' data-slick=\'{"slidesToShow": ' . $row . ', "slidesToScroll": ' . $row . '}\'';
+        }
+
         $item .= $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : '';
         $item .= '<div class="' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
-        $item .= '<div class="challanges-container challanges-in-' . $display . '">';
+        $item .= '<div class="challanges-container '.($display == 'slick' ? ' sli ' : '').' challanges-in-' . $display . ' row-' . $row . '"' . $slick_settings . '>';
+        $i = 1;
         while ($the_query->have_posts()) {$the_query->the_post();
-
           $id = get_the_ID();
-
-          $item .= sprintf('<div class="challange-item challange-item-%s">%s</div>',
+          $item .= sprintf('<div class="challange-item challange-item-%s"><div class="bcg-%s inner">%s%s</div></div>',
             $id,
-            $this->sponsor($id, $challange, $batch_year, $display)
-          );
-
-        }
-        $item .= '</div>';
-        $item .= '</div>';
-        $item .= $custom_class || $custom_id ? '</div>' : '';
+            $bcg,
+            $this->sponsor($id, $challange, $batch_year, $display),
+            in_array('line', $challange) ? ('<span class="line"></span>') : ''
+        );
+        $i++;
       }
-
-      return $item;
+      $item .= '</div>';
+      $item .= '</div>';
+      $item .= $custom_class || $custom_id ? '</div>' : '';
     }
+    wp_reset_postdata();
+    wp_reset_query();
+    return $item;
   }
+}
 
 }
