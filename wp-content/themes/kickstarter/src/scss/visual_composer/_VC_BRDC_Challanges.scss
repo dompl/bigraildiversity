@@ -23,7 +23,7 @@
         @include line-colorline-color(purple-light);
     }
     &:nth-child(5), &:nth-child(6), &:nth-child(28) {
-        @include line-colorline-color(green);
+        @include line-colorline-color(brand);
     }
     &:nth-child(6), &:nth-child(17), &:nth-child(30) {
         @include line-colorline-color(orange);

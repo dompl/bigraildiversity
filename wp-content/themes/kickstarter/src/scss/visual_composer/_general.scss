@@ -123,7 +123,7 @@
 
 .button {
     border-radius: $border-radius-base;
-    padding: 5px 10px;
+    padding: 8px 15px;
     display: inline-block;
     font-weight: $font-weight-bold;
     text-transform: uppercase;
@@ -131,7 +131,6 @@
     @include _last-child() {
         margin-right: 0;
     }
-    ;
     &.small {
         font-size: 12px;
     }
@@ -158,8 +157,14 @@
         }
     }
     &.button {
-        text-shadow: -1px -1px 0px darken(color($color), 8%);
         &.fill {
+            text-shadow: -1px -1px 0px darken(color($color), 8%);
+            @if $color ==white {
+              text-shadow: none!important;
+              &:hover {
+                text-shadow: none!important;
+              }
+            }
             color: white;
             background: color($color);
             &:hover {

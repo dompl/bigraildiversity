@@ -26,6 +26,12 @@
         }
     }
 }
+#footer-container {
+    margin-top: spacer(2);
+    @include breakpoint(max-width $md) {
+        margin-top: spacer(1);
+    }
+}
 footer#footer {
     background: color(brand);
     color: white;

@@ -90,7 +90,7 @@
     }
     /* Green */
     &green {
-        @include content_container_styles(white, green);
+        @include content_container_styles(white, brand);
     }
     &blue {
         @include content_container_styles(white, wir);
