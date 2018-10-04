@@ -142,7 +142,7 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
     }
 
     /* Spaces */
-    public function param_space($param_name = 'above') {
+    public function param_space($param_name = 'above', $std = 'None') {
       return array(
         'type'        => 'dropdown',
         'holder'      => 'div',
@@ -152,7 +152,7 @@ if ( ! class_exists('Visual_Composer_Additional_Params')) {
         'group'       => __('Spaces', 'TEXT_DOMAIN'),
         'value'       => $this->vertical_space(),
         'description' => __("Set space $param_name", 'TEXT_DOMAIN'),
-        'std'         => __('None', 'TEXT_DOMAIN'),
+        'std'         => __($std, 'TEXT_DOMAIN'),
       );
     }
 

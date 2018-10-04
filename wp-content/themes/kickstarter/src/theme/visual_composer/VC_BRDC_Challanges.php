@@ -248,6 +248,8 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
 
     public function VC_BRDC_Challanges_shortcode_callback($atts, $content = null) {
 
+      wp_reset_query();
+
       extract(shortcode_atts(array(
         'year'         => date('Y'),
         'batch_year'   => date('Y'),
@@ -299,7 +301,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
 
         $item .= $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : '';
         $item .= '<div class="' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
-        $item .= '<div class="challanges-container '.($display == 'slick' ? ' sli ' : '').' challanges-in-' . $display . ' row-' . $row . '"' . $slick_settings . '>';
+        $item .= '<div class="challanges-container ' . ($display == 'slick' ? ' sli ' : '') . ' challanges-in-' . $display . ' row-' . $row . '"' . $slick_settings . '>';
         $i = 1;
         while ($the_query->have_posts()) {$the_query->the_post();
           $id = get_the_ID();
@@ -308,17 +310,17 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
             $bcg,
             $this->sponsor($id, $challange, $batch_year, $display),
             in_array('line', $challange) ? ('<span class="line"></span>') : ''
-        );
-        $i++;
+          );
+          $i++;
+        }
+        $item .= '</div>';
+        $item .= '</div>';
+        $item .= $custom_class || $custom_id ? '</div>' : '';
       }
-      $item .= '</div>';
-      $item .= '</div>';
-      $item .= $custom_class || $custom_id ? '</div>' : '';
+      wp_reset_postdata();
+      wp_reset_query();
+      return $item;
     }
-    wp_reset_postdata();
-    wp_reset_query();
-    return $item;
   }
-}
 
 }
