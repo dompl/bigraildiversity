@@ -115,18 +115,31 @@ if ( ! class_exists('VC_BRDC_Image_Gallery')) {
         ),
 
       );
-
       $params[] = array(
-        'type'        => 'numeric',
+        'type'        => 'image_sizer_width',
         'holder'      => 'div',
+        'label'       => false,
         'class'       => 'vc_hidden',
-        'admin_label' => false,
-        'heading'     => __('Image height in slider', 'TEXT_DOMAIN'),
-        'param_name'  => 'slides_image_height',
+        'heading'     => __('Image width', 'TEXT_DOMAIN'),
+        'param_name'  => 'width',
         'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
         'value'       => 100,
-        'description' => __('Set image height for your scrolling gallery', 'TEXT_DOMAIN'),
-        'std'         => 100,
+        'description' => __('Provide image height (in pixels)', 'TEXT_DOMAIN'),
+        'dependency'  => array(
+          'element' => 'gallery_type',
+          'value'   => array('slider'),
+        ),
+      );
+      $params[] = array(
+        'type'        => 'image_sizer_height',
+        'holder'      => 'div',
+        'class'       => 'vc_hidden',
+        'label'       => false,
+        'heading'     => __('Image height', 'TEXT_DOMAIN'),
+        'param_name'  => 'height',
+        'group'       => __('Slider Settings', 'TEXT_DOMAIN'),
+        'value'       => 100,
+        'description' => __('Provide image width (in pixels)', 'TEXT_DOMAIN'),
         'dependency'  => array(
           'element' => 'gallery_type',
           'value'   => array('slider'),
@@ -175,25 +188,26 @@ if ( ! class_exists('VC_BRDC_Image_Gallery')) {
     public function VC_BRDC_Image_Gallery_shortcode_callback($atts, $content = null) {
 
       extract(shortcode_atts(array(
-        'images'              => '',
-        'gallery_type'        => 'mosaic',
-        'open_in_lightbox'    => true,
-        'space_above'         => __('None', 'TEXT_DOMAIN'),
-        'space_below'         => __('None', 'TEXT_DOMAIN'),
-        'custom_class'        => '',
-        'custom_id'           => '',
-        'slides_to_show'      => '1',
-        'slides_to_scroll'    => '1',
-        'slider_center_mode'  => false,
-        'slider_infinite'     => true,
-        'slider_autoplay'     => true,
-        'slider_navigation'   => 'dots',
-        'slides_image_height' => 100,
-        'orderby'             => false,
-        'size'                => 'thumbnail',
-        'size'                => 'thumbnail',
-        'type'                => 'rectangular',
-        'link'                => 'file',
+        'images'             => '',
+        'gallery_type'       => 'mosaic',
+        'open_in_lightbox'   => true,
+        'space_above'        => __('None', 'TEXT_DOMAIN'),
+        'space_below'        => __('None', 'TEXT_DOMAIN'),
+        'custom_class'       => '',
+        'custom_id'          => '',
+        'slides_to_show'     => '1',
+        'slides_to_scroll'   => '1',
+        'slider_center_mode' => false,
+        'slider_infinite'    => true,
+        'slider_autoplay'    => true,
+        'slider_navigation'  => 'dots',
+        'height'             => 100,
+        'width'              => 100,
+        'orderby'            => false,
+        'size'               => 'thumbnail',
+        'size'               => 'thumbnail',
+        'type'               => 'rectangular',
+        'link'               => 'file',
       ), $atts));
 
       if ( ! $images) {
@@ -209,7 +223,7 @@ if ( ! class_exists('VC_BRDC_Image_Gallery')) {
 
       if ($open_in_lightbox == true) {
         wp_enqueue_script('ks-lightgallery-js', get_template_directory_uri() . '/js/x-lightgallery.js', array('jquery'), '1.6.11', true);
-        $item .= '<div class="image-gallery">';
+        $item .= '<div class="image-gallery image-slider">';
       }
 
       if ($gallery_type == 'mosaic') {
@@ -221,10 +235,9 @@ if ( ! class_exists('VC_BRDC_Image_Gallery')) {
         $settings = $orderby ? " orderby=$orderby " : '';
         $settings .= $size ? " size=$size " : '';
         $settings .= $type ? " type=$type " : '';
-        $settings .=   $open_in_lightbox ? " link=file " : 'link=none ';
+        $settings .= $open_in_lightbox ? ' link=file ' : 'link=none ';
 
         $item .= do_shortcode('[gallery ' . $settings . ' ids="' . $images . '"]');
-        // $item .= do_shortcode('[gallery <span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">﻿</span> data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" ' . $settings . ' ids="' . $images . '"]');
 
       } else {
 
@@ -251,9 +264,6 @@ if ( ! class_exists('VC_BRDC_Image_Gallery')) {
         $images = explode(',', $images);
 
         foreach ($images as $image) {
-
-          $height = (int) $slides_image_height / $slides_to_show;
-          $width  = 740 / $slides_to_show;
 
           $item .= sprintf('<li><div class="image"><a href="%1$s" title="%2$s" class="jig-link"><img data-lazy="%3$s" alt="%4$s"></a></div></li>',
             esc_url(imagedata($image)['url']),

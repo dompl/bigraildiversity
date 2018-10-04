@@ -124,8 +124,8 @@ if ( ! class_exists('VC_RBDC_Page_Banner')) {
        <?php echo $images ? '</div>' : '' ?>
      </div>
      <?php echo $pattern ? '</div>' : '' ?>
-   </section>
    <div class="bar"></div>
+   </section>
 
    <?php
 

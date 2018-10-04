@@ -1,0 +1,21 @@
+/*  ********************************************************
+ *   Image Gallery
+ *  ********************************************************
+ */
+
+/* slider */
+
+.image-slider {
+    .a-slider ul {
+        visibility: hidden;
+        &.slick-initialized {
+            visibility: visible;
+        }
+        .slick-slide {
+            margin: 0 2px;
+            img {
+              min-width: 100%;
+            }
+        }
+    }
+}

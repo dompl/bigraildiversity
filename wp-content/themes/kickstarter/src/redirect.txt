@@ -1,0 +1,9 @@
+Redirect 301 /wp-content/uploads/2018/03/Big-Rail-Diversity-Challenge-Ad-No-Crop.pdf http://www.bigraildiversity.co.uk/wp-content/uploads/2018/10/Big-Rail-Diversity-Challenge-Ad-No-Crop.pdf
+Redirect 301   http://www.bigraildiversity.co.uk/
+Redirect 301   http://www.bigraildiversity.co.uk/
+Redirect 301   http://www.bigraildiversity.co.uk/
+Redirect 301   http://www.bigraildiversity.co.uk/
+Redirect 301   http://www.bigraildiversity.co.uk/
+Redirect 301   http://www.bigraildiversity.co.uk/
+Redirect 301   http://www.bigraildiversity.co.uk/
+Redirect 301   http://www.bigraildiversity.co.uk/

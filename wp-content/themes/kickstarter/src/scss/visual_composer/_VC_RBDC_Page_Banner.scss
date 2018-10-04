@@ -4,6 +4,10 @@
  */
 
 section.page-banner {
+    margin-bottom: spacer(2);
+    @include breakpoint(max-width $md) {
+        margin-bottom: spacer(1);
+    }
     .banner {
         height: 200px;
         display: flex;
