@@ -42,7 +42,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
           'admin_label' => true,
           'group'       => __('Content', 'TEXT_DOMAIN'),
           'value'       => $this->years(),
-          'description' => __('For which your would you like to show the challanges?', 'TEXT_DOMAIN'),
+          'description' => __('For which your would you like to show the challenges?', 'TEXT_DOMAIN'),
           'std'         => date('Y'),
         ),
 
@@ -58,19 +58,19 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
             __('In columns') => 'columns',
             __('In slider')  => 'slick',
           ),
-          'description' => __('How would you like to display the challanges list', 'TEXT_DOMAIN'),
+          'description' => __('How would you like to display the challenges list', 'TEXT_DOMAIN'),
           'std'         => 'slick',
         ),
         array(
           'type'        => 'dropdown',
           'holder'      => 'div',
           'class'       => 'vc_hidden',
-          'heading'     => __('Challanges per row', 'TEXT_DOMAIN'),
+          'heading'     => __('Challenges per row', 'TEXT_DOMAIN'),
           'param_name'  => 'row',
           'admin_label' => true,
           'group'       => __('Content', 'TEXT_DOMAIN'),
           'value'       => array(1, 2, 3, 4, 5, 6),
-          'description' => __('How many challanges would you like to show in a one row', 'TEXT_DOMAIN'),
+          'description' => __('How many challenges would you like to show in a one row', 'TEXT_DOMAIN'),
           'std'         => 4,
         ),
         array(
@@ -85,7 +85,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
             __('White', 'TEXT_DOMAIN')       => 'white',
             __('Transparent', 'TEXT_DOMAIN') => 'transparent',
           ),
-          'description' => __('Bacground for challange container. Transparent will also remove inner horizontal spaces.', 'TEXT_DOMAIN'),
+          'description' => __('Background for challenge container. Transparent will also remove inner horizontal spaces.', 'TEXT_DOMAIN'),
           'std'         => 'white',
         ),
         array(
@@ -105,7 +105,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
             __('New natch')         => 'batch',
             __('Colour line')       => 'line',
           ),
-          'description' => __('How would you like to display the challanges list', 'TEXT_DOMAIN'),
+          'description' => __('How would you like to display the challenges list', 'TEXT_DOMAIN'),
           'std'         => 'sponsor,image,title,description,button,batch,line',
         ),
         array(
@@ -117,7 +117,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
           'admin_label' => true,
           'group'       => __('Content', 'TEXT_DOMAIN'),
           'value'       => $this->years(),
-          'description' => __('For which year display batch for the challanges.', 'TEXT_DOMAIN'),
+          'description' => __('For which year display batch for the challenges.', 'TEXT_DOMAIN'),
           'std'         => date('Y'),
         ),
 
@@ -193,22 +193,22 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
         $sponsor .= '</div>';
       }
 
-      // Challange image batch
+      // Challenge new for batch
       $challange_batch = '';
       if ($batch_year != '' && in_array('batch', $challange) && get_field('new_batch', $post_id) == true) {
         $batch = wp_upload_dir()['baseurl'] . '/2018/10/batch-' . $batch_year . '.png';
         $challange_batch .= sprintf('<div class="spon-batch"><img ' . $image_source . '="%s" alt="%s"></div>',
           wpimage('img=' . $batch . '&h=' . $this->challanges_settings()['sbatch'] . '&w=' . $this->challanges_settings()['sbatch']),
-          sprintf('%s challange is new in %s', the_title_attribute('echo=0&post=' . $post_id), $batch_year)
+          sprintf('%s challenge is new in %s', the_title_attribute('echo=0&post=' . $post_id), $batch_year)
         );
       }
-      // Challange image
+      // Challenge image
       if (in_array('image', $challange) && get_field('challenge_main_image', $post_id) != '') {
 
-        $image = wpimage('img=' . get_field('challenge_main_image', $post_id) . '&h=' . $this->challanges_settings()['simgh'] . '&w=' . $this->challanges_settings()['simgw'] . '&crop=true&retina=' . $retina);
+        $image = wpimage('img=' . get_field('challenge_main_image', $post_id) . '&h=' . $this->challanges_settings()['simgh'] . '&w=' . $this->challanges_settings()['simgw'] . '&crop=true&upscale=true&retina=false');
         $sponsor .= sprintf('<div class="challange-image"><a href="%s" title="%s"><img ' . $image_source . '="%s" />%s</a></div>',
           esc_url(get_the_permalink($post_id)),
-          sprintf(__('Discover more about %s challange', 'TEXT_DOMAIN'), str_replace('Challenge', '', the_title_attribute('echo=0&post=' . $post_id))),
+          sprintf(__('Discover more about %s challenge', 'TEXT_DOMAIN'), str_replace('Challenge', '', the_title_attribute('echo=0&post=' . $post_id))),
           $image,
           $challange_batch
         );
@@ -219,7 +219,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
         $sponsor .= sprintf('<div class="challange-title display-%1$s" data-mh="c-title"><h3><a href="%2$s" title="%3$s">%4$s</a></h3></div>',
           $display,
           esc_url(get_permalink($post_id)),
-          sprintf(__('Discover more about %s challange.', 'TEXT_DOMAIN'), the_title_attribute('echo=0&post=' . $post_id)),
+          sprintf(__('Discover more about %s challenge.', 'TEXT_DOMAIN'), the_title_attribute('echo=0&post=' . $post_id)),
           the_title_attribute('echo=0&post=' . $post_id)
         );
       }
@@ -238,7 +238,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
       if (in_array('button', $challange)) {
         $sponsor .= sprintf('<div class="challange-button"><a href="%s" title="%s" class="button small fill color-green">%s</a></div>',
           esc_url(get_permalink($post_id)),
-          sprintf(__('Discover more about %s challange.', 'TEXT_DOMAIN'), the_title_attribute('echo=0&post=' . $post_id)),
+          sprintf(__('Discover more about %s challenge.', 'TEXT_DOMAIN'), the_title_attribute('echo=0&post=' . $post_id)),
           __('Discover More', 'TEXT_DOMAIN')
         );
       }

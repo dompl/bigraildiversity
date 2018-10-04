@@ -192,7 +192,7 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
         return;
       }
 
-      $speed = ($speed * 1000);
+      $speed = ( (int) $speed  * 1000);
 
       $options = explode(',', $options);
       $fromwho = explode(',', $fromwho);
@@ -229,7 +229,7 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
       $item .= '<div class="' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
 
       $item .= '<div class="testimonials">';
-      $item .= '<ul class="testimonial-slider list-unstyled" data-slick=\'{"autoplaySpeed": '.$speen.'}\'>';
+      $item .= '<ul class="testimonial-slider list-unstyled" data-slick=\'{"autoplaySpeed": '.$speed.'}\'>';
       foreach ($posts as $post) {
 
         $id = $post->ID;
