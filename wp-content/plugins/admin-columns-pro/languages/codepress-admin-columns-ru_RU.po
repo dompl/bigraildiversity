@@ -1,12 +1,14 @@
 # Copyright (C) 2018 Admin Columns Pro
 # This file is distributed under the same license as the Admin Columns Pro package.
 # Translators:
+# dimon8x <itech.code@yandex.ru>, 2018
 # mikhail sergienko <mikhail.sergienko@gmail.com>, 2018
+# dimon8x <itech.code@yandex.ru>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Admin Columns Pro\n"
-"PO-Revision-Date: 2018-02-02 10:40+0000\n"
-"Last-Translator: Tobias Schutter <info@codepress.nl>\n"
+"PO-Revision-Date: 2018-09-18 06:56+0000\n"
+"Last-Translator: dimon8x <itech.code@yandex.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/codepress/admin-columns-pro/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +29,7 @@ msgstr "Вы используете бета-версию %s."
 msgid ""
 "Please provide us with any feedback (bugs, UI or improvements) on the beta "
 "by creating a new topic on %s."
-msgstr "Пожалуйста, оставьте ваши комментарии и замечания (об ошибках, пользовательском интерфейсе или улучшениях в бета-версии), создав новую тему в 1%s."
+msgstr "Пожалуйста, оставьте ваши комментарии и замечания (об ошибках, пользовательском интерфейсе или улучшениях в бета-версии), создав новую тему в %s."
 
 #: admin-columns-pro/acp.php:363
 msgid "our forum"
@@ -77,26 +79,26 @@ msgstr "Встроенное редактирование отобразит в�
 msgid ""
 "Please read <a href='%s'>our documentation</a> if you plan to use these "
 "fields."
-msgstr ""
+msgstr "Прочтите <a href='%s'>нашу документацию</a>, если планируете использовать эти поля."
 
 #: admin-columns-pro/classes/Export/Addon.php:67
 msgid ""
 "Creation of Admin Columns export directory failed. Please make sure that "
 "your uploads folder is writable."
-msgstr ""
+msgstr "Создание каталога экспорта Admin Columns не удалось. Убедитесь, что ваш каталог загрузок доступен для записи."
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:37
 msgid "You can make an editable copy of this set by clicking %s on the right."
-msgstr ""
+msgstr "Вы можете сделать редактируемую копию этого набора, нажав %s справа."
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php92,
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:148
 msgid "Original"
-msgstr "Оригинальный"
+msgstr "Оригинал"
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:103
 msgid "Column set not created."
-msgstr "Колонка не создана"
+msgstr "Набор колонок не создан."
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:118
 msgid "Set %s succesfully created."
@@ -104,7 +106,7 @@ msgstr "Набор %s успешно создан."
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:140
 msgid "Screen does not exist."
-msgstr "Экрана не существует"
+msgstr "Экрана не существует."
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:145
 msgid "Column set %s succesfully deleted."
@@ -112,11 +114,11 @@ msgstr "Набор колонок %s успешно удален."
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:193
 msgid "Select roles"
-msgstr "Выбрать роли"
+msgstr "Выберите роли"
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:194
 msgid "Select users"
-msgstr "Выбрать пользователей"
+msgstr "Выберите пользователей"
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:203
 msgid "+ Add set"
@@ -134,7 +136,7 @@ msgstr "Отмена"
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:232
 msgid ""
 "Create new sets to switch between different column views on the %s screen."
-msgstr "Создайте новые наборы чтобы переключаться между разными видами колонок на экране %s."
+msgstr "Создавайте новые наборы, чтобы переключаться между разными видами колонок на экране %s."
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:241
 msgid "Add"
@@ -144,7 +146,7 @@ msgstr "Добавить"
 msgid ""
 "Warning! The %s columns data will be deleted. This cannot be undone. 'OK' to"
 " delete, 'Cancel' to stop"
-msgstr ""
+msgstr "Предупреждение! Данные колонок %s будут удалены. Это нельзя отменить. 'OK' для удаления, 'Отмена' для остановки"
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php267,
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:69
@@ -161,7 +163,7 @@ msgstr "Сохранено"
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:291
 msgid "This set is loaded via PHP and can therefore not be edited"
-msgstr ""
+msgstr "Этот набор загружен через PHP, поэтому его нельзя редактировать."
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:306
 msgid "Update"
@@ -173,13 +175,13 @@ msgstr "Наборы"
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:330
 msgid "Sets allow users to switch between different column views."
-msgstr ""
+msgstr "Наборы позволяют пользователям переключаться между различными видами колонок."
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:333
 msgid ""
 "Available sets are selectable from the overview screen. Users can have their"
 " own column view preference."
-msgstr ""
+msgstr "Доступные наборы можно выбирать на станице обзора. Пользователи могут иметь свои собственные предпочтения вида колонок."
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:339
 msgid "Online documentation"
@@ -196,12 +198,12 @@ msgstr "Пожалуйста, введите название."
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:514
 msgid "Make this set available only for specific users or roles (optional)"
-msgstr ""
+msgstr "Сделать этот набор доступным только для определённых пользователей или ролей (опционально)"
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php519,
 #: admin-columns-pro/classes/LayoutScreen/Columns.php:528
 msgid "optional"
-msgstr "необязательный"
+msgstr "опционально"
 
 #: admin-columns-pro/classes/LayoutScreen/Columns.php572,
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php641,
@@ -216,7 +218,7 @@ msgstr "По умолчанию"
 #: admin-columns-pro/classes/LayoutScreen/Table.php66,
 #: admin-columns-pro/classes/LayoutScreen/Table.php:70
 msgid "Switch View"
-msgstr ""
+msgstr "Переключить вид"
 
 #: admin-columns-pro/classes/License/API.php:278
 msgid "Empty response from API."
@@ -234,7 +236,7 @@ msgstr "Ваша лицензия еще не обновлена."
 msgid ""
 "Licence not active. Enter your licence key on <a href='%s'>the settings "
 "page</a>."
-msgstr ""
+msgstr "Лицензия не активна. Введите свой ключ лицензии на <a href='%s'>странице настроек</a>."
 
 #: admin-columns-pro/classes/License/Manager.php:775
 msgid "Empty licence."
@@ -252,15 +254,15 @@ msgstr "Обновления"
 
 #: admin-columns-pro/classes/License/Manager.php:833
 msgid "Enter your licence code to receive automatic updates."
-msgstr ""
+msgstr "Введите свой код лицензии, чтобы получать автоматические обновления."
 
 #: admin-columns-pro/classes/License/Manager.php:867
 msgid "network settings page"
-msgstr "страница сетевых настроек"
+msgstr "странице сетевых настроек"
 
 #: admin-columns-pro/classes/License/Manager.php:873
 msgid "The license can be managed on the %s."
-msgstr ""
+msgstr "Управлять лицензией можно на %s."
 
 #: admin-columns-pro/classes/License/Manager.php:906
 msgid "Automatic updates are enabled."
@@ -284,7 +286,7 @@ msgstr "Вы можете найти код лицензии в вашем %s."
 
 #: admin-columns-pro/classes/License/Manager.php:917
 msgid "account page"
-msgstr "страница аккаунта"
+msgstr "странице аккаунта"
 
 #: admin-columns-pro/classes/License/Manager.php:929
 msgid ""
@@ -292,7 +294,7 @@ msgid ""
 "able to activate your license until this is fixed. This issue is often "
 "caused by an improperly configured SSL server (https). We recommend fixing "
 "the SSL configuration on your server, but if you need a quick fix you can:"
-msgstr ""
+msgstr "Не возможно соединиться с %s — Вы не будете получать уведомления об обновлениях и не сможете активировать вашу лицензию, пока это не будет исправлено. Это проблема часто вызывается некорректной настройкой SSL сервера (https). Мы рекомендуем исправить настройки SSL на вашем сервере, но если вам нужно быстрое решение, вы можете:"
 
 #: admin-columns-pro/classes/License/Manager.php:934
 msgid "Enable SSL"
@@ -314,7 +316,7 @@ msgstr[3] "%s дней"
 msgid ""
 "Your Admin Columns Pro license will expire in %s. %s now and get a %d%% "
 "discount!"
-msgstr ""
+msgstr "Ваша лицензия Admin Columns Pro истекает через %s. %s сейчас и получите скидку %d%%!"
 
 #: admin-columns-pro/classes/License/Manager.php971,
 #: admin-columns-pro/classes/License/Manager.php:978
@@ -324,13 +326,13 @@ msgstr "Обновите лицензию"
 #: admin-columns-pro/classes/License/Manager.php:976
 msgid ""
 "Your Admin Columns Pro license will expire in %s. %s now and get a discount!"
-msgstr ""
+msgstr "Ваша лицензия Admin Columns Pro истекает через %s. %s сейчас и получите скидку!"
 
 #: admin-columns-pro/classes/License/Manager.php:984
 msgid ""
 "Your Admin Columns Pro license has expired on %s! Renew your license now by "
 "going to your %s."
-msgstr ""
+msgstr "Ваша лицензия Admin Columns Pro истекает в %s! Обновите лицензию сейчас перейдя в свой %s."
 
 #: admin-columns-pro/classes/License/Manager.php:986
 msgid "My Account page"
@@ -342,7 +344,7 @@ msgstr "Проверить мою лицензию"
 
 #: admin-columns-pro/classes/Sorting/Addon.php:257
 msgid "Show all results when sorting."
-msgstr ""
+msgstr "Показывать все результаты при сортировке."
 
 #: admin-columns-pro/classes/Sorting/Addon.php:332
 msgid "Sorting Preferences"
@@ -350,15 +352,15 @@ msgstr "Настройки сортировки"
 
 #: admin-columns-pro/classes/Sorting/Addon.php:333
 msgid "This will reset the sorting preference for all users."
-msgstr ""
+msgstr "Сбрасывает параметры сортировки для всех пользователей."
 
 #: admin-columns-pro/classes/Sorting/Addon.php:347
 msgid "Reset sorting preferences"
-msgstr ""
+msgstr "Сброс параметров сортировки"
 
 #: admin-columns-pro/classes/Sorting/Addon.php:366
 msgid "All sorting preferences have been reset."
-msgstr ""
+msgstr "Все параметры сортировки были сброшены."
 
 #: admin-columns-pro/classes/Sorting/Addon.php:482
 msgid "Reset sorting"
@@ -366,7 +368,7 @@ msgstr "Сбросить сортировку"
 
 #: admin-columns-pro/classes/Table/ScreenOptions.php:85
 msgid "Horizontal Scrolling"
-msgstr ""
+msgstr "Горизонтальная прокрутка"
 
 #: ac-addon-buddypress/classes/Dependencies.php58,
 #: ac-addon-events-calendar/classes/Dependencies.php58,
@@ -376,7 +378,7 @@ msgstr ""
 #: cac-addon-woocommerce/v2/classes/Dependencies.php55,
 #: cac-addon-woocommerce/v3/classes/Dependencies.php:58
 msgid "version %s or later"
-msgstr "версия 1%s или более поздняя"
+msgstr "версия %s или более поздняя"
 
 #: ac-addon-buddypress/classes/Dependencies.php99,
 #: ac-addon-events-calendar/classes/Dependencies.php99,
@@ -400,31 +402,31 @@ msgstr "Для работы этого дополнения необходимо
 
 #: ac-addon-events-calendar/classes/Import.php:34
 msgid "Enable our predefined column sets for %s?"
-msgstr ""
+msgstr "Активировать наши предустановленные наборы колонок для %s?"
 
 #: ac-addon-events-calendar/classes/TableScreen.php:84
 msgid "upcoming"
-msgstr ""
+msgstr "предстоит"
 
 #: ac-addon-events-calendar/classes/TableScreen.php:89
 msgid "previous"
-msgstr ""
+msgstr "ранее"
 
 #: ac-addon-events-calendar/classes/TableScreen.php:93
 msgid "all"
-msgstr ""
+msgstr "все"
 
 #: ac-addon-events-calendar/classes/TableScreen.php:97
 msgid "Filtering on %s: Showing %s events from %s."
-msgstr ""
+msgstr "Фильтр по %s: Показ %s событий из %s."
 
 #: ac-addon-events-calendar/classes/TableScreen.php:106
 msgid "Return to %s"
-msgstr ""
+msgstr "Вернуться к %s"
 
 #: ac-addon-events-calendar/classes/TableScreen.php:118
 msgid "Remove this filter"
-msgstr ""
+msgstr "Удалить этот фильтр"
 
 #: ac-addon-pods/classes/Column.php:18
 msgid "Pods"
@@ -442,12 +444,12 @@ msgstr "Обычный"
 #: cac-addon-woocommerce/v2/wc.php199,
 #: cac-addon-woocommerce/v3/classes/TableScreen.php:54
 msgid "Sale from"
-msgstr "Распродажа с"
+msgstr "Продажа от"
 
 #: cac-addon-woocommerce/v2/wc.php200,
 #: cac-addon-woocommerce/v3/classes/TableScreen.php:55
 msgid "Sale To"
-msgstr "Распродажа до"
+msgstr "Продажа к"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:22
 msgid "Export/Import"
@@ -455,7 +457,7 @@ msgstr "Экспорт / Импорт"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:51
 msgid "Export field is empty. Please select your types from the left column."
-msgstr ""
+msgstr "Поле экспорта пустое. Выберите типы из левой колонки."
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php109,
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:115
@@ -466,11 +468,11 @@ msgstr "Извините, произошла ошибка."
 msgid ""
 "The export file could not be found at %s. It is likely that this was caused "
 "by a permissions problem."
-msgstr ""
+msgstr "Не удается найти файл экспорта в %s. Вероятно это вызвано проблемой c разрешениями."
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:128
 msgid "Import failed. File does not contain Admin Column settings."
-msgstr ""
+msgstr "Импорт не удался. Файл не содержит настроек Admin Column."
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:137
 msgid "Screen %s does not exist."
@@ -494,7 +496,7 @@ msgid_plural "sets"
 msgstr[0] "набор"
 msgstr[1] "несколько наборов"
 msgstr[2] "много наборов"
-msgstr[3] "наборы"
+msgstr[3] "наборов"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:306
 msgid "read only"
@@ -506,26 +508,26 @@ msgstr "Результаты"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:644
 msgid "Using the PHP export"
-msgstr "Использовать PHP экспорт"
+msgstr "Использование экспорта PHP"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php646,
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:726
 msgid "Copy the generated PHP code in the right column"
-msgstr ""
+msgstr "Скопируйте сгенерированный PHP код из правой колонки"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php647,
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:727
 msgid ""
 "Insert the code in your themes functions.php or in your plugin (on the init "
 "action)"
-msgstr ""
+msgstr "Вставьте этот код в файл functions.php вашей темы или плагина, заменяющего его"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php648,
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:728
 msgid ""
 "Your columns settings are now loaded from your PHP code instead of from your"
 " stored settings!"
-msgstr ""
+msgstr "Теперь настройки ваших колонок загружены из PHP кода вместо сохранённых настроек!"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:661
 msgid "Columns"
@@ -545,7 +547,7 @@ msgstr "отменить выбор"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:692
 msgid "Export PHP"
-msgstr "PHP экспорт"
+msgstr "Экспорт PHP "
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php693,
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:708
@@ -560,50 +562,50 @@ msgstr "Сохраненных настроек колонок не найден
 msgid ""
 "Admin Columns will export to a format compatible with the Admin Columns "
 "import functionality."
-msgstr ""
+msgstr "Admin Columns экспортирует в формате, совместимом функционалом импорта в Admin Columns."
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php711,
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:724
 msgid "Select the columns you like to export from the list in the left column"
-msgstr ""
+msgstr "Выберите колонки, которые необходимо экспортировать из списка в левой колонке"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:712
 msgid "Click the &quot;Download export file&quot; button"
-msgstr ""
+msgstr "Нажмите кнопку &quot;Скачать файл экспорта&quot;"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:713
 msgid "Save the .json-file when prompted"
-msgstr ""
+msgstr "Сохраните предложенный .json-файл"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:714
 msgid "Go to the Admin Columns import/export page in your other installation"
-msgstr ""
+msgstr "Перейдите на страницу импорта/экспорта Admin Columns на другом вашем сайте"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:715
 msgid "Select the export .json-file"
-msgstr ""
+msgstr "Укажите экспортированный .json-файл"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:716
 msgid "Click the &quot;Start import&quot; button"
-msgstr ""
+msgstr "Нажмите кнопку &quot;Начать импорт&quot;"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:717
 msgid "That's it!"
-msgstr "Вот и всё!"
+msgstr "Готово!"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:721
 msgid "Export to PHP"
-msgstr "Экспортировать в PHP"
+msgstr "Экспорт в PHP"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:722
 msgid ""
 "Admin Columns will export PHP code you can directly insert in your plugin or"
 " theme."
-msgstr ""
+msgstr "Admin Columns экспортирует PHP код, который вы сможете непосредственно вставить в ваш плагин или тему."
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:725
 msgid "Click the &quot;Export to PHP&quot; button"
-msgstr ""
+msgstr "Нажмите кнопку &quot;Экспорт в PHP&quot;"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:738
 msgid "Import"
@@ -611,27 +613,27 @@ msgstr "Импорт"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:739
 msgid "Import your Admin Column settings here."
-msgstr ""
+msgstr "Импортируйте ваши настройки Admin Column здесь."
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:744
 msgid "Import Columns Types"
-msgstr "Импортировать типы колонок"
+msgstr "Импорт типов колонок"
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:746
 msgid "Choose a Admin Columns Export file to upload."
-msgstr ""
+msgstr "Выберите файл экспорта Admin Columns для загрузки."
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:747
 msgid "Click upload file and import."
-msgstr ""
+msgstr "Нажмите кнопку &quot;Импортировать &quot;."
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:748
 msgid "That's it! You imported settings are now active."
-msgstr ""
+msgstr "Готово! Ваши импортированные настройки теперь активны."
 
 #: admin-columns-pro/classes/Admin/Page/ExportImport.php:759
 msgid "Upload file and import"
-msgstr ""
+msgstr "Импортировать"
 
 #: admin-columns-pro/classes/Column/Comment/PostType.php11,
 #: ac-addon-types/classes/Settings/ChildPostType.php25,
@@ -663,7 +665,7 @@ msgstr "Домен"
 
 #: admin-columns-pro/classes/Column/NetworkSite/Options.php:7
 msgid "Options"
-msgstr "Настройки"
+msgstr "Опции"
 
 #: admin-columns-pro/classes/Column/NetworkSite/Path.php:7
 msgid "Path"
@@ -671,7 +673,7 @@ msgstr "Путь"
 
 #: admin-columns-pro/classes/Column/NetworkSite/PostCount.php:7
 msgid "Post Count"
-msgstr "Счетчик записей"
+msgstr "Номер записи"
 
 #: admin-columns-pro/classes/Column/NetworkSite/SiteID.php:7
 msgid "Site ID"
@@ -687,16 +689,16 @@ msgstr "Тема"
 
 #: admin-columns-pro/classes/Column/NetworkSite/UploadSpace.php:7
 msgid "Storage Space"
-msgstr "Размер"
+msgstr "Размер хранилища"
 
 #: admin-columns-pro/classes/Column/NetworkSite/UploadSpace.php22,
 #: admin-columns-pro/classes/Column/NetworkSite/UploadSpace.php:26
 msgid "%s MB"
-msgstr "%s МБ"
+msgstr "%s Мб"
 
 #: admin-columns-pro/classes/Column/Post/Ancestors.php:11
 msgid "Ancestors"
-msgstr ""
+msgstr "Предшественники"
 
 #: admin-columns-pro/classes/Column/Post/ChildPages.php:8
 msgid "Child Pages"
@@ -716,35 +718,35 @@ msgstr[3] "%s изображений"
 
 #: admin-columns-pro/classes/Column/Post/LatestComment.php:11
 msgid "Latest Comment"
-msgstr ""
+msgstr "Последний комментарий"
 
 #: admin-columns-pro/classes/Column/Post/LinkCount.php:13
 msgid "Link Count"
-msgstr ""
+msgstr "Счётчик ссылок"
 
 #: admin-columns-pro/classes/Column/Post/LinkCount.php:32
 msgid "Internal Links"
-msgstr ""
+msgstr "Внутренние ссылки"
 
 #: admin-columns-pro/classes/Column/Post/LinkCount.php:33
 msgid "External Links"
-msgstr ""
+msgstr "Внешние ссылки"
 
 #: admin-columns-pro/classes/Column/Post/Revisions.php:11
 msgid "Revisions"
-msgstr ""
+msgstr "Ревизии"
 
 #: admin-columns-pro/classes/Column/Post/Revisions.php:21
 msgid "%s revision"
 msgid_plural "%s revisions"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%s ревизия"
+msgstr[1] "%s ревизии"
+msgstr[2] "%s ревизий"
+msgstr[3] "%s ревизия"
 
 #: admin-columns-pro/classes/Column/Taxonomy/Excerpt.php:11
 msgid "Excerpt"
-msgstr "Выдержка"
+msgstr "Отрывок"
 
 #: admin-columns-pro/classes/Column/Taxonomy/ID.php:10
 msgid "ID"
@@ -752,28 +754,28 @@ msgstr "ID"
 
 #: admin-columns-pro/classes/Column/Taxonomy/Parent.php:8
 msgid "Parent"
-msgstr "Родитель"
+msgstr "Родительский"
 
 #: admin-columns-pro/classes/Column/User/Gravatar.php:10
 msgid "Profile Picture"
-msgstr "Изображение профиля"
+msgstr "Значок профиля"
 
 #: admin-columns-pro/classes/Editing/classes/Settings.php:16
 msgid "Enable Editing"
-msgstr "Включить редактирование"
+msgstr "Активация правки"
 
 #: admin-columns-pro/classes/Editing/classes/Settings.php:36
 msgid "This will make the column support inline editing."
-msgstr ""
+msgstr "Включает возможность редактирования строк в колонке."
 
 #: admin-columns-pro/classes/Editing/classes/Settings.php35,
 #: admin-columns-pro/classes/Editing/classes/Model/CustomField.php:56
 msgid "Inline Editing"
-msgstr "Разрешить редактирование"
+msgstr "Правка строк"
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:64
 msgid "Select author"
-msgstr "Выбрать автора"
+msgstr "Выбор автора"
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:66
 msgid "Redo"
@@ -793,15 +795,15 @@ msgstr "Это обязательное поле."
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:73
 msgid "Please enter a valid float value."
-msgstr ""
+msgstr "Введите правильное плавающее значение."
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:74
 msgid "Please enter valid float values."
-msgstr ""
+msgstr "Введите правильные плавающие значения."
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:76
 msgid "Inline Edit"
-msgstr ""
+msgstr "Правка строки"
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:77
 msgid "Media"
@@ -809,26 +811,26 @@ msgstr "Медиа"
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:79
 msgid "Audio"
-msgstr "Аудио"
+msgstr "Звук"
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:80
 msgid "Time"
-msgstr ""
+msgstr "Время"
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:128
 msgid "Invalid item ID."
-msgstr ""
+msgstr "Неверный ID элемента."
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php134,
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:282
 msgid "Invalid list screen."
-msgstr ""
+msgstr "Неверная страница списка."
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php143,
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php290,
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:294
 msgid "Invalid column."
-msgstr "Недопустимая колонка."
+msgstr "Неверная колонка."
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:147
 msgid "Column does not support editing."
@@ -840,53 +842,53 @@ msgstr "У пользователя нет разрешений на запис�
 
 #: admin-columns-pro/classes/Editing/classes/TableScreen.php:276
 msgid "Invalid request."
-msgstr "Некорректный запрос"
+msgstr "Некорректный запрос."
 
 #: admin-columns-pro/classes/Export/classes/Admin.php:51
 msgid "The requested file does not exist."
-msgstr ""
+msgstr "Запрашиваемый файл не существует."
 
 #: admin-columns-pro/classes/Export/classes/Admin.php:67
 msgid "The requested file could not be processed."
-msgstr ""
+msgstr "Запрашиваемый файл не возможно обработать."
 
 #: admin-columns-pro/classes/Export/classes/Strategy.php:74
 msgid "Invalid value supplied for export counter."
-msgstr ""
+msgstr "Недопустимое значение, предоставленное для счетчика экспорта."
 
 #: admin-columns-pro/classes/Export/classes/Strategy.php:79
 msgid "Invalid value supplied for export hash."
-msgstr ""
+msgstr "Недопустимое значение для хэша экспорта."
 
 #: admin-columns-pro/classes/Export/classes/Strategy.php:237
 msgid "Export"
-msgstr ""
+msgstr "Экспорт"
 
 #: admin-columns-pro/classes/Export/classes/Strategy.php:238
 msgid "Export to CSV"
-msgstr ""
+msgstr "Экспорт в CSV"
 
 #: admin-columns-pro/classes/Export/classes/Strategy.php:239
 msgid "Exporting current list of items."
-msgstr ""
+msgstr "Экспорт текущего списка элементов."
 
 #: admin-columns-pro/classes/Export/classes/Strategy.php:240
 msgid "Processed {0} of {1} items ({2}%)."
-msgstr ""
+msgstr "Завершено  {0} bp {1} элементов ({2}%)."
 
 #: admin-columns-pro/classes/Export/classes/Strategy.php:241
 msgid ""
 "Export completed ({0} items). Your download will start automatically. If "
 "this does not happen, you can download the file again: "
-msgstr ""
+msgstr "Экспорт завершен ({0} элементов). Скачивание начнется автоматически. Если этого не происходит, можно скачать файл снова:"
 
 #: admin-columns-pro/classes/Export/classes/Strategy.php:242
 msgid "Download File"
-msgstr ""
+msgstr "Скачать файл"
 
 #: admin-columns-pro/classes/Export/classes/TableScreenOptions.php:64
 msgid "Show Export Button"
-msgstr ""
+msgstr "Показать кнопку экспорта"
 
 #: admin-columns-pro/classes/Filtering/classes/Helper.php:142
 msgid "Future dates"
@@ -910,7 +912,7 @@ msgstr "Имеет %s"
 
 #: admin-columns-pro/classes/Filtering/classes/Model.php:197
 msgid "Loading values"
-msgstr ""
+msgstr "Загрузка значений"
 
 #: admin-columns-pro/classes/Filtering/classes/Settings.php:31
 msgid "Enable Filtering"
@@ -926,15 +928,15 @@ msgstr "Фильтрация"
 
 #: admin-columns-pro/classes/Filtering/classes/Settings.php:60
 msgid "Set the name of the label in the filter menu"
-msgstr "Задайте название метки в меню фильтра."
+msgstr "Устанавливает наименование верхней строки меню фильтра"
 
 #: admin-columns-pro/classes/Filtering/classes/Settings.php:59
 msgid "Top label"
-msgstr "Верхняя метка"
+msgstr "Первая метка"
 
 #: admin-columns-pro/classes/Filtering/classes/Settings.php:93
 msgid "Any %s"
-msgstr ""
+msgstr "Все %s"
 
 #: admin-columns-pro/classes/Settings/Column/CustomFieldType.php:62
 msgid "Post"
@@ -945,7 +947,7 @@ msgstr "Запись"
 #: cac-addon-woocommerce/v3/classes/Settings/Product.php28,
 #: cac-addon-woocommerce/v3/classes/Settings/Product.php:30
 msgid "Custom Field"
-msgstr ""
+msgstr "Произвольное поле"
 
 #: admin-columns-pro/classes/Sorting/classes/Settings.php:16
 msgid "Enable Sorting"
@@ -966,19 +968,19 @@ msgstr "bbPress"
 #: admin-columns-pro/classes/ThirdParty/RelatedPosts/Addon.php25,
 #: admin-columns-pro/classes/ThirdParty/RelatedPosts/Column.php:16
 msgid "Related Posts"
-msgstr "Связанные записи"
+msgstr "Похожие записи"
 
 #: ac-addon-buddypress/classes/Settings/Date.php:13
 msgid "BuddyPress Difference"
-msgstr ""
+msgstr "Отличие от BuddyPress"
 
 #: ac-addon-buddypress/classes/Settings/Date.php:16
 msgid "The difference is returned in a human readable format."
-msgstr ""
+msgstr "Отличие возвращается в человеку понятном формате."
 
 #: ac-addon-buddypress/classes/Settings/Date.php:16
 msgid "For example: %s."
-msgstr ""
+msgstr "Например: %s."
 
 #: ac-addon-buddypress/classes/Settings/Group.php51,
 #: ac-addon-events-calendar/classes/Settings/Venue.php12,
@@ -992,11 +994,11 @@ msgstr ""
 #: cac-addon-woocommerce/v3/classes/Settings/User/Products.php29,
 #: cac-addon-woocommerce/v3/classes/Settings/User/Ratings.php:29
 msgid "Display"
-msgstr "Показать"
+msgstr "Показывать"
 
 #: ac-addon-buddypress/classes/Settings/GroupLink.php:44
 msgid "Link To"
-msgstr ""
+msgstr "Ссылка на"
 
 #: ac-addon-buddypress/classes/Settings/Profile.php21,
 #: ac-addon-pods/classes/Setting/Field.php24,
@@ -1007,7 +1009,7 @@ msgstr "Нет доступных полей %s."
 
 #: ac-addon-buddypress/classes/Settings/Profile.php:21
 msgid "BuddyPress"
-msgstr ""
+msgstr "BuddyPress"
 
 #: ac-addon-buddypress/classes/Settings/Profile.php27,
 #: ac-addon-pods/classes/Setting/Field.php34,
@@ -1023,53 +1025,53 @@ msgstr "Выберите поле %s."
 
 #: ac-addon-buddypress/classes/Settings/Profile.php:28
 msgid "BuddyPress profile"
-msgstr ""
+msgstr "Профиль BuddyPress"
 
 #: ac-addon-events-calendar/classes/Column/UpcomingEvent.php:9
 msgid "Upcoming Event"
-msgstr ""
+msgstr "Предстоящее событие"
 
 #: ac-addon-events-calendar/classes/Filtering/UpcomingEvent.php:51
 msgid "Has Upcoming Event"
-msgstr ""
+msgstr "Имеется предстоящее событие"
 
 #: ac-addon-events-calendar/classes/Filtering/UpcomingEvent.php:52
 msgid "Has No Upcoming Event"
-msgstr ""
+msgstr "Нет предстоящих событий"
 
 #: ac-addon-events-calendar/classes/Settings/EventDates.php:35
 msgid "Event Date"
-msgstr ""
+msgstr "Дата события"
 
 #: ac-addon-events-calendar/classes/Settings/EventDisplay.php:35
 msgid "Show Events"
-msgstr ""
+msgstr "Показать события"
 
 #: ac-addon-events-calendar/classes/Settings/EventDisplay.php:45
 msgid "Upcoming Events"
-msgstr ""
+msgstr "Предстоящие события"
 
 #: ac-addon-events-calendar/classes/Settings/EventDisplay.php:46
 msgid "Past Events"
-msgstr ""
+msgstr "Прошедшие события"
 
 #: ac-addon-events-calendar/classes/Settings/ShowEventDate.php:20
 msgid "Show Event Date"
-msgstr ""
+msgstr "Показывать дату события"
 
 #: ac-addon-events-calendar/classes/Settings/ShowEventDate.php:21
 msgid "This will show the event date below the events title."
-msgstr ""
+msgstr "Отображает дату события под его названием."
 
 #: ac-addon-events-calendar/classes/Settings/ShowFilterLink.php:21
 msgid "Link to Filtered Overview"
-msgstr ""
+msgstr "Ссылка на отсеянный обзор"
 
 #: ac-addon-events-calendar/classes/Settings/ShowFilterLink.php:22
 msgid ""
 "Enabling this option to create a link to the filtered overview of the "
 "related post type "
-msgstr ""
+msgstr "Активируйте эту опцию для создания ссылки на связанные типы записей после отсева"
 
 #: ac-addon-pods/classes/Filtering/TrueFalse.php36,
 #: cac-addon-acf/classes/Filtering/TrueFalse.php36,
@@ -1081,7 +1083,7 @@ msgstr "Ложь"
 #: cac-addon-acf/classes/Filtering/TrueFalse.php39,
 #: admin-columns-pro/classes/Filtering/classes/Model/CustomField/Checkmark.php:8
 msgid "True"
-msgstr "Правда"
+msgstr "Истина"
 
 #: ac-addon-pods/classes/Setting/Field.php:25
 msgid "Create your first %s field."
@@ -1091,11 +1093,11 @@ msgstr "Создайте первое поле %s."
 #: cac-addon-acf/classes/Setting/Field.php147,
 #: cac-addon-acf/classes/Free/Setting/Field.php:25
 msgid "empty label"
-msgstr "пустая метка"
+msgstr "пустая наименование"
 
 #: ac-addon-types/classes/Settings/ChildPostType.php:21
 msgid "No child post types available."
-msgstr ""
+msgstr "Нет доступных дочерних типов записей."
 
 #: ac-addon-types/classes/Settings/Field.php25,
 #: ac-addon-types/classes/Settings/Field.php:32
@@ -1109,7 +1111,7 @@ msgstr "Тип"
 
 #: ac-addon-types/classes/Settings/ParentPostType.php:21
 msgid "No parent post types available."
-msgstr ""
+msgstr "Нет доступных родительских типов записей."
 
 #: cac-addon-acf/classes/Field/File.php:14
 msgid "Invalid attachment"
@@ -1122,70 +1124,70 @@ msgstr "Формат даты ACF"
 #: cac-addon-acf/classes/Setting/Date.php26,
 #: cac-addon-acf/classes/Setting/Time.php:26
 msgid "%s uses the %s from it's field settings."
-msgstr ""
+msgstr "%s использует %s из своего поля настроек."
 
 #: cac-addon-acf/classes/Setting/Date.php26,
 #: cac-addon-acf/classes/Setting/Time.php26,
 #: admin-columns-pro/classes/Settings/Column/NetworkSite/Plugins.php:20
 msgid "Display Format"
-msgstr "Формат отображения"
+msgstr "Отображаемый формат"
 
 #: cac-addon-acf/classes/Setting/Field.php:77
 msgid "The previous selected option %s no longer exists."
-msgstr ""
+msgstr "Ранее выбранный параметр %s более не существует."
 
 #: cac-addon-acf/classes/Setting/Oembed.php:34
 msgid "Display format"
-msgstr "Формат отображения"
+msgstr "Отображаемый формат"
 
 #: cac-addon-acf/classes/Setting/Subfield.php:21
 msgid "No %s subfields available."
-msgstr ""
+msgstr "Подстрока %s не доступна."
 
 #: cac-addon-acf/classes/Setting/Subfield.php:26
 msgid "Subfield"
-msgstr "вложенное поле"
+msgstr "Подстрока"
 
 #: cac-addon-acf/classes/Setting/Subfield.php:27
 msgid "Select a repeater sub field."
-msgstr "Выберите внутреннее поле повторяющегося блока"
+msgstr "Выберите подстроку повторяющегося блока"
 
 #: cac-addon-acf/classes/Setting/Time.php:20
 msgid "ACF Time Format"
-msgstr ""
+msgstr "Формат времени ACF"
 
 #: cac-addon-woocommerce/v3/classes/Plugin.php96,
 #: cac-addon-woocommerce/v3/classes/TableScreen.php108,
 #: cac-addon-woocommerce/v3/classes/Settings/Customer.php:15
 msgid "WooCommerce"
-msgstr ""
+msgstr "WooCommerce"
 
 #: cac-addon-woocommerce/v3/classes/TableScreen.php143,
 #: cac-addon-woocommerce/v3/classes/TableScreen.php:168
 msgid "View Variations"
-msgstr ""
+msgstr "Варианты просмотра"
 
 #: admin-columns-pro/classes/Editing/classes/Model/CustomField.php:57
 msgid ""
 "Inline Editing for Custom Fields is not enabled. Enable inline editing for "
 "Custom Fields on the %s."
-msgstr "Встроенное редактирование для настраиваемых полей выключено. Включите возможность встроенного редактирования настраиваемых полей в %s."
+msgstr "Правка строк для произвольных полей отключена. Включите возможность правки произвольных полей в %s."
 
 #: admin-columns-pro/classes/Editing/classes/Model/CustomField.php:57
 msgid "settings screen"
-msgstr "экран настроек"
+msgstr "экрана настроек"
 
 #: admin-columns-pro/classes/Editing/classes/Settings/Excerpt.php:30
 msgid "Textarea"
-msgstr ""
+msgstr "Область текста"
 
 #: admin-columns-pro/classes/Editing/classes/Settings/Excerpt.php:31
 msgid "Text"
-msgstr ""
+msgstr "Текст"
 
 #: admin-columns-pro/classes/Editing/classes/Settings/Excerpt.php:36
 msgid "Input Type"
-msgstr ""
+msgstr "Тип ввода"
 
 #: admin-columns-pro/classes/Editing/classes/Settings/Taxonomy.php:39
 msgid "Allow new %s to be created whilst editing"
@@ -1197,7 +1199,7 @@ msgstr "Разрешать новые %s?"
 
 #: admin-columns-pro/classes/Export/classes/Exporter/CSV.php:34
 msgid "The requested file could not be downloaded."
-msgstr ""
+msgstr "Запрашиваемый файл нельзя скачать."
 
 #: admin-columns-pro/classes/Filtering/classes/Markup/Dropdown.php42,
 #: cac-addon-woocommerce/v2/classes/Filtering/ShopOrder/CustomerMessage.php25,
@@ -1211,11 +1213,11 @@ msgstr "Не пусто"
 
 #: admin-columns-pro/classes/Filtering/classes/Markup/Dropdown.php:195
 msgid "Filter by %s"
-msgstr "Отфильтровать по %s"
+msgstr "Отсеять по %s"
 
 #: admin-columns-pro/classes/Filtering/classes/Settings/Date.php:10
 msgid "Future / Past"
-msgstr "Будущее / Прошлое"
+msgstr "Будущие / Прошлые"
 
 #: admin-columns-pro/classes/Filtering/classes/Settings/Ranged.php:26
 msgid "Range"
@@ -1227,15 +1229,15 @@ msgstr "Это позволит вам установить формат фил�
 
 #: admin-columns-pro/classes/Filtering/classes/Settings/Ranged.php:31
 msgid "Filter by"
-msgstr "Фильтровать по"
+msgstr "Отсеять по"
 
 #: admin-columns-pro/classes/Filtering/classes/Strategy/User.php:73
 msgid "Filter"
-msgstr "Фильтр"
+msgstr "Отсеять"
 
 #: admin-columns-pro/classes/Settings/Column/NetworkSite/Options.php:12
 msgid "Option"
-msgstr "Вариант"
+msgstr "Параметр"
 
 #: admin-columns-pro/classes/Settings/Column/NetworkSite/Plugins.php:15
 msgid "Count"
@@ -1303,7 +1305,7 @@ msgstr "Введите ключевые слова для SEO"
 
 #: admin-columns-pro/classes/ThirdParty/YoastSeo/Editing/MetaDesc.php:12
 msgid "Enter your SEO Meta Description"
-msgstr "Введите SEO мета-описание "
+msgstr "Введите SEO мета-описание"
 
 #: admin-columns-pro/classes/ThirdParty/YoastSeo/Editing/Title.php:12
 msgid "Enter your SEO Title"
@@ -1311,126 +1313,126 @@ msgstr "Введите SEO-заголовок"
 
 #: admin-columns-pro/classes/ThirdParty/YoastSeo/Filtering/Title.php:9
 msgid "Has Default Title"
-msgstr ""
+msgstr "Имеет заголовок по умолчанию"
 
 #: admin-columns-pro/classes/ThirdParty/YoastSeo/Filtering/Title.php:10
 msgid "Has Custom SEO Title"
-msgstr ""
+msgstr "Имеет произвольный заголовок SEO"
 
 #: ac-addon-buddypress/classes/Column/User/ActivityUpdates.php:8
 msgid "Activity Updates"
-msgstr ""
+msgstr "Обновления активности"
 
 #: ac-addon-buddypress/classes/Column/User/LastActivity.php:10
 msgid "Last Activity"
-msgstr ""
+msgstr "Последняя активность"
 
 #: ac-addon-buddypress/classes/Column/User/LastSeen.php:8
 msgid "Last Seen"
-msgstr ""
+msgstr "Виден последний раз"
 
 #: ac-addon-buddypress/classes/Filtering/User/Groups.php:46
 msgid "Group"
-msgstr ""
+msgstr "Группа"
 
 #: ac-addon-events-calendar/classes/Column/Event/Costs.php:7
 msgid "Costs"
-msgstr ""
+msgstr "Стоимость"
 
 #: ac-addon-events-calendar/classes/Column/Event/DisplayDate.php:8
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: ac-addon-events-calendar/classes/Column/Event/Duration.php:7
 msgid "Duration"
-msgstr ""
+msgstr "Длительность"
 
 #: ac-addon-events-calendar/classes/Column/Event/Featured.php7,
 #: ac-addon-events-calendar/classes/Filtering/Event/Featured.php:12
 msgid "Featured"
-msgstr ""
+msgstr "Избранное"
 
 #: ac-addon-events-calendar/classes/Column/Event/HideFromUpcoming.php:7
 msgid "Hide from Event Listing"
-msgstr ""
+msgstr "Скрыть из списка событий"
 
 #: ac-addon-events-calendar/classes/Column/Event/Organizer.php:8
 msgid "Organizer"
-msgstr ""
+msgstr "Органайзер"
 
 #: ac-addon-events-calendar/classes/Column/Event/Sticky.php:8
 msgid "Sticky in Month View"
-msgstr ""
+msgstr "Закрепить в календаре"
 
 #: ac-addon-events-calendar/classes/Column/Event/Venue.php:8
 msgid "Venue"
-msgstr ""
+msgstr "Место проведения"
 
 #: ac-addon-events-calendar/classes/Column/Event/Website.php:7
 msgid "Event Website"
-msgstr ""
+msgstr "Сайт события"
 
 #: ac-addon-events-calendar/classes/Column/Organizer/Email.php:7
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: ac-addon-events-calendar/classes/Column/Organizer/Phone.php7,
 #: ac-addon-events-calendar/classes/Column/Venue/Phone.php:7
 msgid "Phone"
-msgstr ""
+msgstr "Телефон"
 
 #: ac-addon-events-calendar/classes/Column/Organizer/Website.php7,
 #: ac-addon-events-calendar/classes/Column/Venue/Website.php:7
 msgid "Website"
-msgstr ""
+msgstr "Сайт"
 
 #: ac-addon-events-calendar/classes/Column/Venue/Address.php:7
 msgid "Address"
-msgstr ""
+msgstr "Адрес"
 
 #: ac-addon-events-calendar/classes/Column/Venue/City.php:7
 msgid "City"
-msgstr ""
+msgstr "Город"
 
 #: ac-addon-events-calendar/classes/Column/Venue/Country.php:7
 msgid "Country"
-msgstr ""
+msgstr "Страна"
 
 #: ac-addon-events-calendar/classes/Column/Venue/PostalCode.php:7
 msgid "Postal Code"
-msgstr ""
+msgstr "Почтовый индекс"
 
 #: ac-addon-events-calendar/classes/Column/Venue/StateProvince.php:7
 msgid "State or Province"
-msgstr ""
+msgstr "Область или округ"
 
 #: ac-addon-events-calendar/classes/Filtering/Event/AllDayEvent.php:12
 msgid "All Day Events"
-msgstr ""
+msgstr "Все события дня"
 
 #: ac-addon-events-calendar/classes/Filtering/Event/AllDayEvent.php:13
 msgid "Not All Day Events"
-msgstr ""
+msgstr "Не все события дня"
 
 #: ac-addon-events-calendar/classes/Filtering/Event/Featured.php:13
 msgid "Not Featured"
-msgstr ""
+msgstr "Не избранное"
 
 #: ac-addon-events-calendar/classes/Filtering/Event/HiddenFromUpcoming.php:12
 msgid "Hidden from Event Listing"
-msgstr ""
+msgstr "Скрыто из списка событий"
 
 #: ac-addon-events-calendar/classes/Filtering/Event/HiddenFromUpcoming.php:13
 msgid "Visible on Event Listing"
-msgstr ""
+msgstr "Видимо в списке событий"
 
 #: ac-addon-events-calendar/classes/Filtering/Event/Sticky.php:8
 msgid "Sticky Events"
-msgstr ""
+msgstr "Закрепленные события"
 
 #: ac-addon-events-calendar/classes/Filtering/Event/Sticky.php:9
 msgid "Not Sticky Events"
-msgstr ""
+msgstr "Незакрепленные события"
 
 #: cac-addon-woocommerce/v2/classes/Settings/ProductAttributes.php:98
 msgid "Show all attributes"
@@ -1439,7 +1441,7 @@ msgstr "Показать все атрибуты"
 #: cac-addon-woocommerce/v2/classes/Settings/ProductAttributes.php104,
 #: cac-addon-woocommerce/v3/classes/Settings/Product/Attributes.php:33
 msgid "Show Single"
-msgstr "Показать одну"
+msgstr "Показ по одному"
 
 #: cac-addon-woocommerce/v2/classes/Settings/ProductAttributes.php105,
 #: cac-addon-woocommerce/v3/classes/Settings/Product/Attributes.php:34
@@ -1449,7 +1451,7 @@ msgstr "Показывать один атрибут."
 #: cac-addon-woocommerce/v2/classes/Settings/ProductAttributes.php105,
 #: cac-addon-woocommerce/v3/classes/Settings/Product/Attributes.php:34
 msgid "Only works for taxonomy attributes."
-msgstr "Работает только с атрибутами таксономий."
+msgstr "Работает только для атрибутов таксономий."
 
 #: cac-addon-woocommerce/v2/classes/Settings/ProductAttributes.php166,
 #: cac-addon-woocommerce/v3/classes/Column/Product/Attributes.php:78
@@ -1458,101 +1460,101 @@ msgstr "Является таксономией"
 
 #: cac-addon-woocommerce/v3/classes/ListTable/ProductVariation.php:92
 msgid "Back to products"
-msgstr ""
+msgstr "Вернуться к продуктам"
 
 #: cac-addon-woocommerce/v3/classes/ListTable/ProductVariation.php:271
 msgid "Search Variable Product"
-msgstr ""
+msgstr "Поиск продукта"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Customer.php18,
 #: cac-addon-woocommerce/v3/classes/Column/User/CustomerSince.php:12
 msgid "Customer Since"
-msgstr ""
+msgstr "Покупатель с"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Customer.php:20
 msgid "Order Count"
-msgstr ""
+msgstr "Кол-во заказов"
 
 #: cac-addon-woocommerce/v3/classes/Settings/IP.php:38
 msgid "IP Address"
-msgstr ""
+msgstr "IP адрес"
 
 #: cac-addon-woocommerce/v3/classes/Settings/IP.php:39
 msgid "IP Country Code"
-msgstr ""
+msgstr "IP код страны"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Order.php:48
 msgid "Order number"
-msgstr ""
+msgstr "Номер заказа"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Period.php:29
 msgid "Period"
-msgstr ""
+msgstr "Период"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Period.php:30
 msgid "Select the time period from now"
-msgstr ""
+msgstr "Укажите временной период с данного момента"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Period.php:39
 msgid "Last year"
-msgstr ""
+msgstr "За последний год"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Period.php:40
 msgid "Last quarter"
-msgstr ""
+msgstr "За последний квартал"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Period.php:41
 msgid "Last month"
-msgstr ""
+msgstr "За последний месяц"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Period.php:42
 msgid "Last week"
-msgstr ""
+msgstr "За последнюю неделю"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Product.php:21
 msgid "Product"
-msgstr ""
+msgstr "Продукт"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Totals.php:35
 msgid "Total"
-msgstr ""
+msgstr "Всего"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Totals.php:36
 msgid "Subtotal"
-msgstr ""
+msgstr "Промежуточный итог"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Totals.php:37
 msgid "Shipping Costs"
-msgstr ""
+msgstr "Стоимость доставки"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Totals.php:38
 msgid "Tax"
-msgstr ""
+msgstr "Налог"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Totals.php:39
 msgid "Refunds"
-msgstr ""
+msgstr "Возмещение"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Totals.php:40
 msgid "Discounts"
-msgstr ""
+msgstr "Скидки"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Totals.php41,
 #: cac-addon-woocommerce/v3/classes/Field/ShopOrder/OrderDate/Paid.php:9
 msgid "Paid"
-msgstr ""
+msgstr "Оплачено"
 
 #: cac-addon-woocommerce/v3/classes/Settings/UseIcon.php:35
 msgid "Use an icon?"
-msgstr ""
+msgstr "Использовать значок?"
 
 #: cac-addon-woocommerce/v3/classes/Settings/UseIcon.php:36
 msgid "Use an icon instead of text for displaying the note."
-msgstr ""
+msgstr "Использование значка вместо текста для показа примечания."
 
 #: admin-columns-pro/classes/Editing/classes/Model/Post/Excerpt.php:8
 msgid "Excerpt automatically generated from content."
-msgstr "Краткое содержание автоматически создано на основе содержимого."
+msgstr "Отрывок, созданный автоматически из контента."
 
 #: admin-columns-pro/classes/Editing/classes/Model/User/Username.php:31
 msgid "The username already exists."
@@ -1596,11 +1598,11 @@ msgstr "Имеет краткое содержание"
 
 #: admin-columns-pro/classes/Filtering/classes/Model/Post/Sticky.php:31
 msgid "Not sticky"
-msgstr "Незакрепленный"
+msgstr "Не закреплено"
 
 #: admin-columns-pro/classes/Filtering/classes/Model/Post/Sticky.php:32
 msgid "Sticky"
-msgstr "Закрепленный"
+msgstr "Закреплено"
 
 #: cac-addon-woocommerce/v2/classes/Column/Product/BackordersAllowed.php8,
 #: cac-addon-woocommerce/v3/classes/Column/Product/BackordersAllowed.php:8
@@ -1629,15 +1631,15 @@ msgstr "Высота"
 
 #: cac-addon-woocommerce/v2/classes/Column/Product/OrderTotal.php:10
 msgid "Total order amount"
-msgstr "Сумма заказа"
+msgstr "Общая стоимость заказа"
 
 #: cac-addon-woocommerce/v2/classes/Column/Product/Parent.php:11
 msgid "Parent product"
-msgstr "Родительский товар"
+msgstr "Родительский продукт"
 
 #: cac-addon-woocommerce/v2/classes/Column/Product/ProductType.php:11
 msgid "Product type"
-msgstr "Тип товара"
+msgstr "Тип продукта"
 
 #: cac-addon-woocommerce/v2/classes/Column/Product/ReviewsEnabled.php:11
 msgid "Reviews enabled"
@@ -1645,7 +1647,7 @@ msgstr "Отзывы включены"
 
 #: cac-addon-woocommerce/v2/classes/Column/Product/StockStatus.php:33
 msgid "Stock status editing is only supported for %s products."
-msgstr ""
+msgstr "Правка статуса наличия возможна только для продуктов %s."
 
 #: cac-addon-woocommerce/v2/classes/Column/Product/StockStatus.php39,
 #: cac-addon-woocommerce/v3/classes/Column/Product/StockStatus.php:33
@@ -1660,7 +1662,7 @@ msgstr "Нет в наличии"
 #: cac-addon-woocommerce/v2/classes/Column/Product/Upsells.php12,
 #: cac-addon-woocommerce/v3/classes/Column/Product/Upsells.php:12
 msgid "Upsells"
-msgstr "Аналогичные более дорогие товары / Upsells"
+msgstr "Более дорогие аналоги / Upsells"
 
 #: cac-addon-woocommerce/v2/classes/Column/Product/Visibility.php:11
 msgid "Visiblity"
@@ -1668,7 +1670,7 @@ msgstr "Видимость"
 
 #: cac-addon-woocommerce/v2/classes/Column/ShopCoupon/ExcludeProducts.php:11
 msgid "Excluded products"
-msgstr "Исключенные товары"
+msgstr "Исключенные продукты"
 
 #: cac-addon-woocommerce/v2/classes/Column/ShopCoupon/FreeShipping.php:11
 msgid "Free shipping"
@@ -1679,11 +1681,11 @@ msgstr "Бесплатная доставка"
 msgid ""
 "The free shipping method must be enabled with the &quot;must use "
 "coupon&quot; setting."
-msgstr "Бесплатная доставка должны быть включена настройкой «только при использовании купона»."
+msgstr "Бесплатная доставка должны быть включена параметром &quot;использовать купон&quot;."
 
 #: cac-addon-woocommerce/v2/classes/Column/ShopCoupon/IncludeProducts.php:11
 msgid "Included products"
-msgstr "Включенные товары"
+msgstr "Включенные продукты"
 
 #: cac-addon-woocommerce/v2/classes/Column/ShopCoupon/MaximumAmount.php:11
 msgid "Maximum amount"
@@ -1754,103 +1756,103 @@ msgstr "Есть сообщение от покупателя"
 
 #: cac-addon-woocommerce/v3/classes/Column/Comment/ProductReview.php:12
 msgid "Product Review"
-msgstr ""
+msgstr "Отзыв о продукте"
 
 #: cac-addon-woocommerce/v3/classes/Column/Product/AvgOrderInterval.php:12
 msgid "Avarage Order Interval"
-msgstr ""
+msgstr "Средний интервал заказов"
 
 #: cac-addon-woocommerce/v3/classes/Column/Product/Coupons.php:11
 msgid "Coupons"
-msgstr ""
+msgstr "Купоны"
 
 #: cac-addon-woocommerce/v3/classes/Column/Product/Customers.php:11
 msgid "Customers Purchased"
-msgstr ""
+msgstr "Куплено клиентами"
 
 #: cac-addon-woocommerce/v3/classes/Column/Product/OrderTotal.php:10
 msgid "Total Revenue"
-msgstr ""
+msgstr "Общий доход"
 
 #: cac-addon-woocommerce/v3/classes/Column/Product/Parent.php:12
 msgid "Grouped By"
-msgstr ""
+msgstr "Группировка по"
 
 #: cac-addon-woocommerce/v3/classes/Column/Product/ReviewsEnabled.php:11
 msgid "Reviews Enabled"
-msgstr ""
+msgstr "Обтзывы активны"
 
 #: cac-addon-woocommerce/v3/classes/Column/Product/Sale.php:11
 msgid "Sale"
-msgstr ""
+msgstr "Продажа"
 
 #: cac-addon-woocommerce/v3/classes/Column/Product/Sale.php:51
 msgid "From"
-msgstr ""
+msgstr "Начато"
 
 #: cac-addon-woocommerce/v3/classes/Column/Product/Sale.php:52
 msgid "Until"
-msgstr ""
+msgstr "До"
 
 #: cac-addon-woocommerce/v3/classes/Column/Product/Visibility.php:11
 msgid "Catalog Visiblity"
-msgstr ""
+msgstr "Видимость каталога"
 
 #: cac-addon-woocommerce/v3/classes/Column/ProductVariation/Stock.php:31
 msgid "Stock managed by product"
-msgstr ""
+msgstr "Управление складом продуктов"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopCoupon/CouponDescription.php:13
 msgid "Description"
-msgstr ""
+msgstr "Описание"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopCoupon/EmailRestrictions.php:11
 msgid "Email Restrictions"
-msgstr ""
+msgstr "E-mail ограничения"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopCoupon/ExcludeProducts.php:11
 msgid "Excluded Products"
-msgstr ""
+msgstr "Исключённые продукты"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopCoupon/ExcludeProductsCategories.php:13
 msgid "Exclude Product Categories"
-msgstr ""
+msgstr "Исключение категорий продуктов"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopCoupon/FreeShipping.php:11
 msgid "Free Shipping"
-msgstr ""
+msgstr "Бесплатная доставка"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopCoupon/IncludeProducts.php:11
 msgid "Included Products"
-msgstr ""
+msgstr "Включённые продукты"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopCoupon/MaximumAmount.php:11
 msgid "Maximum Amount"
-msgstr ""
+msgstr "Макс. количество"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopCoupon/MinimumAmount.php:11
 msgid "Minimum Amount"
-msgstr ""
+msgstr "Мин. количество"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopOrder/CustomerNote.php:12
 msgid "Customer Note"
-msgstr ""
+msgstr "Примечание покупателя"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopOrder/IP.php:11
 msgid "Customer IP address"
-msgstr ""
+msgstr "IP адрес покупателя"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopOrder/OrderNumber.php:11
 msgid "Order Number"
-msgstr ""
+msgstr "Номер заказа"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopOrder/PaymentMethod.php:8
 msgid "Payment Method"
-msgstr ""
+msgstr "Метод оплаты"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopOrder/Purchased.php:12
 msgid "Purchased"
-msgstr "Приобретено"
+msgstr "Куплено"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopOrder/Purchased.php:27
 msgid "%d item"
@@ -1862,134 +1864,134 @@ msgstr[3] "%d штук"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopOrder/Totals.php:16
 msgid "Totals"
-msgstr ""
+msgstr "Итого"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopOrder/TotalWeight.php:10
 msgid "Total Order Weight"
-msgstr ""
+msgstr "Общий вес заказа"
 
 #: cac-addon-woocommerce/v3/classes/Column/User/FirstOrder.php:12
 msgid "First Order"
-msgstr ""
+msgstr "Первый заказ"
 
 #: cac-addon-woocommerce/v3/classes/Column/User/LastOrder.php:12
 msgid "Last Order"
-msgstr ""
+msgstr "Последний заказ"
 
 #: cac-addon-woocommerce/v3/classes/Column/User/Products.php:11
 msgid "Products"
-msgstr ""
+msgstr "Продукты"
 
 #: cac-addon-woocommerce/v3/classes/Editing/Comment/Rating.php17,
 #: cac-addon-woocommerce/v3/classes/Editing/ShopOrder/MetaCountry.php:8
 msgid "None"
-msgstr ""
+msgstr "Ничего"
 
 #: cac-addon-woocommerce/v3/classes/Editing/Product/ShippingClass.php:26
 msgid "No shipping class"
-msgstr ""
+msgstr "Нет класса отправки"
 
 #: cac-addon-woocommerce/v3/classes/Export/ShopCoupon/Usage.php:16
 msgid "Infinity"
-msgstr ""
+msgstr "Много"
 
 #: cac-addon-woocommerce/v3/classes/Filtering/Comment/ProductReview.php:28
 msgid "Exclude Product Reviews"
-msgstr ""
+msgstr "Исключить отзывы продуктов"
 
 #: cac-addon-woocommerce/v3/classes/Filtering/Comment/ProductReview.php:29
 msgid "Only Product Reviews"
-msgstr ""
+msgstr "Только отзывы продуктов"
 
 #: cac-addon-woocommerce/v3/classes/Filtering/Product/Sale.php:34
 msgid "On Sale"
-msgstr ""
+msgstr "В продаже"
 
 #: cac-addon-woocommerce/v3/classes/Filtering/Product/Sale.php:35
 msgid "Not on Sale"
-msgstr ""
+msgstr "Нет в продаже"
 
 #: cac-addon-woocommerce/v3/classes/Filtering/Product/Sale.php:36
 msgid "Scheduled"
-msgstr ""
+msgstr "Запланировано"
 
 #: cac-addon-woocommerce/v3/classes/Filtering/Product/ShortDescription.php:11
 msgid "Without Short Description"
-msgstr ""
+msgstr "Без краткого описания"
 
 #: cac-addon-woocommerce/v3/classes/Filtering/Product/ShortDescription.php:12
 msgid "Has Short Description"
-msgstr ""
+msgstr "Есть краткое описание"
 
 #: cac-addon-woocommerce/v3/classes/Filtering/Product/SoldIndividually.php:26
 msgid "Sold Individually"
-msgstr ""
+msgstr "Продаётся отдельно"
 
 #: cac-addon-woocommerce/v3/classes/Filtering/Product/SoldIndividually.php:27
 msgid "Not Sold Individually"
-msgstr ""
+msgstr "Не продаётся отдельно"
 
 #: cac-addon-woocommerce/v3/classes/Filtering/ProductVariation/Downloadable.php:7
 msgid "Is Downloadable"
-msgstr ""
+msgstr "Можно скачать"
 
 #: cac-addon-woocommerce/v3/classes/Filtering/ProductVariation/Downloadable.php8,
 #: cac-addon-woocommerce/v3/classes/Filtering/ProductVariation/Virtual.php:8
 msgid "Exclude %s"
-msgstr ""
+msgstr "Исключая %s"
 
 #: cac-addon-woocommerce/v3/classes/Filtering/ProductVariation/Virtual.php:7
 msgid "Is Virtual"
-msgstr ""
+msgstr "Является виртуальным"
 
 #: cac-addon-woocommerce/v3/classes/Settings/Product/Attributes.php:25
 msgid "All attributes"
-msgstr ""
+msgstr "Все атрибуты"
 
 #: cac-addon-woocommerce/v3/classes/Settings/ProductVariation/Variation.php:39
 msgid "Without label"
-msgstr ""
+msgstr "Без метки"
 
 #: cac-addon-woocommerce/v3/classes/Settings/ProductVariation/Variation.php:93
 msgid "Any"
-msgstr ""
+msgstr "Все"
 
 #: cac-addon-woocommerce/v3/classes/Settings/ShopOrder/Address.php:40
 msgid "Full Address"
-msgstr ""
+msgstr "Полный адрес"
 
 #: cac-addon-woocommerce/v3/classes/Settings/User/Products.php:38
 msgid "Total products purchased"
-msgstr ""
+msgstr "Всего продуктов куплено"
 
 #: cac-addon-woocommerce/v3/classes/Settings/User/Products.php:39
 msgid "Unique products purchased"
-msgstr ""
+msgstr "Уникальных продуктов куплено"
 
 #: cac-addon-woocommerce/v3/classes/Settings/User/Ratings.php:38
 msgid "Amount of ratings given"
-msgstr ""
+msgstr "Количество данных оценок"
 
 #: cac-addon-woocommerce/v3/classes/Settings/User/Ratings.php:39
 msgid "Average rating"
-msgstr ""
+msgstr "Средняя оценка"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopOrder/Address/Billing.php:10
 msgid "Billing Address"
-msgstr ""
+msgstr "Адрес выставления счёта"
 
 #: cac-addon-woocommerce/v3/classes/Column/ShopOrder/Address/Shipping.php:10
 msgid "Shipping Address"
-msgstr ""
+msgstr "Адрес доставки"
 
 #: cac-addon-woocommerce/v3/classes/Field/ShopOrder/OrderDate/Completed.php:9
 msgid "Completed"
-msgstr ""
+msgstr "Завершено"
 
 #: cac-addon-woocommerce/v3/classes/Field/ShopOrder/OrderDate/Created.php:9
 msgid "Created"
-msgstr ""
+msgstr "Создано"
 
 #: cac-addon-woocommerce/v3/classes/Field/ShopOrder/OrderDate/Modified.php:9
 msgid "Modified"
-msgstr ""
+msgstr "Изменено"

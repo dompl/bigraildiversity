@@ -68,6 +68,9 @@ class Manager
 			}
 		}
 
+		// This hook can be triggered more than once, but we only want to run it once.
+		remove_action( 'pre_set_site_transient_update_plugins', array( $this, 'check_for_updates' ) );
+
 		return $transient;
 	}
 

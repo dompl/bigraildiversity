@@ -48,7 +48,9 @@ class HorizontalScrolling {
 	 * @return bool
 	 */
 	private function is_overflow_table( $list_screen ) {
-		return (bool) $this->preferences()->get( $list_screen->get_storage_key() );
+		$preference = $this->preferences()->get( $list_screen->get_storage_key() );
+
+		return (bool) apply_filters( 'acp/horizontal_scrolling/enable', $preference, $list_screen );
 	}
 
 	/**
