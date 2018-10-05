@@ -1,0 +1,56 @@
+/*  ********************************************************
+ *   Folks :)
+ *  ********************************************************
+ */
+
+.folks-item {
+
+        background: white;
+        border-radius: $border-radius-base;
+        margin-bottom: 15px;
+        @include _last-child() {
+            margin-bottom: 0;
+        }
+        padding: 20px;
+        box-shadow: 0px 8px 20px rgba(#888888, .1);
+        @extend %transition;
+        &:hover {
+            box-shadow: 0px 8px 20px rgba(#888888, .1);
+        }
+        .folks-item-inner {
+            display: flex;
+        }
+        .image {
+            flex: 0 0 30%;
+            margin-right: 20px;
+            align-items: center;
+            text-align: center;
+            display: flex;
+            a {
+                align-items: center;
+                display: flex;
+                align-self: center;
+                text-align: center;
+                width: 100%;
+                img {
+                    display: block;
+                    margin:auto;
+                }
+            }
+        }
+        .title {
+            margin-top: -5px;
+            margin-bottom: 10px;
+            h2 {
+                margin-bottom: 10px;
+            }
+            a {
+                color: color(wir);
+                font-weight: $font-weight-bolder;
+            }
+        }
+        .link {
+            margin-top: 20px;
+        }
+    }
+

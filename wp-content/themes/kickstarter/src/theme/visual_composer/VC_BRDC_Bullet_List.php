@@ -100,7 +100,7 @@ if ( ! class_exists('VC_BRDC_Bullet_List')) {
 
 
       $item .= $custom_class != '' || $custom_id != '' ? '<div' . $custom_id . $custom_class . '>' : '';
-      $item .= '<div class="' . $this->pixels_class($align, 'align') . ' ' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
+      $item .= '<div class="' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
       $item .= '<ul class="bullet-list list-unstyled columns-'.$cols.'">';
       foreach ($list as $list_item) {
       $item .= '<li class="clx"><span class="inner">'.$list_item.'</span></li>';
