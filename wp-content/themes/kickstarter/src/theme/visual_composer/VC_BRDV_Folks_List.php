@@ -47,6 +47,22 @@ if ( ! class_exists('VC_BRDV_Folks_List')) {
           'description' => __('Select for which year you want to show the logos.', 'TEXT_DOMAIN'),
           'std'         => date('Y'),
         ),
+        // array(
+        //   'type'        => 'checkbox',
+        //   'holder'      => 'div',
+        //   'class'       => 'vc_hidden',
+        //   'heading'     => __('Sponsors First', 'TEXT_DOMAIN'),
+        //   'param_name'  => 'sponsor_first',
+        //   'admin_label' => true,
+        //   'group'       => __('Content', 'TEXT_DOMAIN'),
+        //   'value'       => array(__('Put sponsors at the top of the list', 'TEXT_DOMAIN') => 'Yes'),
+        //   'description' => __('Put sponsors at the top of the list', 'TEXT_DOMAIN'),
+        //   'std'         => false,
+        //   'dependency'  => array(
+        //     'element' => 'type',
+        //     'value'   => array('supportingorgs', 'atendees'),
+        //   ),
+        // ),
         $this->param_text_alignment('align'),
         $this->param_space('above'),
         $this->param_space('below'),
@@ -83,12 +99,13 @@ if ( ! class_exists('VC_BRDV_Folks_List')) {
     public function VC_BRDV_Folks_List_shortcode_callback($atts, $content = null) {
 
       extract(shortcode_atts(array(
-        'type'         => 'atendees',
-        'year'         => (int) date('Y'),
-        'space_above'  => __('None', 'TEXT_DOMAIN'),
-        'space_below'  => __('None', 'TEXT_DOMAIN'),
-        'custom_class' => '',
-        'custom_id'    => '',
+        // 'sponsor_first' => false,
+        'type'          => 'atendees',
+        'year'          => (int) date('Y'),
+        'space_above'   => __('None', 'TEXT_DOMAIN'),
+        'space_below'   => __('None', 'TEXT_DOMAIN'),
+        'custom_class'  => '',
+        'custom_id'     => '',
       ), $atts));
 
       $years = explode(',', $year);
@@ -102,7 +119,14 @@ if ( ! class_exists('VC_BRDV_Folks_List')) {
       $args = array(
         'post_type'      => 'atendees',
         'posts_per_page' => -1,
+
       );
+
+      // if ($sponsor_first == 'Yes') {
+      //   $args['meta_key'] = 'sponsorship_year';
+      //   $args['orderby']  = 'meta_value';
+      //   $args['order']    = 'DESC';
+      // }
 
       foreach ($year as $y) {
         $args['meta_query']['relation'] = 'OR';
@@ -150,10 +174,10 @@ if ( ! class_exists('VC_BRDV_Folks_List')) {
           );
           // Content
           $full = sprintf('<div class="content">
-              <div class="title"><h2><a href="%1$s" title="%2$s">' . $title . '</a></h2></div>
-              %3$s
-              <div class="link"><a href="%1$s" title="%2$s" class="button small fill color-green">%4$s</a></div>
-              </div>',
+            <div class="title"><h2><a href="%1$s" title="%2$s">' . $title . '</a></h2></div>
+            %3$s
+            <div class="link"><a href="%1$s" title="%2$s" class="button small fill color-green">%4$s</a></div>
+            </div>',
             $link,                                                                                                  // 1
             sprintf(__('Premalink to %s', 'TEXT_DOMAIN'), $title),                                                  // 2
             $short_description ? '<div class="short-description first-last">' . $short_description . '</div>' : '', // 3
