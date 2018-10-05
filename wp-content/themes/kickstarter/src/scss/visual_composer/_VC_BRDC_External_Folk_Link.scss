@@ -1,0 +1,13 @@
+/*  ********************************************************
+ *   Small button linking to external page
+ *  ********************************************************
+ */
+
+.external-link {
+  margin-top:spacer(1);
+  background: white;
+  text-align: center;
+  padding-top:spacer();
+  padding-bottom: spacer();
+  border-radius:$border-radius-base;
+}

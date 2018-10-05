@@ -121,34 +121,34 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
       return $params;
     }
 
-    public function specific_testimonials() {
+    // public function specific_testimonials() {
 
-      $args = array(
-        'posts_per_page' => -1,
-        'post_type'      => array('challenges', 'atendees', 'supportingorgs'),
-        'meta_query'     => array(
-          array(
-            'key'     => 'testimonials_list',
-            'value'   => array(''),
-            'compare' => 'NOT IN',
-          ),
-        ),
-      );
-      $posts = get_posts($args);
+    //   $args = array(
+    //     'posts_per_page' => -1,
+    //     'post_type'      => array('challenges', 'atendees', 'supportingorgs'),
+    //     'meta_query'     => array(
+    //       array(
+    //         'key'     => 'testimonials_list',
+    //         'value'   => array(''),
+    //         'compare' => 'NOT IN',
+    //       ),
+    //     ),
+    //   );
+    //   $posts = get_posts($args);
 
-      $items = array();
-      if ($posts) {
+    //   $items = array();
+    //   if ($posts) {
 
-        foreach ($posts as $post) {
-          $id         = $post->ID;
-          $name       = get_the_title($id);
-          $items[$id] = $name;
-        }
-      }
-      wp_reset_postdata();
-      wp_reste_query();
-      return $item;
-    }
+    //     foreach ($posts as $post) {
+    //       $id         = $post->ID;
+    //       $name       = get_the_title($id);
+    //       $items[$id] = $name;
+    //     }
+    //   }
+    //   wp_reset_postdata();
+    //   wp_reste_query();
+    //   return $item;
+    // }
 
     /**
      * Visual Composer Map
@@ -197,6 +197,7 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
       $options = explode(',', $options);
       $fromwho = explode(',', $fromwho);
       $limit   = $limit == '' ? -1 : (int) $limit;
+
       $args    = array(
         'posts_per_page' => $limit,
         'meta_query'     => array(

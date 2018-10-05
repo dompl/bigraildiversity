@@ -36,6 +36,21 @@ if ( ! class_exists('VC_BRDV_Folks_List')) {
           'std'         => 'atendees',
         ),
         array(
+          'type'        => 'dropdown',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'heading'     => __('Type', 'TEXT_DOMAIN'),
+          'param_name'  => 'mode',
+          'admin_label' => true,
+          'group'       => __('Display mode', 'TEXT_DOMAIN'),
+          'value'       => array(
+            __('Center', 'TEXT_DOMAIN') => 'center',
+            __('Side', 'TEXT_DOMAIN')   => 'side',
+          ),
+          'description' => __('How would you like to display the content', 'TEXT_DOMAIN'),
+          'std'         => 'side',
+        ),
+        array(
           'type'        => 'checkbox',
           'holder'      => 'div',
           'class'       => 'vc_hidden',
@@ -100,12 +115,13 @@ if ( ! class_exists('VC_BRDV_Folks_List')) {
 
       extract(shortcode_atts(array(
         // 'sponsor_first' => false,
-        'type'          => 'atendees',
-        'year'          => (int) date('Y'),
-        'space_above'   => __('None', 'TEXT_DOMAIN'),
-        'space_below'   => __('None', 'TEXT_DOMAIN'),
-        'custom_class'  => '',
-        'custom_id'     => '',
+        'type'         => 'atendees',
+        'mode'         => 'side',
+        'year'         => (int) date('Y'),
+        'space_above'  => __('None', 'TEXT_DOMAIN'),
+        'space_below'  => __('None', 'TEXT_DOMAIN'),
+        'custom_class' => '',
+        'custom_id'    => '',
       ), $atts));
 
       $years = explode(',', $year);
@@ -153,7 +169,7 @@ if ( ! class_exists('VC_BRDV_Folks_List')) {
 
           $id = get_the_ID();
 
-          $item .= '<div class="folks-item ' . $type . '"><div class="folks-item-inner clx">';
+          $item .= '<div class="folks-item ' . $type . ' mode-' . $mode . '"><div class="folks-item-inner clx">';
           // Image
 
           $image             = get_field('add_attendee_logo');

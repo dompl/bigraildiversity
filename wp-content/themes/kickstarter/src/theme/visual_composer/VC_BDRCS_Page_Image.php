@@ -28,7 +28,7 @@ if ( ! class_exists('VC_BDRCS_Page_Image')) {
           'admin_label' => true,
           'group'       => __('Content', 'TEXT_DOMAIN'),
           'value'       => $this->years(),
-          'description' => __('In which year this challenge was new', 'TEXT_DOMAIN'),
+          'description' => __('In which year this challenge was new. This setting is active for challenges', 'TEXT_DOMAIN'),
           'std'         => date('Y') + 1,
         ),
         $this->param_space('above'),
@@ -90,8 +90,7 @@ if ( ! class_exists('VC_BDRCS_Page_Image')) {
       $item .= '<div class="' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
 
       $batch = '';
-
-      if ((get_field('new_batch') == 1)) {
+      if ((get_field('new_batch') == 1) && get_post_type() == 'challenges') {
         $batch_image = wp_upload_dir()['baseurl'] . '/2018/10/batch-' . $year . '.png';
         $batch       = sprintf('<div class="batch"><img src="%s" data-src="%s" alt="%s" class="lazy"></div>',
           wpimagebase(),
@@ -113,17 +112,25 @@ if ( ! class_exists('VC_BDRCS_Page_Image')) {
       }
 
       $slider_images = '';
-      $i = 1;
+      $i             = 1;
+      $crop          = 'true';
+      $height        = 400;
+      $width         = 840;
+
+      if (get_post_type() == 'atendees' || get_post_type() == 'supportingorgs') {
+        $crop = 'false';
+      }
+
       foreach ($images as $image) {
         $slider_images .= sprintf('<div class="item clx"><img %s="%s" alt="%s"></div>',
-          $additional_images != '' ? ( $i == 1 ? 'class="lazy" data-src' : 'data-lazy' ) : 'class="lazy" data-src',
-          wpimage('img=' . $image . '&h=566&w=840&upscale=true&crop=true&single=true&retina=false'),
+          $additional_images != '' ? ($i == 1 ? 'class="lazy" data-src' : 'data-lazy') : 'class="lazy" data-src',
+          wpimage('img=' . $image . '&h=' . $height . '&w=' . $width . '&upscale=true&crop=' . $crop . '&single=true&retina=false'),
           the_title_attribute('echo=0&posts=' . get_the_ID())
         );
         $i++;
       }
 
-      $item .= sprintf('<div class="page-image"><div class="%s">%s</div>%s<div>',
+      $item .= sprintf('<div class="page-image"><div class="%s">%s</div>%s</div>',
         $additional_images != '' ? 'page-image-slider sli' : '',
         $slider_images,
         $batch
