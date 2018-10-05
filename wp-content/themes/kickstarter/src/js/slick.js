@@ -17,17 +17,27 @@
             slidesToShow: 1,
             adaptiveHeight: true,
             autoplay: true,
-            autoplaySpeed: 12000,
+            autoplaySpeed: 3000,
         });
         $('.challanges-in-slick').slick({
             lazyLoad: 'ondemand',
             prevArrow: '<i class="icon-chevron-left"></i>',
             nextArrow: '<i class="icon-chevron-right"></i>',
             dots: false,
-            arrows:true,
+            arrows: true,
             adaptiveHeight: false,
             autoplay: true,
-            autoplaySpeed: 12000,
+            autoplaySpeed: 3000,
+        });
+        $('.page-image-slider').slick({
+            lazyLoad: 'ondemand',
+            prevArrow: '<i class="icon-chevron-left"></i>',
+            nextArrow: '<i class="icon-chevron-right"></i>',
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            fade:true,
+            autoplay: false,
+            autoplaySpeed: 3000,
         });
     });
 }(jQuery));

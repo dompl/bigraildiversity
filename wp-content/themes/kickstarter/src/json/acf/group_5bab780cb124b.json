@@ -23,7 +23,7 @@
             "label": "Year",
             "name": "challange_year",
             "type": "checkbox",
-            "instructions": "In which year the company attended the event",
+            "instructions": "In which year the the challenge was available",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -51,7 +51,7 @@
             "label": "New batch",
             "name": "new_batch",
             "type": "true_false",
-            "instructions": "Display NEW for <i>year<\/i> batch?",
+            "instructions": "Show New for the year batch?",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -179,6 +179,31 @@
             },
             "return_format": "id",
             "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5bb6fb2cb2ac2",
+            "label": "Additional Challenge images",
+            "name": "additional_challenge_images",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "insert": "append",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -338,5 +363,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Challanges",
-    "modified": 1538386235
+    "modified": 1538718948
 }

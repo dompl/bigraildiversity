@@ -23,19 +23,25 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       return $field;
     }
 
+    public function require() {
+      return array(
+        'slick' => wp_enqueue_script('ks-slick-js', get_template_directory_uri() . '/js/x-slick.js', array('jquery'), '1.6.11', true),
+      );
+    }
+
     /* Remove unwanted VC elemenrs */
     public function vc_remove_elements() {
       if ( ! defined('WPB_VC_VERSION')) {
         return;
       }
-      $elements = array('vc_wp_rss', 'vc_wp_archives', 'vc_wp_categories', 'vc_wp_text', 'vc_wp_posts', 'vc_wp_custommenu', 'vc_wp_tagcloud', 'vc_wp_pages', 'vc_wp_calendar', 'vc_wp_recentcomments', 'vc_wp_meta', 'vc_wp_search', 'vc_empty_space', 'vc_line_chart', 'vc_round_chart', 'vc_progress_bar', 'vc_masonry_media_grid', 'vc_masonry_grid', 'vc_basic_grid', 'vc_flickr', 'vc_widget_sidebar', 'vc_pie', 'vc_media_grid', 'vc_acf', /*'vc_gmaps',*/'vc_tta_tour', 'vc_tta_accordion', 'vc_tta_pageable', 'vc_custom_heading', 'vc_btn', 'vc_btn', 'vc_cta', 'vc_tta_tabs', 'vc_images_carousel', 'vc_gallery', 'vc_toggle', 'vc_pinterest', 'vc_googleplus', 'vc_icon', 'vc_separator', 'vc_zigzag', 'vc_message', 'vc_tweetmeme', 'vc_posts_slider', 'vc_video', 'vc_facebook', 'vc_hoverbox', 'vc_text_separator', 'vc_tabs', 'vc_tour', 'vc_accordion', 'vc_single_image'/*, 'jig_vc'*/);
+      $elements = array('vc_wp_rss', 'vc_wp_archives', 'vc_wp_categories', 'vc_wp_text', 'vc_wp_posts', 'vc_wp_custommenu', 'vc_wp_tagcloud', 'vc_wp_pages', 'vc_wp_calendar', 'vc_wp_recentcomments', 'vc_wp_meta', 'vc_wp_search', 'vc_empty_space', 'vc_line_chart', 'vc_round_chart', 'vc_progress_bar', 'vc_masonry_media_grid', 'vc_masonry_grid', 'vc_basic_grid', 'vc_flickr', 'vc_widget_sidebar', 'vc_pie', 'vc_media_grid', 'vc_acf', /*'vc_gmaps',*/'vc_tta_tour', 'vc_tta_accordion', 'vc_tta_pageable', 'vc_custom_heading', 'vc_btn', 'vc_btn', 'vc_cta', 'vc_tta_tabs', 'vc_images_carousel', 'vc_gallery', 'vc_toggle', 'vc_pinterest', 'vc_googleplus', 'vc_icon', 'vc_separator', 'vc_zigzag', 'vc_message', 'vc_tweetmeme', 'vc_posts_slider', 'vc_video', 'vc_facebook', 'vc_hoverbox', 'vc_text_separator', 'vc_tabs', 'vc_tour', 'vc_accordion', 'vc_single_image' /*, 'jig_vc'*/);
 
       foreach ($elements as $element) {
         vc_remove_element($element);
       }
     }
 
-    public function acf_load_sponsors( $field ) {
+    public function acf_load_sponsors($field) {
 
       $args = array(
         'post_type'      => array('atendees', 'supportingorgs'),

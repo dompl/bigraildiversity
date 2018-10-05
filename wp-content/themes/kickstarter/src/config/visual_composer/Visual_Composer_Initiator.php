@@ -21,7 +21,7 @@ use theme\visual_composer\VC_BRDC_Image_Gallery;
 use theme\visual_composer\VC_BRDC_Bullet_List;
 use theme\visual_composer\VC_BRDC_Testimonial_Scroller;
 use theme\visual_composer\VC_BRDC_Challanges;
-use theme\visual_composer\VC_Challange_Image;
+use theme\visual_composer\VC_BDRCS_Page_Image;
 
 if ( ! class_exists('Visual_Composer_General_Settings')) {
 
@@ -60,7 +60,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       new VC_BRDC_Bullet_List();
       new VC_BRDC_Testimonial_Scroller();
       new VC_BRDC_Challanges();
-      new VC_Challange_Image();
+      new VC_BDRCS_Page_Image();
 
     }
   }

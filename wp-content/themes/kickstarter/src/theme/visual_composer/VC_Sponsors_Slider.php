@@ -152,7 +152,7 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
 
       if ($the_query->have_posts()) {
 
-        wp_enqueue_script('ks-slick-js', get_template_directory_uri() . '/js/x-slick.js', array('jquery'), '1.6.11', true);
+        $this->require()['slick'];
 
         $slick_settings = '';
         $slick_settings .= '"slidesToShow": ' . $slides_to_show . ', ';
@@ -160,8 +160,7 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
         $slick_settings .= '"centerMode": ' . ($slider_center_mode ? 'true, ' : 'false, ');
         $slick_settings .= '"infinite": ' . ($slider_infinite ? 'true, ' : 'false, ');
         $slick_settings .= '"autoplay": ' . ($slider_autoplay ? 'true' : 'false');
-        // $slick_settings .= '"slider_navigation": ' . $slider_navigation . ', ';
-        //
+
         $item .= '<div class="sponsor-atendee-slider"><ul class="list-inline sponsor-slider slick-equal" data-slick=\'{' . $slick_settings . '}\'>';
 
         while ($the_query->have_posts()) {$the_query->the_post();

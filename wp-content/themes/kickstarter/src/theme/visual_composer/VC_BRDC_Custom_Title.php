@@ -103,6 +103,12 @@ if ( ! class_exists('VC_BRDC_Custom_Title')) {
       $custom_class      = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
       $custom_id         = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
 
+      // Fix duplicate title
+      $what = array('CHALLENGE CHALLENGE', 'challenge challenge', 'Challenge challenge', 'challenge Challenge');
+      $with = array('CHALLENGE', 'challenge', 'challenge', 'Challenge');
+
+      $text = str_replace($what, $with, $text);
+
       $class = '';
       $i     = 0;
 

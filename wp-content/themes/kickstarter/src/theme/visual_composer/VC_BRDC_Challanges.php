@@ -291,7 +291,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
       if ($the_query->have_posts()) {
 
         if ($display == 'slick') {
-          wp_enqueue_script('ks-slick-js', get_template_directory_uri() . '/js/x-slick.js', array('jquery'), '1.6.11', true);
+          $this->require()['slick'];
         }
 
         $slick_settings = '';

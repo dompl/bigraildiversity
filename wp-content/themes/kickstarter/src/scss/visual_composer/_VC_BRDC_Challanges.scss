@@ -52,7 +52,7 @@
     .challange-item {
         @include w($items);
         /* explanation below */
-        margin: 10px;
+        margin: 0 10px 20px;
         @include breakpoint(max-width $sm) {
             max-width: 300px;
             margin-left: auto;
