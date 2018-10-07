@@ -12,10 +12,13 @@
             margin: 0 10px;
         }
     }
-    .company, .name, .logo, .website {
+    .company, .name, .logo, .website, .person {
         margin-top: spacer(.5);
         font-weight: $font-weight-bold;
         text-align: center;
+    }
+    .person + .company {
+      margin-top: 0;
     }
     .website {
         text-transform: uppercase;

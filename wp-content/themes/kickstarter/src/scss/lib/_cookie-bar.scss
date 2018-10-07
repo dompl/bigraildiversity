@@ -4,14 +4,25 @@
  */
 
 #cookie-bar {
-    &.fixed {
         position: fixed;
-        top: 0;
+        bottom: 0;
         left: 0;
         width: 100%;
+        background: rgba(black, .8);
+        text-align: center;
+        z-index: 10000;
+        color:white;
+        font-size: 13px;
+        p {
+          margin:8px 0;
+        }
+        .ud {
+          display: inline-block;
+          margin:0 10px;
+        }
         &.bottom {
             bottom: 0;
             top: auto;
         }
-    }
+
 }

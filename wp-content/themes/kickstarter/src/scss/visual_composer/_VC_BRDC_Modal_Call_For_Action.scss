@@ -14,7 +14,10 @@
         }
     }
     /* Title */
-    .call-title, .button {
+    .subtitle {
+      font-size:13px;
+    }
+    .call-title, .button, .subtitle {
         margin-top: spacer(.5)!important;
         margin-bottom: 0;
     }

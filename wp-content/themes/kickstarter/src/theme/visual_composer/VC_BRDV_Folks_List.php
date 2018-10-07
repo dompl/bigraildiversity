@@ -131,11 +131,12 @@ if ( ! class_exists('VC_BRDV_Folks_List')) {
       $type = str_replace('_sponsor', '', $type);
 
       $year = explode(',', $year);
+      $type = explode(',', $type);
+
       /* Build query args */
       $args = array(
-        'post_type'      => 'atendees',
+        'post_type'      => $type,
         'posts_per_page' => -1,
-
       );
 
       // if ($sponsor_first == 'Yes') {
@@ -169,7 +170,7 @@ if ( ! class_exists('VC_BRDV_Folks_List')) {
 
           $id = get_the_ID();
 
-          $item .= '<div class="folks-item ' . $type . ' mode-' . $mode . '"><div class="folks-item-inner clx">';
+          $item .= '<div class="folks-item ' . implode($type) . ' mode-' . $mode . '"><div class="folks-item-inner clx">';
           // Image
 
           $image             = get_field('add_attendee_logo');

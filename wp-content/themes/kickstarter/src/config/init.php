@@ -39,6 +39,7 @@ class init {
         $acf = new acf();
         $acf->init();
         $acf->init('page_title='. get_bloginfo('name').' Winners List&menu_title=Winners List&menu_slug=winnters-list&parent_slug=edit.php?post_type=atendees');
+        $acf->init('page_title='. get_bloginfo('name').' Event Testimonials&menu_title=Event Testimonials&menu_slug=event-testimonials&parent_slug=edit.php?post_type=atendees');
 
         /**
          * Initiate navigation

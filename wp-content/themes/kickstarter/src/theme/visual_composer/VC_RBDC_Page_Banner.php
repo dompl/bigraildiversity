@@ -111,7 +111,7 @@ if ( ! class_exists('VC_RBDC_Page_Banner')) {
       }
 
       ob_start()?>
-      <section class="page-banner">
+      <section class="page-banner banner-<?php echo get_the_ID()?>">
         <?php echo $pattern ? "<div $background_pattern>" : '' ?>
         <div class="inner">
          <?php echo $images ? "<div $background_image>" : '' ?>

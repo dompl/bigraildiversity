@@ -34,7 +34,7 @@ if ( ! class_exists('VC_BRDC_Modal_Call_For_Action')) {
           'type'       => 'param_group',
           'value'      => 'Banner slides',
           'group'      => __('Content', 'TEXT_DOMAIN'),
-          'heading'    => __('Add banner slides', 'TEXT_DOMAIN'),
+          'heading'    => __('Add call for actions', 'TEXT_DOMAIN'),
           'param_name' => 'calls',
           'params'     => array(
             /* Link type - link_to */
@@ -60,6 +60,16 @@ if ( ! class_exists('VC_BRDC_Modal_Call_For_Action')) {
               'class'       => 'vc_label',
               'heading'     => __('Main title', 'TEXT_DOMAIN'),
               'param_name'  => 'title',
+              'group'       => __('Content', 'TEXT_DOMAIN'),
+              'value'       => '',
+              'description' => __('Call for action title', 'TEXT_DOMAIN'),
+            ),
+            array(
+              'type'        => 'textfield',
+              'holder'      => 'div',
+              'class'       => 'vc_label',
+              'heading'     => __('Subtitle', 'TEXT_DOMAIN'),
+              'param_name'  => 'subtitle',
               'group'       => __('Content', 'TEXT_DOMAIN'),
               'value'       => '',
               'description' => __('Call for action title', 'TEXT_DOMAIN'),
@@ -299,6 +309,7 @@ return $params;
             $link_to           = array_key_exists('link_to', $call) ? $call['link_to'] : false;
             $title             = array_key_exists('link_to', $call) ? $this->replace_brackets_with_tags($call['title']) : false;
             $text              = array_key_exists('text', $call) ? $call['text'] : false;
+            $subtitle          = array_key_exists('subtitle', $call) ? $call['subtitle'] : false;
             $image             = array_key_exists('img', $call) ? $call['img'] : false;
             $pop_button_text   = array_key_exists('pop_button_text', $call) ? $call['pop_button_text'] : false;
             $show_img_in_popup = array_key_exists('show_in_popup', $call) ? $call['show_in_popup'] : false;
@@ -326,6 +337,7 @@ return $params;
             }
             /* Title */
             $the_title = ($call['title']) ? "<$tag  data-mh=\"call-title\" class='call-title custom-call-title-$random $class $animation_classes'>" . do_shortcode($title) . "</$tag>" : '';
+            $subtitle  = $subtitle ? '<div class="subtitle '.$this->pixels_class($align, 'align').'">' . $subtitle . '</div>' : '';
 
             $modal_rand = rand(10, 10000);
             /* link */
@@ -346,6 +358,7 @@ return $params;
             <div class="call-for-action <?php echo "cols-$cols" ?> ">
               <?php echo $img ? $link[1] . $img . $link[0] : '' ?>
               <?php echo $the_title ? $link[1] . $the_title . $link[0] : '' ?>
+              <?php echo $subtitle; ?>
               <?php if ($pop_button_text != ''): ?>
                 <div class="<?php echo $this->pixels_class($align, 'align') ?>"><?php echo $link[2] . $pop_button_text . $link[0] ?></div>
               <?php endif;

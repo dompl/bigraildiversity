@@ -10,6 +10,25 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
     public function __construct() {
       add_action('vc_before_init', array(&$this, 'VC_BRDC_Testimonial_Scroller_section_map'));
       add_shortcode('VC_BRDC_Testimonial_Scroller_shortcode', array(&$this, 'VC_BRDC_Testimonial_Scroller_shortcode_callback'));
+
+    }
+
+    public function event_testimonials() {
+      $tesimonial = array();
+      if (have_rows('misc_testimonials', 'options')) {
+        $i = 1;
+        while (have_rows('misc_testimonials', 'options')) {
+          the_row();
+          $name          = get_sub_field('testimonials_person', 'options') . ' - ' . get_sub_field('testimoanial_company', 'options')['label'];
+          $number        = get_sub_field('testimoanial_company', 'options')['value'];
+          $data['value'] = $number;
+          $data['label'] = $name;
+          $tesimonial[]  = $data;
+          $i++;
+        }
+      }
+      return $tesimonial;
+
     }
 
     /**
@@ -28,12 +47,55 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
           'param_name'  => 'content_cource',
           'group'       => __('Settings', 'TEXT_DOMAIN'),
           'value'       => array(
-            __('From current page', 'TEXT_DOMAIN') => 'current',
-            __('All testimonials', 'TEXT_DOMAIN')  => 'all',
+            __('From current page', 'TEXT_DOMAIN')            => 'current',
+            __('All testimonials', 'TEXT_DOMAIN')             => 'all',
+            // __('Event testimonials', 'TEXT_DOMAIN')           => 'event',
+            __('Event testimonials from year', 'TEXT_DOMAIN') => 'per_year',
           ),
           'description' => __('Select testimonial source', 'TEXT_DOMAIN'),
           'std'         => 'current',
         ),
+
+        array(
+          'type'        => 'custom_radio',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'heading'     => __('Miscellaneous testimonials year', 'TEXT_DOMAIN'),
+          'param_name'  => 'years',
+          'admin_label' => true,
+          'group'       => __('Settings', 'TEXT_DOMAIN'),
+          'value'       => $this->years(),
+          'description' => __('Set miscellaneous testimonials year', 'TEXT_DOMAIN'),
+          'std'         => date('Y'),
+          'dependency'  => array(
+            'element' => 'content_cource',
+            'value'   => array('per_year'),
+          ),
+        ),
+
+        array(
+          'type'        => 'autocomplete',
+          'class'       => '',
+          'heading'     => __('Specific testimonials', 'TEXT_DOMAIN'),
+          'param_name'  => 'testimonias_id',
+          'group'       => __('Settings', 'TEXT_DOMAIN'),
+          'settings'    => array(
+            'values'         => $this->event_testimonials(),
+            'multiple'       => true,
+            'sortable'       => true,
+            'min_length'     => 1,
+            'no_hide'        => false, // In UI after select doesn't hide an select list
+            'groups'         => true,  // In UI show results grouped by groups
+            'unique_values'  => true,  // In UI show results except selected. NB! You should manually check values in backend
+            'display_inline' => false, // In UI show results inline view),
+          ),
+          'description' => __('Select the testimonials to display. If this remains blank, all testimonials will be displayed', 'TEXT_DOMAIN'),
+          'dependency'  => array(
+            'element' => 'content_cource',
+            'value'   => array('event'),
+          ),
+        ),
+
         array(
           'type'        => 'checkbox',
           'holder'      => 'div',
@@ -105,7 +167,7 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
           'group'       => __('Settings', 'TEXT_DOMAIN'),
           'value'       => 2,
           'std'         => false,
-          'description' => __('Set autoplay speed (in seconds)' , 'TEXT_DOMAIN'),
+          'description' => __('Set autoplay speed (in seconds)', 'TEXT_DOMAIN'),
           'dependency'  => array(
             'element' => 'content_cource',
             'value'   => array('all'),
@@ -120,35 +182,6 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
       );
       return $params;
     }
-
-    // public function specific_testimonials() {
-
-    //   $args = array(
-    //     'posts_per_page' => -1,
-    //     'post_type'      => array('challenges', 'atendees', 'supportingorgs'),
-    //     'meta_query'     => array(
-    //       array(
-    //         'key'     => 'testimonials_list',
-    //         'value'   => array(''),
-    //         'compare' => 'NOT IN',
-    //       ),
-    //     ),
-    //   );
-    //   $posts = get_posts($args);
-
-    //   $items = array();
-    //   if ($posts) {
-
-    //     foreach ($posts as $post) {
-    //       $id         = $post->ID;
-    //       $name       = get_the_title($id);
-    //       $items[$id] = $name;
-    //     }
-    //   }
-    //   wp_reset_postdata();
-    //   wp_reste_query();
-    //   return $item;
-    // }
 
     /**
      * Visual Composer Map
@@ -179,6 +212,8 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
         'options'        => 'person_name,company_name,company_logo,company_url',
         'fromwho'        => 'challenges,atendees,supportingorgs',
         'content_cource' => 'current',
+        'years'          => date('Y'),
+        'testimonias_id' => '',
         'space_above'    => __('None', 'TEXT_DOMAIN'),
         'space_below'    => __('None', 'TEXT_DOMAIN'),
         'limit'          => '',
@@ -192,35 +227,11 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
         return;
       }
 
-      $speed = ( (int) $speed  * 1000);
+      $speed = ((int) $speed * 1000);
 
       $options = explode(',', $options);
       $fromwho = explode(',', $fromwho);
       $limit   = $limit == '' ? -1 : (int) $limit;
-
-      $args    = array(
-        'posts_per_page' => $limit,
-        'meta_query'     => array(
-          array(
-            'key'     => 'testimonials_list',
-            'value'   => array(''),
-            'compare' => 'NOT IN',
-          ),
-        ),
-      );
-
-      if ($content_cource == 'all') {
-        $args['post_type'] = (array) $fromwho;
-      } elseif ($content_cource == 'current') {
-        $args['post_type'] = get_post_type();
-        $args['post__in']  = array(get_the_ID());
-      }
-
-      if ($order == true && $content_cource == 'all') {
-        $args['orderby'] = 'rand';
-      }
-
-      $posts = get_posts($args);
 
       $item         = '';
       $custom_class = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
@@ -230,16 +241,29 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
       $item .= '<div class="' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
 
       $item .= '<div class="testimonials">';
-      $item .= '<ul class="testimonial-slider list-unstyled" data-slick=\'{"autoplaySpeed": '.$speed.'}\'>';
-      foreach ($posts as $post) {
+      $item .= '<ul class="testimonial-slider list-unstyled" data-slick=\'{"autoplaySpeed": ' . 2500 . '}\'>';
 
-        $id = $post->ID;
-        $i  = 1;
+      $this->require()['slick'];
 
-        if (have_rows('testimonials_list', $id)) {
+      if ($content_cource == 'event' || $content_cource == 'per_year') {
 
-          while (have_rows('testimonials_list', $id)) {
-            the_row();
+        if ($content_cource == 'event') {
+          $ids = explode(',', $testimonias_id);
+        } else {
+          $testims = get_field('misc_testimonials', 'options');
+          $ids     = array();
+          foreach ($testims as $testi) {
+            if ($testi['testimonial_from_year'] == $years) {
+              $ids[] = $testi['testimoanial_company']['value'];
+            }
+          }
+        }
+
+        foreach ($testims as $testi) {
+
+          if ($testi['testimonial_from_year'] == $years) {
+
+            $id = $testi['testimoanial_company']['value'];
 
             $logo = get_field('add_attendee_logo', $id);
 
@@ -249,21 +273,86 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
               $width = 200;
             }
 
-            if (get_sub_field('testimonial', $id) != '' && get_sub_field('in_slider', $id) == true) {
+            $testimonial_from_year = $testi['testimonial_from_year'];
+            $preson                = $testi['testimonials_person'];
+            $company_name          = $testi['testimoanial_company']['label'];
+            $full                  = $testi['full_testimoanal'];
+
+            if ($id == $testi['testimoanial_company']['value'] && $content_cource == 'per_year') {
               $item .= sprintf(
                 '<li class="clx">%s%s%s%s%s</li>',
-                '<div class="full-tesimonial">' . get_sub_field('testimonial') . '</div>',
-                get_sub_field('person') && in_array('person_name', $options) ? '<div class="person">' . get_sub_field('person') . '</div>' : '',
-                get_sub_field('company') && in_array('company_name', $options) ? '<div class="company">' . str_replace('%company%', get_the_title($id), get_sub_field('company')) . '</div>' : '',
+                '<div class="full-tesimonial">' . $full  . '</div>',
+                $preson && in_array('person_name', $options) ? '<div class="person">' . $preson . '</div>' : '',
+                $company_name && in_array('company_name', $options) ? '<div class="company">' . str_replace('%company%', get_the_title($id),  get_the_title($id)) . '</div>' : '',
                 get_field('add_attendee_logo', $id) && in_array('company_logo', $options) ? '<div class="logo"><a href="' . esc_url(get_the_permalink($id)) . '" title="' . __('Discover more about', 'TEXT_DOMAIN') . ' ' . the_title_attribute('echo=0&post=' . $id) . '"><img src="' . wpimage('img=' . get_field('add_attendee_logo', $id) . '&h=100&w=300&crop=fale') . '" alt="' . the_title_attribute('echo=0&post=' . $id) . ' ' . __('logo', 'TEXT_DOMAIN') . '" /></a></div>' : '',
                 get_field('attendee_website_url', $id) && in_array('company_url', $options) ? '<div class="website"><a href="' . esc_url(get_field('attendee_website_url', $id)) . '" target="_blank">' . __('Visit', 'TEXT_DOMAIN') . ' ' . get_the_title($id) . ' ' . __('website', 'TEXT_DOMAIN') . '</a></div>' : ''
               );
             }
-            $i++;
+
           }
         }
+
+      } else {
+
+        // IF NOT SELECTED TESTIMONIALS
+
+        $args = array(
+          'posts_per_page' => $limit,
+          'meta_query'     => array(
+            array(
+              'key'     => 'testimonials_list',
+              'value'   => array(''),
+              'compare' => 'NOT IN',
+            ),
+          ),
+        );
+
+        if ($content_cource == 'all') {
+          $args['post_type'] = (array) $fromwho;
+        } elseif ($content_cource == 'current') {
+          $args['post_type'] = get_post_type();
+          $args['post__in']  = array(get_the_ID());
+        }
+
+        if ($order == true && $content_cource == 'all') {
+          $args['orderby'] = 'rand';
+        }
+
+        foreach (get_posts($args) as $post) {
+
+          $id = $post->ID;
+          $i  = 1;
+
+          if (have_rows('testimonials_list', $id)) {
+
+            while (have_rows('testimonials_list', $id)) {
+              the_row();
+
+              $logo = get_field('add_attendee_logo', $id);
+
+              if (imagedata($logo)['width'] < (imagedata($logo)['height'] * 1.5)) {
+                $width = 100;
+              } else {
+                $width = 200;
+              }
+
+              if (get_sub_field('testimonial', $id) != '' && get_sub_field('in_slider', $id) == true) {
+                $item .= sprintf(
+                  '<li class="clx">%s%s%s%s%s</li>',
+                  '<div class="full-tesimonial">' . get_sub_field('testimonial') . '</div>',
+                  get_sub_field('person') && in_array('person_name', $options) ? '<div class="person">' . get_sub_field('person') . '</div>' : '',
+                  get_sub_field('company') && in_array('company_name', $options) ? '<div class="company">' . str_replace('%company%', get_the_title($id), get_sub_field('company')) . '</div>' : '',
+                  get_field('add_attendee_logo', $id) && in_array('company_logo', $options) ? '<div class="logo"><a href="' . esc_url(get_the_permalink($id)) . '" title="' . __('Discover more about', 'TEXT_DOMAIN') . ' ' . the_title_attribute('echo=0&post=' . $id) . '"><img src="' . wpimage('img=' . get_field('add_attendee_logo', $id) . '&h=100&w=300&crop=fale') . '" alt="' . the_title_attribute('echo=0&post=' . $id) . ' ' . __('logo', 'TEXT_DOMAIN') . '" /></a></div>' : '',
+                  get_field('attendee_website_url', $id) && in_array('company_url', $options) ? '<div class="website"><a href="' . esc_url(get_field('attendee_website_url', $id)) . '" target="_blank">' . __('Visit', 'TEXT_DOMAIN') . ' ' . get_the_title($id) . ' ' . __('website', 'TEXT_DOMAIN') . '</a></div>' : ''
+                );
+              }
+              $i++;
+            }
+          }
+        }
+        wp_reset_postdata();
       }
-      wp_reset_postdata();
+
       $item .= '</ul>';
       $item .= '</div>';
 

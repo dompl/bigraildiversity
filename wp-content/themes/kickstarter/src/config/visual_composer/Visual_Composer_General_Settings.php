@@ -14,7 +14,9 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       add_filter('acf/load_field/key=field_5ba7604b316da', array(&$this, 'acf_load_dates'));
       add_filter('acf/load_field/key=field_5ba75fbd316d9', array(&$this, 'acf_load_dates'));
       add_filter('acf/load_field/key=field_5bab12baf0b41', array(&$this, 'acf_load_dates'));
+      add_filter('acf/load_field/key=field_5bba2b9516aa5', array(&$this, 'acf_load_dates'));
       add_filter('acf/load_field/key=field_5bab7866eaea2', array(&$this, 'acf_load_sponsors'));
+      add_filter('acf/load_field/key=field_5bba277768176', array(&$this, 'acf_load_sponsors'));
     }
 
     public function replace_brackets_with_tags($field = '') {
