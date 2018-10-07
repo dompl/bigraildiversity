@@ -118,13 +118,26 @@ if ( ! class_exists('VC_BDRCS_Page_Image')) {
       $width         = 840;
 
       if (get_post_type() == 'atendees' || get_post_type() == 'supportingorgs') {
-        $crop = 'false';
+        $crop   = 'false';
+        $height = 400;
+        $width  = 840;
+
+      } else {
+        $height = 600;
+        $width  = 900;
       }
 
       foreach ($images as $image) {
+
+        if (imagedata($image)['height'] < $height || imagedata($image)['width'] < $width) {
+          $img = imagedata($image)['url'];
+        } else {
+          $img = wpimage('img=' . $image . '&h=' . $height . '&w=' . $width . '&upscale=true&crop=' . $crop . '&single=true&retina=false');
+        }
+
         $slider_images .= sprintf('<div class="item clx"><img %s="%s" alt="%s"></div>',
           $additional_images != '' ? ($i == 1 ? 'class="lazy" data-src' : 'data-lazy') : 'class="lazy" data-src',
-          wpimage('img=' . $image . '&h=' . $height . '&w=' . $width . '&upscale=true&crop=' . $crop . '&single=true&retina=false'),
+          $img,
           the_title_attribute('echo=0&posts=' . get_the_ID())
         );
         $i++;
