@@ -92,6 +92,7 @@ if ( ! class_exists('Visual_Composer_Params_Extenders')) {
             __('Subway', 'TEXT_DOMAIN')         => 'icon-subway',
             __('Train', 'TEXT_DOMAIN')          => 'icon-train',
             __('Trophy', 'TEXT_DOMAIN')         => 'icon-trophy-alt',
+            __('Twitter', 'TEXT_DOMAIN')         => 'icon-twitter',
             __('Quotation', 'TEXT_DOMAIN')      => 'icon-quotes',
           ),
           'description' => __('Choose an icon to show above the container.', 'TEXT_DOMAIN'),

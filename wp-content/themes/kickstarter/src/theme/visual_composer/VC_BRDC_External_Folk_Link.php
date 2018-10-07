@@ -56,7 +56,7 @@ if ( ! class_exists('VC_BRDC_External_Folk_Link')) {
     }
 
     public function VC_BRDC_External_Folk_Link_shortcode_callback($atts) {
-
+      $item = '';
       if ( ! get_field('attendee_website_url')) {
         return;
       }

@@ -26,7 +26,7 @@ if ( ! class_exists('VC_BRDC_Bullet_List')) {
           'heading'     => __('Coulmns', 'TEXT_DOMAIN'),
           'param_name'  => 'cols',
           'group'       => __('Content', 'TEXT_DOMAIN'),
-          'value'       => array('1', '2', '3'),
+          'value'       => array('1', '2', '3', '4'),
           'description' => __('How many columns per 1 row.', 'TEXT_DOMAIN'),
           'std'         => '1',
         ),
