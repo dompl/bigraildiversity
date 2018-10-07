@@ -25,6 +25,7 @@ use theme\visual_composer\VC_BDRCS_Page_Image;
 use theme\visual_composer\VC_BRDV_Folks_List;
 use theme\visual_composer\VC_BRDC_External_Folk_Link;
 use theme\visual_composer\VC_BRDC_2016_Winner;
+use theme\visual_composer\VC_BRDC_FAQ;
 
 if ( ! class_exists('Visual_Composer_General_Settings')) {
 
@@ -67,6 +68,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       new VC_BRDV_Folks_List();
       new VC_BRDC_External_Folk_Link();
       new VC_BRDC_2016_Winner();
+      new VC_BRDC_FAQ();
 
     }
   }

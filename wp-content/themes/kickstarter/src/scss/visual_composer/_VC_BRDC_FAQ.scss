@@ -1,0 +1,35 @@
+/*  ********************************************************
+ *   FAQ's
+ *  ********************************************************
+ */
+
+.faq {
+    border-bottom: 1px solid lighten(color(gray-light), 10%);
+    padding-bottom: 13px;
+    ul {
+        @extend .bullet-list;
+        @extend .list-unstyled;
+        padding-left: 10px;
+    }
+    p {
+        +ul {
+            margin-top: 10px!important;
+        }
+    }
+    .faq-question {
+        font-weight: $font-weight-bold;
+        color: color(brand);
+        @include em('font-size', 16px);
+        cursor: pointer;
+        @include icon('question') {
+            float: left;
+            margin-right: 10px;
+        }
+        ;
+    }
+    .faq-answer {
+        padding-left: 22px;
+        display: none;
+        margin-top: 10px;
+    }
+}
