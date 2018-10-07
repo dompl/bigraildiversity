@@ -122,20 +122,29 @@ if ( ! class_exists('VC_BRDC_Winners_Table')) {
 
       $winner = array();
       foreach ($winners as $win) {
-        $w        = $win['winner_data'] . '|' . $win['winner_year'];
-        $winner[] = explode('|', $w);
+        if ($win['winner_year'] == $year) {
+          $w        = $win['winner_data'] . '|' . $win['winner_year'];
+          $winner[] = explode('|', $w);
+        }
+
       }
 
       $this->array_sort_by_column($winner, 2);
 
       $winners = array_reverse($winner);
 
-      $item              = '';
-      $custom_class      = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
-      $custom_id         = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
+      $item         = '';
+      $custom_class = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
+      $custom_id    = $custom_id != '' ? ' id="' . $custom_id . '"' : false;
+
+      $i = 1;
+
+      if ($how_many == 'number') {
+        $winners = array_slice($winners, 0, $count, true);
+      }
 
       if ($winners) {
-        $i = 1;
+
         $item .= $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : '';
         $item .= '<div class="' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
 
@@ -144,9 +153,6 @@ if ( ! class_exists('VC_BRDC_Winners_Table')) {
         foreach ($winners as $winner) {
           if ($year == $winner[3]) {
             $item .= '<li class="position-' . $i . '"><span class="item item-company">' . $winner[0] . '</span><span class="item item-team-name">' . $winner[1] . '</span><span class="item item-score">' . $winner[2] . '</span></li>';
-            if ($how_many == 'number' && $i == ($count)) {
-              break;
-            }
           }
           $i++;
         }
