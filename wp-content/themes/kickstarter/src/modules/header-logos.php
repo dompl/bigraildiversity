@@ -33,7 +33,7 @@ $logo_size = 80;
         </a>
       </div>
       <div class="button">
-        <a href="/about/attend/" class="button large outlined wir" title="<?php _e('Attend Big Rail Diversity Challange')?>"><?php _e('Enter', 'TEXT_DOMAIN');?> <span> <?php _e('Today', 'TEXT_DOMAIN');?></span></a>
+        <a href="<?php echo esc_url(get_permalink( 5 )); ?>" class="button medium fill color-wir" title="<?php _e('Attend Big Rail Diversity Challenge')?>"><?php _e('Enter', 'TEXT_DOMAIN');?> <span> <?php _e('Today', 'TEXT_DOMAIN');?></span></a>
       </div>
     <?php endif?>
   </div>

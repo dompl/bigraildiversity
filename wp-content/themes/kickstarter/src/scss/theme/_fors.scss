@@ -1,0 +1,119 @@
+/*  ********************************************************
+ *   General form
+ *  ********************************************************
+ */
+
+@mixin input() {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: calc(100% - 20px);
+    border-radius: 0!important;
+    outline: none!important;
+}
+@mixin label() {
+    font-size: 14px;
+    font-weight: $font-weight-bold;
+    margin-bottom: 10px;
+    display: block;
+}
+.gform_wrapper {
+    ul {
+        @include scut-list-unstyled();
+        li {
+            margin-bottom: spacer(.5);
+            &.gf-no-label {
+                label {
+                    display: none;
+                }
+            }
+            label {
+                @include label();
+            }
+            textarea {
+                @include input();
+            }
+            select {
+                appearance: none !important;
+                -webkit-appearance: none !important;
+                border: none !important;
+                border: 1px solid #dfdfdf !important;
+                background: transparent !important;
+                border-radius: 0 !important;
+                padding: 10px !important;
+                width: 200px;
+                max-width: 100%;
+                position: relative;
+                @include icon('award') {
+                    position: absolute;
+                }
+            }
+            input {
+                &[type=text], &[type=email] {
+                    @include input();
+                }
+            }
+            .ginput_complex {
+                @extend %clx;
+                @include breakpoint(min-width $md) {
+                    span {
+                        display: block;
+                        width: 48%;
+                        float: left;
+                        @include _last-child() {
+                            float: right;
+                        }
+                    }
+                }
+                label {
+                    font-weight: $font-weight-light;
+                    font-size: 12px;
+                    margin-bottom: 0;
+                }
+            } // Has check boxes
+            .ginput_container_checkbox {
+                li {
+                    @extend %clx;
+                    margin-top: 5px!important;
+                    margin-bottom: 0!important;
+                    input {
+                        float: left;
+                        width: 30px;
+                    }
+                    label {
+                        float: left;
+                        width: calc(100% - 30px);
+                        display: block;
+                        margin-top: -4px;
+                        font-weight: $font-weight-normal;
+                    }
+                }
+            }
+            .gfield_description {
+                font-size: 12px;
+            }
+            &#field_1_5, &#field_1_11, &#field_2_7 {
+                margin-top: spacer(1);
+                @extend %clx;
+            }
+        }
+    }
+    .gform_footer {
+        input {
+            @extend .button;
+            @extend .fill;
+            @extend .color-wir;
+            border: none!important;
+        }
+    }
+    .validation_error {
+      background:color(danger);
+      padding: 10px;
+      text-align: center;
+      color:white;
+      margin-bottom: spacer();
+    }
+    .gfield_description.validation_message {
+      color:color(danger);
+      font-weight:$font-weight-bold;
+    }
+}

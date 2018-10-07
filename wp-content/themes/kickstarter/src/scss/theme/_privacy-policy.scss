@@ -1,0 +1,38 @@
+/*------------------------------------*\
+          Privacy Policy
+\*------------------------------------*/
+
+.list-like,
+.list-like-indent {
+  margin: 12px 0;
+  display: flex;
+  div {
+    margin-right: 25px;
+  }
+}
+
+.list-like-indent {
+    padding-left: 42px;
+    flex-wrap: wrap;
+    .list-like {
+        margin: 6px 0;
+        width: 100%;
+        div {
+            width: 20px;
+        }
+    }
+}
+.privacy-item {
+  display: flex;
+  margin-bottom: 20px;
+  p {
+    margin-top:0;
+  }
+  .privacy-item-number {
+    width: 50px;
+    line-height: 1.4;
+  }
+  .privacy-item-content {
+    width: calc(100% - 50px);
+  }
+}
