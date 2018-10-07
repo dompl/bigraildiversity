@@ -27,7 +27,8 @@ dropdowns in navigation.
     .nav-dropdown {
       left: 0;
       ul {
-        left: $nav-dd-min-width;
+        left: 100%;
+        top:-5px;
       }
       li {
         &.menu-item-has-children {

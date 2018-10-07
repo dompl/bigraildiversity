@@ -135,6 +135,13 @@ header#header {
         flex-wrap: wrap; // justify-content:space-evenly;
         align-items: stretch;
         li {
+            ul {
+                li.menu-item-has-children {
+                    &:before {
+                        margin-bottom: -3px;
+                    }
+                }
+            }
             @include breakpoint(max-width $lg) {
                 a {
                     font-size: 12px;
@@ -176,20 +183,19 @@ header#header {
                 white-space: nowrap;
                 flex: 1;
                 ul {
-                  margin-top: 5px;
+                    margin-top: 5px;
                 }
                 li {
-                  text-align: left;
-                  &:before {
-                    height: 1px;
-                    background:rgba(white, .3);
-                    padding-bottom: 6px!important;
-                    a {
+                    text-align: left;
+                    &:before {
+                        height: 1px;
+                        background: rgba(white, .3);
+                        padding-bottom: 6px!important;
+                        a {}
                     }
-                  }
-                  &:after {
-                    display: none;
-                  }
+                    &:after {
+                        display: none;
+                    }
                 }
             }
             a {
