@@ -5,7 +5,7 @@
 
 .faq {
     border-bottom: 1px solid lighten(color(gray-light), 10%);
-    padding-bottom: 13px;
+    padding-bottom: 11px;
     ul {
         @extend .bullet-list;
         @extend .list-unstyled;
@@ -25,7 +25,11 @@
             float: left;
             margin-right: 10px;
         }
-        ;
+        span {
+          float: left;
+          width: calc(100% - 30px);
+          line-height: 1.4;
+        }
     }
     .faq-answer {
         padding-left: 22px;

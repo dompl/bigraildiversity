@@ -93,7 +93,7 @@ if ( ! class_exists('VC_BRDC_FAQ')) {
       $item .= '<div class="' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
 
       if ($content != '' && $question != '') {
-        $item .= sprintf('<div class="faq"><div class="faq-question clx">%s</div><div class="faq-answer">%s</div></div>', $question, $content);
+        $item .= sprintf('<div class="faq"><div class="faq-question clx"><span>%s</span></div><div class="faq-answer">%s</div></div>', $question, $content);
       }
 
       $item .= '</div>';
