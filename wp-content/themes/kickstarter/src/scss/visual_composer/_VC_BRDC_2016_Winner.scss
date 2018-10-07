@@ -1,0 +1,45 @@
+/*  ********************************************************
+ *   2016 Winners
+ *  ********************************************************
+ */
+
+.winners-2016 {
+    margin-bottom: -30px;
+    margin-left: -2%;
+    margin-right: -2%;
+    @extend %clx;
+    .winner-2016-container {
+        background: url('img/theme/2016-star.png') 50% 0 no-repeat;
+        background-size: 50px auto;
+        float: left;
+        width: percentage(1/3);
+        @include breakpoint(max-width $md) {
+            width: percentage(1/2);
+        }
+        @include breakpoint(max-width $sm) {
+            width: 100%;
+        }
+        margin: 0 0;
+        text-align: center;
+        padding-top: 50px;
+        margin-bottom: 30px;
+        .inner {
+            padding: 0 2%;
+        }
+    }
+    .challenge-name {
+        color: color(wir);
+        margin-top: 10px;
+        margin-bottom: spacer(.5);
+    }
+    .challenge-subtitle {
+        @include em('font-size', 12px);
+    }
+    .image {
+        margin-top: 15px;
+    }
+    img {
+        max-height: 50px;
+        max-width: 80%;
+    }
+}
