@@ -23,23 +23,21 @@
 
 .modaal-wrapper {
     .modaal-container {
-          border-radius:$border-radius-base;
+        border-radius: $border-radius-base;
         .modaal-content-container {
-
             padding: 30px;
             position: relative;
             text-align: center;
-
             &:after {
-              content:"";
-              height: 5px;
-              width: 100%;
-              position:absolute;
-              bottom:0;
-              left:0;
-              background: url(img/theme/bar.gif);
-              border-radius: 0 0 $border-radius-base $border-radius-base;
-               background-size: 800px auto;
+                content: "";
+                height: 5px;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background: url(img/theme/bar.gif);
+                border-radius: 0 0 $border-radius-base $border-radius-base;
+                background-size: 800px auto;
             }
             .popup-image {
                 position: absolute;
@@ -61,8 +59,14 @@
                 text-align: center;
                 line-height: 1.2;
             }
+            p.winner {
+                margin-top: 0;
+                &.company {
+                    margin-bottom: 0;
+                }
+            }
             .popup-text {
-              font-size:12px;
+                font-size: 12px;
             }
         }
     }

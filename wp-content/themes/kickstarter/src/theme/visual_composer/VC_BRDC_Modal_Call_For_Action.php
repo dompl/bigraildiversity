@@ -79,6 +79,34 @@ if ( ! class_exists('VC_BRDC_Modal_Call_For_Action')) {
                 'value'   => array('popup'),
               ),
             ),
+            array(
+              'type'        => 'textfield',
+              'holder'      => 'div',
+              'class'       => 'vc_label',
+              'heading'     => __('Winner name', 'TEXT_DOMAIN'),
+              'param_name'  => 'winner_name',
+              'group'       => __('Content', 'TEXT_DOMAIN'),
+              'value'       => '',
+              'description' => __('Add winner name', 'TEXT_DOMAIN'),
+              'dependency'  => array(
+                'element' => 'link_to',
+                'value'   => array('popup'),
+              ),
+            ),
+            array(
+              'type'        => 'textfield',
+              'holder'      => 'div',
+              'class'       => 'vc_label',
+              'heading'     => __('Team name', 'TEXT_DOMAIN'),
+              'param_name'  => 'winner_company',
+              'group'       => __('Content', 'TEXT_DOMAIN'),
+              'value'       => '',
+              'description' => __('Add team name', 'TEXT_DOMAIN'),
+              'dependency'  => array(
+                'element' => 'link_to',
+                'value'   => array('popup'),
+              ),
+            ),
             /* image - img */
             array(
               'type'        => 'attach_image',
@@ -274,6 +302,8 @@ return $params;
             $image             = array_key_exists('img', $call) ? $call['img'] : false;
             $pop_button_text   = array_key_exists('pop_button_text', $call) ? $call['pop_button_text'] : false;
             $show_img_in_popup = array_key_exists('show_in_popup', $call) ? $call['show_in_popup'] : false;
+            $winner_company    = array_key_exists('winner_company', $call) ? $call['winner_company'] : false;
+            $winner_name       = array_key_exists('winner_name', $call) ? $call['winner_name'] : false;
 
             /* Build image */
             $img = false;
@@ -343,6 +373,12 @@ return $params;
                   <p class="popup-title"><?php echo str_replace('%title%', $title, $call['popuptitle']) ?></p>
                 <?php endif;
                 /* PopUp Text */
+                if ($call['winner_company'] != ''): ?>
+                  <p class="winner company"><strong><?php echo __('Winner:', 'TEXT_DOMAIN') ?></strong> <?php echo $call['winner_company'] ?></p>
+                <?php endif;
+                if ($call['winner_name'] != ''): ?>
+                  <p class="winner team"><strong><?php echo __('Team Name:', 'TEXT_DOMAIN') ?></strong> <?php echo $call['winner_name'] ?></p>
+                <?php endif;
                 if ($call['text'] != ''): ?>
                   <div class="popup-text"><?php echo $call['text']; ?></div>
                 <?php endif?>
