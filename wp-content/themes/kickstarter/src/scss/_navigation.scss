@@ -6,8 +6,8 @@
 /* Global colour settings - START YOUR CHANGES HERE */
 
 // $navigation_link_colour: color('gray-light');
-$navigation_link_colour: white;
-$navigation_background:color(brand);
+$navigation_link_colour: color(text);
+$navigation_background:color(body-background);
 $navigation_link_colour_hover: white;
 $navigation_link_background_colour_hover: color(brand);
 

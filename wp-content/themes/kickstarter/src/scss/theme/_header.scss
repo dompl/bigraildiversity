@@ -108,7 +108,7 @@ header#header {
 /* Navigation */
 
 #top-nav {
-    background: color(brand);
+    background: color(body-background);
     @include breakpoint(max-width $xl) {
         .container {
             width: 100%;
