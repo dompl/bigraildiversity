@@ -134,16 +134,12 @@ if ( ! class_exists('VC_RBDC_Page_Banner')) {
         'type'      => 'new',
         'uppercase' => true,
       ), $atts));
-
+      $item    = '';
       $title   = str_replace('%title%', wp_kses_post(get_the_title()), $title); // Get page title
       $pattern = get_field('background_pattern', 'options');                    // Get patttern backgrounf
       $images  = get_field('page_banners', 'options');                          // get background image
       $size    = 200;                                                           // banner height
       $uc      = $uppercase ? 'uc' : 'lc';
-
-      foreach ($colours as $colour) {
-        # code...
-      }
 
       // Create banner background image
       $background_image   = '';
@@ -173,7 +169,7 @@ if ( ! class_exists('VC_RBDC_Page_Banner')) {
 
         } else {
 
-          $background_pattern = ' class="bcg-banner bcg-' . $bcg . '"';
+          $background_pattern = ' class="bcg-banner ' . $bcg . '"';
 
         }
 
@@ -181,7 +177,8 @@ if ( ! class_exists('VC_RBDC_Page_Banner')) {
 
       }
 
-      $item .= '<section class="page-banner banner-'.get_the_ID().' style-' . $type . '">';
+      // $item .= '<div class="bar"></div>';
+      $item .= '<section class="page-banner banner-' . get_the_ID() . ' style-' . $type . '">';
       $item .= "<div $background_pattern>";
       $item .= '<div class="inner">';
       $item .= $images ? "<div $background_image>" : '';
@@ -192,7 +189,6 @@ if ( ! class_exists('VC_RBDC_Page_Banner')) {
       $item .= $images ? '</div>' : '';
       $item .= '</div>';
       $item .= $pattern ? '</div>' : '';
-      $item .= '<div class="bar"></div>';
       $item .= '</section>';
       return $item;
 

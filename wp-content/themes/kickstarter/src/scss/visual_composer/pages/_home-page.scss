@@ -10,7 +10,7 @@
         @extend %clx;
         position: relative;
         i {
-            color: color(gold);
+            color: color(purple-medium);
             font-size: 30px!important;
             @include scut-center-transform(y);
             @include _first-child() {
