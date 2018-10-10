@@ -38,7 +38,7 @@ if ( ! class_exists('Visual_Composer_Params_Extenders')) {
             __('White background', 'TEXT_DOMAIN')              => 'bcg-white',
             __('WIR Green background', 'TEXT_DOMAIN')          => 'bcg-green',
             __('WIR Blue background', 'TEXT_DOMAIN')           => 'bcg-blue',
-            __('BRDC Pink background', 'TEXT_DOMAIN')  => 'bcg-pink',
+            __('BRDC Pink background', 'TEXT_DOMAIN')          => 'bcg-pink',
             __('BRDC Purple Light background', 'TEXT_DOMAIN')  => 'bcg-purple-light',
             __('BRDC Purple Medium background', 'TEXT_DOMAIN') => 'bcg-purple-medium',
             __('BRDC Purple Dark background', 'TEXT_DOMAIN')   => 'bcg-purple-dark',

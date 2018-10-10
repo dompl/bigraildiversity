@@ -116,7 +116,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
         'Default',
         'White',
         'Gray Light',
-        'Balck',
+        'Black',
         'Green',
         'WIR',
         'Purple Light',

@@ -8,27 +8,27 @@
         padding-left: 0;
         padding-right: 0;
     }
-        .container-inner {
-            padding: 60px 80px; // padding-right:80px;
+    .container-inner {
+        padding: 60px 80px; // padding-right:80px;
+        &.prevent-margin {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        &.prevent-margin-hor {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        @include breakpoint(max-width $md) {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 30px;
+            padding-bottom: 30px;
             &.prevent-margin {
                 padding-top: 0;
                 padding-bottom: 0;
             }
-            &.prevent-margin-hor {
-                padding-left: 0;
-                padding-right: 0;
-            }
-            @include breakpoint(max-width $md) {
-                padding-left: 20px;
-                padding-right: 20px;
-                padding-top: 30px;
-                padding-bottom: 30px;
-                &.prevent-margin {
-                    padding-top: 0;
-                    padding-bottom: 0;
-                }
-            }
         }
+    }
 }
 @mixin content_container_styles( $color: text, $background:white) {
     color: color($color);
@@ -51,11 +51,13 @@
     }
 }
 /* Wide container */
+
 .container-wide {
     @extend %container;
     @include container-behavior();
 }
 /* Narrow container */
+
 .container-narrow {
     @include container-behavior();
 }
@@ -94,5 +96,29 @@
     }
     &blue {
         @include content_container_styles(white, wir);
+    }
+    &pink {
+        @include content_container_styles(white, pink);
+    }
+    &purple-light {
+        @include content_container_styles(white, purple-light);
+    }
+    &purple-medium {
+        @include content_container_styles(white, purple-medium);
+    }
+    &purple-dark {
+        @include content_container_styles(white, purple-dark);
+    }
+    &red {
+        @include content_container_styles(white, red);
+    }
+    &orange {
+        @include content_container_styles(white, orange);
+    }
+    &blue-light {
+        @include content_container_styles(white, blue-light);
+    }
+     &blue-dark {
+        @include content_container_styles(white, blue-dark);
     }
 }
