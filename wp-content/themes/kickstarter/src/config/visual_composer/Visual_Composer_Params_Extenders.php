@@ -39,16 +39,16 @@ if ( ! class_exists('Visual_Composer_Params_Extenders')) {
             __('WIR Green background', 'TEXT_DOMAIN')          => 'bcg-green',
             __('WIR Blue background', 'TEXT_DOMAIN')           => 'bcg-blue',
             __('BRDC Pink background', 'TEXT_DOMAIN')          => 'bcg-pink',
+            __('BRDC Green background', 'TEXT_DOMAIN')         => 'bcg-brdc-green',
             __('BRDC Purple Light background', 'TEXT_DOMAIN')  => 'bcg-purple-light',
             __('BRDC Purple Medium background', 'TEXT_DOMAIN') => 'bcg-purple-medium',
             __('BRDC Purple Dark background', 'TEXT_DOMAIN')   => 'bcg-purple-dark',
             __('BRDC Red background', 'TEXT_DOMAIN')           => 'bcg-red',
             __('BRDC Orange background', 'TEXT_DOMAIN')        => 'bcg-orange',
-            __('BRDC Orange background', 'TEXT_DOMAIN')        => 'bcg-orange',
             __('BRDC Blue Light background', 'TEXT_DOMAIN')    => 'bcg-blue-light',
             __('BRDC Blue Dark background', 'TEXT_DOMAIN')     => 'bcg-blue-dark',
           ),
-          'description' => __('Set background width or colour', 'TEXT_DOMAIN'),
+          'description' => __('Set background colour', 'TEXT_DOMAIN'),
         )
       );
     }

@@ -8,6 +8,10 @@ section.page-banner {
     @include breakpoint(max-width $md) {
         margin-bottom: spacer(1);
     }
+    .banner-logo {
+        background: url('img/theme/wir-logo-white.png') calc(100% - 20px) 50% no-repeat;
+        background-size:auto calc(100% - 20px);
+    }
     .banner {
         height: 200px;
         display: flex;
@@ -27,6 +31,9 @@ section.page-banner {
     }
     h1 {
         color: color(wir);
+        &.new {
+            color: white;
+        }
         margin: 0;
         line-height: 1;
         font-weight: $font-weight-bold;

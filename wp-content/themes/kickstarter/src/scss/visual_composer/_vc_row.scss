@@ -30,17 +30,6 @@
         }
     }
 }
-@mixin content_container_styles( $color: text, $background:white) {
-    color: color($color);
-    background: color($background);
-    @if $background !=white {
-        .container-icon i {
-            background-color: color($color);
-            border-color: color($background);
-            color: color($background);
-        }
-    }
-}
 .container-full, .wide-container, .container-narrow {
     @extend %first-element;
     @extend %last-element;
@@ -82,6 +71,20 @@
             text-align: center;
             font-size: 26px;
             border: 3px solid white;
+            &.icon-quotes {
+                background: color(brdc-green);
+            }
+        }
+    }
+}
+@mixin content_container_styles( $color: text, $background:white) {
+    color: color($color);
+    background: color($background);
+    @if $background !=white {
+        .container-icon i {
+            background-color: color($color);
+            border-color: color($background);
+            color: color($background);
         }
     }
 }
@@ -115,10 +118,16 @@
     &orange {
         @include content_container_styles(white, orange);
     }
+    &random {
+        @include content_container_styles(white, blue-light);
+    }
     &blue-light {
         @include content_container_styles(white, blue-light);
     }
-     &blue-dark {
+    &blue-dark {
         @include content_container_styles(white, blue-dark);
+    }
+    &brdc-green {
+        @include content_container_styles(white, brdc-green);
     }
 }

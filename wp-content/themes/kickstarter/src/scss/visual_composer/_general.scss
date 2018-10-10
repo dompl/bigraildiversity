@@ -144,6 +144,7 @@
 @mixin button($color: brand) {
     @if $color==white {
         &.button {
+
             color: color(gray-light)!important;
             &:hover {
                 color: white!important;
@@ -151,19 +152,21 @@
             }
         }
         &.outline {
+            color: white!important;
             &:hover {
                 color: color(gray-light)!important;
+                background: color(white)!important;
             }
         }
     }
     &.button {
         &.fill {
             text-shadow: -1px -1px 0px darken(color($color), 8%);
-            @if $color ==white {
-              text-shadow: none!important;
-              &:hover {
+            @if $color==white {
                 text-shadow: none!important;
-              }
+                &:hover {
+                    text-shadow: none!important;
+                }
             }
             color: white;
             background: color($color);

@@ -8,7 +8,7 @@
     <div class="content" data-mh="fc">
       <?php the_field('nimble_media_text', 'options')?>
     </div>
-    <a target="_blank" href="http://www.nimblemedia.co.uk" title="<?php _e('More about event organiser', 'TEXT_DOMAIN');?>" class="button outlined white uc"><?php _e('More about event organiser', 'TEXT_DOMAIN');?></a>
+    <a target="_blank" href="http://www.nimblemedia.co.uk" title="<?php _e('More about event organiser', 'TEXT_DOMAIN');?>" class="button medium outline color-white"><?php _e('More about event organiser', 'TEXT_DOMAIN');?></a>
   </div>
   <div class="about-wir about">
     <div class="logo">
@@ -19,6 +19,6 @@
     <div class="content" data-mh="fc">
       <?php echo the_field('wir_text', 'options') ?>
     </div>
-    <a target="_blank" href="http://www.womeninrail.org" title="<?php _e('Visit Women in Rail websit', 'TEXT_DOMAIN');?>" class="button outlined white uc"><?php _e('Visit website', 'TEXT_DOMAIN');?></a>
+    <a target="_blank" href="http://www.womeninrail.org" title="<?php _e('Visit Women in Rail websit', 'TEXT_DOMAIN');?>" class="button medium outline color-white"><?php _e('Visit website', 'TEXT_DOMAIN');?></a>
   </div>
 </div>
