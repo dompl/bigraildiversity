@@ -57,7 +57,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       }
 
       $field['choices'] = array();
-
+      $field['choices'][0] = __('Sadly, no sponsor :(', 'TEXT_DOMAIN');
       foreach ($posts as $post) {
 
         $value = $post->ID;
