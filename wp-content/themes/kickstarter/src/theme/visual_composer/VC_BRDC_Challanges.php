@@ -172,7 +172,9 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
       if (in_array('sponsor', $challange)) {
 
         $sponsor .= '<div class="sponsor-container">';
+        $sponsor .= $has_sponsor ? '' : '<a href="'.esc_url(get_permalink(21)).'">';
         $sponsor .= '<span class="sp-word' . ($has_sponsor ? ' has-sp' : '') . '">' . $sponsor_word . '</span>';
+       $sponsor .=  $has_sponsor ? '' : '</a>';
 
         $sponsor_image = get_field('add_attendee_logo', $sponsor_id);
 
