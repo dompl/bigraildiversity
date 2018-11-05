@@ -167,14 +167,14 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
       $sponsor_id = get_field('challange_sponsor', $post_id);
 
       $has_sponsor  = (get_field('challange_sponsor', $post_id) != '') ? true : false;
-      $sponsor_word = $has_sponsor ? __('Sponsored by', 'TEXT_DOMAIN') : __('Sponsorship', 'TEXT_DOMAIN');
+      $sponsor_word = $has_sponsor ? __('Sponsored by', 'TEXT_DOMAIN') : __('Sponsor this<br />challenge', 'TEXT_DOMAIN');
 
       if (in_array('sponsor', $challange)) {
 
         $sponsor .= '<div class="sponsor-container">';
         $sponsor .= $has_sponsor ? '' : '<a href="'.esc_url(get_permalink(21)).'">';
         $sponsor .= '<span class="sp-word' . ($has_sponsor ? ' has-sp' : '') . '">' . $sponsor_word . '</span>';
-       $sponsor .=  $has_sponsor ? '' : '</a>';
+        $sponsor .=  $has_sponsor ? '' : '</a>';
 
         $sponsor_image = get_field('add_attendee_logo', $sponsor_id);
 
