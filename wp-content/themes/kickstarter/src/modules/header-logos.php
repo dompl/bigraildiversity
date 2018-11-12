@@ -17,8 +17,10 @@ $logo_size = 80;
   </div>
   <div class="right flex-center">
     <?php if ($logo_2):
-      $logo  = is_front_page() ? 47 : 49;
-      $width = is_front_page() ? 154 : 69;
+      // $logo  = is_front_page() ? 47 : 49;
+      // $width = is_front_page() ? 154 : 69;
+      $logo  = 49;
+      $width = 69;
       ?>
       <div class="logo-2 logo">
         <a href="<?php echo esc_url(get_bloginfo('url')); ?>">
