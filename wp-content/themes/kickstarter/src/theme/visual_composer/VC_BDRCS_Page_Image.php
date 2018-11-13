@@ -104,7 +104,7 @@ if ( ! class_exists('VC_BDRCS_Page_Image')) {
 
       if ($additional_images != '') {
 
-        $this->require()['slick'];
+        $this->require_script()['slick'];
 
         foreach ($additional_images as $additional_image) {
           $images[] = $additional_image['ID'];

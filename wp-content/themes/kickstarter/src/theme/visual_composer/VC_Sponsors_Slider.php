@@ -152,7 +152,7 @@ if ( ! class_exists('VC_Sponsors_Slider')) {
 
       if ($the_query->have_posts()) {
 
-        $this->require()['slick'];
+        $this->require_script()['slick'];
 
         $slick_settings = '';
         $slick_settings .= '"slidesToShow": ' . $slides_to_show . ', ';

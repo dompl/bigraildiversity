@@ -1,6 +1,5 @@
 // ==== FOOTER ==== //
-;
-(function($) {
+;(function($) {
     $(function() {
         $(".is_lightbox").lightGallery({
             download: false,
