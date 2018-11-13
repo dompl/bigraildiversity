@@ -243,7 +243,7 @@ if ( ! class_exists('VC_BRDC_Testimonial_Scroller')) {
       $item .= '<div class="testimonials">';
       $item .= '<ul class="testimonial-slider list-unstyled" data-slick=\'{"autoplaySpeed": ' . 2500 . '}\'>';
 
-      $this->require()['slick'];
+      $this->require_script()['slick'];
 
       if ($content_cource == 'event' || $content_cource == 'per_year') {
 

@@ -25,7 +25,7 @@ if ( ! class_exists('Visual_Composer_General_Settings')) {
       return $field;
     }
 
-    public function require() {
+    public function require_script() {
       return array(
         'slick' => wp_enqueue_script('ks-slick-js', get_template_directory_uri() . '/js/x-slick.js', array('jquery'), '1.6.11', true),
       );

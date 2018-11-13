@@ -293,7 +293,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
       if ($the_query->have_posts()) {
 
         if ($display == 'slick') {
-          $this->require()['slick'];
+          $this->require_script()['slick'];
         }
 
         $slick_settings = '';
