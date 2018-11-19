@@ -167,7 +167,7 @@ if ( ! class_exists('VC_BRDC_Challanges')) {
       $sponsor_id = get_field('challange_sponsor', $post_id);
 
       $has_sponsor  = (get_field('challange_sponsor', $post_id) ) ? true : false;
-      $sponsor_word = $has_sponsor ? __('Sponsored by', 'TEXT_DOMAIN') : __('Sponsor this<br />challenge', 'TEXT_DOMAIN');
+      $sponsor_word = $has_sponsor ? __('Sponsored by', 'TEXT_DOMAIN') : __('Sponsor this challenge', 'TEXT_DOMAIN');
 
       if (in_array('sponsor', $challange)) {
 
