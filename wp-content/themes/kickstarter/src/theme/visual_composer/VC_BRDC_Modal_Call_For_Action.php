@@ -307,7 +307,7 @@ return $params;
           foreach ($calls as $call):
 
             $link_to           = array_key_exists('link_to', $call) ? $call['link_to'] : false;
-            $title             = array_key_exists('link_to', $call) ? $this->replace_brackets_with_tags($call['title']) : false;
+            $title             = array_key_exists('title', $call) ? $this->replace_brackets_with_tags($call['title']) : false;
             $text              = array_key_exists('text', $call) ? $call['text'] : false;
             $subtitle          = array_key_exists('subtitle', $call) ? $call['subtitle'] : false;
             $image             = array_key_exists('img', $call) ? $call['img'] : false;
@@ -336,7 +336,7 @@ return $params;
               );
             }
             /* Title */
-            $the_title = ($call['title']) ? "<$tag  data-mh=\"call-title\" class='call-title custom-call-title-$random $class $animation_classes'>" . do_shortcode($title) . "</$tag>" : '';
+            $the_title = ($title) ? "<$tag  data-mh=\"call-title\" class='call-title custom-call-title-$random $class $animation_classes'>" . do_shortcode($title) . "</$tag>" : '';
             $subtitle  = $subtitle ? '<div class="subtitle '.$this->pixels_class($align, 'align').'">' . $subtitle . '</div>' : '';
 
             $modal_rand = rand(10, 10000);

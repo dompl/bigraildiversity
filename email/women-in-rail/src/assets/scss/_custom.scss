@@ -1,0 +1,23 @@
+table.container {
+    &.transparent {
+        background-color: $body-background;
+    }
+}
+p.no-margin, .row-no-margin {
+    margin-top: 0;
+    Margin-top: 0;
+    margin-bottom: 0;
+    Margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.row-no-margin {
+    td.columns, td.column, th.columns, th.column {
+        margin-top: 0;
+        Margin-top: 0;
+        margin-bottom: 0;
+        Margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
