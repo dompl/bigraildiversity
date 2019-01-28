@@ -5,8 +5,8 @@
 
 @mixin line-colorline-color( $color: brand) {
     .line {
-        background-color: color($color)!important;
-
+        // background-color: color($color)!important;
+        background-color: color(purple-dark)!important;
     }
 }
 @mixin all-lines() {
@@ -44,11 +44,11 @@
         @include line-colorline-color(pink);
     }
 }
-@mixin w( $items: 4) {
+@mixin w( $items: 4 ) {
     $width: percentage( 1 / $items);
     flex: 1 0 calc( #{$width} - 20px);
 }
-@mixin item-width( $items: 4) {
+@mixin item-width( $items: 4 ) {
     .challange-item {
         @include w($items);
         /* explanation below */
@@ -249,4 +249,8 @@
     .description-inner, .challange-button {
         margin-top: spacer(.5);
     }
+}
+.challanges-container.challanges-in-columns .challange-item .line {
+  background-color:color(purple-dark)!important;
+  Background-color:color(purple-dark)!important;
 }
