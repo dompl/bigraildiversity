@@ -75,7 +75,7 @@ if ( ! class_exists('VC_BDRCS_Page_Image')) {
       }
 
       extract(shortcode_atts(array(
-        'year'         => date('Y') + 1,
+        'year'         => date('Y'),
         'space_above'  => __('None', 'TEXT_DOMAIN'),
         'space_below'  => __('None', 'TEXT_DOMAIN'),
         'custom_class' => '',
