@@ -65,3 +65,88 @@ ul.winners-table {
         }
     }
 }
+/*  ********************************************************
+ *   New Winners table
+ *  ********************************************************
+ */
+
+.winners-with-img {
+    li {
+        display: flex;
+        width: 100%;
+        border-bottom: 1px solid #EFEFEF;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        align-items: center;
+        font-size: 18px;
+        @include _last-child() {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        &.more-button {
+            border: none;
+            text-align: center;
+            span {
+                margin-top: 15px;
+                margin-bottom: 15px;
+                margin: auto;
+                background: color(brand);
+                display: inline-block;
+                color: white;
+                @extend %transition;
+                &:hover {
+                    cursor: pointer!important;
+                    background: darken(color(brand), 10%)
+                }
+            }
+        }
+        &.hidden {
+            display: none;
+        }
+        &.top-3 {
+            .number {
+                color: #2C2C2C;
+                font-weight: bold;
+            }
+            .name {
+                font-weight: bold;
+            }
+        }
+    }
+    .image {
+        margin: 0 20px;
+        width: 100px;
+        text-align: center;
+    }
+    .number {
+        color: #666;
+        font-size: 22px;
+        width: 19px;
+    }
+    .score {
+        margin-left: auto;
+    }
+    @include breakpoint(max-width $sm) {
+        li {
+            font-size: 14px;
+        }
+        .image {
+            width: 50px;
+            margin: 0;
+            margin-right: 10px;
+        }
+        .number {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        .name {
+            margin-right: 10px;
+        }
+    }
+    @include breakpoint(max-width 380px) {
+        .image {
+            display: none;
+        }
+    }
+}

@@ -8,9 +8,16 @@
 			//=require includes/modaal.js
 			//=require includes/faqs.js
 		}
+		function new_winners_score() {
+			$('.more-button .button').on('click' , function(){
+				$(this).parent('li').hide();
+				$('li.hidden').removeClass('hidden');
+			});
+		}
 
 		/* Initaite plugins */
 		initPlugins();
+		new_winners_score();
 
 		// Initiate plugins for pJax
 		if (typeof is_ks_pjax !== 'undefined') {
@@ -23,6 +30,7 @@
 			$(document).on('pjax:complete', function () {
 
 				initPlugins();
+				new_winners_score();
 
 			});
 		}
