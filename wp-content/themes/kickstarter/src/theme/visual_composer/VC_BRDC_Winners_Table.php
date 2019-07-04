@@ -35,6 +35,21 @@ if ( ! class_exists('VC_BRDC_Winners_Table')) {
           'std'         => 'all',
         ),
         array(
+          'type'        => 'dropdown',
+          'holder'      => 'div',
+          'class'       => 'vc_hidden',
+          'heading'     => __('Winners list layout', 'TEXT_DOMAIN'),
+          'param_name'  => 'winners_layout',
+          'admin_label' => true,
+          'group'       => __('Content', 'TEXT_DOMAIN'),
+          'value'       => array(
+            __('Standard', 'TEXT_DOMAIN')    => 'standard',
+            __('With images', 'TEXT_DOMAIN') => 'with_images',
+          ),
+          'description' => __('Select layout type for the winners table', 'TEXT_DOMAIN'),
+          'std'         => 'standard',
+        ),
+        array(
           'type'        => 'textfield',
           'holder'      => 'div',
           'class'       => 'vc_hidden',
@@ -109,13 +124,14 @@ if ( ! class_exists('VC_BRDC_Winners_Table')) {
     public function VC_BRDC_Winners_Table_shortcode_callback($atts, $content = null) {
 
       extract(shortcode_atts(array(
-        'how_many'     => 'all',
-        'count'        => 10,
-        'year'         => date('Y'),
-        'space_above'  => __('None', 'TEXT_DOMAIN'),
-        'space_below'  => __('None', 'TEXT_DOMAIN'),
-        'custom_class' => '',
-        'custom_id'    => '',
+        'how_many'       => 'all',
+        'count'          => 10,
+        'year'           => date('Y'),
+        'winners_layout' => 'standard',
+        'space_above'    => __('None', 'TEXT_DOMAIN'),
+        'space_below'    => __('None', 'TEXT_DOMAIN'),
+        'custom_class'   => '',
+        'custom_id'      => '',
       ), $atts));
 
       $winners = get_field('field_5bab1224f0b3f', 'options');
@@ -123,15 +139,19 @@ if ( ! class_exists('VC_BRDC_Winners_Table')) {
       $winner = array();
       foreach ($winners as $win) {
         if ($win['winner_year'] == $year) {
-          $w        = $win['winner_data'] . '|' . $win['winner_year'];
-          $winner[] = explode('|', $w);
+          if ($winners_layout == 'with_images') {
+            $winner[]  =  array('date' => $win['winner_year'], 'name' => $win['winner_data'], 'image'=> $win['winner_image'] );
+          } else {
+            $w        = $win['winner_data'] . '|' . $win['winner_year'];
+            $winner[] = explode('|', $w);
+          }
         }
-
       }
-
-      $this->array_sort_by_column($winner, 2);
-
-      $winners = array_reverse($winner);
+      if ($winners_layout == 'with_images') {
+      } else {
+        $this->array_sort_by_column($winner, 2);
+        $winners = array_reverse($winner);
+      }
 
       $item         = '';
       $custom_class = $custom_class != '' ? ' class="' . $custom_class . '"' : false;
@@ -141,6 +161,7 @@ if ( ! class_exists('VC_BRDC_Winners_Table')) {
 
       if ($how_many == 'number') {
         $winners = array_slice($winners, 0, $count, true);
+        // $winner = array_slice($winner, 0, $count, true);
       }
 
       if ($winners) {
@@ -148,22 +169,59 @@ if ( ! class_exists('VC_BRDC_Winners_Table')) {
         $item .= $custom_class || $custom_id ? '<div' . $custom_id . $custom_class . '>' : '';
         $item .= '<div class="' . $this->pixels_class($space_above, 'spacer-top') . ' ' . $this->pixels_class($space_below, 'spacer-bottom') . '">';
 
-        $item .= '<ul class="winners-table list-unstyled">';
-        $item .= '<li><span class="item item-company header">' . __('Company Name', 'TEXT_DOMAIN') . '</span><span class="item item-team-name header">' . __('Team Name', 'TEXT_DOMAIN') . '</span><span class="item item-score header">' . __('Score', 'TEXT_DOMAIN') . '</span></li>';
-        foreach ($winners as $winner) {
-          if ($year == $winner[3]) {
-            $item .= '<li class="position-' . $i . '"><span class="item item-company">' . $winner[0] . '</span><span class="item item-team-name">' . $winner[1] . '</span><span class="item item-score">' . $winner[2] . '</span></li>';
+        /* START STANDARD WINNERS LAYOUT */
+        if ($winners_layout != 'with_images') {
+
+          $item .= '<ul class="winners-table list-unstyled">';
+          $item .= '<li><span class="item item-company header">' . __('Company Name', 'TEXT_DOMAIN') . '</span><span class="item item-team-name header">' . __('Team Name', 'TEXT_DOMAIN') . '</span><span class="item item-score header">' . __('Score', 'TEXT_DOMAIN') . '</span></li>';
+          foreach ($winners as $winner) {
+            if ($year == $winner[3]) {
+              $item .= '<li class="position-' . $i . '"><span class="item item-company">' . $winner[0] . '</span><span class="item item-team-name">' . $winner[1] . '</span><span class="item item-score">' . $winner[2] . '</span></li>';
+            }
+            $i++;
           }
-          $i++;
+          $item .= '</ul>';
         }
-        $item .= '</ul>';
+        /* END STANDARD WINNERS LAYOUT */
+        /* START STANDARD WINNERS LAYOUT WITH IMAGES */
+        elseif ($winners_layout == 'with_images') {
 
-        $item .= '</div>';
-        $item .= $custom_class || $custom_id ? '</div>' : '';
+          $item .= '<ul class="winners-with-img list-unstyled">';
+          $inc = 1;
+          $winner_count = count($winner);
+
+          foreach ($winner as $winn) {
+            $winner_data = array();
+            $hidden_class = $inc > $count ? 'hidden' : '';
+            if ($year == $winn['date']) {
+              $winner_data = explode('|', $winn['name']);
+              $image = wpimage('img=' . ($winn['image']['id'] ? $winn['image']['id'] : 49) . '&w=100&h=100&crop=false&retina=false&upscale=true');
+              $item .= '<li class="position-' . $inc . ' '.($inc <= 3 ? 'top-3' : '').' ' . $hidden_class .'">';
+              $item .= '<div class="number'.($inc <= 3 ? ' top-3-number' : '').'">'.$inc.'</div>';
+              $item .= sprintf('<div class="image"><img src="%s" alt="%s"></div>', $image, $winner_data[0]);
+              $item .= '<div class="name">' . $winner_data[0] . '</div>';
+              $item .= '<div class="score">';
+              $item .= __('Score:', 'TEXT_DOMAIN');
+              $item .= '<strong> ' . $winner_data[2] . '</strong><div>';
+              $item .= '</div>';
+              $item .= '</li>';
+
+              if ($inc == $count && $count <  $winner_count ) {
+                 $item .= '<li class="more-button">';
+                 $item .= '<span class="button small fill">'.__('View All Scores' , 'TEXT_DOMAIN').'</span>';
+                 $item .= '</li>';
+              }
+            }
+            $inc++;
+          }
+          $item .= '</ul>';
+          /* END STANDARD WINNERS LAYOUT WITH IMAGES */
+          $item .= '</div>';
+          $item .= $custom_class || $custom_id ? '</div>' : '';
+        }
+
+        return $item;
       }
-
-      return $item;
     }
   }
-
 }

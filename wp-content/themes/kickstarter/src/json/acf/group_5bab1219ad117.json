@@ -57,14 +57,39 @@
                         "2016": 2016,
                         "2017": 2017,
                         "2018": 2018,
-                        "2019": 2019
+                        "2019": 2019,
+                        "2020": 2020
                     },
                     "allow_null": 0,
                     "other_choice": 0,
-                    "default_value": "2018",
+                    "default_value": "2019",
                     "layout": "horizontal",
                     "return_format": "value",
                     "save_other_choice": 0
+                },
+                {
+                    "key": "field_5d1db76ad9ce9",
+                    "label": "Winner Image",
+                    "name": "winner_image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
                 }
             ]
         }
@@ -82,9 +107,9 @@
     "position": "normal",
     "style": "default",
     "label_placement": "top",
-    "instruction_placement": "label",
+    "instruction_placement": "field",
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1537938961
+    "modified": 1562229332
 }
