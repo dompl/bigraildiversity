@@ -337,7 +337,7 @@ return $params;
             }
             /* Title */
             $the_title = ($title) ? "<$tag  data-mh=\"call-title\" class='call-title custom-call-title-$random $class $animation_classes'>" . do_shortcode($title) . "</$tag>" : '';
-            $subtitle  = $subtitle ? '<div class="subtitle '.$this->pixels_class($align, 'align').'">' . $subtitle . '</div>' : '';
+            $subtitle  = $subtitle ? '<div class="subtitle ' . $this->pixels_class($align, 'align') . '">' . $subtitle . '</div>' : '';
 
             $modal_rand = rand(10, 10000);
             /* link */
@@ -382,40 +382,42 @@ return $params;
                   </div>
                 <?php endif;
                 /* Pop Up Title */
-                if ($call['popuptitle'] != ''): ?>
+                if ($call['popuptitle'] != '' && array_key_exists('popuptitle', $call)): ?>
                   <p class="popup-title"><?php echo str_replace('%title%', $title, $call['popuptitle']) ?></p>
                 <?php endif;
                 /* PopUp Text */
-                if ($call['winner_company'] != ''): ?>
-                  <p class="winner company"><strong><?php echo __('Winner:', 'TEXT_DOMAIN') ?></strong> <?php echo $call['winner_company'] ?></p>
-                <?php endif;
-                if ($call['winner_name'] != ''): ?>
-                  <p class="winner team"><strong><?php echo __('Team Name:', 'TEXT_DOMAIN') ?></strong> <?php echo $call['winner_name'] ?></p>
-                <?php endif;
-                if ($call['text'] != ''): ?>
-                  <div class="popup-text"><?php echo $call['text']; ?></div>
-                <?php endif?>
+                if (array_key_exists('winner_company', $call)):
+                  if ($call['winner_company'] != ''): ?>
+                    <p class="winner company"><strong><?php echo __('Winner:', 'TEXT_DOMAIN') ?></strong> <?php echo $call['winner_company'] ?></p>
+                  <?php endif;endif;
+                  if (array_key_exists('winner_name', $call)):
+                    if ($call['winner_name'] != ''): ?>
+                      <p class="winner team"><strong><?php echo __('Team Name:', 'TEXT_DOMAIN') ?></strong> <?php echo $call['winner_name'] ?></p>
+                    <?php endif;endif;
+                    if ($call['text'] != '' && array_key_exists('text', $call)): ?>
+                      <div class="popup-text"><?php echo $call['text']; ?></div>
+                    <?php endif?>
+                  </div>
+                <?php endif;?>
               </div>
+
+              <?php if ((int) str_replace('px', '', $font_size) > 20): ?>
+              <script>
+                jQuery(function() {
+                  jQuery('.custom-call-title-<?php echo $random ?>').fitText(1.5, { minFontSize: '<?php echo (int) round((str_replace('px', '', $font_size) / 1.5), 0) . 'px' ?>', maxFontSize: '<?php echo $font_size ?>' });;
+                });
+              </script>
             <?php endif;?>
-          </div>
+          <?php endforeach;endif;?>
+        </div>
+        <?php
+        echo $custom_class || $custom_id ? '</div>' : '';
 
-          <?php if ((int) str_replace('px', '', $font_size) > 20): ?>
-          <script>
-            jQuery(function() {
-              jQuery('.custom-call-title-<?php echo $random ?>').fitText(1.5, { minFontSize: '<?php echo (int) round((str_replace('px', '', $font_size) / 1.5), 0) . 'px' ?>', maxFontSize: '<?php echo $font_size ?>' });;
-            });
-          </script>
-        <?php endif;?>
-      <?php endforeach;endif;?>
-    </div>
-    <?php
-    echo $custom_class || $custom_id ? '</div>' : '';
+        $item = ob_get_contents();
+        ob_end_clean();
 
-    $item = ob_get_contents();
-    ob_end_clean();
+        return $item;
+      }
+    }
 
-    return $item;
   }
-}
-
-}
