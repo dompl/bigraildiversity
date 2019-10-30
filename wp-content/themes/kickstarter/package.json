@@ -56,7 +56,7 @@
     "merge-stream": "^1.0.0",
     "scut": "^1.4.0",
     "susy": "^3.0.3",
-    "yarn": "^1.12.1"
+    "yarn": "^1.17.3"
   },
   "dependencies": {
     "accoutrement-color": "^2.3.1",
