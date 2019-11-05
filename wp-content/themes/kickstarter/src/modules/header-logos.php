@@ -8,7 +8,7 @@ $logo_size = 80;
   <div class="left">
     <?php if ($logo_1): ?>
       <div class="logo-1 logo">
-        <a href="<?php echo esc_url(get_bloginfo('url')); ?>">
+        <a href="<?php echo get_permalink(2798)  ?>">
           <img src="<?php echo wpimage('img=' . $logo_1 . '&w=139') ?>" data-src="<?php echo wpimage('img=' . $logo_1 . '&w=139&retina=true') ?>"  class="lazy no" alt="<?php echo bloginfo('name') ?> <?php _e('logo', 'TEXT_DOMAIN');?>">
         </a>
       </div>
