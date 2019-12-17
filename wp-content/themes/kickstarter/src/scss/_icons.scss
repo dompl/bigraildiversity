@@ -78,53 +78,56 @@
       @if $filename == facebook {
         $char: "\E011";
       }
-      @if $filename == map-marked-alt {
+      @if $filename == linkedin-in {
         $char: "\E012";
       }
-      @if $filename == menu-close {
+      @if $filename == map-marked-alt {
         $char: "\E013";
       }
-      @if $filename == menu-indicator-down {
+      @if $filename == menu-close {
         $char: "\E014";
       }
-      @if $filename == menu-indicator-left {
+      @if $filename == menu-indicator-down {
         $char: "\E015";
       }
-      @if $filename == menu-indicator-right {
+      @if $filename == menu-indicator-left {
         $char: "\E016";
       }
-      @if $filename == menu-indicator-up {
+      @if $filename == menu-indicator-right {
         $char: "\E017";
       }
-      @if $filename == phone-bold {
+      @if $filename == menu-indicator-up {
         $char: "\E018";
       }
-      @if $filename == phone {
+      @if $filename == phone-bold {
         $char: "\E019";
       }
-      @if $filename == question {
+      @if $filename == phone {
         $char: "\E01A";
       }
-      @if $filename == quotes {
+      @if $filename == question {
         $char: "\E01B";
       }
-      @if $filename == ribbon {
+      @if $filename == quotes {
         $char: "\E01C";
       }
-      @if $filename == star {
+      @if $filename == ribbon {
         $char: "\E01D";
       }
-      @if $filename == subway {
+      @if $filename == star {
         $char: "\E01E";
       }
-      @if $filename == train {
+      @if $filename == subway {
         $char: "\E01F";
       }
-      @if $filename == trophy-alt {
+      @if $filename == train {
         $char: "\E020";
       }
-      @if $filename == twitter {
+      @if $filename == trophy-alt {
         $char: "\E021";
+      }
+      @if $filename == twitter {
+        $char: "\E022";
       }
 
     @return $char;
@@ -192,6 +195,9 @@
   }
   .icon-facebook {
     @include icon(facebook);
+  }
+  .icon-linkedin-in {
+    @include icon(linkedin-in);
   }
   .icon-map-marked-alt {
     @include icon(map-marked-alt);

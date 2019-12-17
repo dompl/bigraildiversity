@@ -4,7 +4,37 @@
  */
 
 .bar {
-  height:5px;
-  background: url(img/theme/bar.gif);
-  background-size: 800px auto;
+    height: 5px;
+    background: url(img/theme/bar.gif);
+    background-size: 800px auto;
+}
+ul.linkedin-list {
+    @include scut-list-unstyled();
+    @include breakpoint(min-width $sm) {
+        display: flex;
+        align-items: center;
+         justify-content: center;
+    }
+    li {
+        margin: 0 10px;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        a {
+            position: relative;
+            color: color(text);
+            padding-left: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            @include icon('linkedin-in') {
+                left: 0;
+                position: absolute;
+                margin-right: 10px;
+                font-size: 20px;
+                color: social('linkedin');
+                line-height: 20px;
+                margin-top: 2px;
+            }
+        }
+    }
 }
