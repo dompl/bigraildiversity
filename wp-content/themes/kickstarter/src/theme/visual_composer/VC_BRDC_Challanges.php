@@ -344,7 +344,7 @@ return $params;
           );
         }
 
-        $text .= sprintf('<div class="title-pop">%s'.$post_id.'</div>', get_the_title($post_id));
+        $text .= sprintf('<div class="title-pop">%s</div>', get_the_title($post_id));
 
         if (get_field('attendee_short_description_pop', $post_id)) {
           $text    .= sprintf('<div class="description-pop">%s</div>', get_field('attendee_short_description_pop', $post_id));
