@@ -44,11 +44,11 @@
         @include line-colorline-color(pink);
     }
 }
-@mixin w( $items: 4 ) {
+@mixin w( $items: 4) {
     $width: percentage( 1 / $items);
     flex: 1 0 calc( #{$width} - 20px);
 }
-@mixin item-width( $items: 4 ) {
+@mixin item-width( $items: 4) {
     .challange-item {
         @include w($items);
         /* explanation below */
@@ -73,7 +73,7 @@
         height: 4px;
         width: 100%;
         background: color(brand);
-        border-radius:0 0 $border-radius-base $border-radius-base ;
+        border-radius: 0 0 $border-radius-base $border-radius-base;
     }
     .bcg-white {
         position: relative;
@@ -251,6 +251,62 @@
     }
 }
 .challanges-container.challanges-in-columns .challange-item .line {
-  background-color:color(purple-dark)!important;
-  Background-color:color(purple-dark)!important;
+    background-color: color(purple-dark)!important;
+    Background-color: color(purple-dark)!important;
+}
+/*  ********************************************************
+ *   Challanges popup
+ *  ********************************************************
+ */
+
+.modaal-wrapper.chal-pop .modaal-container {
+    background-color: transparent!important;
+    .modaal-content-container {
+        padding: 0;
+        &:after {
+            border-radius: 0 0 0;
+        }
+    }
+    .popimage img {
+        margin-bottom: 5px;
+    }
+    .pop-batch {
+        position: absolute;
+        top: -30px;
+        left: -30px;
+    }
+    .popimage img, .popimage {
+        position: relative;
+        border-radius: 8px 8px 0 0;
+    }
+    .title-pop {
+        background-color: white;
+        padding: 20px 0 20px 0;
+        font-size: 20px;
+        color: color(text);
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .sponsor-image {
+        background-color: white;
+        padding-bottom: 30px;
+        span {
+            display: block;
+            font-weight: normal;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    }
+    .description-pop {
+        background-color: white;
+        padding: 0px 20px 20px;
+        p {
+            @include _first-child() {
+                margin: 0;
+            }
+            @include _last-child() {
+                margin: 0;
+            }
+        }
+    }
 }

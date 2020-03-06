@@ -250,6 +250,25 @@
             "delay": 0
         },
         {
+            "key": "field_5e6249da8078e",
+            "label": "Short description (for pop up)",
+            "name": "attendee_short_description_pop",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
             "key": "field_5bab780cbad58",
             "label": "Testimonial",
             "name": "",
@@ -380,5 +399,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Challanges",
-    "modified": 1583315214
+    "modified": 1583499833
 }

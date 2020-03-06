@@ -7,6 +7,7 @@
 			//=require includes/blazy.js
 			//=require includes/modaal.js
 			//=require includes/faqs.js
+			//=require includes/challenges.js
 		}
 		function new_winners_score() {
 			$('.more-button .button').on('click' , function(){
