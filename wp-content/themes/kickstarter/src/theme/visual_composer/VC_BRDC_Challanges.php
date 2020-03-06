@@ -175,11 +175,11 @@ return $params;
       $image_source = $display == 'columns' ? 'class="lazy" src="' . wpimagebase() . '" data-src' : 'src';
       $retina       = $display == 'columns' ? 'false' : 'false';
 
-      $sponsor    = '';
-      $sponsor_id = get_field('challange_sponsor', $post_id);
-
-      $has_sponsor  = (get_field('challange_sponsor', $post_id)) ? true : false;
-      $sponsor_word = $has_sponsor ? __('Sponsored by', 'TEXT_DOMAIN') : __('Sponsor this challenge', 'TEXT_DOMAIN');
+      $sponsor        = '';
+      $sponsor_id     = get_field('challange_sponsor', $post_id);
+      $sponsor_image  = get_field('add_attendee_logo', $sponsor_id);
+      $has_sponsor    = (get_field('challange_sponsor', $post_id)) ? true : false;
+      $sponsor_word   = $has_sponsor ? __('Sponsored by', 'TEXT_DOMAIN') : __('Sponsor this challenge', 'TEXT_DOMAIN');
 
       $popup_link = str_replace(' ', '-', the_title_attribute('echo=0&id=' . $post_id));
       $popup_link  = preg_replace('/[^A-Za-z0-9\-]/', '', $popup_link);
@@ -190,7 +190,7 @@ return $params;
         $sponsor .= '<span class="sp-word' . ($has_sponsor ? ' has-sp' : '') . '">' . $sponsor_word . '</span>';
         $sponsor .=  $has_sponsor ? '' : '</a>';
 
-        $sponsor_image = get_field('add_attendee_logo', $sponsor_id);
+
 
                 // Sponsor logo image
         if ($sponsor_image != '') {
@@ -344,7 +344,7 @@ return $params;
           );
         }
 
-        $text .= sprintf('<div class="title-pop">%s</div>', the_title_attribute('echo=0'));
+        $text .= sprintf('<div class="title-pop">%s'.$post_id.'</div>', get_the_title($post_id));
 
         if (get_field('attendee_short_description_pop', $post_id)) {
           $text    .= sprintf('<div class="description-pop">%s</div>', get_field('attendee_short_description_pop', $post_id));
