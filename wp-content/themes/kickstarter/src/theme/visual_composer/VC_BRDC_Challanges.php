@@ -418,12 +418,13 @@ return $params;
         while ($the_query->have_posts()) {
           $the_query->the_post();
           $id = get_the_ID();
+          $color = get_field('ch_line_color', $id) ? get_field('ch_line_color', $id) : '9B39A7';
           $item .= sprintf(
             '<div class="challange-item challange-item-%s"><div class="bcg-%s inner">%s%s</div></div>',
             $id,
             $bcg,
             $this->sponsor($id, $challange, $batch_year, $display, $link_dest),
-            in_array('line', $challange) ? ('<span class="line"></span>') : ''
+            in_array('line', $challange) ? ('<span class="line" style="background-color:#'.$color. '"></span>') : ''
           );
           $i++;
         }

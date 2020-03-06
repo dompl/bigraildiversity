@@ -65,7 +65,7 @@
     margin: 0 -10px;
     text-align: center;
     .slick-slide {
-        @include all-lines();
+        // @include all-lines();
     }
     .line {
         margin-top: spacer(.5);

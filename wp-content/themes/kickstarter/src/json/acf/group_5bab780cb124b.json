@@ -67,6 +67,38 @@
             "ui_off_text": "Hide"
         },
         {
+            "key": "field_5e62bc709ee30",
+            "label": "Colour",
+            "name": "ch_line_color",
+            "type": "select",
+            "instructions": "Select colour for challenge box border in challenges listing.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "F4AA37": "Orange",
+                "57B14A": "Green",
+                "F578BF": "Pink",
+                "55C7FC": "Blue Light",
+                "2D5DA3": "Blue",
+                "9B39A7": "Purple",
+                "A01952": "Purple LIght"
+            },
+            "default_value": [
+                "9B39A7"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_5bab7866eaea2",
             "label": "Sponsor",
             "name": "challange_sponsor",
@@ -250,25 +282,6 @@
             "delay": 0
         },
         {
-            "key": "field_5e6249da8078e",
-            "label": "Short description (for pop up)",
-            "name": "attendee_short_description_pop",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "basic",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
             "key": "field_5bab780cbad58",
             "label": "Testimonial",
             "name": "",
@@ -399,5 +412,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Challanges",
-    "modified": 1583499833
+    "modified": 1583529163
 }
