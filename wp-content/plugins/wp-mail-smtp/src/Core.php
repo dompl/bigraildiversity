@@ -10,17 +10,40 @@ namespace WPMailSMTP;
 class Core {
 
 	/**
-	 * Without trailing slash.
+	 * URL to plugin directory.
 	 *
-	 * @var string
+	 * @since 1.0.0
+	 *
+	 * @var string Without trailing slash.
 	 */
 	public $plugin_url;
+
 	/**
-	 * Without trailing slash.
+	 * URL to Lite plugin assets directory.
 	 *
-	 * @var string
+	 * @since 1.5.0
+	 *
+	 * @var string Without trailing slash.
+	 */
+	public $assets_url;
+
+	/**
+	 * Path to plugin directory.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string Without trailing slash.
 	 */
 	public $plugin_path;
+
+	/**
+	 * Shortcut to get access to Pro functionality using wp_mail_smtp()->pro->example().
+	 *
+	 * @since 1.5.0
+	 *
+	 * @var \WPMailSMTP\Pro\Pro
+	 */
+	public $pro;
 
 	/**
 	 * Core constructor.
@@ -30,9 +53,43 @@ class Core {
 	public function __construct() {
 
 		$this->plugin_url  = rtrim( plugin_dir_url( __DIR__ ), '/\\' );
+		$this->assets_url  = $this->plugin_url . '/assets';
 		$this->plugin_path = rtrim( plugin_dir_path( __DIR__ ), '/\\' );
 
+		if ( $this->is_not_loadable() ) {
+			add_action( 'admin_notices', 'wp_mail_smtp_insecure_php_version_notice' );
+
+			if ( WP::use_global_plugin_settings() ) {
+				add_action( 'network_admin_notices', 'wp_mail_smtp_insecure_php_version_notice' );
+			}
+
+			return;
+		}
+
+		// Finally, load all the plugin.
 		$this->hooks();
+		$this->init_early();
+	}
+
+	/**
+	 * Currently used for Pro version only.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @return bool
+	 */
+	protected function is_not_loadable() {
+
+		// Check the Pro.
+		if (
+			is_readable( $this->plugin_path . '/src/Pro/Pro.php' ) &&
+			! $this->is_pro_allowed()
+		) {
+			// So there is a Pro version, but its PHP version check failed.
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -42,23 +99,30 @@ class Core {
 	 */
 	public function hooks() {
 
+		// Force from_email_force to always return true if current mailer is Gmail.
+		if ( ( new Options() )->get( 'mail', 'mailer' ) === 'gmail' ) {
+			add_filter( 'wp_mail_smtp_options_get', [ $this, 'gmail_mailer_get_from_email_force' ], 1, 3 );
+		}
+
+		// Action Scheduler requires a special early loading procedure.
+		add_action( 'plugins_loaded', array( $this, 'load_action_scheduler' ), - 10 );
+
 		// Activation hook.
-		add_action( 'activate_wp-mail-smtp/wp_mail_smtp.php', array( $this, 'activate' ) );
+		register_activation_hook( WPMS_PLUGIN_FILE, array( $this, 'activate' ) );
 
 		// Redefine PHPMailer.
 		add_action( 'plugins_loaded', array( $this, 'get_processor' ) );
 		add_action( 'plugins_loaded', array( $this, 'replace_phpmailer' ) );
 
-		// Awesome Motive Notifications.
-		add_action( 'plugins_loaded', array( $this, 'init_notifications' ) );
-
-		// Recommendations.
-		if ( ! class_exists( '\WPMailSMTP\TGM_Plugin_Activation', false ) ) {
-			require_once __DIR__ . '/TGMPA.php';
-		}
-		add_action( 'wpms_tgmpa_register', array( $this, 'init_recommendations' ) );
+		// Various notifications.
+		add_action( 'admin_init', array( $this, 'init_notifications' ) );
 
 		add_action( 'init', array( $this, 'init' ) );
+
+		// Initialize Action Scheduler tasks.
+		add_action( 'init', array( $this, 'get_tasks' ), 5 );
+
+		add_action( 'plugins_loaded', array( $this, 'get_pro' ) );
 	}
 
 	/**
@@ -69,7 +133,7 @@ class Core {
 	public function init() {
 
 		// Load translations just in case.
-		load_plugin_textdomain( 'wp-mail-smtp', false, plugin_basename( wp_mail_smtp()->plugin_path ) . '/languages' );
+		load_plugin_textdomain( 'wp-mail-smtp', false, plugin_basename( wp_mail_smtp()->plugin_path ) . '/assets/languages' );
 
 		/*
 		 * Constantly check in admin area, that we don't need to upgrade DB.
@@ -86,12 +150,104 @@ class Core {
 		// In admin area, regardless of AJAX or not AJAX request.
 		if ( is_admin() ) {
 			$this->get_admin();
+			$this->get_site_health()->init();
 		}
 
 		// Plugin admin area notices. Display to "admins" only.
 		if ( current_user_can( 'manage_options' ) ) {
 			add_action( 'admin_notices', array( '\WPMailSMTP\WP', 'display_admin_notices' ) );
-			add_action( 'admin_notices', array( $this, 'display_debug_notices' ) );
+			add_action( 'admin_notices', array( $this, 'display_general_notices' ) );
+
+			if ( WP::use_global_plugin_settings() ) {
+				add_action( 'network_admin_notices', array( '\WPMailSMTP\WP', 'display_admin_notices' ) );
+				add_action( 'network_admin_notices', array( $this, 'display_general_notices' ) );
+			}
+		}
+	}
+
+	/**
+	 * Whether the Pro part of the plugin is allowed to be loaded.
+	 *
+	 * @since 1.5.0
+	 * @since 1.6.0 Added a filter.
+	 *
+	 * @return bool
+	 */
+	protected function is_pro_allowed() {
+
+		$is_allowed = true;
+
+		if ( ! is_readable( $this->plugin_path . '/src/Pro/Pro.php' ) ) {
+			$is_allowed = false;
+		}
+
+		if ( version_compare( phpversion(), '5.6', '<' ) ) {
+			$is_allowed = false;
+		}
+
+		return apply_filters( 'wp_mail_smtp_core_is_pro_allowed', $is_allowed );
+	}
+
+	/**
+	 * Get/Load the Pro code of the plugin if it exists.
+	 *
+	 * @since 1.6.2
+	 *
+	 * @return \WPMailSMTP\Pro\Pro
+	 */
+	public function get_pro() {
+
+		if ( ! $this->is_pro_allowed() ) {
+			return $this->pro;
+		}
+
+		if ( ! $this->is_pro() ) {
+			$this->pro = new \WPMailSMTP\Pro\Pro();
+		}
+
+		return $this->pro;
+	}
+
+	/**
+	 * Get/Load the Tasks code of the plugin.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return \WPMailSMTP\Tasks\Tasks
+	 */
+	public function get_tasks() {
+
+		static $tasks;
+
+		if ( ! isset( $tasks ) ) {
+			$tasks = apply_filters( 'wp_mail_smtp_core_get_tasks', new Tasks\Tasks() );
+			$tasks->init();
+		}
+
+		return $tasks;
+	}
+
+	/**
+	 * This method allows to overwrite certain core WP functions, because it's fired:
+	 *  - after `muplugins_loaded` hook,
+	 *  - before WordPress own `wp-includes/pluggable.php` file include,
+	 *  - before `plugin_loaded` and `plugins_loaded` hooks.
+	 *
+	 * @since 1.5.0
+	 */
+	protected function init_early() {
+
+		$pro_files = $this->is_pro_allowed() ? \WPMailSMTP\Pro\Pro::PLUGGABLE_FILES : array();
+
+		$files = (array) apply_filters( 'wp_mail_smtp_core_init_early_include_files', $pro_files );
+
+		foreach ( $files as $file ) {
+			$path = $this->plugin_path . '/' . $file;
+
+			if ( is_readable( $path ) ) {
+				/** @noinspection PhpIncludeInspection */
+				include_once $path;
+			}
 		}
 	}
 
@@ -186,141 +342,181 @@ class Core {
 	}
 
 	/**
-	 * Awesome Motive Notifications.
+	 * Get the plugin's WP Site Health object.
+	 *
+	 * @since 1.9.0
+	 *
+	 * @return SiteHealth
+	 */
+	public function get_site_health() {
+
+		static $site_health;
+
+		if ( ! isset( $site_health ) ) {
+			$site_health = apply_filters( 'wp_mail_smtp_core_get_site_health', new SiteHealth() );
+		}
+
+		return $site_health;
+	}
+
+	/**
+	 * Display various notifications to a user
 	 *
 	 * @since 1.0.0
 	 */
 	public function init_notifications() {
 
+		// Old PHP version notification.
+		if (
+			version_compare( phpversion(), '5.6', '<' ) &&
+			is_super_admin() &&
+			(
+				isset( $GLOBALS['pagenow'] ) &&
+				$GLOBALS['pagenow'] === 'index.php'
+			)
+		) {
+			WP::add_admin_notice(
+				sprintf(
+					wp_kses( /* translators: %1$s - WP Mail SMTP plugin name; %2$s - WPMailSMTP.com URL to a related doc. */
+						__( 'Your site is running an outdated version of PHP that is no longer supported and may cause issues with %1$s. <a href="%2$s" target="_blank" rel="noopener noreferrer">Read more</a> for additional information.', 'wp-mail-smtp' ),
+						array(
+							'a' => array(
+								'href'   => array(),
+								'target' => array(),
+								'rel'    => array(),
+							),
+						)
+					),
+					'<strong>WP Mail SMTP</strong>',
+					'https://wpmailsmtp.com/docs/supported-php-versions-for-wp-mail-smtp/'
+				) .
+				'<br><br><em>' .
+				wp_kses(
+					__( '<strong>Please Note:</strong> Support for PHP 5.5 will be discontinued in 2020. After this, if no further action is taken, WP Mail SMTP functionality will be disabled.', 'wp-mail-smtp' ),
+					array(
+						'strong' => array(),
+						'em'     => array(),
+					)
+				) .
+				'</em>',
+				WP::ADMIN_NOTICE_ERROR,
+				false
+			);
+		}
+
+		// Awesome Motive Notifications.
 		if ( Options::init()->get( 'general', 'am_notifications_hidden' ) ) {
 			return;
 		}
-
-		static $notification;
-
-		if ( ! isset( $notification ) ) {
-			$notification = new AM_Notification( 'smtp', WPMS_PLUGIN_VER );
-		}
-	}
-
-	/**
-	 * Recommend WPForms Lite using TGM Activation.
-	 *
-	 * @since 1.3.0
-	 */
-	public function init_recommendations() {
-
-		// Recommend only for new installs.
-		if ( ! $this->is_new_install() ) {
-			return;
-		}
-
-		// Specify a plugin that we want to recommend.
-		$plugins = apply_filters( 'wp_mail_smtp_core_recommendations_plugins', array(
-			array(
-				'name'        => 'Contact Form by WPForms',
-				'slug'        => 'wpforms-lite',
-				'required'    => false,
-				'is_callable' => 'wpforms', // This will target the Pro version as well, not only the one from WP.org repository.
-			),
-		) );
-
-		/*
-		 * Array of configuration settings.
-		 */
-		$config = apply_filters( 'wp_mail_smtp_core_recommendations_config', array(
-			'id'           => 'wp-mail-smtp',          // Unique ID for hashing notices for multiple instances of TGMPA.
-			'menu'         => 'wp-mail-smtp-install-plugins', // Menu slug.
-			'parent_slug'  => 'plugins.php',            // Parent menu slug.
-			'capability'   => 'manage_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
-			'has_notices'  => true,                    // Show admin notices or not.
-			'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
-			'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
-			'is_automatic' => false,                   // Automatically activate plugins after installation or not.
-			'message'      => '',                      // Message to output right before the plugins table.
-			'strings'      => array(
-				/* translators: 1: plugin name(s). */
-				'notice_can_install_recommended'  => _n_noop(
-					'Thanks for installing WP Mail SMTP. We also recommend using %1$s. It\'s the best drag & drop form builder, has over 1 million active installs, and over 2000+ 5 star ratings.',
-					'Thanks for installing WP Mail SMTP. We also recommend using %1$s. It\'s the best drag & drop form builder, has over 1 million active installs, and over 2000+ 5 star ratings.',
-					'wp-mail-smtp'
-				),
-				/* translators: 1: plugin name(s). */
-				'notice_can_activate_recommended' => _n_noop(
-					'Thanks for installing WP Mail SMTP. We also recommend using %1$s. It\'s the best drag & drop form builder, has over 1 million active installs, and over 2000+ 5 star ratings.',
-					'Thanks for installing WP Mail SMTP. We also recommend using %1$s. It\'s the best drag & drop form builder, has over 1 million active installs, and over 2000+ 5 star ratings.',
-					'wp-mail-smtp'
-				),
-				'install_link'                    => _n_noop(
-					'Install WPForms Now',
-					'Begin installing plugins',
-					'wp-mail-smtp'
-				),
-				'activate_link'                   => _n_noop(
-					'Activate WPForms',
-					'Begin activating plugins',
-					'wp-mail-smtp'
-				),
-				'nag_type'                        => 'notice-info',
-			),
-		) );
-
-		\WPMailSMTP\tgmpa( (array) $plugins, (array) $config );
 	}
 
 	/**
 	 * Display all debug mail-delivery related notices.
 	 *
 	 * @since 1.3.0
+	 * @since 1.6.0 Added a filter that allows to hide debug errors.
 	 */
-	public static function display_debug_notices() {
+	public static function display_general_notices() {
 
-		$notice = Debug::get_last();
+		if ( wp_mail_smtp()->is_blocked() ) {
+			?>
 
-		if ( empty( $notice ) ) {
-			return;
-		}
-		?>
-
-		<div id="message" class="<?php echo WP::ADMIN_NOTICE_ERROR; ?> notice">
-			<p>
-				<?php
-				echo wp_kses(
-					__( '<strong>EMAIL DELIVERY ERROR:</strong> WP Mail SMTP plugin logged this error during the last time it tried to send an email: ', 'wp-mail-smtp' ),
-					array(
-						'strong' => array(),
-					)
-				);
-				?>
-			</p>
-
-			<blockquote>
-				<pre><?php echo $notice; ?></pre>
-			</blockquote>
-
-			<p>
-				<?php
-				if ( ! wp_mail_smtp()->get_admin()->is_admin_page() ) {
-					printf(
-						wp_kses(
-							/* translators: %s - plugin admin page URL. */
-							__( 'Please review your WP Mail SMTP settings in <a href="%s">plugin admin area</a>.' ) . ' ',
+			<div class="notice <?php echo esc_attr( WP::ADMIN_NOTICE_ERROR ); ?>">
+				<p>
+					<?php
+					$notices[] = sprintf(
+						wp_kses( /* translators: %s - plugin name and its version. */
+							__( '<strong>EMAILING DISABLED:</strong> The %s is currently blocking all emails from being sent.', 'wp-mail-smtp' ),
 							array(
-								'a' => array(
-									'href' => array(),
-								),
+								'strong' => true,
 							)
 						),
-						wp_mail_smtp()->get_admin()->get_admin_page_url()
+						esc_html( 'WP Mail SMTP v' . WPMS_PLUGIN_VER )
 					);
-				}
 
-				esc_html_e( 'Consider running an email test after fixing it.', 'wp-mail-smtp' );
+					if ( Options::init()->is_const_defined( 'general', 'do_not_send' ) ) {
+						$notices[] = sprintf(
+							wp_kses( /* translators: %1$s - constant name; %2$s - constant value. */
+								__( 'To send emails, change the value of the %1$s constant to %2$s.', 'wp-mail-smtp' ),
+								array(
+									'code' => true,
+								)
+							),
+							'<code>WPMS_DO_NOT_SEND</code>',
+							'<code>false</code>'
+						);
+					} else {
+						$notices[] = sprintf(
+							wp_kses( /* translators: %s - plugin Misc settings page URL. */
+								__( 'To send emails, go to plugin <a href="%s">Misc settings</a> and disable the "Do Not Send" option.', 'wp-mail-smtp' ),
+								array(
+									'a' => array(
+										'href' => true,
+									),
+								)
+							),
+							esc_url( add_query_arg( 'tab', 'misc', wp_mail_smtp()->get_admin()->get_admin_page_url() ) )
+						);
+					}
+
+					echo implode( ' ', $notices );
+					?>
+				</p>
+			</div>
+
+			<?php
+			return;
+		}
+
+		if ( wp_mail_smtp()->get_admin()->is_error_delivery_notice_enabled() ) {
+			$notice = Debug::get_last();
+
+			if ( ! empty( $notice ) ) {
 				?>
-			</p>
-		</div>
 
-		<?php
+				<div class="notice <?php echo esc_attr( WP::ADMIN_NOTICE_ERROR ); ?>">
+					<p>
+						<?php
+						printf(
+							wp_kses( /* translators: %s - plugin name and its version. */
+								__( '<strong>EMAIL DELIVERY ERROR:</strong> the plugin %s logged this error during the last time it tried to send an email:', 'wp-mail-smtp' ),
+								array(
+									'strong' => array(),
+								)
+							),
+							esc_html( 'WP Mail SMTP v' . WPMS_PLUGIN_VER )
+						);
+						?>
+					</p>
+
+					<blockquote>
+						<pre><?php echo $notice; ?></pre>
+					</blockquote>
+
+					<p>
+						<?php
+						if ( ! wp_mail_smtp()->get_admin()->is_admin_page() ) {
+							printf(
+								wp_kses( /* translators: %s - plugin admin page URL. */
+									__( 'Please review your WP Mail SMTP settings in <a href="%s">plugin admin area</a>.' ) . ' ',
+									array(
+										'a' => array(
+											'href' => array(),
+										),
+									)
+								),
+								esc_url( wp_mail_smtp()->get_admin()->get_admin_page_url() )
+							);
+						}
+
+						esc_html_e( 'Consider running an email test after fixing it.', 'wp-mail-smtp' );
+						?>
+					</p>
+				</div>
+
+				<?php
+			}
+		}
 	}
 
 	/**
@@ -331,6 +527,7 @@ class Core {
 	 * @return bool
 	 */
 	protected function is_new_install() {
+
 		/*
 		 * No previously installed 0.*.
 		 * 'wp_mail_smtp_initial_version' option appeared in 1.3.0. So we make sure it exists.
@@ -351,6 +548,7 @@ class Core {
 	 * Detect if there are plugins activated that will cause a conflict.
 	 *
 	 * @since 1.3.0
+	 * @since 1.5.0 Moved the logic to Conflicts class.
 	 */
 	public function detect_conflicts() {
 
@@ -359,120 +557,10 @@ class Core {
 			return;
 		}
 
-		$conflicts = array(
-			'swpsmtp_init_smtp'    => array(
-				'name' => 'Easy WP SMTP',
-			),
-			'postman_start'        => array(
-				'name' => 'Postman SMTP',
-			),
-			'post_start'           => array(
-				'name' => 'Post SMTP Mailer/Email Log',
-			),
-			'mail_bank'            => array(
-				'name' => 'WP Mail Bank',
-			),
-			'SMTP_MAILER'          => array(
-				'name'  => 'SMTP Mailer',
-				'class' => true,
-			),
-			'GMAIL_SMTP'           => array(
-				'name'  => 'Gmail SMTP',
-				'class' => true,
-			),
-			'WP_Email_Smtp'        => array(
-				'name'  => 'WP Email SMTP',
-				'class' => true,
-			),
-			'smtpmail_include'     => array(
-				'name' => 'SMTP Mail',
-			),
-			'bwssmtp_init'         => array(
-				'name' => 'SMTP by BestWebSoft',
-			),
-			'WPSendGrid_SMTP'      => array(
-				'name'  => 'WP SendGrid SMTP',
-				'class' => true,
-			),
-			'sar_friendly_smtp'    => array(
-				'name' => 'SAR Friendly SMTP',
-			),
-			'WPGmail_SMTP'         => array(
-				'name'  => 'WP Gmail SMTP',
-				'class' => true,
-			),
-			'st_smtp_check_config' => array(
-				'name' => 'Cimy Swift SMTP',
-			),
-			'WP_Easy_SMTP'         => array(
-				'name'  => 'WP Easy SMTP',
-				'class' => true,
-			),
-			'WPMailgun_SMTP'       => array(
-				'name'  => 'WP Mailgun SMTP',
-				'class' => true,
-			),
-			'my_smtp_wp'           => array(
-				'name' => 'MY SMTP WP',
-			),
-			'mail_booster'         => array(
-				'name' => 'WP Mail Booster',
-			),
-			'Sendgrid_Settings'    => array(
-				'name'  => 'SendGrid',
-				'class' => true,
-			),
-			'WPMS_php_mailer'      => array(
-				'name' => 'WP Mail Smtp Mailer',
-			),
-			'WPAmazonSES_SMTP'     => array(
-				'name'  => 'WP Amazon SES SMTP',
-				'class' => true,
-			),
-			'Postmark_Mail'        => array(
-				'name'  => 'Postmark for WordPress',
-				'class' => true,
-			),
-			'Mailgun'              => array(
-				'name'  => 'Mailgun',
-				'class' => true,
-			),
-			'SparkPost'            => array(
-				'name'  => 'SparkPost',
-				'class' => true,
-			),
-			'WPYahoo_SMTP'         => array(
-				'name'  => 'WP Yahoo SMTP',
-				'class' => true,
-			),
-			'wpses_init'           => array(
-				'name'  => 'WP SES',
-				'class' => true,
-			),
-			'TSPHPMailer'          => array(
-				'name' => 'turboSMTP',
-			),
-		);
+		$conflicts = new Conflicts();
 
-		foreach ( $conflicts as $id => $conflict ) {
-			if ( ! empty( $conflict['class'] ) ) {
-				$detected = class_exists( $id, false );
-			} else {
-				$detected = function_exists( $id );
-			}
-
-			if ( $detected ) {
-				WP::add_admin_notice(
-					sprintf(
-						/* translators: %1$s - Plugin name causing conflict; %2$s - Plugin name causing conflict. */
-						esc_html__( 'Heads up! WP Mail SMTP has detected %1$s is activated. Please deactivate %2$s to prevent conflicts.', 'wp-mail-smtp' ),
-						$conflict['name'],
-						$conflict['name']
-					),
-					WP::ADMIN_NOTICE_WARNING
-				);
-				return;
-			}
+		if ( $conflicts->is_detected() ) {
+			$conflicts->notify();
 		}
 	}
 
@@ -481,26 +569,28 @@ class Core {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return \WPMailSMTP\MailCatcher
+	 * @return MailCatcherInterface
 	 */
 	public function replace_phpmailer() {
+
 		global $phpmailer;
 
 		return $this->replace_w_fake_phpmailer( $phpmailer );
 	}
 
 	/**
-	 * Overwrite default PhpMailer with out MailCatcher.
+	 * Overwrite default PhpMailer with our MailCatcher.
 	 *
 	 * @since 1.0.0
+	 * @since 1.5.0 Throw external PhpMailer exceptions, inherits default WP behavior.
 	 *
-	 * @param null $obj
+	 * @param null $obj PhpMailer object to override with own implementation.
 	 *
-	 * @return \WPMailSMTP\MailCatcher
+	 * @return MailCatcherInterface
 	 */
 	protected function replace_w_fake_phpmailer( &$obj = null ) {
 
-		$obj = new MailCatcher();
+		$obj = $this->generate_mail_catcher( true );
 
 		return $obj;
 	}
@@ -509,6 +599,7 @@ class Core {
 	 * What to do on plugin activation.
 	 *
 	 * @since 1.0.0
+	 * @since 2.0.0 Changed from general `plugin_activate` hook to this plugin specific activation hook.
 	 */
 	public function activate() {
 
@@ -520,5 +611,234 @@ class Core {
 
 		// Save default options, only once.
 		Options::init()->set( Options::get_defaults(), true );
+
+		/**
+		 * Store the timestamp of first plugin activation.
+		 *
+		 * @since 2.1.0
+		 */
+		add_option( 'wp_mail_smtp_activated_time', time(), '', false );
+	}
+
+	/**
+	 * Whether this is a Pro version of a plugin.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @return bool
+	 */
+	public function is_pro() {
+
+		return apply_filters( 'wp_mail_smtp_core_is_pro', ! empty( $this->pro ) );
+	}
+
+	/**
+	 * Get the current license type.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @return string Default value: lite.
+	 */
+	public function get_license_type() {
+
+		$type = Options::init()->get( 'license', 'type' );
+
+		if ( empty( $type ) ) {
+			$type = 'lite';
+		}
+
+		return strtolower( $type );
+	}
+
+	/**
+	 * Get the current license key.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @return string
+	 */
+	public function get_license_key() {
+
+		$key = Options::init()->get( 'license', 'key' );
+
+		if ( empty( $key ) ) {
+			$key = '';
+		}
+
+		return $key;
+	}
+
+	/**
+	 * Upgrade link used within the various admin pages.
+	 *
+	 * @since 1.5.0
+	 * @since 1.5.1 Support all UTM params.
+	 *
+	 * @param array|string $utm Array of UTM params, or if string provided - utm_content URL parameter.
+	 *
+	 * @return string
+	 */
+	public function get_upgrade_link( $utm ) {
+
+		// Defaults.
+		$source   = 'WordPress';
+		$medium   = 'plugin-settings';
+		$campaign = 'liteplugin';
+		$content  = 'general';
+
+		if ( is_array( $utm ) ) {
+			if ( isset( $utm['source'] ) ) {
+				$source = $utm['source'];
+			}
+			if ( isset( $utm['medium'] ) ) {
+				$medium = $utm['medium'];
+			}
+			if ( isset( $utm['campaign'] ) ) {
+				$campaign = $utm['campaign'];
+			}
+			if ( isset( $utm['content'] ) ) {
+				$content = $utm['content'];
+			}
+		} elseif ( is_string( $utm ) ) {
+			$content = $utm;
+		}
+
+		return apply_filters(
+			'wp_mail_smtp_core_get_upgrade_link',
+			'https://wpmailsmtp.com/lite-upgrade/?utm_source=' . esc_attr( $source ) . '&utm_medium=' . esc_attr( $medium ) . '&utm_campaign=' . esc_attr( $campaign ) . '&utm_content=' . esc_attr( $content )
+		);
+	}
+
+	/**
+	 * Whether the emailing functionality is blocked, with either an option or a constatnt.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @return bool
+	 */
+	public function is_blocked() {
+
+		return (bool) Options::init()->get( 'general', 'do_not_send' );
+	}
+
+	/**
+	 * Whether the white-labeling is enabled.
+	 * White-labeling disables the plugin "About us" page, it replaces any plugin marketing texts or images with
+	 * white label ones.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return bool
+	 */
+	public function is_white_labeled() {
+
+		return (bool) apply_filters( 'wp_mail_smtp_is_white_labeled', false );
+	}
+
+	/**
+	 * Require the action scheduler in an early plugins_loaded hook (-10).
+	 *
+	 * @see   https://actionscheduler.org/usage/#load-order
+	 *
+	 * @since 2.1.0
+	 */
+	public function load_action_scheduler() {
+
+		require_once $this->plugin_path . '/vendor/woocommerce/action-scheduler/action-scheduler.php';
+	}
+
+	/**
+	 * Get the list of all custom DB tables that should be present in the DB.
+	 *
+	 * @since 2.1.2
+	 *
+	 * @return array List of table names.
+	 */
+	public function get_custom_db_tables() {
+
+		$tables = [
+			\WPMailSMTP\Tasks\Meta::get_table_name(),
+		];
+
+		return apply_filters( 'wp_mail_smtp_core_get_custom_db_tables', $tables );
+	}
+
+	/**
+	 * Generate the correct MailCatcher object based on the PHPMailer version used in WP.
+	 *
+	 * Also conditionally require the needed class files.
+	 *
+	 * @see   https://make.wordpress.org/core/2020/07/01/external-library-updates-in-wordpress-5-5-call-for-testing/
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param bool $exceptions True if external exceptions should be thrown.
+	 *
+	 * @return MailCatcherInterface
+	 */
+	public function generate_mail_catcher( $exceptions = null ) {
+
+		if ( version_compare( get_bloginfo( 'version' ), '5.5-alpha', '<' ) ) {
+			if ( ! class_exists( '\PHPMailer', false ) ) {
+				require_once ABSPATH . WPINC . '/class-phpmailer.php';
+			}
+
+			$mail_catcher = new MailCatcher( $exceptions );
+		} else {
+			if ( ! class_exists( '\PHPMailer\PHPMailer\PHPMailer', false ) ) {
+				require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
+			}
+
+			if ( ! class_exists( '\PHPMailer\PHPMailer\Exception', false ) ) {
+				require_once ABSPATH . WPINC . '/PHPMailer/Exception.php';
+			}
+
+			if ( ! class_exists( '\PHPMailer\PHPMailer\SMTP', false ) ) {
+				require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
+			}
+
+			$mail_catcher = new MailCatcherV6( $exceptions );
+		}
+
+		return $mail_catcher;
+	}
+
+	/**
+	 * Check if the passed object is a valid PHPMailer object.
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param object $phpmailer A potential PHPMailer object to be tested.
+	 *
+	 * @return bool
+	 */
+	public function is_valid_phpmailer( $phpmailer ) {
+
+		return $phpmailer instanceof MailCatcherInterface ||
+		       $phpmailer instanceof \PHPMailer ||
+		       $phpmailer instanceof \PHPMailer\PHPMailer\PHPMailer;
+	}
+
+	/**
+	 * Force the `mail.from_email_force` plugin option to always return true if the current saved mailer is Gmail.
+	 * Alters the plugin options retrieving via the Options::get method.
+	 *
+	 * The gmail mailer check is performed when this filter is added.
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param mixed  $value The value of the plugin option that is being retrieved via Options::get method.
+	 * @param string $group The group of the plugin option that is being retrieved via Options::get method.
+	 * @param string $key   The key of the plugin option that is being retrieved via Options::get method.
+	 *
+	 * @return mixed
+	 */
+	public function gmail_mailer_get_from_email_force( $value, $group, $key ) {
+
+		if ( $group === 'mail' && $key === 'from_email_force' ) {
+			$value = true;
+		}
+
+		return $value;
 	}
 }
