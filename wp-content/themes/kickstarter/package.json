@@ -63,7 +63,7 @@
     "blazy": "^1.8.2",
     "fittextjs": "^1.2.0",
     "gulp-sass-glob": "^1.0.9",
-    "jquery": "1.12.4",
+    "jquery": "3.5.0",
     "jquery-match-height": "^0.7.2",
     "jquery-migrate": "1.4.1",
     "jquery-pjax": "^2.0.1",
