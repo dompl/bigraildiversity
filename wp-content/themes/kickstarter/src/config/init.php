@@ -3,25 +3,31 @@
 namespace config;
 
 use config\plugins\acf;
-use config\plugins\Stephanis_Custom_Content_Width;
-use config\setup\enqueue;
-use config\setup\defaults;
-use config\setup\cpt;
-use config\theme\navigation;
 use config\plugins\Disable_Plugins_When_Local_Dev;
+use config\plugins\Stephanis_Custom_Content_Width;
+use config\setup\cpt;
+use config\setup\defaults;
+use config\setup\enqueue;
+use config\theme\navigation;
 use config\visual_composer\Visual_Composer_Initiator;
 
-class init {
+class init
+{
 
+    /**
+     * @var mixed
+     */
     private static $loaded = false;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->initClasses();
     }
 
-    public function initClasses() {
+    public function initClasses()
+    {
 
-        if (self::$loaded) {
+        if ( self::$loaded ) {
 
             return false;
 
@@ -38,8 +44,9 @@ class init {
          */
         $acf = new acf();
         $acf->init();
-        $acf->init('page_title='. get_bloginfo('name').' Winners List&menu_title=Winners List&menu_slug=winnters-list&parent_slug=edit.php?post_type=atendees');
-        $acf->init('page_title='. get_bloginfo('name').' Event Testimonials&menu_title=Event Testimonials&menu_slug=event-testimonials&parent_slug=edit.php?post_type=atendees');
+        $acf->init( 'page_title=' . get_bloginfo( 'name' ) . ' Winners List&menu_title=Winners List&menu_slug=winnters-list&parent_slug=edit.php?post_type=atendees' );
+        $acf->init( 'page_title=' . get_bloginfo( 'name' ) . ' Event Testimonials&menu_title=Event Testimonials&menu_slug=event-testimonials&parent_slug=edit.php?post_type=atendees' );
+        $acf->init( 'page_title=Testimonials&menu_title=Custom Testimonials&menu_slug=custom-testimonials&parent_slug=edit.php?post_type=page' );
 
         /**
          * Initiate navigation
@@ -51,7 +58,7 @@ class init {
          * @var $jquery [include custom jquery instead of wordpress one. You can run in as an async. Settings in class enqueue]
          * @var $pjax   [Local   pages with pJax load. If disabled, remember to disable it in you gulpconfig file. No need to load it if set to false]
          */
-        new enqueue($jquery = false, $pjax = false);
+        new enqueue( $jquery = false, $pjax = false );
 
         /**
          * Theme setup - Mostly removes junk from header
@@ -70,14 +77,14 @@ class init {
         /**
          * Disable plugins on local developmebt
          */
-        if (defined('WP_LOCAL_DEV') && WP_LOCAL_DEV) {
+        if ( defined( 'WP_LOCAL_DEV' ) && WP_LOCAL_DEV ) {
 
             // Set plugins to disable
             $plugins = array(
-                'vaultpress.php',
+                'vaultpress.php'
             );
 
-            new Disable_Plugins_When_Local_Dev($plugins);
+            new Disable_Plugins_When_Local_Dev( $plugins );
         }
 
     }

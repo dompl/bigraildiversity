@@ -1,0 +1,142 @@
+{
+    "key": "group_5f93144a802f1",
+    "title": "Custom Testimonials",
+    "fields": [
+        {
+            "key": "field_5f93145418445",
+            "label": "Custom testimonials",
+            "name": "custom_testimonials",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5f9318754b26b",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add testimonial",
+            "sub_fields": [
+                {
+                    "key": "field_5f9316934b269",
+                    "label": "Person",
+                    "name": "custom_testimonials_person",
+                    "type": "text",
+                    "instructions": "Name of the person who wrote the testimonial",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5f9318754b26b",
+                    "label": "Company name",
+                    "name": "custom_testimonials_company",
+                    "type": "text",
+                    "instructions": "Testimonial author company name",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5f9316234b268",
+                    "label": "Company logo",
+                    "name": "custom_testimonials_logo",
+                    "type": "image",
+                    "instructions": "Logo of the person who wrote the testimonial.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_5f931ba34b26c",
+                    "label": "Company website",
+                    "name": "custom_testimonials_website",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5f93182d4b26a",
+                    "label": "Testimonial",
+                    "name": "custom_testimonials_full",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "custom-testimonials"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1603476480
+}
