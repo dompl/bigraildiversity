@@ -4,37 +4,80 @@
  */
 
 .bar {
-    height: 5px;
-    background: url(img/theme/bar.gif);
-    background-size: 800px auto;
+  height: 5px;
+  background: url(img/theme/bar.gif);
+  background-size: 800px auto;
 }
 ul.linkedin-list {
-    @include scut-list-unstyled();
-    @include breakpoint(min-width $sm) {
-        display: flex;
-        align-items: center;
-         justify-content: center;
+  @include scut-list-unstyled();
+  @include breakpoint(min-width $sm) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  li {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    a {
+      position: relative;
+      color: color(text);
+      padding-left: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      @include icon("linkedin-in") {
+        left: 0;
+        position: absolute;
+        margin-right: 10px;
+        font-size: 20px;
+        color: social("linkedin");
+        line-height: 20px;
+        margin-top: 2px;
+      }
     }
-    li {
-        margin: 0 10px;
-        display: flex;
-        align-items: center;
-        font-size: 16px;
-        a {
-            position: relative;
-            color: color(text);
-            padding-left: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            @include icon('linkedin-in') {
-                left: 0;
-                position: absolute;
-                margin-right: 10px;
-                font-size: 20px;
-                color: social('linkedin');
-                line-height: 20px;
-                margin-top: 2px;
-            }
-        }
+  }
+}
+
+// Responsive Vimeo
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+// Responsive video
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.yt-pop {
+  &.modaal-wrapper {
+    .modaal-container {
+      .modaal-content-container {
+        padding: 0;
+        overflow: hidden;
+      }
     }
+  }
 }

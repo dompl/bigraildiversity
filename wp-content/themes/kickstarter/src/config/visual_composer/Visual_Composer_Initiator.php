@@ -16,7 +16,7 @@ use theme\visual_composer\VC_BRDC_Challanges;
 use theme\visual_composer\VC_BRDC_Custom_Title;
 use theme\visual_composer\VC_BRDC_External_Folk_Link;
 use theme\visual_composer\VC_BRDC_FAQ;
-use theme\visual_composer\VC_BRDC_Image_Gallery;
+use theme\visual_composer\VC_BRDC_Image_gallery;
 use theme\visual_composer\VC_BRDC_Modal_Call_For_Action;
 use theme\visual_composer\VC_BRDC_Simple_Button;
 use theme\visual_composer\VC_BRDC_Single_Image;
@@ -67,7 +67,7 @@ if ( !  class_exists( 'Visual_Composer_General_Settings' ) ) {
             new VC_BRDC_Simple_Button();
             new VC_Sponsors_Slider();
             new VC_BRDC_Winners_Table();
-            new VC_BRDC_Image_Gallery();
+            new VC_BRDC_Image_gallery();
             new VC_BRDC_Bullet_List();
             new VC_BRDC_Testimonial_Scroller();
             new VC_BRDC_Challanges();
