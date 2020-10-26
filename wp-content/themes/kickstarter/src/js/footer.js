@@ -15,8 +15,10 @@
 			before_open: onPlayerReady($(this)),
 		});
 		function onPlayerReady(yt) {
-			var iframe = yt.find("iframe");
-			iframe[0].src += "&autoplay=1";
+			if ($(".yt-pop")[0]) {
+				var iframe = yt.find("iframe");
+				iframe[0].src += "&autoplay=1";
+			}
 		}
 		function new_winners_score() {
 			$(".more-button .button").on("click", function () {
