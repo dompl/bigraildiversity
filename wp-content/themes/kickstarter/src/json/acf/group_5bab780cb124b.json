@@ -88,9 +88,7 @@
                 "9B39A7": "Purple",
                 "A01952": "Purple LIght"
             },
-            "default_value": [
-                "9B39A7"
-            ],
+            "default_value": "9B39A7",
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
@@ -113,6 +111,9 @@
             },
             "choices": {
                 "0": "Sadly, no sponsor :(",
+                "4001": "Motion (Attendees)",
+                "3999": "Central Rail Systems Alliance (Attendees)",
+                "3992": "Ganymede (Attendees)",
                 "3913": "MTR Elizabeth line (Attendees)",
                 "3911": "Transpennine Route Upgrade East of Leeds Alliance (Attendees)",
                 "3909": "East Midlands Railway (Attendees)",
@@ -189,7 +190,7 @@
                 "268": "Thales (Attendees)",
                 "266": "Paystream (Attendees)"
             },
-            "default_value": [],
+            "default_value": false,
             "allow_null": 1,
             "multiple": 0,
             "ui": 1,
@@ -260,12 +261,33 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
+            "mime_types": "",
+            "return_format": "array",
+            "preview_size": "medium"
         },
         {
             "key": "field_5bab780cbad4d",
             "label": "Short description",
             "name": "attendee_short_description",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_5f99e374cf265",
+            "label": "Pop Up Description",
+            "name": "attendee_short_description_pop",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
@@ -412,5 +434,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "Challanges",
-    "modified": 1583529163
+    "modified": 1603920825
 }
